@@ -8,7 +8,7 @@ sp:BEGIN
     SELECT idAforo INTO current_idAforo FROM Area WHERE IdArea = current_idArea;
     
     IF current_idAforo IS NULL THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Area no encontrada';
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Area no encontrada o no es de tipo Aforo';
         leave sp;
 	ELSEIF (SELECT Aforo FROM Aforo WHERE idAforo = current_idAforo) >= (SELECT Capacidad FROM Aforo WHERE idAforo = current_idAforo) THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Area llena, intente mas tarde';
