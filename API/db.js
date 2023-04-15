@@ -1,5 +1,7 @@
-// db.js - module for connecting to the database
+const dotenv = require('dotenv');
 const sql = require('mssql');
+
+dotenv.config();
 
 const config = {
   user: process.env.DB_USER,
@@ -7,21 +9,11 @@ const config = {
   server: process.env.DB_SERVER,
   database: process.env.DB_NAME,
   options: {
-    encrypt: true, // use encryption
-    trustServerCertificate: true, // for Azure
+    encrypt: true,
+    trustServerCertificate: true,
   },
 };
 
-async function connect() {
-  try {
-    await sql.connect(config);
-    console.log('Database connected');
-  } catch (err) {
-    console.log(err);
-  }
-}
+const pool = new sql.ConnectionPool(config);
 
-module.exports = {
-  sql,
-  connect,
-};
+module.exports = pool;

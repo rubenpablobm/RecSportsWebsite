@@ -1,4 +1,16 @@
-// app.js - main application file
 const express = require('express');
-const { connect } = require('./db');
-const edificio = require('./tables_CRUD/edificio');
+const dotenv = require('dotenv');
+const cors = require('cors');
+const edificioRoutes = require('./routes/edificio');
+
+dotenv.config();
+
+const app = express();
+
+app.use(express.json());
+app.use(cors());
+
+app.use('/api', edificioRoutes);
+
+const port = process.env.PORT || 5000;
+app.listen(port, () => console.log(`Server running on port ${port}`));
