@@ -32,6 +32,7 @@ const config = {
 
 //const pool = new sql.ConnectionPool(config).connect();
 
+// Gracias a https://stackoverflow.com/questions/47480289/pool-query-is-not-a-function-using-npm-mysql-package-to-use-connection-pool 
 const poolPromise = new sql.ConnectionPool(config)
   .connect()
   .then(pool1 => {

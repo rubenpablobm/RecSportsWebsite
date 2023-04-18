@@ -13,9 +13,10 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/edificio', edificioRoutes);
+app.use('/area', edificioRoutes);
 
 app.use((req,res,next) =>{
-    console.log(`Request del cliente URL: ${req.get('host')}${req.originalUrl} >>> ${SERVER_TAG}`);
+    console.log(`Request del cliente URL: ${req.get('host')}${req.originalUrl}`);
     next();
 })
 

@@ -1,17 +1,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const pool = require('../db');
+const {sql, poolPromise} = require('../db');
 
 const app = express();
-const sql = require('mssql');
+//const sql = require('mssql');
 
 app.use(bodyParser.json());
 app.use(cors());
 
 // get all areas
-app.get('/api/areas', async (req, res) => {
+app.get('/', async (req, res) => {
     try {
+      const pool = await poolPromise;
       const query = 'SELECT * FROM Area';
       const result = await pool.request().query(query);
       //res.send(result.recordset);
@@ -23,8 +24,9 @@ app.get('/api/areas', async (req, res) => {
   });
   
   // get an area by id
-  app.get('/api/areas/:id', async (req, res) => {
+  app.get('/:id', async (req, res) => {
     try {
+      const pool = await poolPromise;
       const id = req.params.id;
       const query = 'SELECT * FROM Area WHERE IdArea = @id';
       const result = await pool.request()
@@ -38,8 +40,9 @@ app.get('/api/areas', async (req, res) => {
   });
   
   // create a new area
-  app.post('/api/areas', async (req, res) => {
+  app.post('/', async (req, res) => {
     try {
+      const pool = await poolPromise;
       const { IdArea, Nombre, Foto, Croquis, Tipo, LinkCalendar, Descripcion, Horarios, Avisos, IdEdificio, idAforo } = req.body;
       const query = 'INSERT INTO Area (IdArea, Nombre, Foto, Croquis, Tipo, LinkCalendar, Descripcion, Horarios, Avisos, IdEdificio, idAforo) VALUES (@IdArea, @Nombre, @Foto, @Croquis, @Tipo, @LinkCalendar, @Descripcion, @Horarios, @Avisos, @IdEdificio, @idAforo)';
       await pool.request()
@@ -63,8 +66,9 @@ app.get('/api/areas', async (req, res) => {
   });
   
 // update an area by id
-app.put('/api/areas/:id', async (req, res) => {
+app.put('/:id', async (req, res) => {
     try {
+      const pool = await poolPromise;
       const id = req.params.id;
       const { Nombre, Foto, Croquis, Tipo, LinkCalendar, Descripcion, Horarios, Avisos, IdEdificio, idAforo } = req.body;
       const query = 'UPDATE Area SET Nombre = @Nombre, Foto = @Foto, Croquis = @Croquis, Tipo = @Tipo, LinkCalendar = @LinkCalendar, Descripcion = @Descripcion, Horarios = @Horarios, Avisos = @Avisos, IdEdificio = @IdEdificio, idAforo = @idAforo WHERE IdArea = @id';
@@ -89,8 +93,9 @@ app.put('/api/areas/:id', async (req, res) => {
   });
   
   // delete an area by id
-  app.delete('/api/areas/:id', async (req, res) => {
+  app.delete('/:id', async (req, res) => {
     try {
+      const pool = await poolPromise;
       const id = req.params.id;
       const query = 'DELETE FROM Area WHERE IdArea = @id';
       await pool.request()
@@ -106,8 +111,9 @@ app.put('/api/areas/:id', async (req, res) => {
   // API PERSONALIZADA
 
   // pagina principal, sacar por edificio
-  app.get('/api/areasxedificio/:id', async (req, res) => {
+  app.get('/xedificio/:id', async (req, res) => {
     try {
+      const pool = await poolPromise;
       const id = req.params.id;
       const query = 'SELECT a.idArea, a.Nombre, a.Foto, a.Avisos, af.Aforo, af.Capacidad FROM Area a INNER JOIN Aforo af ON a.IdArea = af.IdArea WHERE a.IdEdificio = @IdEdificio';
       const result = await pool.request()
@@ -121,8 +127,9 @@ app.put('/api/areas/:id', async (req, res) => {
   });
 
   //MasAforo
-  app.get('/api/areas/masaforo/:id', async (req, res) => {
+  app.get('/masaforo/:id', async (req, res) => {
     try {
+      const pool = await poolPromise;
       const id = req.params.id;
       await pool.connect();
       const result = await pool.request()
@@ -135,8 +142,9 @@ app.put('/api/areas/:id', async (req, res) => {
     }
   });
   //MenosAforo
-  app.get('/api/areas/menosaforo/:id', async (req, res) => {
+  app.get('/menosaforo/:id', async (req, res) => {
     try {
+      const pool = await poolPromise;
       const id = req.params.id;
       await pool.connect();
       const result = await pool.request()
