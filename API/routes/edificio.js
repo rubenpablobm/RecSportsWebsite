@@ -1,9 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const pool = require('../db');
+const {sql, poolPromise} = require('../db');
 
 const app = express();
+//const sql = require('mssql');
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -11,6 +12,7 @@ app.use(cors());
 // get all edificios
 app.get('/api/edificios', async (req, res) => {
   try {
+    const pool = await poolPromise;
     const query = 'SELECT * FROM Edificio';
     const result = await pool.request().query(query);
     res.send(result.recordset);
@@ -23,6 +25,7 @@ app.get('/api/edificios', async (req, res) => {
 // get an edificio by id
 app.get('/api/edificios/:id', async (req, res) => {
   try {
+    const pool = await poolPromise;
     const id = req.params.id;
     const query = 'SELECT * FROM Edificio WHERE IdEdificio = @id';
     const result = await pool.request()
@@ -38,6 +41,7 @@ app.get('/api/edificios/:id', async (req, res) => {
 // create a new edificio
 app.post('/api/edificios', async (req, res) => {
   try {
+    const pool = await poolPromise;
     const { IdEdificio, Nombre, Foto, LinkMaps } = req.body;
     const query = 'INSERT INTO Edificio (IdEdificio, Nombre, Foto, LinkMaps) VALUES (@IdEdificio, @Nombre, @Foto, @LinkMaps)';
     await pool.request()
@@ -56,6 +60,7 @@ app.post('/api/edificios', async (req, res) => {
 // update an edificio by id
 app.put('/api/edificios/:id', async (req, res) => {
   try {
+    const pool = await poolPromise;
     const id = req.params.id;
     const { Nombre, Foto, LinkMaps } = req.body;
     const query = 'UPDATE Edificio SET Nombre = @Nombre, Foto = @Foto, LinkMaps = @LinkMaps WHERE IdEdificio = @id';
@@ -75,6 +80,7 @@ app.put('/api/edificios/:id', async (req, res) => {
 // delete an edificio by id
 app.delete('/api/edificios/:id', async (req, res) => {
   try {
+    const pool = await poolPromise;
     const id = req.params.id;
     const query = 'DELETE FROM Edificio WHERE IdEdificio = @id';
     await pool.request()
