@@ -1,9 +1,9 @@
 <div 
-  class="area-card card bg-dark text-white m-2"
+  class="area-card card bg-dark text-white"
   *ngFor="let area of listaAreas" 
 >
   <img class="card-img" src="{{area.foto}}" alt="Cancha de {{area.nombre}}">
-  <div class="area-contenido card-img-overlay p-3">
+  <div class="area-contenido card-img-overlay">
     <div *ngIf="area.aviso!='' " class="area-aviso">
       <span class="badge bg-warning">aviso</span>
     </div>
