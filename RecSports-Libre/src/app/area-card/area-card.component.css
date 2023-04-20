@@ -4,6 +4,7 @@
   height: 8rem;
   overflow: hidden;
   flex-shrink: 1;
+  transition: 1s;
 }
 .area-card img {
   opacity: 0.5;
