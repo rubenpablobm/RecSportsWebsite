@@ -20,9 +20,12 @@
 
 .area-aviso {
   align-self: flex-end;
+  font-size: larger;
 }
 .area-nombre {
   margin-top: auto;
+  font-weight: 600;
+  font-size: large;
 }
 
 /* Breakpoints */
