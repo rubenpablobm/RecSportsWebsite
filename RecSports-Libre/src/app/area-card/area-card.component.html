@@ -1,12 +1,14 @@
 <div 
-  class="card p-3 m-2"
+  class="area-card card bg-dark text-white m-2"
   *ngFor="let area of listaAreas" 
-  [ngStyle]="{'background': 'url({{area.foto}})'}"
 >
-  <div *ngIf="area.aviso!='' " class="aviso">
-    <span class="badge bg-warning">aviso</span>
-  </div>
-  <div class="card-title name">
-    {{area.nombre}}
+  <img class="card-img" src="{{area.foto}}" alt="Cancha de {{area.nombre}}">
+  <div class="area-contenido card-img-overlay p-3">
+    <div *ngIf="area.aviso!='' " class="area-aviso">
+      <span class="badge bg-warning">aviso</span>
+    </div>
+    <div class="area-nombre card-title">
+      {{area.nombre}}
+    </div>
   </div>
 </div>
