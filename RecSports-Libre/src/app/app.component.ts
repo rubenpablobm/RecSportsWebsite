@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Area } from './models/area';
 
 @Component({
   selector: 'app-root',

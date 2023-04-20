@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Breakpoints */
+@media (min-width: 1200px) { }
+
+
+@media (max-width: 992px) { }
+
+@media (max-width: 768px) { 
+  app-area-card {
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 480px) { 
+  app-area-card {
+    justify-content: flex-start;
+  }
+}
