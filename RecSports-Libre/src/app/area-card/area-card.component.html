@@ -1,8 +1,12 @@
-<div class="card p-3">
-  <div class="aviso">
+<div 
+  class="card p-3 m-2"
+  *ngFor="let area of listaAreas" 
+  [ngStyle]="{'background': 'url({{area.foto}})'}"
+>
+  <div *ngIf="area.aviso!='' " class="aviso">
     <span class="badge bg-warning">aviso</span>
   </div>
   <div class="card-title name">
-    Tenis
+    {{area.nombre}}
   </div>
 </div>

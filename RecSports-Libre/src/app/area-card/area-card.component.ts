@@ -10,7 +10,7 @@ export class AreaCardComponent {
   listaAreas : Area[] = [
     {
       nombre:'Tennis',
-      foto:'../assets/images/tenis.jpeg',
+      foto:'RecSports-Libre/src/assets/images/tenis.jpeg',
       croquis:'',
       tipo:'disponibilidad',
       linkCalendar:'',
