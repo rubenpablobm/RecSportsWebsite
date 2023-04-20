@@ -1,7 +1,8 @@
 .area-card {
-  width: 20rem;
-  height: 10rem;
+  width: 16rem;
+  height: 8rem;
   overflow: hidden;
+  flex-shrink: 1;
 }
 .area-card img {
   opacity: 0.5;
