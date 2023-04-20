@@ -5,6 +5,9 @@
   overflow: hidden;
   flex-shrink: 1;
   transition: 1s;
+  /* Esto centra la imagen de fondo en el eje vertical */
+  display: flex;
+  justify-content: center;
 }
 .area-card img {
   opacity: 0.5;
