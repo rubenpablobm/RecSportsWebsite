@@ -71,3 +71,27 @@ CREATE PROCEDURE `ConsultaDato`
 BEGIN
     SELECT
 END;
+
+
+/*SP 3*/
+CREATE PROCEDURE CrearArea
+    @Nombre NVARCHAR(255),
+    @Foto NVARCHAR(255),
+    @Croquis NVARCHAR(255),
+    @Tipo NVARCHAR(255),
+    @LinkCalendar NVARCHAR(255),
+    @Descripcion NVARCHAR(255),
+    @Horarios NVARCHAR(255),
+    @Avisos NVARCHAR(255),
+    @IdEdificio INT,
+    @Capacidad INT
+AS
+BEGIN
+DECLARE @siAforo_IdArea INT;
+        INSERT INTO Area (Nombre, Foto, Croquis, Tipo, LinkCalendar, Descripcion, Horarios, Avisos, IdEdificio) VALUES (@Nombre, @Foto, @Croquis, @Tipo, @LinkCalendar, @Descripcion, @Horarios, @Avisos, @IdEdificio); 
+        SET @siAforo_IdArea = SCOPE_IDENTITY();
+        IF @Capacidad>0
+            BEGIN
+            INSERT INTO Aforo (IdArea, Aforo, Capacidad) VALUES (@siAforo_IdArea, 0, @Capacidad)
+            END;
+END;

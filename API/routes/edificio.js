@@ -42,10 +42,10 @@ app.get('/:id', async (req, res) => {
 app.post('/', async (req, res) => {
   try {
     const pool = await poolPromise;
-    const { IdEdificio, Nombre, Foto, LinkMaps } = req.body;
-    const query = 'INSERT INTO Edificio (IdEdificio, Nombre, Foto, LinkMaps) VALUES (@IdEdificio, @Nombre, @Foto, @LinkMaps)';
+    const { Nombre, Foto, LinkMaps } = req.body;
+    const query = 'INSERT INTO Edificio ( Nombre, Foto, LinkMaps) VALUES (@Nombre, @Foto, @LinkMaps)';
     await pool.request()
-      .input('IdEdificio', sql.Int, IdEdificio)
+      /*.input('IdEdificio', sql.Int, IdEdificio)*/
       .input('Nombre', sql.VarChar, Nombre)
       .input('Foto', sql.VarChar, Foto)
       .input('LinkMaps', sql.VarChar, LinkMaps)
