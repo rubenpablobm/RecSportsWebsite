@@ -21,7 +21,7 @@ export class AreaCardComponent {
     },
     {
       nombre:'Basketball',
-      foto:'../assets/images/tenis.jpeg',
+      foto:'../assets/images/basketball.jpeg',
       croquis:'',
       tipo:'disponibilidad',
       linkCalendar:'',
