@@ -9,6 +9,11 @@
   flex-wrap: wrap;
 }
 
+.no-style-link {
+  text-decoration: none;
+  color: #fff;
+}
+
 /* Breakpoints */
 @media (min-width: 1200px) { }
 
