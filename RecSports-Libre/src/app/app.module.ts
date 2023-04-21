@@ -9,6 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HeaderComponent } from './header/header.component';
 import { AdminComponent } from './admin/admin.component';
+import { AreaCardComponent } from './area-card/area-card.component';
+
 
 @NgModule({
   declarations: [
@@ -16,6 +18,7 @@ import { AdminComponent } from './admin/admin.component';
     NavbarComponent,
     HeaderComponent,
     AdminComponent
+    AreaCardComponent
   ],
   imports: [
     BrowserModule,
