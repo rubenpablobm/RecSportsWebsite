@@ -4,14 +4,25 @@
   height: 8rem;
   overflow: hidden;
   flex-shrink: 1;
-  transition: 1s;
+  transition: 0.5s;
   /* Esto centra la imagen de fondo en el eje vertical */
   display: flex;
   justify-content: center;
 }
+
 .area-card img {
   opacity: 0.5;
+  transition: 0.5s;
 }
+
+.area-card:hover {
+  transform: translateY(-10px);
+  border: 3px #0286FF solid;
+}
+.area-card:hover img {
+  opacity: 0.8;
+}
+
 .area-contenido {
   display: flex;
   flex-direction: column;
