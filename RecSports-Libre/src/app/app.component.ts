@@ -9,3 +9,4 @@ import { Area } from './models/area';
 export class AppComponent {
   title = 'RecSports-Libre';
 }
+
