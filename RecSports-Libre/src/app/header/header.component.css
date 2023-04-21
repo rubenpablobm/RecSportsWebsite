@@ -2,19 +2,33 @@
     position: absolute;
     /*top: 120px;
     left: 55px;*/
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     margin: auto;
     color: white;
-    width: 30%;
-    height: 40%;
+    text-align: left;
+    width: 70%;
+    height: 100%;
     font-size: 100px;
     /*padding-left: 50px;
     padding-right: 50px;*/
   }
   
-  .container{
+  .mg{
       position: relative;
-  }
+      display: flex;
+      width: auto;
+      max-height: 1000px;
+      min-height: 0px;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0px 0px; 
+    }
+   
+
+ 

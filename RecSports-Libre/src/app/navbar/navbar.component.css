@@ -1,5 +1,6 @@
 .spacer{
-    flex: 1 1 auto;
+    display: flex;
+    flex-basis: 850px;
 }
 .spacer1{
     margin-left: 140px;
@@ -9,3 +10,17 @@
     width: 160px;
     margin-left: 20px;
 }
+
+
+.flexboxi { 
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px 50px; } 
+
+
+
+
+
+
+
