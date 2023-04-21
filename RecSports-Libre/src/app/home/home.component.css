@@ -1,0 +1,4 @@
+app-area-card {
+  display: flex;
+  flex-wrap: wrap;
+}
