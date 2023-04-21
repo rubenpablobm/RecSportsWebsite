@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AreaInfoComponent } from './area-info/area-info.component';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
-import { BrowserModule } from '@angular/platform-browser';
 
 const routes: Routes = [
   {
@@ -22,11 +21,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    BrowserModule,
-    RouterModule.forRoot([
-      {path: 'admin', component: AdminComponent},
-      {path: '', redirectTo: '/admin', pathMatch: 'full'},
-    ]),
+    RouterModule.forRoot(routes),
   ],
   exports: [RouterModule]
 })
