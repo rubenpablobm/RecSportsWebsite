@@ -10,6 +10,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HeaderComponent } from './header/header.component';
 import { AdminComponent } from './admin/admin.component';
 import { AreaCardComponent } from './area-card/area-card.component';
+import { AreaInfoComponent } from './area-info/area-info.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -17,8 +19,10 @@ import { AreaCardComponent } from './area-card/area-card.component';
     AppComponent,
     NavbarComponent,
     HeaderComponent,
-    AdminComponent
-    AreaCardComponent
+    AreaCardComponent,
+    AreaInfoComponent,
+    HomeComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
