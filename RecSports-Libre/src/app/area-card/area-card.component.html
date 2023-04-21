@@ -1,14 +1,16 @@
 <div 
-  class="area-card card bg-dark text-white"
+  class="area-card card bg-dark text-white shadow"
   *ngFor="let area of listaAreas" 
 >
   <img class="card-img" src="{{area.foto}}" alt="Cancha de {{area.nombre}}">
-  <div class="area-contenido card-img-overlay">
-    <div *ngIf="area.aviso!='' " class="area-aviso">
-      <span class="badge bg-warning">AVISO</span>
+  <a class="card-link" routerLink="">
+    <div class="area-contenido card-img-overlay">
+      <div *ngIf="area.aviso!='' " class="area-aviso">
+        <span class="badge bg-warning">AVISO</span>
+      </div>
+      <div class="area-nombre card-title">
+        {{area.nombre}}
+      </div>
     </div>
-    <div class="area-nombre card-title">
-      {{area.nombre}}
-    </div>
-  </div>
+  </a>
 </div>
