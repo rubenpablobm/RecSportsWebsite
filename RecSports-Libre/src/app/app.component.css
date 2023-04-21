@@ -14,6 +14,12 @@
   color: #fff;
 }
 
+.btn {
+  padding: 5px 20px;
+  font-size: small;
+  font-weight: 600;
+}
+
 /* Breakpoints */
 @media (min-width: 1200px) { }
 
