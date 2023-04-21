@@ -110,6 +110,41 @@ app.put('/:id', async (req, res) => {
     }
   });
 
+  // update an aforo by id. 
+app.put('/:id', async (req, res) => {
+  try {
+    const pool = await poolPromise;
+    const id = req.params.id;
+    const { Aforo, Capacidad } = req.body;
+    const query = 'UPDATE Aforo SET Aforo = @Aforo, Capacidad = @Capacidad WHERE IdArea = @id';
+    await pool.request()
+      .input('Aforo', sql.VarChar, Aforo)
+      .input('Capacidad', sql.VarChar, Capacidad)
+      /*.input('idAforo', sql.Int, idAforo)*/
+      .query(query);
+    res.sendStatus(200);
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
+});
+
+// delete an aforo by id
+app.delete('/:id', async (req, res) => {
+  try {
+    const pool = await poolPromise;
+    const id = req.params.id;
+    const query = 'DELETE FROM Aforo WHERE IdArea = @id';
+    await pool.request()
+      .input('id', sql.Int, id)
+      .query(query);
+    res.sendStatus(200);
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
+});
+
   // API PERSONALIZADA
 
   // pagina principal, sacar por edificio
