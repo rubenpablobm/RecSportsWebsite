@@ -10,13 +10,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HeaderComponent } from './header/header.component';
 import { AreaCardComponent } from './area-card/area-card.component';
+import { AreaInfoComponent } from './area-info/area-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HeaderComponent,
-    AreaCardComponent
+    AreaCardComponent,
+    AreaInfoComponent
   ],
   imports: [
     BrowserModule,
