@@ -11,6 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HeaderComponent } from './header/header.component';
 import { AreaCardComponent } from './area-card/area-card.component';
 import { AreaInfoComponent } from './area-info/area-info.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AreaInfoComponent } from './area-info/area-info.component';
     NavbarComponent,
     HeaderComponent,
     AreaCardComponent,
-    AreaInfoComponent
+    AreaInfoComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
