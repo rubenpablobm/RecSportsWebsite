@@ -1,4 +1,5 @@
 export class Area {
+  idArea=0;
   nombre!:string;
   foto!:string;
   croquis!:string;
