@@ -1,24 +1,10 @@
-.spacer{
+.navbar {
     display: flex;
-    flex-basis: 850px;
-}
-.spacer1{
-    margin-left: 140px;
-}
-
-#centro{
-    width: 160px;
-    margin-left: 20px;
-}
-
-
-.flexboxi { 
-    display: flex;
-    justify-content: flex-end;
     align-items: center;
-    padding: 20px 50px; } 
-
-
+    justify-content: space-evenly;
+    color:#FFFFFF; 
+    background-color:#0085FF;
+}
 
 
 
