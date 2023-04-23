@@ -1,8 +1,26 @@
-<mat-toolbar class="flexboxi" style="color:#FFFFFF;background-color:#0085FF">
-  <div class="spacer1"></div><span >RECSPORTS MTY</span>
-  <select name="centro" id="centro">
-    <option value="wellnes">Wellnes-center</option>
-    </select>
-      <div class="spacer"></div>
-      <button routerLinkActive="admin" target="sideBar" rel="bookmark" mat-button>Admin</button>
-    </mat-toolbar>
+<mat-toolbar class="navbar navbar-expand">
+  <a routerLink="/">
+    <img src="../../assets/images/logo-borrego.svg" alt="Logo Borregos">
+  </a>
+  <div>
+    <a routerLink="/" class="no-style-link">
+      RECSPORTS OPEN
+    </a>
+  </div>
+  <div class="dropstart" style="display: flex; align-items: center;">
+    <ul class="navbar-nav fs-6">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Edificios
+        </a>
+        <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDarkDropdownMenuLink">
+          <li><a class="dropdown-item" href="#">Wellness Center</a></li>
+          <li><a class="dropdown-item" href="#">Centro Deportivo Borregos</a></li>
+          <li><a class="dropdown-item" href="#">Centro Deportivo Borregos II</a></li>
+        </ul>
+      </li>
+    </ul>
+    |
+    <button routerLink="/admin" target="sideBar" rel="bookmark" mat-button>Admin</button>
+  </div>
+</mat-toolbar>
