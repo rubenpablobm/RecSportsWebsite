@@ -1,7 +1,21 @@
-<mat-toolbar class="navbar">
-  RECSPORTS MTY
-  <select name="select-edificio" id="select-edificio">
-    <option value="wellnes">Wellnes-center</option>
-  </select>
-  <button routerLink="/admin" target="sideBar" rel="bookmark" mat-button>Admin</button>
+<mat-toolbar class="navbar navbar-expand">
+  <div>
+    RECSPORTS MTY
+  </div>
+  <div style="display: flex; align-items: center;">
+    <ul class="navbar-nav fs-6">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Dropdown
+        </a>
+        <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+      </li>
+    </ul>
+    |
+    <button routerLink="/admin" target="sideBar" rel="bookmark" mat-button>Admin</button>
+  </div>
 </mat-toolbar>

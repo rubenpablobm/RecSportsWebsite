@@ -1,10 +1,15 @@
 .navbar {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     color:#FFFFFF; 
     background-color:#0085FF;
 }
+/* 
+.collapse, .dropdown, .dropdown-item {
+    font-size: 1rem;
+    color: #fff;
+} */
 
 
 
