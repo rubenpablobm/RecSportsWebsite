@@ -95,3 +95,8 @@ DECLARE @siAforo_IdArea INT;
             INSERT INTO Aforo (IdArea, Aforo, Capacidad) VALUES (@siAforo_IdArea, 0, @Capacidad)
             END;
 END;
+
+/*
+SP 4
+https://stackoverflow.com/questions/18371968/sql-variable-to-hold-list-of-integers
+*/

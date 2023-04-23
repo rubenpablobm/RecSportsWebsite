@@ -110,8 +110,8 @@ app.put('/:id', async (req, res) => {
     }
   });
 
-  // update an aforo by id. 
-app.put('/:id', async (req, res) => {
+// update an aforo by id. 
+app.put('/aforo/:id', async (req, res) => {
   try {
     const pool = await poolPromise;
     const id = req.params.id;
@@ -130,7 +130,7 @@ app.put('/:id', async (req, res) => {
 });
 
 // delete an aforo by id
-app.delete('/:id', async (req, res) => {
+app.delete('/aforo/:id', async (req, res) => {
   try {
     const pool = await poolPromise;
     const id = req.params.id;
@@ -145,7 +145,7 @@ app.delete('/:id', async (req, res) => {
   }
 });
 
-  // API PERSONALIZADA
+  /* API PERSONALIZADA */
 
   // pagina principal, sacar por edificio
   app.get('/xedificio/:id', async (req, res) => {
