@@ -5,13 +5,7 @@
     color:#FFFFFF; 
     background-color:#0085FF;
 }
-/* 
-.collapse, .dropdown, .dropdown-item {
-    font-size: 1rem;
-    color: #fff;
-} */
 
-
-
-
-
+.navbar img {
+    height: 50px;
+}
