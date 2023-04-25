@@ -1,3 +1,5 @@
+--XACT_ABORT
+
 CREATE PROCEDURE MasAforo
 @current_idArea INT
 AS
@@ -21,19 +23,19 @@ IF (SELECT Aforo FROM Aforo WHERE idArea = @current_idAforo) >= (SELECT Capacida
     RETURN;
     END;
 IF @current_total IS NULL 
-BEGIN
-    BEGIN TRANSACTION;
-    INSERT INTO Dia (Dia, TotalPersonas, IdArea) VALUES (CAST(GETDATE() AS date), 1, @current_idArea);
-    UPDATE Aforo SET Aforo = Aforo + 1 WHERE idArea = @current_idAforo;
-    COMMIT TRANSACTION;
-END;
+    BEGIN
+        BEGIN TRANSACTION;
+        INSERT INTO Dia (Dia, TotalPersonas, IdArea) VALUES (CAST(GETDATE() AS date), 1, @current_idArea);
+        UPDATE Aforo SET Aforo = Aforo + 1 WHERE idArea = @current_idAforo;
+        COMMIT TRANSACTION;
+    END;
 ELSE
-BEGIN
-    BEGIN TRANSACTION;
-    UPDATE Dia SET TotalPersonas = TotalPersonas + 1 WHERE IdArea = @current_idArea AND Dia = CAST(GETDATE() AS date);
-    UPDATE Aforo SET Aforo = Aforo + 1 WHERE idArea = @current_idAforo;
-    COMMIT TRANSACTION;
-END;
+    BEGIN
+        BEGIN TRANSACTION;
+        UPDATE Dia SET TotalPersonas = TotalPersonas + 1 WHERE IdArea = @current_idArea AND Dia = CAST(GETDATE() AS date);
+        UPDATE Aforo SET Aforo = Aforo + 1 WHERE idArea = @current_idAforo;
+        COMMIT TRANSACTION;
+    END;
 END;
 
 /*TSQL 2*/

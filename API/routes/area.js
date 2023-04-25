@@ -15,7 +15,8 @@ app.use(cors());
 app.get('/', async (req, res) => {
     try {
       const pool = await poolPromise;
-      const query = 'SELECT * FROM Area';
+      //const query = 'SELECT * FROM Area';
+      const query = 'SELECT a.IdArea, a.Tipo, a.Nombre, a.Foto, a.Avisos, a.Croquis, a.LinkCalendar, a.Descripcion, a.Horarios, a.IdEdificio , af.Aforo, af.Capacidad FROM Area a FULL JOIN Aforo af ON a.IdArea = af.IdArea;';
       const result = await pool.request().query(query);
       res.send(result.recordset);
       //res.json(result.recordset);
@@ -30,7 +31,8 @@ app.get('/', async (req, res) => {
     try {
       const pool = await poolPromise;
       const id = req.params.id;
-      const query = 'SELECT * FROM Area WHERE IdArea = @id';
+      //const query = 'SELECT * FROM Area WHERE IdArea = @id';
+      const query = 'SELECT a.IdArea, a.Tipo, a.Nombre, a.Foto, a.Avisos, a.Croquis, a.LinkCalendar, a.Descripcion, a.Horarios, a.IdEdificio , af.Aforo, af.Capacidad FROM Area a FULL JOIN Aforo af ON a.IdArea = af.IdArea WHERE a.IdArea = @id;';
       const result = await pool.request()
         .input('id', sql.Int, id)
         .query(query);
@@ -68,13 +70,13 @@ app.get('/', async (req, res) => {
     }
   });
   
-// update an area by id. NO INFLUYE AFORO
+// update an area by id. INFLUYE AREA Y AFORO!
 app.put('/:id', async (req, res) => {
     try {
       const pool = await poolPromise;
       const id = req.params.id;
-      const { Nombre, Foto, Croquis, Tipo, LinkCalendar, Descripcion, Horarios, Avisos, IdEdificio, idAforo } = req.body;
-      const query = 'UPDATE Area SET Nombre = @Nombre, Foto = @Foto, Croquis = @Croquis, Tipo = @Tipo, LinkCalendar = @LinkCalendar, Descripcion = @Descripcion, Horarios = @Horarios, Avisos = @Avisos, IdEdificio = @IdEdificio WHERE IdArea = @id';
+      const { Nombre, Foto, Croquis, Tipo, LinkCalendar, Descripcion, Horarios, Avisos, IdEdificio, Capacidad } = req.body;
+      const query = 'UPDATE Area SET Nombre = @Nombre, Foto = @Foto, Croquis = @Croquis, Tipo = @Tipo, LinkCalendar = @LinkCalendar, Descripcion = @Descripcion, Horarios = @Horarios, Avisos = @Avisos, IdEdificio = @IdEdificio WHERE IdArea = @id; IF @Capacidad IS NOT NULL BEGIN UPDATE Aforo SET Capacidad = @Capacidad WHERE IdArea = @id;END;';
       await pool.request()
         .input('Nombre', sql.VarChar, Nombre)
         .input('Foto', sql.VarChar, Foto)
@@ -85,7 +87,8 @@ app.put('/:id', async (req, res) => {
         .input('Horarios', sql.VarChar, Horarios)
         .input('Avisos', sql.VarChar, Avisos)
         .input('IdEdificio', sql.Int, IdEdificio)
-        /*.input('idAforo', sql.Int, idAforo)*/
+        .input('Id', sql.Int, id)
+        .input('Capacidad', sql.Int, Capacidad)
         .query(query);
       res.sendStatus(200);
     } catch (error) {
@@ -109,6 +112,8 @@ app.put('/:id', async (req, res) => {
       res.sendStatus(500);
     }
   });
+
+  /* AREA TIPO AFORO */
 
 // update an aforo by id. 
 app.put('/aforo/:id', async (req, res) => {
@@ -152,7 +157,8 @@ app.delete('/aforo/:id', async (req, res) => {
     try {
       const pool = await poolPromise;
       const id = req.params.id;
-      const query = 'SELECT a.idArea, a.Tipo, a.Nombre, a.Foto, a.Avisos, af.Aforo, af.Capacidad FROM Area a FULL JOIN Aforo af ON a.idArea = af.idArea WHERE a.idEdificio = @id';
+      //const query = 'SELECT a.IdArea, a.Tipo, a.Nombre, a.Foto, a.Avisos, af.Aforo, af.Capacidad FROM Area a FULL JOIN Aforo af ON a.IdArea = af.IdArea WHERE a.idEdificio = @id';
+      const query = 'SELECT a.IdArea, a.Tipo, a.Nombre, a.Foto, a.Avisos, a.Croquis, a.LinkCalendar, a.Descripcion, a.Horarios, a.IdEdificio , af.Aforo, af.Capacidad FROM Area a FULL JOIN Aforo af ON a.IdArea = af.IdArea WHERE a.IdEdificio = @id;';
       const result = await pool.request()
         .input('id', sql.Int, id)
         .query(query);
@@ -171,8 +177,8 @@ app.delete('/aforo/:id', async (req, res) => {
       const id = req.params.id;
       await pool.connect();
       const result = await pool.request()
-          .input('current_idArea', sql.Int, id)
-          //.input('current_idArea', req.query.id)
+          .input('current_IdArea', sql.Int, id)
+          //.input('current_IdArea', req.query.id)
           .execute('MasAforo');
       //res.send(result.recordset[0]);
       res.send('MasAforo OK');
@@ -188,7 +194,7 @@ app.delete('/aforo/:id', async (req, res) => {
       const id = req.params.id;
       await pool.connect();
       const result = await pool.request()
-          .input('current_idArea', sql.Int, id)
+          .input('current_IdArea', sql.Int, id)
           .execute('MenosAforo');
       //res.send(result.recordset[0]);
       res.send('MenosAforo OK');

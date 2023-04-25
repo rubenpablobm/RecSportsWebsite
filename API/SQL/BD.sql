@@ -19,8 +19,8 @@ CREATE TABLE Admin
 
 CREATE TABLE Alumno
 (
-  Matricula CHAR(9) NOT NULL,
-  IdAlumno INT IDENTITY(1,1) NOT NULL PRIMARY KEY
+  Matricula CHAR(9) NOT NULL PRIMARY KEY,
+  --IdAlumno INT IDENTITY(1,1) NOT NULL PRIMARY KEY
 );
 
 CREATE TABLE Aforo
@@ -29,7 +29,7 @@ CREATE TABLE Aforo
   Capacidad INT NOT NULL,
   IdArea INT NOT NULL UNIQUE,
   PRIMARY KEY (IdArea),
-  FOREIGN KEY (IdArea) REFERENCES Area(IdArea)
+  FOREIGN KEY (IdArea) REFERENCES Area(IdArea) ON DELETE CASCADE
 );
 
 CREATE TABLE Area
@@ -45,9 +45,7 @@ CREATE TABLE Area
   Avisos NVARCHAR(255),
   IdEdificio INT NOT NULL,
   idAforo INT,
-  FOREIGN KEY (IdEdificio) REFERENCES Edificio(IdEdificio),
-  FOREIGN KEY (idAforo) REFERENCES Aforo(idAforo),
-  UNIQUE (idAforo)
+  FOREIGN KEY (IdEdificio) REFERENCES Edificio(IdEdificio) ON DELETE CASCADE,
 );
 
 CREATE TABLE Hora
@@ -70,7 +68,7 @@ CREATE TABLE Dia
 );
 
 
---MYSQL
+/*MYSQL*/
 
 USE tc3005b;
 
@@ -104,7 +102,7 @@ CREATE TABLE Aforo
   Capacidad INT NOT NULL,
   IdArea INT NOT NULL,
   PRIMARY KEY (IdArea),
-  FOREIGN KEY (IdArea) REFERENCES Area(IdArea)
+  FOREIGN KEY (IdArea) REFERENCES Area(IdArea) ON DELETE CASCADE
 );
 
 CREATE TABLE Area
@@ -121,7 +119,7 @@ CREATE TABLE Area
   IdEdificio INT NOT NULL,
   idAforo INT,
   PRIMARY KEY (IdArea),
-  FOREIGN KEY (IdEdificio) REFERENCES Edificio(IdEdificio),
+  FOREIGN KEY (IdEdificio) REFERENCES Edificio(IdEdificio) ON DELETE CASCADE,
   FOREIGN KEY (idAforo) REFERENCES Aforo(idAforo),
   UNIQUE (idAforo)
 );
