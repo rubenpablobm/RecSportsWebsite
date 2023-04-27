@@ -1,0 +1,33 @@
+.navbar {
+    font-family: 'Gotham' !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color:#FFFFFF; 
+    background-color:#0085FF;
+}
+
+.navbar img {
+    height: 50px;
+}
+
+.dropdown-item {
+    font-size: 0.8rem;
+    font-weight: 300;
+    padding: 0px 5px;
+    margin: 0;
+}
+
+/* Breakpoints */
+@media (min-width: 1200px) { }
+
+
+@media (max-width: 992px) { }
+
+@media (max-width: 768px) { }
+
+@media (max-width: 480px) { 
+    .navbar img {
+        display: none;
+    }
+}

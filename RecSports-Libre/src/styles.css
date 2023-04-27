@@ -1,1 +1,84 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Gotham';
+  font-weight: 400;
+  src: url('./assets/fonts/gotham-medium.woff2') format(woff2),
+       url('./assets/fonts/gotham-medium.woff') format(woff);
+}
+@font-face {
+  font-family: 'Gotham';
+  font-weight: 300;
+  src: url('./assets/fonts/gotham-light.woff2') format(woff2),
+       url('./assets/fonts/gotham-light.woff') format(woff);
+}
+@font-face {
+  font-family: 'Gotham';
+  font-weight: 600;
+  src: url('./assets/fonts/gotham-bold.woff2') format(woff2),
+       url('./assets/fonts/gotham-bold.woff') format(woff);
+}
+@font-face {
+  font-family: 'Gotham';
+  font-weight: 900;
+  src: url('./assets/fonts/gotham-black.woff2') format(woff2),
+       url('./assets/fonts/gotham-black.woff') format(woff);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body { 
+  height: 100%; 
+  font-family: 'Gotham', sans-serif !important;
+  font-weight: 300 !important;
+}
+body { margin: 0;}
+
+
+h1, h2, h3, h4, h5, h6 {
+  color: #0286FF;
+  font-family: 'Gotham', sans-serif;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.no-style-link,
+.no-style-link:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+.btn {
+  padding: 5px 20px;
+  font-size: small;
+  font-weight: 600;
+}
+
+/* Breakpoints */
+@media (min-width: 1200px) { }
+
+
+@media (max-width: 992px) { }
+
+@media (max-width: 768px) { 
+  app-area-card {
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 480px) { 
+  app-area-card {
+    justify-content: flex-start;
+  }
+}
