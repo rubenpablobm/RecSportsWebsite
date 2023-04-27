@@ -12,8 +12,10 @@ export class CrudService {
   constructor(private clientehttp:HttpClient) { 
     
   }
-  AgregarLibro(datoslibro:Libro):Observable<any>{
-    //se inserta datos de libro
-    return this.clientehttp.get(this.API+"?insertar=1",datoslibro);
+  AreaGet():Observable<any>{
+    return this.clientehttp.get<AreaAPI>(this.API);
+  }
+  AreaPost(datosAreaAPI:AreaAPI):Observable<any>{
+    return this.clientehttp.post(this.API+"",datosAreaAPI);
   }
 }

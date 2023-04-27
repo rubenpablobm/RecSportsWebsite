@@ -9,6 +9,6 @@ export class AreaAPI {
   horarios!:string;
   aviso = '';
   idEdificio!:number;
-  Aforo=0;
-  Capacidad=0;
+  Aforo?:number;
+  Capacidad?:number;
 }

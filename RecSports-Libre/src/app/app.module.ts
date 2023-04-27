@@ -14,6 +14,8 @@ import { AreaInfoComponent } from './area-info/area-info.component';
 import { HomeComponent } from './home/home.component';
 import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,10 @@ import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.com
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule, //nuevos añadidos
+    ReactiveFormsModule,
+    HttpClientModule
 
   ],
   providers: [],

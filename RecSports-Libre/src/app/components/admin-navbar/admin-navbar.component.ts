@@ -9,6 +9,5 @@ import { CrudService } from 'src/app/service/crud.service';
 })
 export class AdminNavbarComponent {
   getArea(){
-    this.
   }
 }
