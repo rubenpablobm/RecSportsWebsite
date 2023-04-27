@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css', '../app.component.css']
 })
 export class HomeComponent {
-
+  //aqui tenemos la llamada a la API
 }

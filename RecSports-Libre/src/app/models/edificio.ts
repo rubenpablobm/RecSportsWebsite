@@ -1,6 +1,6 @@
 export class Edificio {
-    idEdificio=0;
-    nombre!:string;
-    foto!:string;
-    linkMaps!:string;
+    IdEdificio!: number;
+    Nombre!: string;
+    Foto!: string;
+    LinkMaps!: string;
 }

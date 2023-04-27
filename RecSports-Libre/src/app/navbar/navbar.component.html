@@ -14,9 +14,11 @@
           Edificios
         </a>
         <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDarkDropdownMenuLink">
-          <li><a class="dropdown-item" href="#">Wellness Center</a></li>
-          <li><a class="dropdown-item" href="#">Centro Deportivo Borregos</a></li>
-          <li><a class="dropdown-item" href="#">Centro Deportivo Borregos II</a></li>
+          <li *ngFor="let edificio of listaEdificios">
+            <a class="dropdown-item" href="#">{{edificio.Nombre}}</a>
+          </li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#">Todos</a></li>
         </ul>
       </li>
     </ul>
