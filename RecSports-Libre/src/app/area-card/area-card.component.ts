@@ -18,7 +18,9 @@ export class AreaCardComponent {
       descripcion:'descripción...',
       horarios:'8:00am-8:00pm',
       aviso:'Cerrada el 10 de junio por mantenimiento', 
-      idEdificio:1
+      idEdificio:1,
+      Aforo:undefined,
+      Capacidad:undefined
     },
     {
       idArea:2,
@@ -30,7 +32,9 @@ export class AreaCardComponent {
       descripcion:'descripción...',
       horarios:'8:00am-8:00pm',
       aviso:'', 
-      idEdificio:1
+      idEdificio:1,
+      Aforo:undefined,
+      Capacidad:undefined
     },
     {
       idArea:3,
@@ -42,7 +46,9 @@ export class AreaCardComponent {
       descripcion:'descripción...',
       horarios:'L-V 8:00am-8:00pm',
       aviso:'', 
-      idEdificio:1
+      idEdificio:1,
+      Aforo:undefined,
+      Capacidad:undefined
     },
     {
       idArea:4,
@@ -54,19 +60,23 @@ export class AreaCardComponent {
       descripcion:'descripción...',
       horarios:'8:00am-8:00pm',
       aviso:'', 
-      idEdificio:1
+      idEdificio:1,
+      Aforo:undefined,
+      Capacidad:undefined
     },
     {
       idArea:5,
       nombre:'Alberca Borregos',
       foto:'https://img.gruporeforma.com/imagenes/960x640/6/52/5051851.jpg',
       croquis:'',
-      tipo:'disponibilidad',
+      tipo:'aforo',
       linkCalendar:'',
       descripcion:'descripción...',
       horarios:'L-V - 8:00am-8:00pm \nS - 9:00am - 5:00pm \nCerrado los domingos por limpieza.',
       aviso:'Cerrado miércoles 19 de 18:00-20:00 por competencia.', 
-      idEdificio:1
+      idEdificio:1,
+      Aforo:10,
+      Capacidad:140
     },
   ]
 }

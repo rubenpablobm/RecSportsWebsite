@@ -12,6 +12,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AreaCardComponent } from './area-card/area-card.component';
 import { AreaInfoComponent } from './area-info/area-info.component';
 import { HomeComponent } from './home/home.component';
+import { LogComponent } from './log/log.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { HomeComponent } from './home/home.component';
     AreaInfoComponent,
     HomeComponent,
     AdminComponent,
+    LogComponent,
   ],
   imports: [
     BrowserModule,

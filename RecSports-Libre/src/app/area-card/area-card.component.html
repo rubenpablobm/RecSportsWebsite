@@ -11,6 +11,9 @@
       <div class="area-nombre card-title">
         {{area.nombre}}
       </div>
+      <div *ngIf="area.Aforo!=undefined "  class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="{{area.Aforo}}" aria-valuemax="{{area.Capacidad}}" aria-valuemin="0"></div>
+      </div>
     </div>
   </a>
 </div>

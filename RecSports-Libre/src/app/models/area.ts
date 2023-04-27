@@ -9,4 +9,6 @@ export class Area {
   horarios!:string;
   aviso = '';
   idEdificio!:number;
+  Aforo?:number;
+  Capacidad?:number;
 }
