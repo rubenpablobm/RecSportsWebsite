@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Area } from '../models/area';
 
 import { CrudService } from 'src/app/service/crud.service';
@@ -9,6 +9,9 @@ import { CrudService } from 'src/app/service/crud.service';
   styleUrls: ['./area-card.component.css']
 })
 export class AreaCardComponent {
+  @Input() idEdificio!: number;
+  @Input() tipoArea!: string;
+  
   listaAreas:any=[];
 
   ngOnInit() {
