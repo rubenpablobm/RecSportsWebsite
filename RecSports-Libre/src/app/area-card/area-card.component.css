@@ -44,6 +44,10 @@
   font-size: large;
 }
 
+progress{
+  background-color: white;
+}
+
 /* Breakpoints */
 
 @media (min-width: 1200px) { }
