@@ -7,7 +7,7 @@ export class Area {
   LinkCalendar!:string;
   Descripcion!:string;
   Horarios!:string;
-  Aviso = '';
+  Avisos = '';
   IdEdificio!:number;
   Aforo?:number;
   Capacidad?:number;
