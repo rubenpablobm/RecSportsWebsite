@@ -26,6 +26,9 @@ export class CrudService {
   AreaGetXedificio():Observable<any>{
     return this.clientehttp.get<Area>(this.API+"area/"+this.IdEdificio);
   }
+  AreaGetXId(id: number):Observable<any>{
+    return this.clientehttp.get<Area>(this.API+"area/" + id);
+  }
   AreaPost(datosArea:Area):Observable<any>{
     return this.clientehttp.post(this.API+"area",datosArea);
   }
