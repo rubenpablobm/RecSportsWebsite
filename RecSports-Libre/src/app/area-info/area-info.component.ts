@@ -12,7 +12,8 @@ export class AreaInfoComponent {
 
   ngOnInit() {
     // obtiene el id del área de la ruta
-    const id = this.route.snapshot.paramMap.get('id');
+    const idArea = this.route.snapshot.paramMap.get('idArea');
+    console.log('ID del área: ' + idArea);
   }
 
 }
