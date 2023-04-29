@@ -1,0 +1,154 @@
+.titulo-seccion,
+.help {
+  display: flex;
+  align-items: center;
+}
+
+.titulo-seccion h2 {
+  margin-right: 0;
+}
+
+.help {
+  align-items: center;
+  justify-content: center;
+  background: #aaa;
+  color: #fff;
+  font-weight: 600;
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  margin: 0;
+  padding: 3.5px 8.5px;
+  cursor: pointer;
+}
+
+[tooltip] {
+  position: relative
+}
+
+/* general styles */
+[tooltip]::before,
+[tooltip]::after {
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+    position: absolute;
+    display: none;
+    opacity: 0;
+    /* opinions */
+    text-transform: none; 
+    font-size: .9em;
+}
+
+/* tooltip's triangle */
+[tooltip]::before {
+  content: '';
+  z-index: 1001;
+  border: 5px solid transparent;
+  /* position */
+  top: 50%;
+  border-left-width: 0;
+  border-right-color: #333;
+  right: calc(0em - 5px);
+  transform: translate(.5em, -50%);
+}
+
+/* tooltip's content */
+[tooltip]::after {
+  content: attr(tooltip); /* sets the content to the attribute's value */
+  z-index: 1000;
+  
+  width: 21rem;
+  min-width: 3em;
+  max-width: 50vw;
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space: pre-wrap;
+  
+  /* visible design of the tooltip bubbles */
+  padding: 1ch 1.5ch;
+  border-radius: .3ch;
+  box-shadow: 0 1em 2em -.5em rgba(0, 0, 0, 0.35);
+  background: #333;
+  color: #fff;
+  font-weight: 300;
+
+  /* position */
+  top: 50%;
+  left: calc(100% + 5px);
+  transform: translate(.5em, -50%);
+}
+
+[tooltip]:hover::before,
+[tooltip]:hover::after {
+  display: block;
+  animation: 
+  tooltips-horz 
+  300ms 
+  ease-out 
+  forwards;
+}
+
+/* don't show empty tooltips */
+[tooltip='']::before,
+[tooltip='']::after {
+  display: none !important;
+}
+
+/* animation */
+@keyframes tooltips-horz {
+  to {
+    opacity: .9;
+    transform: translate(0, -50%);
+  }
+}
+@keyframes tooltips-vert {
+  to {
+    opacity: .9;
+    transform: translate(-80%, 0);
+  }
+}
+
+
+
+/* Breakpoints */
+@media (min-width: 1200px) { }
+
+
+@media (max-width: 992px) { }
+
+@media (max-width: 768px) { 
+
+  [tooltip]::after {
+    height: fit-content; 
+  }
+  /* ONLY the ::before */
+  [tooltip]::before {
+    bottom: 100%;
+    border-bottom-width: 0;
+    border-top-color: #333;
+  }
+  /* ONLY the ::after */
+  [tooltip]::after {
+      bottom: calc(100% + 5px);
+  }
+  /* Both ::before & ::after */
+  [tooltip]::before,
+  [tooltip]::after {
+      left: 50%;
+      transform: translate(-50%, -.5em);
+  }
+  [tooltip]:hover::before,
+  [tooltip]:hover::after {
+    animation: 
+      tooltips-vert 
+      300ms 
+      ease-out
+      forwards;
+  }
+
+}
+
+@media (max-width: 480px) { 
+}
