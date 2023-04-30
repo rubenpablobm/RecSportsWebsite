@@ -1,4 +1,24 @@
 <app-navbar></app-navbar>
 <app-header></app-header>
 <app-admin-navbar></app-admin-navbar>
+<div class="flex-container titulo-seccion">
+  <h3 class="mx-3 mt-2 mb-0 fs-2 fw-bold">Áreas de Aforo</h3>
+  <div class="help" 
+    tooltip="Son áreas donde debes registrar tu entrada y salida."
+  >?</div>
+</div>
 <app-area-card [tipoArea]="'Aforo'" [idEdificio]="1" class="flex-container"></app-area-card>
+<div class="flex-container titulo-seccion">
+  <h3 class="mx-3 mt-2 mb-0 fs-2 fw-bold">Clases Instructivas</h3>
+  <div class="help" 
+    tooltip="Son clases que puedes registrar individualmente en cualquier momento del semestre."
+  >?</div>
+</div>
+<app-area-card [tipoArea]="'Instructiva'" [idEdificio]="1" class="flex-container"></app-area-card>
+<div class="flex-container titulo-seccion">
+  <h3 class="mx-3 mt-2 mb-0 fs-2 fw-bold">Áreas de Acceso Libre</h3>
+  <div class="help" 
+    tooltip="Son áreas abiertas que puedes reservar si lo necesitas."
+  >?</div>
+</div>
+<app-area-card [tipoArea]="'Reservacion'" [idEdificio]="1" class="flex-container"></app-area-card>
