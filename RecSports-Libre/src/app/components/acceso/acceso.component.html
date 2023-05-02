@@ -25,6 +25,7 @@
           "
         >
           <button
+            (click)="_MasAforo()"
             class="btn btn-success btn custom-btn"
             style="flex: 1"
             type="button"
@@ -32,12 +33,16 @@
             Entrada
           </button>
           <button
+            (click)="_MenosAforo()"
             class="btn btn-danger btn custom-btn my-3"
             style="flex: 1"
             type="button"
           >
             Salida
           </button>
+          <div *ngIf="mensaje != '[object Object]'">
+            {{ mensaje }}
+          </div>
         </div>
       </div>
     </div>
