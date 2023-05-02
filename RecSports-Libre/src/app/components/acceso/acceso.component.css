@@ -4,7 +4,7 @@
 
 .progress {
     height: 20px; /* Increase the height of the progress bar */
-    width: 50%; /* Reduce the width of the progress bar */
+    width: 100%; /* Reduce the width of the progress bar */
   }
   
   .progress-bar {
@@ -12,12 +12,11 @@
   }
   
 .custom-btn {
-    font-size: 1.0rem; /* default font size */
-    padding: 0.5rem 1rem; /* default padding */
+    font-size: 1.0rem; 
+    padding: 1.0rem 1rem; 
   }
   
-  @media (min-width: 576px) {
-    /* apply styles for small screens and up */
+  /* @media (min-width: 576px) {
     .custom-btn {
       font-size: 1.25rem;
       padding: 0.75rem 1.5rem;
@@ -25,7 +24,6 @@
   }
   
   @media (min-width: 768px) {
-    /* apply styles for medium screens and up */
     .custom-btn {
       font-size: 1.5rem;
       padding: 1rem 2rem;
@@ -33,7 +31,6 @@
   }
   
   @media (min-width: 992px) {
-    /* apply styles for large screens and up */
     .custom-btn {
       font-size: 1.75rem;
       padding: 1.25rem 2.5rem;
@@ -41,9 +38,8 @@
   }
   
   @media (min-width: 1200px) {
-    /* apply styles for extra-large screens and up */
     .custom-btn {
       font-size: 2.5rem;
       padding: 1.5rem 3rem;
     }
-  }
+  } */
