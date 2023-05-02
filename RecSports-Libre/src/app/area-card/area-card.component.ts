@@ -11,8 +11,25 @@ import { CrudService } from 'src/app/service/crud.service';
 export class AreaCardComponent {
   @Input() idEdificio!: number;
   @Input() tipoArea!: string;
-  
-  listaAreas:any=[];
+
+  listaAreas : any = [];
+  titulos : any = [
+    {
+      tipo : 'Aforo',
+      titulo : 'Áreas de aforo',
+      desc : 'Son áreas donde debes registrar tu entrada y salida.',
+    },
+    {
+      tipo : 'Instructiva',
+      titulo : 'Clases instructivas',
+      desc : 'Son clases que puedes registrar individualmente en cualquier momento del semestre.',
+    },
+    {
+      tipo : 'Reservacion',
+      titulo : 'Áreas de acceso libre',
+      desc : 'Son áreas abiertas que puedes reservar si lo necesitas.'
+    }
+  ]
 
   ngOnInit() {
     this.getArea();
