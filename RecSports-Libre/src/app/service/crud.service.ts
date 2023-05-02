@@ -11,6 +11,8 @@ import { Edificio } from '../models/edificio';
 export class CrudService {
   IdEdificio=1;
   API:string="http://localhost:5040/";
+  
+  mensajeAPI:string="";
   //API: string="angular-test.eastus.cloudapp.azure.com/libros/";
   constructor(private clientehttp:HttpClient) { 
     
@@ -23,7 +25,7 @@ export class CrudService {
   AreaGetMultiple():Observable<any>{
     return this.clientehttp.get<Area>(this.API+"area");
   }
-  AreaGetXedificio():Observable<any>{
+  AreaGetXedificio():Observable<any>{ //creo que este no es correcto todavia
     return this.clientehttp.get<Area>(this.API+"area/"+this.IdEdificio);
   }
   AreaGetXId(id: number):Observable<any>{
@@ -32,4 +34,12 @@ export class CrudService {
   AreaPost(datosArea:Area):Observable<any>{
     return this.clientehttp.post(this.API+"area",datosArea);
   }
+  /* REGISTRO */
+  MasAforo(id: number):Observable<any>{
+    return this.clientehttp.get(this.API+"area/masaforo/"+id);
+  }
+  MenosAforo(id: number):Observable<any>{
+    return this.clientehttp.get(this.API+"area/menosaforo/"+id);
+  }
+
 }

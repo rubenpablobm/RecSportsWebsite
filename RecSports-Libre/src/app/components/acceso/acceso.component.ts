@@ -14,6 +14,8 @@ export class AccesoComponent {
   aID : any = null;
   area : any = [];
 
+  mensaje?:string;
+
   ngOnInit() {
     // obtiene el id del área de la ruta
     const idArea = this.route.snapshot.paramMap.get('idArea');
@@ -21,6 +23,22 @@ export class AccesoComponent {
     return this.crudService.AreaGetXId(this.aID).subscribe((data:{}) => {
       this.area = data;
       console.log(this.area);
+    })
+  }
+
+  _MasAforo(){
+    return this.crudService.MasAforo(this.aID).subscribe((data:{})=>{
+      console.log(data);
+    },(error) => {
+      this.mensaje=String(error.error);
+    })
+  }
+
+  _MenosAforo(){
+    return this.crudService.MenosAforo(this.aID).subscribe((data:{})=>{
+      console.log(data);
+    },(error) => {
+      this.mensaje=String(error.error);
     })
   }
 }
