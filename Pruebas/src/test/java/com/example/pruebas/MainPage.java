@@ -17,16 +17,20 @@ public class MainPage {
     @FindBy(css = "span[class^='mdc-button']")
     public WebElement botonAdmin;
 
-    @FindBy(css = "div[tooltip='Son áreas donde debes registrar tu entrada y salida.']")
-    public WebElement tooltipAforo;
 
-    @FindBy(css = "div[tooltip='Son clases que puedes registrar individualmente en cualquier momento del semestre.']")
-    public WebElement tooltipInstructivas;
-
-    @FindBy(css = "div[tooltip='Son áreas abiertas que puedes reservar si lo necesitas.']")
-    public WebElement tooltipAccesoLibre;
     @FindBy(css = "app-area-card[ng-reflect-tipo-area='Aforo']")
     public WebElement contenedorAforo;
+
+    @FindBy(css = "html > body > app-root > app-home > div:nth-of-type(1)")
+    public WebElement divAreasAforo;
+
+    @FindBy(css = "html > body > app-root > app-home > div:nth-of-type(2)")
+    public WebElement divClasesInstructivas;
+
+    @FindBy(css = "html > body > app-root > app-home > div:nth-of-type(3)")
+    public WebElement divAreasAccesoLibre;
+
+
 
 
     public MainPage(WebDriver driver) {

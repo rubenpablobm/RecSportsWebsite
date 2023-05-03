@@ -15,9 +15,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.regex.Pattern;
 import org.openqa.selenium.StaleElementReferenceException;
+
 public class MainPageTest {
     private WebDriver driver;
     private MainPage mainPage;
+
+
+
 
 
     @BeforeMethod
@@ -87,6 +91,24 @@ public class MainPageTest {
             }
 
         }
+    }
+
+    //HURF-3 Como alumno quiero conocer una breve descripción de los tipos de área para conocer sus detalles y dinámica.
+
+    @Test
+    public void muestraAyuda(){
+        WebElement tooltipAforo= mainPage.divAreasAforo.findElement(By.cssSelector("div.help"));
+
+        WebElement tooltipInstructivas = mainPage.divClasesInstructivas.findElement(By.cssSelector("div.help"));
+
+        WebElement tooltipAccesoLibre = mainPage.divAreasAccesoLibre.findElement(By.cssSelector("div.help"));
+        assertTrue(tooltipAccesoLibre.isDisplayed() && tooltipInstructivas.isDisplayed() && tooltipAforo.isDisplayed());
+        assertEquals("Son áreas donde debes registrar tu entrada y salida.", tooltipAforo.getAttribute("tooltip"));
+        assertEquals("Son clases que puedes registrar individualmente en cualquier momento del semestre.", tooltipInstructivas.getAttribute("tooltip"));
+        assertEquals("Son áreas abiertas que puedes reservar si lo necesitas.", tooltipAccesoLibre.getAttribute("tooltip"));
+
+
+
     }
 
 
