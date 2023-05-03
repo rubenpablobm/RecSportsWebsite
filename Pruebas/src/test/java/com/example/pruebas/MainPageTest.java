@@ -15,10 +15,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.regex.Pattern;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.NoSuchElementException;
 
 public class MainPageTest {
     private WebDriver driver;
     private MainPage mainPage;
+
+
+  
 
 
 
@@ -107,7 +111,69 @@ public class MainPageTest {
         assertEquals("Son clases que puedes registrar individualmente en cualquier momento del semestre.", tooltipInstructivas.getAttribute("tooltip"));
         assertEquals("Son áreas abiertas que puedes reservar si lo necesitas.", tooltipAccesoLibre.getAttribute("tooltip"));
 
+    }
 
+    //HURF-4 Como alumno quiero visualizar si un área tiene un aviso para estar notificado con anticipación.
+
+    @Test
+    public void muestraAvisoTarjeta(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector(".area-card")));
+        List<WebElement> tarjetasAforo = mainPage.contenedorAforo.findElements(By.cssSelector(".area-card"));
+
+        for(WebElement elemento:tarjetasAforo){
+                try{
+                elemento.findElement(By.cssSelector("span[class^='badge']")).isDisplayed();
+
+                    elemento.click();
+                    wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("div[class^='area-alert']")));
+                    assertTrue(driver.findElement(By.cssSelector("div[class^='area-alert']")).isDisplayed());
+                    driver.navigate().back();
+
+            } catch (NoSuchElementException e) {
+                continue;
+            };
+
+
+        }
+
+        List<WebElement> tarjetasInstructivas= mainPage.contenedorInstructivas.findElements(By.cssSelector(".area-card"));
+
+
+        for(WebElement elemento:tarjetasInstructivas) {
+                try {
+                    elemento.findElement(By.cssSelector("span[class^='badge']")).isDisplayed();
+                    elemento.click();
+                    wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("div[class^='area-alert']")));
+                    assertTrue(driver.findElement(By.cssSelector("div[class^='area-alert']")).isDisplayed());
+                    driver.navigate().back();
+
+                } catch (NoSuchElementException e) {
+                    continue;
+                }
+                ;
+
+        }
+
+
+        List<WebElement> tarjetasAccesoLibre = mainPage.contenedorAccesoLibre.findElements(By.cssSelector(".area-card"));
+
+        for(WebElement elemento:tarjetasAccesoLibre){
+                try{
+                elemento.findElement(By.cssSelector("span[class^='badge']")).isDisplayed();
+
+                    elemento.click();
+                    wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("div[class^='area-alert']")));
+                    assertTrue(driver.findElement(By.cssSelector("div[class^='area-alert']")).isDisplayed());
+                    driver.navigate().back();
+
+                } catch (NoSuchElementException e) {
+                    continue;
+                };
+
+
+
+        }
 
     }
 

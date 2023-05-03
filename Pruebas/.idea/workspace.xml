@@ -44,8 +44,8 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="TestNG.&lt;default&gt; (2)">
-    <configuration name="MainPageTest.muestraAyuda" type="TestNG" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="TestNG.&lt;default&gt;">
+    <configuration name="MainPageTest.muestraAvisoTarjeta" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="Pruebas" />
       <extension name="coverage">
         <pattern>
@@ -55,18 +55,8 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.example.pruebas" />
       <option name="MAIN_CLASS_NAME" value="com.example.pruebas.MainPageTest" />
-      <option name="METHOD_NAME" value="muestraAyuda" />
+      <option name="METHOD_NAME" value="muestraAvisoTarjeta" />
       <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="&lt;default&gt; (1)" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="Pruebas" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="PACKAGE" />
       <properties />
       <listeners />
       <method v="2">
@@ -83,7 +73,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="&lt;default&gt; (4)" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="&lt;default&gt; (3)" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Pruebas" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="PACKAGE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="&lt;default&gt; (5)" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="Pruebas" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="PACKAGE" />
@@ -105,11 +105,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.&lt;default&gt; (2)" />
-        <item itemvalue="TestNG.&lt;default&gt; (1)" />
-        <item itemvalue="TestNG.&lt;default&gt; (4)" />
         <item itemvalue="TestNG.&lt;default&gt;" />
-        <item itemvalue="TestNG.MainPageTest.muestraAyuda" />
+        <item itemvalue="TestNG.MainPageTest.muestraAvisoTarjeta" />
+        <item itemvalue="TestNG.&lt;default&gt; (5)" />
+        <item itemvalue="TestNG.&lt;default&gt; (3)" />
+        <item itemvalue="TestNG.&lt;default&gt; (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -126,7 +126,7 @@
       <updated>1683045996237</updated>
       <workItem from="1683045999064" duration="2137000" />
       <workItem from="1683066471019" duration="6270000" />
-      <workItem from="1683074126898" duration="7640000" />
+      <workItem from="1683074126898" duration="12747000" />
     </task>
     <servers />
   </component>

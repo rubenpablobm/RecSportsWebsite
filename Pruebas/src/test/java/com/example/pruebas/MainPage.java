@@ -21,6 +21,7 @@ public class MainPage {
     @FindBy(css = "app-area-card[ng-reflect-tipo-area='Aforo']")
     public WebElement contenedorAforo;
 
+    
     @FindBy(css = "html > body > app-root > app-home > div:nth-of-type(1)")
     public WebElement divAreasAforo;
 
@@ -29,6 +30,14 @@ public class MainPage {
 
     @FindBy(css = "html > body > app-root > app-home > div:nth-of-type(3)")
     public WebElement divAreasAccesoLibre;
+
+    @FindBy(css = "app-area-card[ng-reflect-tipo-area='Instructiva']")
+    public WebElement contenedorInstructivas;
+
+    @FindBy(css = "app-area-card[ng-reflect-tipo-area='Reservacion']")
+    public WebElement contenedorAccesoLibre;
+    
+    
 
 
 
