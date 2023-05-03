@@ -6,8 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="dbf69808-af78-4af3-9899-586be3092744" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/MainPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/MainPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/MainPageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/MainPageTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebasNew/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebasNew/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebasNew/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebasNew/target/test-classes/com/example/pruebasnew/MainPage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PruebasNew/target/test-classes/com/example/pruebasnew/MainPageTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,28 +48,26 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="TestNG.&lt;default&gt; (5)">
+  <component name="RunManager" selected="TestNG.&lt;default&gt; (1)">
+    <configuration name="MainPageTest.muestraAforo" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Pruebas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.pruebas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.pruebas" />
+      <option name="MAIN_CLASS_NAME" value="com.example.pruebas.MainPageTest" />
+      <option name="METHOD_NAME" value="muestraAforo" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="&lt;default&gt; (1)" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="Pruebas" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="PACKAGE" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="&lt;default&gt; (2)" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="Pruebas" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="PACKAGE" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="&lt;default&gt; (3)" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="Pruebas" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="PACKAGE" />
@@ -95,18 +97,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="&lt;default&gt;" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Pruebas" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="PACKAGE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.&lt;default&gt; (1)" />
+        <item itemvalue="TestNG.MainPageTest.muestraAforo" />
+        <item itemvalue="TestNG.&lt;default&gt;" />
         <item itemvalue="TestNG.&lt;default&gt; (5)" />
         <item itemvalue="TestNG.&lt;default&gt; (4)" />
-        <item itemvalue="TestNG.&lt;default&gt; (3)" />
-        <item itemvalue="TestNG.&lt;default&gt; (2)" />
-        <item itemvalue="TestNG.&lt;default&gt; (1)" />
       </list>
     </recent_temporary>
   </component>
   <component name="SeleniumInternalSettingsState">
-    <option name="lastUrl" value="http://localhost:4200/" />
+    <option name="lastUrl" value="http://localhost:4200/area-info/1" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -117,6 +129,8 @@
       <option name="presentableId" value="Default" />
       <updated>1683045996237</updated>
       <workItem from="1683045999064" duration="2137000" />
+      <workItem from="1683066471019" duration="6270000" />
+      <workItem from="1683074126898" duration="4862000" />
     </task>
     <servers />
   </component>
