@@ -29,16 +29,20 @@ export class AccesoComponent {
   _MasAforo(){
     return this.crudService.MasAforo(this.aID).subscribe((data:{})=>{
       console.log(data);
+      this.ngOnInit();
     },(error) => {
       this.mensaje=String(error.error);
+      this.ngOnInit();
     })
   }
 
   _MenosAforo(){
     return this.crudService.MenosAforo(this.aID).subscribe((data:{})=>{
       console.log(data);
+      this.ngOnInit();
     },(error) => {
       this.mensaje=String(error.error);
+      this.ngOnInit();
     })
   }
 }
