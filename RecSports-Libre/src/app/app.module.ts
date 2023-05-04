@@ -13,6 +13,7 @@ import { AreaCardComponent } from './area-card/area-card.component';
 import { AreaInfoComponent } from './area-info/area-info.component';
 import { HomeComponent } from './home/home.component';
 import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.component';
+import { AccesoComponent } from './components/acceso/acceso.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -27,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     AdminComponent,
     AdminNavbarComponent,
+    AccesoComponent
   ],
   imports: [
     BrowserModule,

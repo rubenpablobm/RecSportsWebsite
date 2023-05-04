@@ -1,27 +1,27 @@
 <app-navbar></app-navbar>
 <app-header [linkFoto]="area.Foto" [descripcion]="'Conoce más detalles del area'"></app-header>
 <div class="flex-col area-info-container p-3">
-  <button class="btn btn-secondary my-2" routerLink="/">
-    Regresar
-  </button>
-  <h1 class="fw-light">Edificio > {{area.Nombre}}</h1>       <!-- Agregar nombres de edificios y áreas -->
-  <div class="area-alert alert alert-warning py-3 px-2 mb-2" role="alert"
+  <button class="btn btn-secondary my-2" routerLink="/">Regresar</button>
+  <h1 class="fw-light">Edificio > {{ area.Nombre }}</h1>
+  <!-- Agregar nombres de edificios y áreas -->
+  <div
+    class="area-alert alert alert-warning py-3 px-2 mb-2"
+    role="alert"
     *ngIf="area.Avisos != null"
   >
     <h3 class="fw-bold">Aviso</h3>
-    {{area.Avisos}}
+    {{ area.Avisos }}
   </div>
   <h3 class="fw-bold mt-2 mb-0">Horarios</h3>
   <div>
-    {{area.Horarios}}
+    {{ area.Horarios }}
     <!-- Lu - Vi 6:00 - 18:00 <br>
     Sa - Do 9:00 - 17:00 <br>
     Limpieza: Cerrado diario de 15:00 - 15:30 -->
   </div>
   <h3 class="fw-bold mt-2 mb-0">Descripción</h3>
   <div>
-    {{area.Descripcion}}
-    {{area.Foto}}
+    {{ area.Descripcion }}
     <!-- Contamos con los siguientes equipos <br>
     - Box <br>
     - Pesas <br>
@@ -29,10 +29,27 @@
     - Máquinas <br> -->
   </div>
   <h3 class="fw-bold mt-2 mb-0">Croquis</h3>
-  <img 
-    class="croquis"
-    src="{{area.Croquis}}" alt="Croquis del lugar"
+  <img class="croquis" src="{{ area.Croquis }}" alt="Croquis del lugar" />
+  <div class="flex-container">
+    <h3 class="fw-bold mt-2 mb-0">Aparta tu lugar</h3>
+    <iframe
+      style="
+        flex: 1 1 auto;
+        display: flex;
+        height: 50vh;
+        width: 80vw;
+        border: solid 1px #333;
+        border-radius: 5px;
+      "
+      [src]="secureLinkCalendar"
+    ></iframe>
+  </div>
+  <button
+    class="btn btn-secondary my-2"
+    [routerLink]="['/area-info', area.IdArea, 'acceso']"
   >
+    Registro manual
+  </button>
   <!-- Embed Calendly -->
   <!-- Embed Google Calendar -->
   <!-- Embed Gragica Aforo -->
