@@ -16,7 +16,7 @@ export class HomeComponent {
   eID : any = 0;
   areas : any;
 
-  foto? :string = "../assets/images/wellness-center.jpeg";
+  foto? :string = '../assets/images/wellness-center.jpeg';
 
   getAreas() {
     // obtiene el id del edificio de la ruta
@@ -58,6 +58,10 @@ export class HomeComponent {
     console.log('Actualizando home...')
     console.log('Áreas:')
     this.getAreas();
+    const idEdificio = this.route.snapshot.paramMap.get('idEdificio');
+    if (idEdificio === null || idEdificio === '0') {
+      this.foto = '../assets/images/wellness-center.jpeg'
+    }
   }
 
 }
