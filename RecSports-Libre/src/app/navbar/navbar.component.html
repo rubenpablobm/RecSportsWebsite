@@ -15,10 +15,10 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDarkDropdownMenuLink">
           <li *ngFor="let edificio of listaEdificios">
-            <a class="dropdown-item" [routerLink]="['/', edificio.IdEdificio]" (click)="enviarFoto(edificio.Foto)">{{edificio.Nombre}}</a>
+            <a class="dropdown-item" [routerLink]="['/', edificio.IdEdificio]" (click)="enviarFoto(edificio.Foto)" (click)="reloadHome()">{{edificio.Nombre}}</a>
           </li>
           <li><hr class="dropdown-divider m-0"></li>
-          <li><a class="dropdown-item" [routerLink]="['/0']">Todos</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/0']" (click)="reloadHome()">Todos</a></li>
         </ul>
       </li>
     </ul>

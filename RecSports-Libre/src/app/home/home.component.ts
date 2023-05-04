@@ -28,11 +28,8 @@ export class HomeComponent {
       this.eID = Number(idEdificio);
     }
 
-    console.log(this.eID);
-    
-    console.log("voy a llamar a la API :)");
     return this.crudService.AreaGetXedificio(this.eID).subscribe((data : {}) => {
-      console.log("Getting areas from ID edificio:" + this.eID);
+      console.log("Obteniendo áreas del edificio " + this.eID);
       this.areas=data;
       console.log(this.areas)
     });
@@ -41,16 +38,26 @@ export class HomeComponent {
   // obtener edificios en cada 
 
   ngOnInit() {
-    this.getAreas();
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.getAreas();
-      }
+    return this.crudService.AreaGetXedificio(0).subscribe((data : {}) => {
+      console.log("Obteniendo áreas del edificio " + this.eID);
+      this.areas=data;
+      console.log(this.areas)
     });
+    // this.router.events.subscribe(event => {
+    //   if (event instanceof NavigationEnd) {
+    //     this.getAreas();
+    //   }
+    // });
   }
 
   recibirFoto($event : string){
     this.foto = $event;
+  }
+
+  realoadData() {
+    console.log('Actualizando home...')
+    console.log('Áreas:')
+    this.getAreas();
   }
 
 }
