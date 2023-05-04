@@ -13,8 +13,10 @@ export class HomeComponent {
   
   constructor(private route: ActivatedRoute, private http: HttpClient, public crudService:CrudService, private router: Router ) {}
 
-  eID : any =0;
+  eID : any = 0;
   areas : any;
+
+  foto? :string;
 
   getAreas() {
     // obtiene el id del edificio de la ruta
@@ -44,6 +46,10 @@ export class HomeComponent {
         this.getAreas();
       }
     });
+  }
+
+  recibirFoto($event : string){
+    this.foto = $event;
   }
 
 }

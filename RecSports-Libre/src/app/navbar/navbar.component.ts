@@ -1,4 +1,4 @@
-import { Component, Input, HostListener } from '@angular/core';
+import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { Edificio } from '../models/edificio';
 import { CrudService } from '../service/crud.service';
 
@@ -8,6 +8,8 @@ import { CrudService } from '../service/crud.service';
   styleUrls: ['./navbar.component.css', '../app.component.css']
 })
 export class NavbarComponent {
+
+  @Output() linkFoto = new EventEmitter<string>();
 
   ngOnInit() {
     this.getEdificios();
@@ -23,6 +25,11 @@ export class NavbarComponent {
       console.log(data);
       this.listaEdificios = data;
     })
+  }
+
+  enviarFoto(foto : string) {
+    this.linkFoto.emit(foto);
+    console.log("Foto de edificio: " + foto);
   }
 
 }
