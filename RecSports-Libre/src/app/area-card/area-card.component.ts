@@ -9,10 +9,11 @@ import { CrudService } from 'src/app/service/crud.service';
   styleUrls: ['./area-card.component.css']
 })
 export class AreaCardComponent {
-  @Input() idEdificio!: number;
+  @Input() idEdificio!: any;
   @Input() tipoArea!: string;
 
-  listaAreas : any = [];
+  @Input() listaAreas : any = [];
+
   titulos : any = [
     {
       tipo : 'Aforo',
@@ -43,12 +44,13 @@ export class AreaCardComponent {
       console.log(data);
       this.listaAreas=data;
     })
-    */
+    
     return this.crudService.AreaGetXedificio(this.idEdificio).subscribe((data : {}) => {
       console.log("Getting areas from ID edificio:" + this.idEdificio);
       this.listaAreas=data;
       console.log(this.listaAreas)
     });
+    */
   }
   // listaAreas : Area[] = [
   //   {

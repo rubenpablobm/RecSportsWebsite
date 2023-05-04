@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<app-header></app-header>
+<app-header [linkFoto]="area.Foto" [descripcion]="'Conoce más detalles del area'"></app-header>
 <div class="flex-col area-info-container p-3">
   <button class="btn btn-secondary my-2" routerLink="/">
     Regresar
@@ -21,6 +21,7 @@
   <h3 class="fw-bold mt-2 mb-0">Descripción</h3>
   <div>
     {{area.Descripcion}}
+    {{area.Foto}}
     <!-- Contamos con los siguientes equipos <br>
     - Box <br>
     - Pesas <br>
