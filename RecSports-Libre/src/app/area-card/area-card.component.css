@@ -58,7 +58,7 @@ progress{
   .area-card {
     width: 40%;
     height: 6rem;
-    margin: 1rem auto;
+    margin: 1rem auto 1rem 1rem;
   }
 }
 
