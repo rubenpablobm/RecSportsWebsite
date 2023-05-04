@@ -25,8 +25,8 @@ export class AreaCardComponent {
       desc : 'Son clases que puedes registrar individualmente en cualquier momento del semestre.',
     },
     {
-      tipo : 'Reservacion',
-      titulo : 'Áreas de acceso libre',
+      tipo : 'Disponibilidad',
+      titulo : 'Áreas de disponibilidad',
       desc : 'Son áreas abiertas que puedes reservar si lo necesitas.'
     }
   ]
@@ -37,11 +37,18 @@ export class AreaCardComponent {
 
   constructor(public crudService:CrudService){ }
   getArea(){
+    /*
     console.log("voy a llamar a la API :)");
     return this.crudService.AreaGetMultiple().subscribe((data:{})=>{
       console.log(data);
       this.listaAreas=data;
     })
+    */
+    return this.crudService.AreaGetXedificio(this.idEdificio).subscribe((data : {}) => {
+      console.log("Getting areas from ID edificio:" + this.idEdificio);
+      this.listaAreas=data;
+      console.log(this.listaAreas)
+    });
   }
   // listaAreas : Area[] = [
   //   {

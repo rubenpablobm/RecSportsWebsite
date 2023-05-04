@@ -10,6 +10,10 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
+    path: ':idEdificio',
+    component: HomeComponent
+  },
+  {
     path: 'area-info/:idArea',
     component: AreaInfoComponent,
   },
