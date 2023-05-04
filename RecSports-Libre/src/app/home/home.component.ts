@@ -16,7 +16,7 @@ export class HomeComponent {
   eID : any = 0;
   areas : any;
 
-  foto? :string;
+  foto? :string = "../assets/images/wellness-center.jpeg";
 
   getAreas() {
     // obtiene el id del edificio de la ruta
@@ -41,6 +41,7 @@ export class HomeComponent {
   // obtener edificios en cada 
 
   ngOnInit() {
+    this.getAreas();
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.getAreas();
