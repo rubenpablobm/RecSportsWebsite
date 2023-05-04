@@ -23,13 +23,18 @@ export class CrudService {
   }
   /* AREA */
   AreaGetMultiple():Observable<any>{
-    return this.clientehttp.get<Area>(this.API+"area");
+    return this.clientehttp.get<Area>(this.API+"area/");
   }
-  AreaGetXedificio():Observable<any>{ //creo que este no es correcto todavia
-    return this.clientehttp.get<Area>(this.API+"area/"+this.IdEdificio);
+  AreaGetXedificio(id: number):Observable<any>{
+    if (id === 0) {
+      return this.AreaGetMultiple();
+    }
+    else {
+      return this.clientehttp.get<Area>(this.API + "area/xedificio/" + id);
+    }
   }
   AreaGetXId(id: number):Observable<any>{
-    return this.clientehttp.get<Area>(this.API+"area/" + id);
+    return this.clientehttp.get<Area>(this.API + "area/" + id);
   }
   AreaPost(datosArea:Area):Observable<any>{
     return this.clientehttp.post(this.API+"area",datosArea);

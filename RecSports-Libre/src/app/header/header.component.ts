@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-
+  @Input() linkFoto? : string;
+  @Input() descripcion! : string;
+  ngOnInit(){
+    console.log(this.linkFoto);
+    //this.linkFoto="./assets/images/wellness-center.jpeg";
+    //this.descripcion="Conoce las areas y lleva el deporte al siguiente nivel";
+  }
 }

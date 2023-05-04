@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<app-header></app-header>
+<app-header [linkFoto]="area.Foto" [descripcion]="'Conoce más detalles del area'"></app-header>
 <div class="flex-col area-info-container p-3">
   <button class="btn btn-secondary my-2" routerLink="/">Regresar</button>
   <h1 class="fw-light">Edificio > {{ area.Nombre }}</h1>
