@@ -16,7 +16,7 @@ export class HomeComponent {
   eID : any = 0;
   areas : any;
 
-  foto? :string = '../assets/images/wellness-center.jpeg';
+  foto? :string = "https://www.arquired.com.mx/wp-content/uploads/2017/05/campustecmtywh.jpg";
 
   getAreas() {
     // obtiene el id del edificio de la ruta
@@ -28,8 +28,11 @@ export class HomeComponent {
       this.eID = Number(idEdificio);
     }
 
+    console.log(this.eID);
+    
+    console.log("voy a llamar a la API :)");
     return this.crudService.AreaGetXedificio(this.eID).subscribe((data : {}) => {
-      console.log("Obteniendo áreas del edificio " + this.eID);
+      console.log("Getting areas from ID edificio:" + this.eID);
       this.areas=data;
       console.log(this.areas)
     });
@@ -38,24 +41,23 @@ export class HomeComponent {
   // obtener edificios en cada 
 
   ngOnInit() {
-    return this.crudService.AreaGetXedificio(0).subscribe((data : {}) => {
-      console.log("Obteniendo áreas del edificio " + this.eID);
-      this.areas=data;
-      console.log(this.areas)
+    this.getAreas();
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.getAreas();
+      }
     });
-    // this.router.events.subscribe(event => {
-    //   if (event instanceof NavigationEnd) {
-    //     this.getAreas();
-    //   }
-    // });
   }
 
   recibirFoto($event : string){
     this.foto = $event;
   }
 
+}
+/*
   realoadData() {
     console.log('Actualizando home...')
+    this.areas=null;
     console.log('Áreas:')
     this.getAreas();
     const idEdificio = this.route.snapshot.paramMap.get('idEdificio');
@@ -63,5 +65,5 @@ export class HomeComponent {
       this.foto = '../assets/images/wellness-center.jpeg'
     }
   }
-
-}
+  (reloadSignal)="realoadData()"
+  */
