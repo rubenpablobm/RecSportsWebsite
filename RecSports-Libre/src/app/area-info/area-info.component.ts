@@ -16,6 +16,8 @@ export class AreaInfoComponent {
   aID : any = null;
   area : any = [];
   linkCalendar!: string; 
+  descripcion!: string;
+  horarios!: string;
   secureLinkCalendar: any = null;
 
   ngOnInit() {
@@ -31,9 +33,20 @@ export class AreaInfoComponent {
       }
       //lo purifica
       this.secureLinkCalendar = this.sanitizer.bypassSecurityTrustResourceUrl(this.linkCalendar);
+      this.horarios = this.convertLineBreaks(this.area.Horarios);
+      this.descripcion = this.convertLineBreaks(this.area.Descripcion);
+      // console.log(this.descripcion);
       console.log(this.area);
+      console.log(this.area.Avisos);
       //console.log("sencillamente "+this.area.LinkCalendar);
     })
+  }
+
+  convertLineBreaks(text: string): string {
+    if (!text) {
+      return '';
+    }
+    return text.replace(/\\n/g, '<br>');
   }
 
 }
