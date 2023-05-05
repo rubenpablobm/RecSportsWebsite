@@ -27,26 +27,26 @@ export class HomeComponent {
     }else{
       this.eID = Number(idEdificio);
     }
-
-    console.log(this.eID);
     
-    console.log("voy a llamar a la API :)");
     return this.crudService.AreaGetXedificio(this.eID).subscribe((data : {}) => {
       console.log("Getting areas from ID edificio:" + this.eID);
       this.areas=data;
-      console.log(this.areas)
+      //console.log(this.areas)
     });
   }
 
   // obtener edificios en cada 
 
   ngOnInit() {
-    this.getAreas();
+    if(this.areas===undefined){ //si entra en la pagina, sin haber clickeado el dropdown, tendra la lista de areas
+      this.getAreas();
+    }
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.getAreas();
       }
     });
+    console.log(this.areas);
   }
 
   recibirFoto($event : string){
