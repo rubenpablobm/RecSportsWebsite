@@ -1,9 +1,9 @@
 <app-navbar></app-navbar>
 <app-header [linkFoto]="area.Foto" [descripcion]="'Conoce más detalles del area'"></app-header>
 <div class="flex-col area-info-container p-3">
-  <button class="btn btn-secondary my-2" routerLink="/">Regresar</button>
-  <h1 class="fw-light">Edificio > {{ area.Nombre }}</h1>
-  <!-- Agregar nombres de edificios y áreas -->
+  <button class="btn btn-secondary my-2" routerLink="/{{ area.IdEdificio }}">Regresar</button>
+  <h1 class="fw-bold">{{ area.Nombre }}</h1>
+  <!-- Edificio >  Agregar nombres de edificios y áreas -->
   <div
     class="area-alert alert alert-warning py-3 px-2 mb-2"
     role="alert"
@@ -30,19 +30,9 @@
   </div>
   <h3 class="fw-bold mt-2 mb-0">Croquis</h3>
   <img class="croquis" src="{{ area.Croquis }}" alt="Croquis del lugar" />
-  <div class="flex-container">
-    <h3 class="fw-bold mt-2 mb-0">Aparta tu lugar</h3>
-    <iframe
-      style="
-        flex: 1 1 auto;
-        display: flex;
-        height: 50vh;
-        width: 80vw;
-        border: solid 1px #333;
-        border-radius: 5px;
-      "
-      [src]="secureLinkCalendar"
-    ></iframe>
+  <div *ngIf="area.LinkCalendar!=null" class="flex-container" style="flex-direction: column;">
+    <h3 class="fw-bold mt-2 mb-0">Aparta tu lugar </h3>
+    <iframe class="embedido" [src]="secureLinkCalendar"></iframe>
   </div>
   <button
     class="btn btn-secondary my-2"

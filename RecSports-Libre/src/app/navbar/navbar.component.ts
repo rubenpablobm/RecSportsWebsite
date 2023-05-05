@@ -9,7 +9,7 @@ import { CrudService } from '../service/crud.service';
 export class NavbarComponent {
 
   @Output() linkFoto = new EventEmitter<string>();
-  @Output() reloadSignal = new EventEmitter<void>();
+  //@Output() reloadSignal = new EventEmitter<void>();
 
   ngOnInit() {
     this.getEdificios();
@@ -30,9 +30,10 @@ export class NavbarComponent {
   enviarFoto(foto : string) {
     this.linkFoto.emit(foto);
   }
-  
+  /*
   reloadHome() {
     this.reloadSignal.emit();
   }
-
+  
+  */
 }

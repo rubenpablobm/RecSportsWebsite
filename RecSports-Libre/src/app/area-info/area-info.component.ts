@@ -24,10 +24,15 @@ export class AreaInfoComponent {
     this.aID = idArea;
     return this.crudService.AreaGetXId(this.aID).subscribe((data:{}) => {
       this.area = data;
+      //selecciona la columna LinkCalendar
       this.linkCalendar = this.area.LinkCalendar;
+      if(this.linkCalendar===null){
+        this.linkCalendar='SinLink';
+      }
+      //lo purifica
       this.secureLinkCalendar = this.sanitizer.bypassSecurityTrustResourceUrl(this.linkCalendar);
-      console.log(this.area);
-      console.log(this.area.LinkCalendar);
+      //console.log(this.area);
+      //console.log("sencillamente "+this.area.LinkCalendar);
     })
   }
 
