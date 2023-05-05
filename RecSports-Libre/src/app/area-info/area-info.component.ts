@@ -31,7 +31,7 @@ export class AreaInfoComponent {
       }
       //lo purifica
       this.secureLinkCalendar = this.sanitizer.bypassSecurityTrustResourceUrl(this.linkCalendar);
-      //console.log(this.area);
+      console.log(this.area);
       //console.log("sencillamente "+this.area.LinkCalendar);
     })
   }
