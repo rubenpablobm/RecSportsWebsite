@@ -34,12 +34,15 @@
     <h3 class="fw-bold mt-2 mb-0">Aparta tu lugar </h3>
     <iframe class="embedido" [src]="secureLinkCalendar"></iframe>
   </div>
-  <button
+  <ng-container *ngIf="area.Tipo==='Aforo'">
+    <button
     class="btn btn-secondary my-2"
     [routerLink]="['/area-info', area.IdArea, 'acceso']"
-  >
+    >
     Registro manual
-  </button>
+    </button>
+  </ng-container>
+  
   <!-- Embed Calendly -->
   <!-- Embed Google Calendar -->
   <!-- Embed Gragica Aforo -->
