@@ -1,3 +1,8 @@
+/* Descripcion de acceso.component.css: programa que define el estilo del componente "acceso".
+Constituido por los siguientes estilos: .parent, .progress y .custom-btn.
+Porpiedad del equipo WellSoft.
+Fecha de creacion: 01/05/2023, Fecha de modificacion: 09/05/2023 */
+
 .parent {
     width: 100%;
 }
@@ -15,31 +20,3 @@
     font-size: 1.0rem; 
     padding: 1.0rem 1rem; 
   }
-  
-  /* @media (min-width: 576px) {
-    .custom-btn {
-      font-size: 1.25rem;
-      padding: 0.75rem 1.5rem;
-    }
-  }
-  
-  @media (min-width: 768px) {
-    .custom-btn {
-      font-size: 1.5rem;
-      padding: 1rem 2rem;
-    }
-  }
-  
-  @media (min-width: 992px) {
-    .custom-btn {
-      font-size: 1.75rem;
-      padding: 1.25rem 2.5rem;
-    }
-  }
-  
-  @media (min-width: 1200px) {
-    .custom-btn {
-      font-size: 2.5rem;
-      padding: 1.5rem 3rem;
-    }
-  } */
