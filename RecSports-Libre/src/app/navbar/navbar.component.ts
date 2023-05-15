@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
+import { Component, Input, HostListener } from '@angular/core';
+import { Edificio } from '../models/edificio';
 import { CrudService } from '../service/crud.service';
 
 @Component({
@@ -7,9 +8,6 @@ import { CrudService } from '../service/crud.service';
   styleUrls: ['./navbar.component.css', '../app.component.css']
 })
 export class NavbarComponent {
-
-  @Output() linkFoto = new EventEmitter<string>();
-  //@Output() reloadSignal = new EventEmitter<void>();
 
   ngOnInit() {
     this.getEdificios();
@@ -20,20 +18,11 @@ export class NavbarComponent {
   constructor(public crudService:CrudService){ }
   
   getEdificios() {
-    console.log('Generando dropdown de navbar...')
+    console.log('Llamando edificios...')
     return this.crudService.EdificioGet().subscribe((data:{}) => {
       console.log(data);
       this.listaEdificios = data;
     })
   }
 
-  enviarFoto(foto : string) {
-    this.linkFoto.emit(foto);
-  }
-  /*
-  reloadHome() {
-    this.reloadSignal.emit();
-  }
-  
-  */
 }
