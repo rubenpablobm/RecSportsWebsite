@@ -14,7 +14,7 @@ app.post('/subir', async (req, res) => {
         const input_body = req.body;
         table = new sql.Table("Alumno");
         table.create = true;
-        table.columns.add("Matricula", sql.Char(8), { nullable: false});
+        table.columns.add("Matricula", sql.Char(9), { nullable: false});
         // add here rows to insert into the table
         for (r of input_body) {
             table.rows.add(r.Matricula);

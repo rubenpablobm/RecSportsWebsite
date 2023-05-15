@@ -1,3 +1,7 @@
+/* Descripcion de acceso.component.spec.ts: programa default del componente acceso.
+Porpiedad del equipo WellSoft.
+Fecha de creacion: 01/05/2023, Fecha de modificacion: 09/05/2023 */
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AccesoComponent } from './acceso.component';
