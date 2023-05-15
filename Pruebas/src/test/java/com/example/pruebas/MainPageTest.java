@@ -22,7 +22,7 @@ public class MainPageTest {
     private MainPage mainPage;
 
 
-  
+
 
 
 
@@ -122,13 +122,13 @@ public class MainPageTest {
         List<WebElement> tarjetasAforo = mainPage.contenedorAforo.findElements(By.cssSelector(".area-card"));
 
         for(WebElement elemento:tarjetasAforo){
-                try{
+            try{
                 elemento.findElement(By.cssSelector("span[class^='badge']")).isDisplayed();
 
-                    elemento.click();
-                    wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("div[class^='area-alert']")));
-                    assertTrue(driver.findElement(By.cssSelector("div[class^='area-alert']")).isDisplayed());
-                    driver.navigate().back();
+                elemento.click();
+                wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("div[class^='area-alert']")));
+                assertTrue(driver.findElement(By.cssSelector("div[class^='area-alert']")).isDisplayed());
+                driver.navigate().back();
 
             } catch (NoSuchElementException e) {
                 continue;
@@ -141,17 +141,17 @@ public class MainPageTest {
 
 
         for(WebElement elemento:tarjetasInstructivas) {
-                try {
-                    elemento.findElement(By.cssSelector("span[class^='badge']")).isDisplayed();
-                    elemento.click();
-                    wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("div[class^='area-alert']")));
-                    assertTrue(driver.findElement(By.cssSelector("div[class^='area-alert']")).isDisplayed());
-                    driver.navigate().back();
+            try {
+                elemento.findElement(By.cssSelector("span[class^='badge']")).isDisplayed();
+                elemento.click();
+                wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("div[class^='area-alert']")));
+                assertTrue(driver.findElement(By.cssSelector("div[class^='area-alert']")).isDisplayed());
+                driver.navigate().back();
 
-                } catch (NoSuchElementException e) {
-                    continue;
-                }
-                ;
+            } catch (NoSuchElementException e) {
+                continue;
+            }
+            ;
 
         }
 
@@ -159,17 +159,17 @@ public class MainPageTest {
         List<WebElement> tarjetasAccesoLibre = mainPage.contenedorAccesoLibre.findElements(By.cssSelector(".area-card"));
 
         for(WebElement elemento:tarjetasAccesoLibre){
-                try{
+            try{
                 elemento.findElement(By.cssSelector("span[class^='badge']")).isDisplayed();
 
-                    elemento.click();
-                    wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("div[class^='area-alert']")));
-                    assertTrue(driver.findElement(By.cssSelector("div[class^='area-alert']")).isDisplayed());
-                    driver.navigate().back();
+                elemento.click();
+                wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("div[class^='area-alert']")));
+                assertTrue(driver.findElement(By.cssSelector("div[class^='area-alert']")).isDisplayed());
+                driver.navigate().back();
 
-                } catch (NoSuchElementException e) {
-                    continue;
-                };
+            } catch (NoSuchElementException e) {
+                continue;
+            };
 
 
 
