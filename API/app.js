@@ -6,6 +6,8 @@ const areaRoutes = require('./routes/area');
 const estadisticaRoutes = require('./routes/estadistica');
 const alumnoRoutes = require('./routes/alumno');
 
+const adminRoutes = require('./routes/admin');
+
 const sql = require('mssql');
 
 dotenv.config();
@@ -19,6 +21,8 @@ app.use('/edificio', edificioRoutes);
 app.use('/area', areaRoutes);
 app.use('/estadistica', estadisticaRoutes);
 app.use('/alumno', alumnoRoutes);
+
+app.use('/admin', adminRoutes);
 
 app.use((req,res,next) =>{
     console.log(`Request del cliente URL: ${req.get('host')}${req.originalUrl}`);
