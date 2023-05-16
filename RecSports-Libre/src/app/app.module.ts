@@ -17,6 +17,7 @@ import { AccesoComponent } from './components/acceso/acceso.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NuevaAreaComponent } from './components/nueva-area/nueva-area.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     AdminComponent,
     AdminNavbarComponent,
-    AccesoComponent
+    AccesoComponent,
+    NuevaAreaComponent
   ],
   imports: [
     BrowserModule,

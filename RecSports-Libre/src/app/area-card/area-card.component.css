@@ -21,6 +21,7 @@ section {
 }
 
 .area-card:hover {
+  transform: translateY(-10px);
   border: 3px #0286FF solid;
 }
 .area-card:hover img {

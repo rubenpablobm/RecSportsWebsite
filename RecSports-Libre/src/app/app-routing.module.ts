@@ -4,6 +4,7 @@ import { AreaInfoComponent } from './area-info/area-info.component';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
 import { AccesoComponent } from './components/acceso/acceso.component';
+import { NuevaAreaComponent } from './components/nueva-area/nueva-area.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'area-info/:idArea/acceso',
     component: AccesoComponent,
+  },
+  {
+    path: 'nueva-area/form',
+    component: NuevaAreaComponent
   }
 ];
 
