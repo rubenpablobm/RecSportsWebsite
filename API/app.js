@@ -9,6 +9,7 @@ const alumnoRoutes = require('./routes/alumno');
 const adminRoutes = require('./routes/admin');
 
 const sql = require('mssql');
+const bcrypt = require("bcrypt");
 
 dotenv.config();
 
