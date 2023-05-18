@@ -34,7 +34,7 @@ import { CompComponent } from './comp/comp.component';
     AdminNavbarComponent,
     AccesoComponent,
     EditarEdificioComponent,
-    AgregarEdificioComponent
+    AgregarEdificioComponent,
     VisComponent,
     CompComponent
   ],
