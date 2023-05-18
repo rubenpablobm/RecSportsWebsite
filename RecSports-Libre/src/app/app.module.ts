@@ -14,9 +14,11 @@ import { AreaInfoComponent } from './area-info/area-info.component';
 import { HomeComponent } from './home/home.component';
 import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.component';
 import { AccesoComponent } from './components/acceso/acceso.component';
-
+import { EditarEdificioComponent } from './components/editar-edificio/editar-edificio.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AgregarEdificioComponent } from './components/agregar-edificio/agregar-edificio.component';
+// import { MatDialogModule } from '@angular/material/dialog'
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     AdminComponent,
     AdminNavbarComponent,
-    AccesoComponent
+    AccesoComponent,
+    EditarEdificioComponent,
+    AgregarEdificioComponent
   ],
   imports: [
     BrowserModule,
@@ -38,8 +42,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     FormsModule, //nuevos añadidos
     ReactiveFormsModule,
-    HttpClientModule
-
+    HttpClientModule,
+    // MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
