@@ -1,5 +1,5 @@
 /* Descripcion de agregar-edificio.component.ts: programa que define la logica del componente "agregar-edificio".
-Su propósito es llamar al servicio API por medio de funciones. 
+Su proposito es llamar al servicio API por medio de funciones. 
 Porpiedad del equipo WellSoft. 
 Ultima edicion por: Arturo Garza Campuzano
 Fecha de creacion: 16/05/2023
@@ -35,7 +35,7 @@ export class AgregarEdificioComponent {
     });
   }
   
-  // Método para manejar el envío del formulario
+  // Metodo para manejar el envio del formulario
   enviarDatos(){
     console.log("Presionaste el boton enviar datos")
     console.log(this.formularioDeEdificios.value);
