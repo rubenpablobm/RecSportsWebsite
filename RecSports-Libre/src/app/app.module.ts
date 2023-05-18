@@ -19,6 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AgregarEdificioComponent } from './components/agregar-edificio/agregar-edificio.component';
 // import { MatDialogModule } from '@angular/material/dialog'
+import { VisComponent } from './vis/vis.component';
+import { CompComponent } from './comp/comp.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { AgregarEdificioComponent } from './components/agregar-edificio/agregar-
     AccesoComponent,
     EditarEdificioComponent,
     AgregarEdificioComponent
+    VisComponent,
+    CompComponent
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,8 @@ import { AdminComponent } from './admin/admin.component';
 import { AccesoComponent } from './components/acceso/acceso.component';
 import { EditarEdificioComponent } from './components/editar-edificio/editar-edificio.component';
 import { AgregarEdificioComponent } from './components/agregar-edificio/agregar-edificio.component';
+import { VisComponent } from './vis/vis.component';
+import { CompComponent } from './comp/comp.component';
 
 const routes: Routes = [
   {
@@ -16,13 +18,21 @@ const routes: Routes = [
     path: ':idEdificio',
     component: HomeComponent
   },
+  {path: ':comp',
+  component: CompComponent
+  },
+  
   {
     path: 'area-info/:idArea',
-    component: AreaInfoComponent,
+    component: AreaInfoComponent
   },
   {
-    path: 'admin',
-    component: AdminComponent,pathMatch: "full" 
+    path: 'admin/login',
+    component: AdminComponent
+  },
+  {
+    path: 'vis/zz',
+    component: VisComponent
   },
   {
     path: 'area-info/:idArea/acceso',
