@@ -1,20 +1,51 @@
-.text-block{
-    position: absolute;
-    /*top: 120px;
-    left: 55px;*/
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    color: white;
-    width: 30%;
-    height: 40%;
-    font-size: 100px;
-    /*padding-left: 50px;
-    padding-right: 50px;*/
+.header-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: fit-content;
+  border-radius: 0%;
+  border: none;
+  height: 30vh;
+}
+
+.card {
+  overflow: hidden;
+}
+
+img {
+  opacity: 0.5;
+  border-radius: 0%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-img-overlay {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+h1 {
+  color: #fff;
+  font-weight: 300;
+  font-size: 2rem;
+  margin: 1rem 5rem;
+}
+
+/* Breakpoints */
+@media (min-width: 1200px) { }
+
+@media (max-width: 992px) { }
+
+@media (max-width: 768px) { 
+  h1 {
+    font-size: 1.7rem;
+    margin: 1rem;
   }
-  
-  .container{
-      position: relative;
+}
+
+@media (max-width: 480px) { 
+  .header-banner {
+    height: 20vh;
   }
+}

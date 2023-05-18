@@ -1,0 +1,15 @@
+.mov{
+Width:232px;
+font-size: 300%;
+margin-top:22px;
+margin-left:55px;
+}
+
+.mod{
+    margin: auto;
+    width: 90%;
+    height: 50%;
+}
+table, tr, td {
+    border:1px solid black;
+  }

@@ -1,0 +1,28 @@
+/* Descripcion de acceso.component.css: programa que define el estilo del componente "acceso".
+Su proposito es proporcionar una mejor visualizacion a los elementos del componente "acceso".
+Porpiedad del equipo WellSoft.
+Ultima edicion por: Arturo Garza Campuzano
+Fecha de creacion: 01/05/2023
+Fecha de modificacion: 17/05/2023 */
+
+/* Define el ancho del contenedor de los elementos */
+.parent {
+  width: 100%;
+}
+
+/* Define la altura y el ancho de la barra de progreso */
+.progress {
+  height: 20px;
+  width: 100%;
+}
+
+/* Define la altura de la barra de progreso con respecto a su contenedor */
+.progress-bar {
+  height: 100%;
+}
+
+/* Define el tamaño de letra y el padding para los botones personalizados */
+.custom-btn {
+  font-size: 1.0rem; 
+  padding: 1.0rem 1rem; 
+}

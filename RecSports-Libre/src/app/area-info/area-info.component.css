@@ -1,0 +1,17 @@
+.area-alert {
+  width: 100%;
+  border: 0.5px solid;
+}
+
+.croquis {
+  width: 50%;
+}
+
+.embedido {
+  flex: 1 1 auto;
+  display: flex;
+  height: 50vh;
+  width: 80vw;
+  border: solid 2px #333;
+  border-radius: 10px;
+}
