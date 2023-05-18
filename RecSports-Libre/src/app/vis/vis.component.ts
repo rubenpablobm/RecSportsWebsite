@@ -9,6 +9,7 @@ import { CrudService } from '../service/crud.service';
 export class VisComponent {
 
   foto? :string = "https://www.arquired.com.mx/wp-content/uploads/2017/05/campustecmtywh.jpg";
+  eID : number = 0;
 
   @Input() descripcion! : string;
   @Output() linkFoto = new EventEmitter<string>();
@@ -25,7 +26,7 @@ export class VisComponent {
   
   getEdificios() {
     console.log('Generando dropdown de navbar...')
-    return this.crudService.EdificioGet().subscribe((data:{}) => {
+    return this.crudService.EdificioGet(this.eID).subscribe((data:{}) => {
       console.log(data);
       this.listaEdificios = data;
     })
