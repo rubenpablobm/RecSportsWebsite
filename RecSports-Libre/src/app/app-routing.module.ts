@@ -8,6 +8,7 @@ import { AccesoComponent } from './components/acceso/acceso.component';
 const routes: Routes = [
   {
     path: '',  // home
+    //,pathMatch:'full',redirectTo: 'agregar-libro'
     component: HomeComponent
   },
   {
@@ -19,8 +20,8 @@ const routes: Routes = [
     component: AreaInfoComponent,
   },
   {
-    path: 'admin',
-    component: AdminComponent,pathMatch: "full" 
+    path: 'admin/login',
+    component: AdminComponent,pathMatch:'full'
   },
   {
     path: 'area-info/:idArea/acceso',

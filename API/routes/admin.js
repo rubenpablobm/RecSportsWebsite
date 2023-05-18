@@ -22,14 +22,15 @@ app.post('/registro', async (req, res) => {
         else if(Contrasena.match(patternContraInvalida)){ //si es invalida
             throw {message:"La contraseña debe tener minimo 8 caracteres. Al menos una mayuscula, minuscula, caracter especial y numero de cada uno"};
         }
-        const tContrasena = await bcrypt.hash(Contrasena+"Recsports",8);
+        const salt = await bcrypt.genSalt()
+        const tContrasena = await bcrypt.hash(Contrasena,salt);
         
         const query = 'INSERT INTO Admin (Email, Contrasena) VALUES (@Email, @tContrasena)';
         await pool.request()
             .input('Email', sql.VarChar, Email)
             .input('tContrasena', sql.VarChar, tContrasena)
             .query(query);
-        res.send('Admin registro exitoso');
+        res.send({error:'Admin registro exitoso'});
     }catch(error) {
         const patternUnique = "UNIQUE"
         if(error.message.indexOf(patternUnique) != 0)
@@ -40,20 +41,30 @@ app.post('/registro', async (req, res) => {
     }
 });
 
-app.get('/iniciosesion', async (req, res) => {
+app.post('/iniciosesion', async (req, res) => {
     try{
         const pool = await poolPromise;
         const { Email, Contrasena, RepContrasena} = req.body;
-        let tContrasena = await bcrypt.hash(Contrasena+"Recsports",8);
-        const query = 'SELECT * FROM Admin WHERE Email=@Email AND Contrasena=@tContrasena';
-        await pool.request()
-            .input('Email', sql.VarChar, tEmail)
-            .input('tContrasena', sql.VarChar, tContrasena)
+        //let tContrasena = await bcrypt.hash(Contrasena+"Recsports",8);
+        //const query = 'SELECT COUNT(*) FROM Admin WHERE Email=@Email AND Contrasena=@tContrasena';
+        const query = 'SELECT * FROM Admin WHERE Email=@Email';
+        const result = await pool.request()
+            .input('Email', sql.VarChar, Email)
+            //.input('tContrasena', sql.VarChar, tContrasena)
             .query(query);
-        res.send('Admin login exitoso');
+        //const count = result.recordset[0].count;
+        if (!result.recordset[0]) {
+            res.status(400).send('Usuario no existente');
+          } else {
+            const resContrasena = result.recordset[0].Contrasena;
+            const valid = await bcrypt.compare(Contrasena, resContrasena);
+            valid ? res.send({message:"Login exitoso"}) : res.status(400).send('La contraseña es inválida');
+          }
+        //count > 0 ? res.send('Admin login exitoso') : res.status(500).json('Usuario no existete');
+        //res.send(count > 0 );
     }catch(error) {
         console.error(error);
-        res.status(500).json("Email o contraseña inválidos");
+        res.status(500).send('Error en el servidor');
     }
 });
 

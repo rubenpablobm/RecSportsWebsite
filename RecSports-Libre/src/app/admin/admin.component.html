@@ -4,14 +4,14 @@
 <div class="col-md-8" ><img class="img1 " src="./assets/images/Escalar.jpg" class="img-fluid " alt="Imagen no cargada"></div>
 <div class="col-sm-4" >
   <div><h1 class="ini">Iniciar Sesion</h1></div>
-  <form class="m-3">
+  <form (ngSubmit)="enviarDatos()" [formGroup]="formLogin" class="m-3">
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <input type="email" formControlName="Email"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     </div>
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1"  >
+      <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+      <input type="password" formControlName="Contrasena" class="form-control" id="exampleInputPassword1"  >
     </div>
     <div class="mb-3 form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -19,6 +19,9 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+  <div *ngIf="mensaje != '[object Object]'">
+    {{ mensaje }}
+  </div>
 </div>
 </div>
 </div>

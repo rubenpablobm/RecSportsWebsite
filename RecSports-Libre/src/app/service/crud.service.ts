@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { Area } from '../models/area';
 import { Edificio } from '../models/edificio';
+import { Admin } from '../models/admin';
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +46,11 @@ export class CrudService {
   }
   MenosAforo(id: number):Observable<any>{
     return this.clientehttp.get(this.API+"area/menosaforo/"+id);
+  }
+
+  /* ADMIN */
+  AdminLogin(datosAdmin:Admin):Observable<any>{
+    return this.clientehttp.post(this.API+"admin/iniciosesion", datosAdmin);
   }
 
 }
