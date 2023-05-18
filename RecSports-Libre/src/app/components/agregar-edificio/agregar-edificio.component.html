@@ -1,0 +1,60 @@
+<!-- Descripcion de agregar-edificio.component.html: programa que define la estructura del componente
+"agregar-edificio". Su proposito es permitir al administrador agregar un edificio. 
+Porpiedad del equipo WellSoft. 
+Ultima edicion por: Arturo Garza Campuzano.
+Fecha de creacion: 16/05/2023
+Fecha de modificacion: 17/05/2023 -->
+
+<!-- Componente de navegación -->
+<app-navbar></app-navbar>
+<!-- Contenedor principal -->
+<div class="container m-4">
+  <!-- Título -->
+  <h1 class="fw-bold">Agregar Edificio</h1>
+  <!-- Formulario -->
+  <form (ngSubmit)="enviarDatos()" [formGroup]="formularioDeEdificios">
+    <div class="form-group my-4 w-75">
+      <!-- Campo de Nombre -->
+      <label class="fw-bold" for="nombre">Nombre</label>
+      <input
+        formControlName="Nombre"
+        type="text"
+        class="form-control"
+        placeholder="Ej. Wellness"
+      />
+    </div>
+    <!-- Campo de Foto -->
+    <div class="form-group my-4 w-75">
+      <label class="fw-bold" for="foto">Foto</label>
+      <input
+        formControlName="Foto"
+        type="text"
+        class="form-control"
+        placeholder="Ej. https://imagenWellnes.png"
+      />
+    </div>
+    <!-- Campo de Link de Google Maps -->
+    <div class="form-group my-4 w-75">
+      <label class="fw-bold" for="linkMaps">Link Google Maps</label>
+      <input
+        formControlName="LinkMaps"
+        type="text"
+        class="form-control"
+        placeholder="Ej. https://goo.gl/maps/jfejfb"
+      />
+    </div>
+    <!-- Grupo de botones -->
+    <div class="btn-group" role="group" aria-label="Button group name">
+      <!-- Boton de Agregar -->
+      <button type="submit" class="btn btn-success custom-btn">Agregar</button>
+      <!-- Boton de Cancelar -->
+      <button
+        type="button"
+        class="btn btn-danger custom-btn ms-3"
+        routerLink="/0"
+      >
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>

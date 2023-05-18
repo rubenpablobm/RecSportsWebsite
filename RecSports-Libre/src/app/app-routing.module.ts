@@ -4,6 +4,8 @@ import { AreaInfoComponent } from './area-info/area-info.component';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
 import { AccesoComponent } from './components/acceso/acceso.component';
+import { EditarEdificioComponent } from './components/editar-edificio/editar-edificio.component';
+import { AgregarEdificioComponent } from './components/agregar-edificio/agregar-edificio.component';
 import { VisComponent } from './vis/vis.component';
 import { CompComponent } from './comp/comp.component';
 
@@ -34,8 +36,16 @@ const routes: Routes = [
   },
   {
     path: 'area-info/:idArea/acceso',
-    component: AccesoComponent
+    component: AccesoComponent,
   },
+  {
+    path: 'edificio/:idEdificio',
+    component: EditarEdificioComponent,
+  },
+  {
+    path: 'edificio-CRUD/agregar',
+    component: AgregarEdificioComponent,
+  }
 ];
 
 @NgModule({

@@ -21,7 +21,7 @@ export class NavbarComponent {
   
   getEdificios() {
     console.log('Generando dropdown de navbar...')
-    return this.crudService.EdificioGet().subscribe((data:{}) => {
+    return this.crudService.EdificioGetMultiple().subscribe((data:{}) => {
       console.log(data);
       this.listaEdificios = data;
     })
