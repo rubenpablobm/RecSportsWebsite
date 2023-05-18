@@ -1,19 +1,48 @@
+<!-- Descripcion de area-card.component.html: programa que define la estructura del componente "area-card".
+Su proposito es la visualizacion de una clase o area desde la pagina princiapl.
+Porpiedad del equipo WellSoft.
+Ultima edicion por: Arturo Garza Campuzano
+Fecha de creacion: N/A
+Fecha de modificacion: 18/05/2023 -->
+
 <section>
+  <!-- Contenedor principal -->
   <div class="flex-container">
+    <!-- Iteracion sobre una lista de areas -->
     <ng-container *ngFor="let area of listaAreas">
-      <div class="area-card card bg-dark text-white shadow" *ngIf="area.Tipo===tipoArea">
-        <img class="card-img" src="{{area.Foto}}" alt="Area {{area.Tipo}} de {{area.Nombre}}">
+      <!-- Tarjeta de area -->
+      <div
+        class="area-card card bg-dark text-white shadow"
+        *ngIf="area.Tipo === tipoArea"
+      >
+        <!-- Imagen de la tarjeta -->
+        <img
+          class="card-img"
+          src="{{ area.Foto }}"
+          alt="Area {{ area.Tipo }} de {{ area.Nombre }}"
+        />
+        <!-- Enlace de la tarjeta -->
         <a class="card-link" [routerLink]="['/area-info', area.IdArea]">
+          <!-- Contenido de la tarjeta -->
           <div class="area-contenido card-img-overlay">
-            <div *ngIf="area.Avisos!=undefined " class="area-aviso">
+            <!-- Seccion de aviso -->
+            <div *ngIf="area.Avisos != undefined" class="area-aviso">
               <span class="badge bg-warning">AVISO</span>
             </div>
+            <!-- Seccion de nombre -->
             <div class="area-nombre card-title">
-              {{area.Nombre}}
+              {{ area.Nombre }}
             </div>
-            <div *ngIf="area.Aforo!=undefined " >
-              <label for="barraAforo">{{area.Aforo}} / {{area.Capacidad}} personas  </label>
-              <progress id="barraAforo" max="{{area.Capacidad}}" value="{{area.Aforo}}"> </progress>
+            <!-- Seccion de aforo -->
+            <div *ngIf="area.Aforo != undefined">
+              <label for="barraAforo"
+                >{{ area.Aforo }} / {{ area.Capacidad }} personas
+              </label>
+              <progress
+                id="barraAforo"
+                max="{{ area.Capacidad }}"
+                value="{{ area.Aforo }}"
+              ></progress>
             </div>
           </div>
         </a>

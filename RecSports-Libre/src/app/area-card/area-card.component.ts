@@ -1,6 +1,12 @@
+/* Descripcion de admin.component.ts: programa que define la logica del componente "admin". 
+Su proposito es llamar al servicio API por medio de funciones. 
+Porpiedad del equipo WellSoft. 
+Ultima edicion por: Arturo Garza Campuzano
+Fecha de creacion: N/A
+Fecha de modificacion: 18/05/2023 */
+
 import { Component, Input } from '@angular/core';
 import { Area } from '../models/area';
-
 import { CrudService } from 'src/app/service/crud.service';
 
 @Component({
