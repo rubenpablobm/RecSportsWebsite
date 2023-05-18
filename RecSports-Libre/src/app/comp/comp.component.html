@@ -1,0 +1,29 @@
+<section>
+    <div class="flex-container">
+      <ng-container *ngFor="let area of listaAreas">
+        <div class="area-card card bg-dark text-white shadow" *ngIf="area.Tipo===tipoArea">
+          <img class="card-img" src="{{area.Foto}}" alt="Area {{area.Tipo}} de {{area.Nombre}}">
+          <a class="card-link" [routerLink]="['/area-info', area.IdArea]">
+            <div class="area-contenido card-img-overlay">
+              <div *ngIf="area.Avisos!=undefined " class="area-aviso">
+                <span class="badge bg-warning">AVISO</span>
+              </div>
+              <div class="area-nombre card-title">
+                {{area.Nombre}}
+              </div>
+              <div *ngIf="area.Aforo!=undefined " >
+                <label for="barraAforo">{{area.Aforo}} / {{area.Capacidad}} personas  </label>
+                <progress id="barraAforo" max="{{area.Capacidad}}" value="{{area.Aforo}}"> </progress>
+              </div>
+            </div>
+          </a>
+        </div>
+      </ng-container>
+    </div>
+  </section>
+  
+
+    <div class="  text-white " >
+      <img class="card-img" style="width: 100%; " src="{{this.linkFoto}}">
+    </div>
+

@@ -17,6 +17,8 @@ import { AccesoComponent } from './components/acceso/acceso.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { VisComponent } from './vis/vis.component';
+import { CompComponent } from './comp/comp.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     AdminComponent,
     AdminNavbarComponent,
-    AccesoComponent
+    AccesoComponent,
+    VisComponent,
+    CompComponent
   ],
   imports: [
     BrowserModule,
