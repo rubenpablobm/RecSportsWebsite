@@ -1,5 +1,10 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+/* Descripcion de admin.component.spec.ts: programa default del componente "admin".
+Porpiedad del equipo WellSoft. 
+Ultima edicion por: Arturo Garza Campuzano
+Fecha de creacion: N/A
+Fecha de modificacion: 18/05/2023 */
 
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AdminComponent } from './admin.component';
 
 describe('AdminComponent', () => {
