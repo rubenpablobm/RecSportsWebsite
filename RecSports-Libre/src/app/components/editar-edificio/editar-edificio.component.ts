@@ -19,6 +19,7 @@ import { Route, Router } from '@angular/router';
 	templateUrl: './editar-edificio.component.html',
 	styleUrls: ['./editar-edificio.component.css']
 })
+
 export class EditarEdificioComponent {
 	// Variables
 	eID : any = null;
