@@ -18,11 +18,12 @@ import { CrudService } from '../../service/crud.service';
   styleUrls: ['./acceso.component.css']
 })
 export class AccesoComponent {
-  constructor(private route: ActivatedRoute, private htttp: HttpClient, public crudService:CrudService ) { }
   // Definición de variables de clase
   aID : any = null;
   area : any = [];
   mensaje?:string;
+
+  constructor(private route: ActivatedRoute, private htttp: HttpClient, public crudService:CrudService ) { }
 
   // Obtener el id del área de la ruta y recuperar la información de la misma
   ngOnInit() {

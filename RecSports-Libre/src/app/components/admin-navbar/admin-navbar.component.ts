@@ -17,9 +17,11 @@ import { CrudService } from 'src/app/service/crud.service';
   templateUrl: './admin-navbar.component.html',
   styleUrls: ['./admin-navbar.component.css']
 })
+
 export class AdminNavbarComponent {
+
   //Variables
-  AreaList:any=[];
+  AreaList:any=[];  
   // eID : any = null;
   edificio : any = [];
 
