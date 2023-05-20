@@ -24,14 +24,14 @@ Fecha de modificacion: 17/05/2023 -->
     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
       <ul class="navbar-nav">
         <!-- Boton para obtener una area -->
-        <button type="submit" class="btn btn-secondary m-2">
+        <button type="submit" class="btn btn-secondary m-2 font">
           <!-- (click)="getArea()" -->
           Dame una area
         </button>
         <!-- Boton para ir a la pagina de agregar edificios -->
         <button
           type="button"
-          class="btn btn-secondary m-2"
+          class="btn btn-secondary m-2 font"
           routerLink="/edificio-CRUD/agregar"
         >
           Edificios
@@ -39,13 +39,15 @@ Fecha de modificacion: 17/05/2023 -->
         <!-- Boton para ir a la pagina de estadisticas de un edificio -->
         <button
           type="button"
-          class="btn btn-secondary m-2"
+          class="btn btn-secondary m-2 font"
           [routerLink]="['/edificio', edificio.IdEdificio]"
         >
           Estadísticas
         </button>
         <!-- Boton para cambiar la contrasena -->
-        <button type="button" class="btn btn-secondary m-2">Contraseña</button>
+        <button type="button" class="btn btn-secondary m-2 font">
+          Contraseña
+        </button>
       </ul>
     </div>
   </div>

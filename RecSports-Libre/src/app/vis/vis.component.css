@@ -1,15 +1,26 @@
-.mov{
-Width:232px;
-font-size: 300%;
-margin-top:22px;
-margin-left:55px;
+/* Descripcion de vis.component.css: programa que define el estilo del componente "vis".
+Su proposito es proporcionar una mejor visualizacion a los elementos del componente "vis".
+Porpiedad del equipo WellSoft.
+Ultima edicion por: Arturo Garza Campuzano
+Fecha de creacion: dd/mm/aaaa < 05/05/2023
+Fecha de modificacion: 19/05/2023 */
+
+/* Estilos para la clase .mov */
+.mov {
+  Width:232px;
+  font-size: 300%;
+  margin-top:22px;
+  margin-left:55px;
 }
 
-.mod{
-    margin: auto;
-    width: 90%;
-    height: 50%;
+/* Estilos para la clase .mod */
+.mod {
+  margin: auto;
+  width: 90%;
+  height: 50%;
 }
+
+/* Estilos para los elementos table, tr y td */
 table, tr, td {
-    border:1px solid black;
-  }
+  border:1px solid black;
+}

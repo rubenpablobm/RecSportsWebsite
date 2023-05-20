@@ -1,21 +1,31 @@
+/* Descripcion de comp.component.ts: programa que define la logica del componente "comp". 
+Su proposito es llamar al servicio API por medio de funciones. 
+Porpiedad del equipo WellSoft. 
+Ultima edicion por: Arturo Garza Campuzano
+Fecha de creacion: dd/mm/aaaa < 05/05/2023
+Fecha de modificacion: 19/05/2023 */
+
+// Declaracion de importaciones
 import { Component, Input } from '@angular/core';
 import { Area } from '../models/area';
-
 import { CrudService } from 'src/app/service/crud.service';
 
+// Decorador del componente
 @Component({
   selector: 'app-comp',
   templateUrl: './comp.component.html',
   styleUrls: ['./comp.component.css']
 })
+
 export class CompComponent {
+
+  // Propiedades de entrada
   @Input() linkFoto? : string;
   @Input() descripcion! : string;
   @Input() idEdificio!: any;
   @Input() tipoArea!: string;
-
   @Input() listaAreas : any = [];
-
+  // Informacion de los titulos
   titulos : any = [
     {
       tipo : 'Aforo',
@@ -34,11 +44,13 @@ export class CompComponent {
     }
   ]
 
+  constructor(public crudService:CrudService){ }
+
+  // Metodo para ejecutar el metodo getArea()
   ngOnInit() {
     this.getArea();
   }
 
-  constructor(public crudService:CrudService){ }
   getArea(){
     /*
     console.log("voy a llamar a la API :)");

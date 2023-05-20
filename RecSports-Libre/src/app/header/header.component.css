@@ -1,3 +1,11 @@
+/* Descripcion de header.component.css: programa que define el estilo del componente "header".
+Su proposito es proporcionar una mejor visualizacion a los elementos del componente "header".
+Porpiedad del equipo WellSoft.
+Ultima edicion por: Arturo Garza Campuzano
+Fecha de creacion: dd/mm/aaaa < 05/05/2023
+Fecha de modificacion: 18/05/2023 */
+
+/* Estilos para la clase .header-banner */
 .header-banner {
   display: flex;
   align-items: center;
@@ -8,10 +16,12 @@
   height: 30vh;
 }
 
+/* Estilos para la clase .card */
 .card {
   overflow: hidden;
 }
 
+/* Estilos para la etiqueta <img> */
 img {
   opacity: 0.5;
   border-radius: 0%;
@@ -19,12 +29,14 @@ img {
   object-fit: cover;
 }
 
+/* Estilos para la clase .card-img-overlay */
 .card-img-overlay {
   height: 100%;
   display: flex;
   align-items: center;
 }
 
+/* Estilos para la etiqueta <h1> */
 h1 {
   color: #fff;
   font-weight: 300;
@@ -32,11 +44,12 @@ h1 {
   margin: 1rem 5rem;
 }
 
-/* Breakpoints */
+/* Breakpoints. Media queries*/
 @media (min-width: 1200px) { }
 
 @media (max-width: 992px) { }
 
+/* Estilos para pantallas con un ancho maximo de 768px */
 @media (max-width: 768px) { 
   h1 {
     font-size: 1.7rem;
@@ -44,6 +57,7 @@ h1 {
   }
 }
 
+/* Estilos para pantallas con un ancho maximo de 480px */
 @media (max-width: 480px) { 
   .header-banner {
     height: 20vh;
