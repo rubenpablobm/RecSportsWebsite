@@ -4,14 +4,18 @@ import { HttpClient } from '@angular/common/http';
 import { Router, NavigationEnd } from '@angular/router';
 import { CrudService } from '../service/crud.service';
 
+import { authGuard } from '../service/auth.guard';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css', '../app.component.css']
 })
 export class HomeComponent {
-  
-  constructor(private route: ActivatedRoute, private http: HttpClient, public crudService:CrudService, private router: Router ) {}
+  auth!: boolean;
+  constructor(private route: ActivatedRoute, private http: HttpClient, public crudService:CrudService, private router: Router) {
+    this.auth=authGuard();
+  }
 
   eID : any = 0;
   areas : any;

@@ -5,6 +5,24 @@ import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
 import { AccesoComponent } from './components/acceso/acceso.component';
 
+//import { CrudService } from './service/crud.service';
+// inject, router
+import { authGuard } from './service/auth.guard';
+
+/*
+const authGuard = () => {
+  const authService = inject(CrudService)
+  const router = inject(Router)
+
+  if (authService.EstaLogeado()) {
+      console.log("Checó tu LogIn exitoso para entrar");
+      return true
+  }
+
+  return router.navigate(['/login'])
+}
+*/
+
 const routes: Routes = [
   {
     path: '',  // home
@@ -26,6 +44,7 @@ const routes: Routes = [
   {
     path: 'area-info/:idArea/acceso',
     component: AccesoComponent,
+    canActivate: [authGuard]
   }
 ];
 
@@ -36,4 +55,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-

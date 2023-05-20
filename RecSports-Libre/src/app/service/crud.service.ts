@@ -14,6 +14,8 @@ export class CrudService {
   API:string="http://localhost:5040/";
   
   mensajeAPI:string="";
+
+  logeado:Boolean=false;
   //API: string="angular-test.eastus.cloudapp.azure.com/libros/";
   constructor(private clientehttp:HttpClient) { 
     
@@ -50,7 +52,15 @@ export class CrudService {
 
   /* ADMIN */
   AdminLogin(datosAdmin:Admin):Observable<any>{
+    this.logeado=true;
     return this.clientehttp.post(this.API+"admin/iniciosesion", datosAdmin);
+  }
+  EstaLogeado(){
+    return this.logeado
+  }
+  AdminLogout(){
+    this.logeado = false;
+    return this.logeado
   }
 
 }
