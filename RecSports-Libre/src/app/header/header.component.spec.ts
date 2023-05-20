@@ -1,5 +1,10 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+/* Descripcion de header.component.spec.ts: programa default del componente "header".
+Porpiedad del equipo WellSoft. 
+Ultima edicion por: Arturo Garza Campuzano
+Fecha de creacion: dd/mm/aaaa < 05/05/2023
+Fecha de modificacion: 18/05/2023 */
 
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {

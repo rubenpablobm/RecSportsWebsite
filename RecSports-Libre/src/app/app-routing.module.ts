@@ -1,3 +1,11 @@
+/* Descripcion de app-routing.module.ts: modulo que define la logica del enrutamiento. 
+Su proposito es definir las rutas manejadas en la aplicacion. 
+Porpiedad del equipo WellSoft. 
+Ultima edicion por: Arturo Garza Campuzano
+Fecha de creacion: dd/mm/aaaa < 05/05/2023
+Fecha de modificacion: 19/05/2023 */
+
+// Declaracion de importaciones
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AreaInfoComponent } from './area-info/area-info.component';
@@ -9,50 +17,51 @@ import { AgregarEdificioComponent } from './components/agregar-edificio/agregar-
 import { VisComponent } from './vis/vis.component';
 import { CompComponent } from './comp/comp.component';
 
+//Definicion de cada ruta
 const routes: Routes = [
   {
-    path: '',  // home
+    path: '',  // Ruta principal (home)
     component: HomeComponent
   },
   {
-    path: ':idEdificio',
+    path: ':idEdificio', // Ruta con parametro dinamico
     component: HomeComponent
   },
-  {path: ':comp',
+  {path: ':comp', // Ruta con parametro dinamico
   component: CompComponent
   },
-  
   {
-    path: 'area-info/:idArea',
+    path: 'area-info/:idArea', // Ruta con parametro dinamico
     component: AreaInfoComponent
   },
   {
-    path: 'admin/login',
+    path: 'admin/login', // Ruta para el componente de administracion de inicio de sesion
     component: AdminComponent
   },
   {
-    path: 'vis/zz',
+    path: 'vis/zz', // Ruta para el componente de visualizacion
     component: VisComponent
   },
   {
-    path: 'area-info/:idArea/acceso',
+    path: 'area-info/:idArea/acceso', // Ruta con parametro dinamico
     component: AccesoComponent,
   },
   {
-    path: 'edificio/:idEdificio',
+    path: 'edificio/:idEdificio', // Ruta con parametro dinamico
     component: EditarEdificioComponent,
   },
   {
-    path: 'edificio-CRUD/agregar',
+    path: 'edificio-CRUD/agregar', // Ruta para agregar un edificio
     component: AgregarEdificioComponent,
   }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes), // Configuracion de enrutamiento
   ],
-  exports: [RouterModule]
+  exports: [RouterModule] // Exportacion del modulo de enrutamiento
 })
+
 export class AppRoutingModule { }
 

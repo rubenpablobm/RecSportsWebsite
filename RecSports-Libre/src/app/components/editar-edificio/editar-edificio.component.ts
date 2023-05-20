@@ -3,7 +3,7 @@ Su proposito es llamar al servicio API por medio de funciones.
 Porpiedad del equipo WellSoft. 
 Ultima edicion por: Arturo Garza Campuzano
 Fecha de creacion: 15/05/2023
-Fecha de modificación: 17/05/2023 */
+Fecha de modificacion: 17/05/2023 */
 
 // Declaracion de importaciones
 import { Component } from '@angular/core';
@@ -19,6 +19,7 @@ import { Route, Router } from '@angular/router';
 	templateUrl: './editar-edificio.component.html',
 	styleUrls: ['./editar-edificio.component.css']
 })
+
 export class EditarEdificioComponent {
 	// Variables
 	eID : any = null;

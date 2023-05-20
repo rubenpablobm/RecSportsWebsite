@@ -1,9 +1,20 @@
+<!-- Descripcion de home.component.html: programa que define la estructura del componente "home".
+Su proposito es desplegar la pagina principal con las areas disponibles por edificio.
+Porpiedad del equipo WellSoft.
+Ultima edicion por: Arturo Garza Campuzano
+Fecha de creacion: dd/mm/aaaa < 05/05/2023
+Fecha de modificacion: 19/05/2023 -->
+
+<!-- Componente Navbar -->
 <app-navbar (linkFoto)="recibirFoto($event)"></app-navbar>
+<!-- Componente Header -->
 <app-header
   [linkFoto]="foto"
   [descripcion]="'Conoce las areas y lleva el deporte al siguiente nivel'"
 ></app-header>
+<!-- Componente Navbar del administrador -->
 <app-admin-navbar></app-admin-navbar>
+<!-- Titulo y ayuda de Areas de Aforo -->
 <div class="flex-container titulo-seccion my-2">
   <h3 class="mx-3 mt-2 mb-0 fs-2 fw-bold">Áreas de Aforo</h3>
   <div
@@ -13,12 +24,14 @@
     ?
   </div>
 </div>
+<!-- Componente Area Card para Areas de Aforo -->
 <app-area-card
   [tipoArea]="'Aforo'"
   [idEdificio]="eID"
   [listaAreas]="areas"
   class="flex-container"
 ></app-area-card>
+<!-- Titulo y ayuda de Clases Instructivas -->
 <div class="flex-container titulo-seccion my-2">
   <h3 class="mx-3 mt-2 mb-0 fs-2 fw-bold">Clases Instructivas</h3>
   <div
@@ -28,12 +41,14 @@
     ?
   </div>
 </div>
+<!-- Componente Area Card para Clases Instructivas -->
 <app-area-card
   [tipoArea]="'Instructiva'"
   [idEdificio]="eID"
   [listaAreas]="areas"
   class="flex-container"
 ></app-area-card>
+<!-- Titulo y ayuda de Areas de Disponibilidad -->
 <div class="flex-container titulo-seccion my-2">
   <h3 class="mx-3 mt-2 mb-0 fs-2 fw-bold">Áreas de Disponibilidad</h3>
   <div
@@ -43,6 +58,7 @@
     ?
   </div>
 </div>
+<!-- Componente Area Card para Areas de Disponibilidad -->
 <app-area-card
   [tipoArea]="'Reservacion'"
   [idEdificio]="eID"

@@ -1,9 +1,10 @@
+
+//Declaracion de importaciones
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
-
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -23,6 +24,7 @@ import { VisComponent } from './vis/vis.component';
 import { CompComponent } from './comp/comp.component';
 
 @NgModule({
+  //Declaracion de componentes
   declarations: [
     AppComponent,
     NavbarComponent,
@@ -38,6 +40,7 @@ import { CompComponent } from './comp/comp.component';
     VisComponent,
     CompComponent
   ],
+  //Modulos importados
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -49,7 +52,10 @@ import { CompComponent } from './comp/comp.component';
     HttpClientModule,
     // MatDialogModule
   ],
+  // Proveedores de servicios
   providers: [],
+  // Componente raíz para iniciar la aplicación
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
