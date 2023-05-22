@@ -1,26 +1,46 @@
 <app-navbar (linkFoto)="recibirFoto($event)" ></app-navbar>
-<h1 class="mov">Edificios</h1>
+<div class="rg">
+<button class="btn btn-secondary my-2 " routerLink="/">
+  Regresar
+</button>
+</div>
+<h1 class="mov" >Edificios</h1>
 
-<div class="dropstart" style="display: flex; align-items: center;">
-   <ul class="navbar-nav fs-6">
-     <li class="nav-item dropdown">
-       <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-         Edificios
-       </a>
-       <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDarkDropdownMenuLink">
-         <li *ngFor="let edificio of listaEdificios">
-           <a class="dropdown-item" [routerLink]="['/comp', edificio.IdEdificio]" (click)="enviarFoto(edificio.Foto)" >{{edificio.Nombre}}</a>
-         </li>
-         <li><hr class="dropdown-divider m-0"></li>
-         <li><a class="dropdown-item" [routerLink]="['/0']" (click)="enviarFoto('https://www.arquired.com.mx/wp-content/uploads/2017/05/campustecmtywh.jpg')">Todos</a></li>
-       </ul>
-     </li>
-   </ul>
- </div>
-
-
-<table class="table table-success table-striped-columns mod">
-   <tr><td>Foto</td><td>Nombre de Edificio</td><td></td></tr>
-   <tbody><tr><td style="width: 50%;"><app-comp [linkFoto]="foto"></app-comp></td><td>t</td><td></td></tr></tbody>  
+<div class=" gap-2 d-md-flex justify-content-md-end" style="padding-bottom: 25px;">
+  <button class="btn btn-primary btn-style" type="button">Añadir</button>
+</div>
+  <!---
+<table class="table table-striped table-hover">
+   <tr><td></td><td></td><td></td></tr>
+   <tbody>
+    <tr><td style="width: 50%;">
+      <app-comp [linkFoto]="foto"></app-comp></td><td><app-edt [nomedf]="nombre"></app-edt></td><td></td></tr>
+  </tbody>  
  </table>
+-->
+ <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Foto</th>
+      <th scope="col">Nombre de Edificio</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row" >1</th>
+      <td style="width: 50%;"><app-comp [linkFoto]="foto"></app-comp></td>
+      <td><app-edt [nomedf]="nombre"></app-edt></td>
+      <td> 
+        <button>
+        <img style="width: 73px;height: 73px;"src="https://www.arquired.com.mx/wp-content/uploads/2017/05/campustecmtywh.jpg">
+      </button>
+      <button style="margin-left:5px;">
+        <img style="width: 73px;height: 73px"src="https://www.arquired.com.mx/wp-content/uploads/2017/05/campustecmtywh.jpg">
+      </button>
+    </td>
+    </tr>
+  </tbody>
+</table>
 

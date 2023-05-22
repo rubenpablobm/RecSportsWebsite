@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { VisComponent } from './vis/vis.component';
 import { CompComponent } from './comp/comp.component';
+import { EdtComponent } from './edt/edt.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CompComponent } from './comp/comp.component';
     AdminNavbarComponent,
     AccesoComponent,
     VisComponent,
-    CompComponent
+    CompComponent,
+    EdtComponent
   ],
   imports: [
     BrowserModule,

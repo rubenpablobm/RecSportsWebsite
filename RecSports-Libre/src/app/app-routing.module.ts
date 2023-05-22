@@ -6,6 +6,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AccesoComponent } from './components/acceso/acceso.component';
 import { VisComponent } from './vis/vis.component';
 import { CompComponent } from './comp/comp.component';
+import { EdtComponent  } from './edt/edt.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,9 @@ const routes: Routes = [
   {path: ':comp',
   component: CompComponent
   },
-  
+  {path: ':edt',
+  component: EdtComponent 
+  },
   {
     path: 'area-info/:idArea',
     component: AreaInfoComponent
@@ -29,7 +32,7 @@ const routes: Routes = [
     component: AdminComponent
   },
   {
-    path: 'vis/zz',
+    path: 'vis/tt',
     component: VisComponent
   },
   {
