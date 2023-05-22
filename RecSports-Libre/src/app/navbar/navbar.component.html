@@ -1,28 +1,71 @@
+<!-- Descripcion de navbar.component.html: programa que define la estructura del componente "navbar".
+Su proposito es desplegar la barra de navegacion.
+Porpiedad del equipo WellSoft.
+Ultima edicion por: Arturo Garza Campuzano
+Fecha de creacion: dd/mm/aaaa < 05/05/2023
+Fecha de modificacion: 19/05/2023 -->
+
 <mat-toolbar class="navbar navbar-expand">
+  <!-- Logo -->
   <a routerLink="/0">
-    <img src="../../assets/images/logo-borrego.svg" alt="Logo Borregos">
+    <img src="../../assets/images/logo-borrego.svg" alt="Logo Borregos" />
   </a>
   <div>
-    <a routerLink="/0" class="no-style-link">
-      RECSPORTS OPEN
-    </a>
+    <!-- Titulo -->
+    <a routerLink="/0" class="no-style-link"> ATHLETICS OPEN </a>
   </div>
-  <div class="dropstart" style="display: flex; align-items: center;">
+  <div class="dropstart" style="display: flex; align-items: center">
     <ul class="navbar-nav fs-6">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <!-- Dropdown de Edificios -->
+        <a
+          class="nav-link dropdown-toggle text-white"
+          href="#"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
           Edificios
         </a>
-        <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDarkDropdownMenuLink">
+        <ul
+          class="dropdown-menu dropdown-menu-left"
+          aria-labelledby="navbarDarkDropdownMenuLink"
+        >
+          <!-- Lista de Edificios -->
           <li *ngFor="let edificio of listaEdificios">
-            <a class="dropdown-item" [routerLink]="['/', edificio.IdEdificio]" (click)="enviarFoto(edificio.Foto)" >{{edificio.Nombre}}</a>
+            <a
+              class="dropdown-item"
+              [routerLink]="['/', edificio.IdEdificio]"
+              (click)="enviarFoto(edificio.Foto)"
+              >{{ edificio.Nombre }}</a
+            >
           </li>
-          <li><hr class="dropdown-divider m-0"></li>
-          <li><a class="dropdown-item" [routerLink]="['/0']" (click)="enviarFoto('https://www.arquired.com.mx/wp-content/uploads/2017/05/campustecmtywh.jpg')">Todos</a></li>
+          <li><hr class="dropdown-divider m-0" /></li>
+          <li>
+            <a
+              class="dropdown-item"
+              [routerLink]="['/0']"
+              (click)="
+                enviarFoto(
+                  'https://www.arquired.com.mx/wp-content/uploads/2017/05/campustecmtywh.jpg'
+                )
+              "
+              >Todos</a
+            >
+          </li>
         </ul>
       </li>
     </ul>
-    |
-    <button routerLink="/admin/login" target="sideBar" rel="bookmark" mat-button>Admin</button>
+
+    <!-- Boton Admin -->
+    <button
+      routerLink="/admin/login"
+      target="sideBar"
+      rel="bookmark"
+      routerLinkActive="active"
+      mat-button
+    >
+      Admin
+    </button>
   </div>
 </mat-toolbar>

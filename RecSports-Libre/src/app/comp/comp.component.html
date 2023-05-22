@@ -1,0 +1,55 @@
+<!-- Descripcion de comp.component.html: programa que define la estructura del componente "comp".
+Su proposito es desplegar en las tarjetas de area el aviso y la barra de aforo si asi se dispone.
+Porpiedad del equipo WellSoft.
+Ultima edicion por: Arturo Garza Campuzano
+Fecha de creacion: dd/mm/aaaa < 05/05/2023
+Fecha de modificacion: 19/05/2023 -->
+
+<!-- Seccion de tarjetas de area -->
+<section>
+  <div class="flex-container">
+    <!-- Se utiliza la directiva *ngFor para iterar sobre los elementos de listaAreas -->
+    <ng-container *ngFor="let area of listaAreas">
+      <!-- Cada tarjeta de area se muestra si el tipo de area coincide con tipoArea -->
+      <div
+        class="area-card card bg-dark text-white shadow"
+        *ngIf="area.Tipo === tipoArea"
+      >
+        <!-- Se muestra una imagen de area con su ruta y un texto alternativo descriptivo -->
+        <img
+          class="card-img"
+          src="{{ area.Foto }}"
+          alt="Area {{ area.Tipo }} de {{ area.Nombre }}"
+        />
+        <!-- Se establece un enlace a la pagina de informacion del area con el ID de area correspondiente -->
+        <a class="card-link" [routerLink]="['/area-info', area.IdArea]">
+          <!-- La capa superpuesta de la tarjeta contiene el aviso (si existe) y el nombre del area -->
+          <div class="area-contenido card-img-overlay">
+            <div *ngIf="area.Avisos != undefined" class="area-aviso">
+              <span class="badge bg-warning">AVISO</span>
+            </div>
+            <div class="area-nombre card-title">
+              {{ area.Nombre }}
+            </div>
+            <div *ngIf="area.Aforo != undefined">
+              <label for="barraAforo"
+                >{{ area.Aforo }} / {{ area.Capacidad }} personas
+              </label>
+              <progress
+                id="barraAforo"
+                max="{{ area.Capacidad }}"
+                value="{{ area.Aforo }}"
+              ></progress>
+            </div>
+          </div>
+        </a>
+      </div>
+    </ng-container>
+  </div>
+</section>
+
+<!-- Seccion de imagen -->
+<div class="text-white">
+  <!-- La ruta de la imagen se toma de la propiedad "linkFoto" -->
+  <img class="card-img" style="width: 100%" src="{{ this.linkFoto }}" />
+</div>

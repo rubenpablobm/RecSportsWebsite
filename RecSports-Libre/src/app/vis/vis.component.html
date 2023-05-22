@@ -1,0 +1,66 @@
+<!-- Descripcion de vis.component.html: programa que define la estructura del componente "vis".
+Su proposito es mostrar la tabla de los edificios.
+Porpiedad del equipo WellSoft.
+Ultima edicion por: Arturo Garza Campuzano
+Fecha de creacion: dd/mm/aaaa < 05/05/2023
+Fecha de modificacion: 19/05/2023 -->
+
+<app-navbar (linkFoto)="recibirFoto($event)"></app-navbar>
+<h1 class="mov">Edificios</h1>
+
+<div class="dropstart" style="display: flex; align-items: center">
+  <ul class="navbar-nav fs-6">
+    <li class="nav-item dropdown">
+      <a
+        class="nav-link dropdown-toggle text-white"
+        href="#"
+        role="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Edificios
+      </a>
+      <ul
+        class="dropdown-menu dropdown-menu-left"
+        aria-labelledby="navbarDarkDropdownMenuLink"
+      >
+        <li *ngFor="let edificio of listaEdificios">
+          <a
+            class="dropdown-item"
+            [routerLink]="['/comp', edificio.IdEdificio]"
+            (click)="enviarFoto(edificio.Foto)"
+            >{{ edificio.Nombre }}</a
+          >
+        </li>
+        <li><hr class="dropdown-divider m-0" /></li>
+        <li>
+          <a
+            class="dropdown-item"
+            [routerLink]="['/0']"
+            (click)="
+              enviarFoto(
+                'https://www.arquired.com.mx/wp-content/uploads/2017/05/campustecmtywh.jpg'
+              )
+            "
+            >Todos</a
+          >
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<table class="table table-success table-striped-columns mod">
+  <tr>
+    <td>Foto</td>
+    <td>Nombre de Edificio</td>
+    <td></td>
+  </tr>
+  <tbody>
+    <tr>
+      <td style="width: 50%"><app-comp [linkFoto]="foto"></app-comp></td>
+      <td>t</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
