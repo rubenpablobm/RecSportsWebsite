@@ -183,7 +183,7 @@ app.delete('/aforo/:id', async (req, res) => {
       //res.send(result.recordset[0]);
       res.send('MasAforo OK');
     } catch (error) {
-      console.error(error.RequestError);
+      console.error(error);
       res.status(500).json(error.message);
     }
   });
@@ -199,9 +199,26 @@ app.delete('/aforo/:id', async (req, res) => {
       //res.send(result.recordset[0]);
       res.send('MenosAforo OK');
     } catch (error) {
-      console.error(error.RequestError);
+      console.error(error);
       res.status(500).json(error.message);
     }
   });
 
-  module.exports = app;
+//Aviso
+app.put('/aviso/:id', async (req, res) => {
+  try{
+    const pool = await poolPromise;
+    const id = req.params.id;
+    const {Avisos} = req.body;
+    const query = 'UPDATE Area SET Avisos = @Avisos WHERE IdArea = @id;';
+    await pool.request()
+      .input('Avisos', sql.VarChar, Avisos)
+      .query(query);
+    res.sendStatus(200);
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
+});
+
+module.exports = app;

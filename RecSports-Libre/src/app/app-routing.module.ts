@@ -17,6 +17,24 @@ import { AgregarEdificioComponent } from './components/agregar-edificio/agregar-
 import { VisComponent } from './vis/vis.component';
 import { CompComponent } from './comp/comp.component';
 
+//import { CrudService } from './service/crud.service';
+// inject, router
+import { authGuard } from './service/auth.guard';
+
+/*
+const authGuard = () => {
+  const authService = inject(CrudService)
+  const router = inject(Router)
+
+  if (authService.EstaLogeado()) {
+      console.log("Checó tu LogIn exitoso para entrar");
+      return true
+  }
+
+  return router.navigate(['/login'])
+}
+*/
+
 //Definicion de cada ruta
 const routes: Routes = [
   {
@@ -36,7 +54,8 @@ const routes: Routes = [
   },
   {
     path: 'admin/login', // Ruta para el componente de administracion de inicio de sesion
-    component: AdminComponent
+    component: AdminComponent,
+    pathMatch:'full'
   },
   {
     path: 'vis/zz', // Ruta para el componente de visualizacion
@@ -45,6 +64,7 @@ const routes: Routes = [
   {
     path: 'area-info/:idArea/acceso', // Ruta con parametro dinamico
     component: AccesoComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'edificio/:idEdificio', // Ruta con parametro dinamico
@@ -64,4 +84,3 @@ const routes: Routes = [
 })
 
 export class AppRoutingModule { }
-

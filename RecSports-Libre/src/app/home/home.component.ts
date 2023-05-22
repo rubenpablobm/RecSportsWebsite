@@ -12,6 +12,8 @@ import { HttpClient } from '@angular/common/http';
 import { Router, NavigationEnd } from '@angular/router';
 import { CrudService } from '../service/crud.service';
 
+import { authGuard } from '../service/auth.guard';
+
 // Decorador del componente
 @Component({
   selector: 'app-home',
@@ -19,13 +21,15 @@ import { CrudService } from '../service/crud.service';
   styleUrls: ['./home.component.css', '../app.component.css']
 })
 export class HomeComponent {
-
   // Variables
+  auth!: boolean;
   eID : any = 0;
   areas : any;
   foto? :string = "https://www.arquired.com.mx/wp-content/uploads/2017/05/campustecmtywh.jpg";
 
-  constructor(private route: ActivatedRoute, private http: HttpClient, public crudService:CrudService, private router: Router ) {}
+  constructor(private route: ActivatedRoute, private http: HttpClient, public crudService:CrudService, private router: Router ) {
+    this.auth=authGuard();
+  }
 
   // Metodo para obtener las areas del edificio
   getAreas() {

@@ -11,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Area } from '../models/area';
 import { Edificio } from '../models/edificio';
+import { Admin } from '../models/admin';
 
 //Injector del servicio
 @Injectable({
@@ -22,6 +23,8 @@ export class CrudService {
   API:string="http://localhost:5040/";
   
   mensajeAPI:string="";
+
+  logeado:Boolean=false;
   //API: string="angular-test.eastus.cloudapp.azure.com/libros/";
   constructor(private clientehttp:HttpClient) { 
     
@@ -86,6 +89,19 @@ export class CrudService {
   // Decrementar el aforo de un area
   MenosAforo(id: number):Observable<any>{
     return this.clientehttp.get(this.API+"area/menosaforo/"+id);
+  }
+
+  /* ADMIN */
+  AdminLogin(datosAdmin:Admin):Observable<any>{
+    this.logeado=true;
+    return this.clientehttp.post(this.API+"admin/iniciosesion", datosAdmin);
+  }
+  EstaLogeado(){
+    return this.logeado
+  }
+  AdminLogout(){
+    this.logeado = false;
+    return this.logeado
   }
 
 }
