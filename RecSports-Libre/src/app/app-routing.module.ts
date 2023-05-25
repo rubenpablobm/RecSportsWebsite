@@ -20,6 +20,8 @@ import { CompComponent } from './comp/comp.component';
 //import { CrudService } from './service/crud.service';
 // inject, router
 import { authGuard } from './service/auth.guard';
+import { TablaEdificioComponent } from './components/tabla-edificio/tabla-edificio.component';
+
 
 /*
 const authGuard = () => {
@@ -57,10 +59,7 @@ const routes: Routes = [
     component: AdminComponent,
     pathMatch:'full'
   },
-  {
-    path: 'vis/zz', // Ruta para el componente de visualizacion
-    component: VisComponent
-  },
+ 
   {
     path: 'area-info/:idArea/acceso', // Ruta con parametro dinamico
     component: AccesoComponent,
@@ -69,6 +68,9 @@ const routes: Routes = [
   {
     path: 'edificio/:idEdificio', // Ruta con parametro dinamico
     component: EditarEdificioComponent,
+  },
+ { path: 'components/tabla', // Ruta con parametro dinamico
+  component: TablaEdificioComponent,
   },
   {
     path: 'edificio-CRUD/agregar', // Ruta para agregar un edificio

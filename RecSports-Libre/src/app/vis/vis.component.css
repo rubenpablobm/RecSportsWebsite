@@ -17,10 +17,22 @@ Fecha de modificacion: 19/05/2023 */
 .mod {
   margin: auto;
   width: 90%;
-  height: 50%;
+  height: 40%;
 }
 
 /* Estilos para los elementos table, tr y td */
 table, tr, td {
   border:1px solid black;
+}
+
+.table_image{
+  width:100%;
+  min-width: 200px;
+  min-height: 150px;
+  height: 200px;
+  object-fit: cover;
+}
+.box{
+  display: flex;
+  flex-direction: column;
 }

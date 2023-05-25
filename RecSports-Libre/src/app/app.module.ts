@@ -22,6 +22,8 @@ import { AgregarEdificioComponent } from './components/agregar-edificio/agregar-
 // import { MatDialogModule } from '@angular/material/dialog'
 import { VisComponent } from './vis/vis.component';
 import { CompComponent } from './comp/comp.component';
+import { NombreEdificioComponent } from './nombre-edificio/nombre-edificio.component';
+import { TablaEdificioComponent } from './components/tabla-edificio/tabla-edificio.component';
 
 @NgModule({
   //Declaracion de componentes
@@ -38,7 +40,10 @@ import { CompComponent } from './comp/comp.component';
     EditarEdificioComponent,
     AgregarEdificioComponent,
     VisComponent,
-    CompComponent
+    CompComponent,
+    NombreEdificioComponent,
+    TablaEdificioComponent,
+
   ],
   //Modulos importados
   imports: [
