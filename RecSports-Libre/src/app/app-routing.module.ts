@@ -14,7 +14,6 @@ import { AdminComponent } from './admin/admin.component';
 import { AccesoComponent } from './components/acceso/acceso.component';
 import { EditarEdificioComponent } from './components/editar-edificio/editar-edificio.component';
 import { AgregarEdificioComponent } from './components/agregar-edificio/agregar-edificio.component';
-import { VisComponent } from './vis/vis.component';
 import { CompComponent } from './comp/comp.component';
 
 //import { CrudService } from './service/crud.service';
