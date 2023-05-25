@@ -36,7 +36,7 @@ export class VisComponent {
   // Metodo que obtiene los edificios desde el servicio
   getEdificios() {
     console.log('Generando dropdown de navbar...')
-    return this.crudService.EdificioGet(this.eID).subscribe((data:{}) => {
+    return this.crudService.EdificioGetMultiple().subscribe((data:{}) => {
       console.log(data);
       this.listaEdificios = data;
     })
