@@ -17,6 +17,7 @@ describe('TablaEdificioComponent', () => {
     fixture.detectChanges();
   });
 
+  
   it('should create', () => {
     expect(component).toBeTruthy();
   });
