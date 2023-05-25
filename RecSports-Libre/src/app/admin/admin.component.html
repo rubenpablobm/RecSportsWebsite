@@ -26,7 +26,7 @@ Fecha de modificacion: 18/05/2023 -->
         <h1 class="ini">Iniciar Sesion</h1>
       </div>
       <!-- Formulario del inicio de sesion de administrador" -->
-      <form class="m-3">
+      <form (ngSubmit)="enviarDatos()" [formGroup]="formLogin" class="m-3">
         <!-- Campo de entrada de correo electronico -->
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label"
@@ -37,6 +37,7 @@ Fecha de modificacion: 18/05/2023 -->
             class="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
+            formControlName="Email"
           />
         </div>
         <!-- Campo de entrada de contrasena -->
@@ -46,6 +47,7 @@ Fecha de modificacion: 18/05/2023 -->
             type="password"
             class="form-control"
             id="exampleInputPassword1"
+            formControlName="Contrasena"
           />
         </div>
         <!-- Casilla de verificacion -->
@@ -58,6 +60,10 @@ Fecha de modificacion: 18/05/2023 -->
         <!-- Boton de envio del formulario -->
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
+      <!-- Texto de alerta -->
+      <div *ngIf="mensaje != '[object Object]'">
+        {{ mensaje }}
+      </div>
     </div>
   </div>
 </div>

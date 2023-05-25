@@ -13,7 +13,7 @@ Fecha de modificacion: 19/05/2023 -->
   [descripcion]="'Conoce las areas y lleva el deporte al siguiente nivel'"
 ></app-header>
 <!-- Componente Navbar del administrador -->
-<app-admin-navbar></app-admin-navbar>
+<app-admin-navbar *ngIf="auth"></app-admin-navbar>
 <!-- Titulo y ayuda de Areas de Aforo -->
 <div class="flex-container titulo-seccion my-2">
   <h3 class="mx-3 mt-2 mb-0 fs-2 fw-bold">Áreas de Aforo</h3>

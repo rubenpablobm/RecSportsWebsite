@@ -20,8 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AgregarEdificioComponent } from './components/agregar-edificio/agregar-edificio.component';
 // import { MatDialogModule } from '@angular/material/dialog'
-import { VisComponent } from './vis/vis.component';
 import { CompComponent } from './comp/comp.component';
+import { TablaEdificioComponent } from './components/tabla-edificio/tabla-edificio.component';
 
 @NgModule({
   //Declaracion de componentes
@@ -37,8 +37,9 @@ import { CompComponent } from './comp/comp.component';
     AccesoComponent,
     EditarEdificioComponent,
     AgregarEdificioComponent,
-    VisComponent,
-    CompComponent
+    CompComponent,
+    TablaEdificioComponent,
+
   ],
   //Modulos importados
   imports: [

@@ -22,6 +22,21 @@ Fecha de modificacion: 17/05/2023 -->
         class="form-control"
         placeholder="Ej. Wellness"
       />
+      <!-- Mensaje de Error para el campo Nombre -->
+      <div
+        *ngIf="
+          nombreControl?.invalid &&
+          (nombreControl?.dirty || nombreControl?.touched)
+        "
+        class="text-danger"
+      >
+        <div *ngIf="nombreControl?.errors?.['required']">
+          Obligatory field. Please provide a Name.
+        </div>
+        <div *ngIf="nombreControl?.errors?.['duplicateNombre']">
+          Name already exists. Try again.
+        </div>
+      </div>
     </div>
     <!-- Campo de Foto -->
     <div class="form-group my-4 w-75">
@@ -32,6 +47,20 @@ Fecha de modificacion: 17/05/2023 -->
         class="form-control"
         placeholder="Ej. https://imagenWellnes.png"
       />
+      <!-- Error message for Foto -->
+      <div
+        *ngIf="
+          fotoControl?.invalid && (fotoControl?.dirty || fotoControl?.touched)
+        "
+        class="text-danger"
+      >
+        <div *ngIf="fotoControl?.errors?.['required']">
+          Obligatory field. Please provide a Foto URL.
+        </div>
+        <div *ngIf="fotoControl?.errors?.['invalidImage']">
+          Given URL is not a foto. Try again.
+        </div>
+      </div>
     </div>
     <!-- Campo de Link de Google Maps -->
     <div class="form-group my-4 w-75">
@@ -42,6 +71,21 @@ Fecha de modificacion: 17/05/2023 -->
         class="form-control"
         placeholder="Ej. https://goo.gl/maps/jfejfb"
       />
+      <!-- Error message for Link Maps -->
+      <div
+        *ngIf="
+          linkMapsControl?.invalid &&
+          (linkMapsControl?.dirty || linkMapsControl?.touched)
+        "
+        class="text-danger"
+      >
+        <div *ngIf="linkMapsControl?.errors?.['required']">
+          Obligatory field. Please provide a Link Maps URL.
+        </div>
+        <div *ngIf="linkMapsControl?.errors?.['invalidGoogleMapsLink']">
+          Given URL is not a Google Maps link. Try again.
+        </div>
+      </div>
     </div>
     <!-- Grupo de botones -->
     <div class="btn-group" role="group" aria-label="Button group name">
