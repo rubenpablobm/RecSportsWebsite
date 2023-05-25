@@ -42,5 +42,15 @@ export class TablaEdificioComponent {
     enviarFoto(foto : string) {
       this.linkFoto.emit(foto);
     }
+
+    borrarRegistro(idEdificio: any, nombreEdificio: any){
+      console.log(idEdificio);
+      if(window.confirm("Realmente deseas eliminar el registro titulo="+nombreEdificio)){
+        this.crudService.EdificioDelete(idEdificio).subscribe(respuesta =>{
+          // Para actualizar la lista de libros en el template
+          this.ngOnInit();
+        })
+      }
+    }
    
 }
