@@ -52,6 +52,10 @@ export class CrudService {
     return this.clientehttp.put<Edificio>(this.API+"edificio/"+ id, datosEdificio);
   }
 
+  EdificioDelete(id: number){
+    return this.clientehttp.delete(this.API+"edificio/"+id)
+  };
+
   /* AREA */
 
   // Obtener multiples areas
