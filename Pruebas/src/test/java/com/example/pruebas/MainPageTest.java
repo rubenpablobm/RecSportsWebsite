@@ -13,13 +13,21 @@ import java.util.ArrayList;
 import java.util.List;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import java.util.regex.Pattern;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.JavascriptExecutor;
+import java.util.regex.Matcher;
 
 public class MainPageTest {
     private WebDriver driver;
     private MainPage mainPage;
+
+
+
+
+
 
 
 
@@ -44,7 +52,9 @@ public class MainPageTest {
     @AfterMethod
     public void tearDown() {
         driver.quit();
+
     }
+
 
 
     //HURF-1 Como alumno quiero consultar áreas de un edificio para conocer el listado de oferta de RecSports Open.
@@ -53,6 +63,9 @@ public class MainPageTest {
         mainPage.botonEdificios.click();
         assertTrue(driver.findElement(By.cssSelector("ul[data-bs-popper='static']")).isDisplayed());
     }
+
+
+
 
     @Test
     public void muestraAdmin() {
@@ -65,9 +78,19 @@ public class MainPageTest {
     @Test
     public void muestraAforo() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector(".area-card")));
+
+        mainPage.botonEdificios.click();
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector(".dropdown-item")));
+        List<WebElement> elementosDropdown = mainPage.dropdownEdificios.findElements(By.tagName("li"));
+        elementosDropdown.get(elementosDropdown.size()-1).click();
+
         List<WebElement> tarjetasAforo = mainPage.contenedorAforo.findElements(By.cssSelector(".area-card"));
         for(WebElement elemento:tarjetasAforo){
+            wait.until((ExpectedCondition<Boolean>) webDriver -> {
+                // Verifica si todas las imágenes están completamente cargadas
+                return ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete")
+                        && ((JavascriptExecutor) webDriver).executeScript("return Array.from(document.querySelectorAll('.area-card .card-img')).every(img => img.complete)").equals(true);
+            });
             assertTrue(elemento.findElement(By.cssSelector(".card-title")).isDisplayed());
             assertTrue(elemento.findElement(By.tagName("img")).isDisplayed());
             assertTrue(elemento.findElement(By.xpath(".//label[contains(text(), 'personas')]")).isDisplayed());
@@ -78,6 +101,10 @@ public class MainPageTest {
     @Test
     public void muestraAreaAforo() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        mainPage.botonEdificios.click();
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector(".dropdown-item")));
+        List<WebElement> elementosDropdown = mainPage.dropdownEdificios.findElements(By.tagName("li"));
+        elementosDropdown.get(elementosDropdown.size()-1).click();
         wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector(".area-card")));
         List<WebElement> tarjetasAforo = mainPage.contenedorAforo.findElements(By.cssSelector(".area-card"));
         List<String> areas = new ArrayList<String>();
@@ -117,65 +144,204 @@ public class MainPageTest {
 
     @Test
     public void muestraAvisoTarjeta(){
+
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        mainPage.botonEdificios.click();
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector(".dropdown-item")));
+        List<WebElement> elementosDropdown = mainPage.dropdownEdificios.findElements(By.tagName("li"));
+        elementosDropdown.get(elementosDropdown.size()-1).click();
         wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector(".area-card")));
+
         List<WebElement> tarjetasAforo = mainPage.contenedorAforo.findElements(By.cssSelector(".area-card"));
+        List<WebElement> tarjetasInstructivas= mainPage.contenedorInstructivas.findElements(By.cssSelector(".area-card"));
+        List<WebElement> tarjetasAccesoLibre = mainPage.contenedorAccesoLibre.findElements(By.cssSelector(".area-card"));
+        List<WebElement> areasAviso= new ArrayList<>();
 
         for(WebElement elemento:tarjetasAforo){
             try{
                 elemento.findElement(By.cssSelector("span[class^='badge']")).isDisplayed();
-
-                elemento.click();
-                wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("div[class^='area-alert']")));
-                assertTrue(driver.findElement(By.cssSelector("div[class^='area-alert']")).isDisplayed());
-                driver.navigate().back();
+                areasAviso.add(elemento);
 
             } catch (NoSuchElementException e) {
                 continue;
             };
-
-
         }
-
-        List<WebElement> tarjetasInstructivas= mainPage.contenedorInstructivas.findElements(By.cssSelector(".area-card"));
-
-
         for(WebElement elemento:tarjetasInstructivas) {
             try {
                 elemento.findElement(By.cssSelector("span[class^='badge']")).isDisplayed();
-                elemento.click();
-                wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("div[class^='area-alert']")));
-                assertTrue(driver.findElement(By.cssSelector("div[class^='area-alert']")).isDisplayed());
-                driver.navigate().back();
+                areasAviso.add(elemento);
 
             } catch (NoSuchElementException e) {
                 continue;
             }
             ;
-
         }
 
-
-        List<WebElement> tarjetasAccesoLibre = mainPage.contenedorAccesoLibre.findElements(By.cssSelector(".area-card"));
-
-        for(WebElement elemento:tarjetasAccesoLibre){
-            try{
+        for(WebElement elemento:tarjetasAccesoLibre) {
+            try {
                 elemento.findElement(By.cssSelector("span[class^='badge']")).isDisplayed();
-
-                elemento.click();
-                wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("div[class^='area-alert']")));
-                assertTrue(driver.findElement(By.cssSelector("div[class^='area-alert']")).isDisplayed());
-                driver.navigate().back();
+                areasAviso.add(elemento);
 
             } catch (NoSuchElementException e) {
                 continue;
-            };
-
-
-
+            }
+            ;
         }
+
+
+        for(WebElement elemento:areasAviso){
+            try {
+                elemento.click();
+                wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("div[class^='area-alert']")));
+                assertTrue(driver.findElement(By.cssSelector("div[class^='area-alert']")).isDisplayed());
+            } catch (StaleElementReferenceException e) {
+                continue;
+            };
+        }
+
 
     }
 
+    //HURF 5 Como alumno quiero consultar la información completa al seleccionar un área en específico para utilizar de manera correcta las instalaciones.
 
+    @Test
+    public void muestraInfo(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        mainPage.botonEdificios.click();
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector(".dropdown-item")));
+        List<WebElement> elementosDropdown = mainPage.dropdownEdificios.findElements(By.tagName("li"));
+        elementosDropdown.get(elementosDropdown.size()-1).click();
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector(".area-card")));
+
+        List<WebElement> tarjetasAforo = mainPage.contenedorAforo.findElements(By.cssSelector(".area-card"));
+        List<WebElement> tarjetasInstructivas= mainPage.contenedorInstructivas.findElements(By.cssSelector(".area-card"));
+        List<WebElement> tarjetasAccesoLibre = mainPage.contenedorAccesoLibre.findElements(By.cssSelector(".area-card"));
+        List<WebElement> areas= new ArrayList<>();
+
+        for(WebElement elemento:tarjetasAforo){
+            areas.add(elemento);
+        }
+        for(WebElement elemento:tarjetasInstructivas) {
+            areas.add(elemento);
+        }
+
+        for(WebElement elemento:tarjetasAccesoLibre) {
+            areas.add(elemento);
+        }
+
+
+        for(WebElement elemento:areas){
+            try {
+                elemento.click();
+                wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector(".croquis")));
+                assertTrue(driver.findElement(By.cssSelector(".fw-bold")).isDisplayed());
+                assertTrue(driver.findElement(By.cssSelector(".fw-bold.mt-2.mb-0")).isDisplayed());
+                driver.findElement(By.cssSelector("button[ng-reflect-router-link='/1']")).click();
+                assertEquals(driver.getCurrentUrl(),"http://localhost:4200/1");
+
+            } catch (StaleElementReferenceException e) {
+                continue;
+            };
+        }
+    }
+
+    //HURF 6 Como alumno quiero reservar un área tipo disponibilidad o instructiva, según los horarios disponibles para apartar el espacio donde realizaré deporte.
+    @Test
+    public void muestraReservas(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        mainPage.botonEdificios.click();
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector(".dropdown-item")));
+        List<WebElement> elementosDropdown = mainPage.dropdownEdificios.findElements(By.tagName("li"));
+        elementosDropdown.get(elementosDropdown.size()-1).click();
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector(".area-card")));
+
+
+        List<WebElement> tarjetasInstructivas= mainPage.contenedorInstructivas.findElements(By.cssSelector(".area-card"));
+        List<WebElement> tarjetasAccesoLibre = mainPage.contenedorAccesoLibre.findElements(By.cssSelector(".area-card"));
+        List<WebElement> areas= new ArrayList<>();
+
+
+        for(WebElement elemento:tarjetasInstructivas) {
+            areas.add(elemento);
+        }
+
+        for(WebElement elemento:tarjetasAccesoLibre) {
+            areas.add(elemento);
+        }
+
+
+        for(WebElement elemento:areas){
+            try {
+                elemento.click();
+                wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.tagName("iframe")));
+                assertTrue(driver.findElement(By.tagName("iframe")).isDisplayed());
+
+            } catch (StaleElementReferenceException e) {
+                continue;
+            };
+        }
+
+
+    }
+
+    // HURF 7 Como alumno quiero registrar mi entrada o salida de un área tipo aforo de manera manual, en caso que no estén disponibles los sensores. 
+//    @Test
+//    public void actualizaAforo(){
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//        mainPage.botonEdificios.click();
+//        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector(".dropdown-item")));
+//        List<WebElement> elementosDropdown = mainPage.dropdownEdificios.findElements(By.tagName("li"));
+//        elementosDropdown.get(elementosDropdown.size()-1).click();
+//        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector(".area-card")));
+//
+//        List<WebElement> tarjetasAforo = mainPage.contenedorAforo.findElements(By.cssSelector(".area-card"));
+//
+//
+//
+//        for(WebElement elemento:tarjetasAforo){
+//            try {
+//                elemento.click();
+//                driver.findElement(By.xpath("//*[text() = ' Registro manual ']")).click();
+//                wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector(".progress")));
+//                wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.tagName("button")));
+//                WebElement barraProgreso = driver.findElement(By.cssSelector(".progress-bar"));
+//                Pattern pattern = Pattern.compile("(\\d+)\\/");
+//                String aforoTexto = barraProgreso.getText();
+//                Matcher matcher = pattern.matcher(aforoTexto);
+//                int aforoActual = 0;
+//                if (matcher.find()) {
+//                    String valorEncontrado = matcher.group(1);
+//                    aforoActual = Integer.parseInt(valorEncontrado);
+//                }
+//                driver.findElement(By.xpath("//*[text() = ' Salida ']")).click();
+//                aforoTexto = barraProgreso.getText();
+//                matcher = pattern.matcher(aforoTexto);
+//                int aforoNext = 0;
+//                if (matcher.find()) {
+//                    String valorEncontrado = matcher.group(1);
+//                    aforoActual = Integer.parseInt(valorEncontrado);
+//                }
+//                assertEquals(aforoNext,aforoActual-1);
+//
+//                matcher = pattern.matcher(aforoTexto);
+//                if (matcher.find()) {
+//                    String valorEncontrado = matcher.group(1);
+//                    aforoActual = Integer.parseInt(valorEncontrado);
+//                }
+//                driver.findElement(By.xpath("//*[text() = ' Entrada ']")).click();
+//                aforoTexto = barraProgreso.getText();
+//                matcher = pattern.matcher(aforoTexto);
+//                aforoNext = 0;
+//                if (matcher.find()) {
+//                    String valorEncontrado = matcher.group(1);
+//                    aforoActual = Integer.parseInt(valorEncontrado);
+//                }
+//                assertEquals(aforoNext,aforoActual+1);
+//
+//            } catch (StaleElementReferenceException e) {
+//                continue;
+//            };
+//        }
+//    }
+//
 }

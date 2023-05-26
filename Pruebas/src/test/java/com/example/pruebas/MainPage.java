@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
 
 
 // page_url = http://localhost:4200/
@@ -17,9 +18,9 @@ public class MainPage {
     @FindBy(css = "span[class^='mdc-button']")
     public WebElement botonAdmin;
 
-
     @FindBy(css = "app-area-card[ng-reflect-tipo-area='Aforo']")
     public WebElement contenedorAforo;
+
 
 
     @FindBy(css = "html > body > app-root > app-home > div:nth-of-type(1)")
@@ -36,6 +37,9 @@ public class MainPage {
 
     @FindBy(css = "app-area-card[ng-reflect-tipo-area='Reservacion']")
     public WebElement contenedorAccesoLibre;
+
+    @FindBy(css = "ul[data-bs-popper='static']")
+    public WebElement dropdownEdificios;
 
 
 
