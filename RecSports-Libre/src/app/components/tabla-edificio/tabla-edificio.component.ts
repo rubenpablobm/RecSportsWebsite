@@ -48,9 +48,11 @@ export class TablaEdificioComponent {
       if(window.confirm("Realmente deseas eliminar el registro titulo="+nombreEdificio)){
         this.crudService.EdificioDelete(idEdificio).subscribe(respuesta =>{
           // Para actualizar la lista de libros en el template
-          this.ngOnInit();
+          // this.listaEdificios = this.listaEdificios.filter((edificio: any) => edificio.IdEdificio !== idEdificio);
+          console.log(this.listaEdificios);
         })
       }
+      window.location.reload();
     }
    
 }

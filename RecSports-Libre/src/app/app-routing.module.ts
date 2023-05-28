@@ -20,6 +20,7 @@ import { CompComponent } from './comp/comp.component';
 // inject, router
 import { authGuard } from './service/auth.guard';
 import { TablaEdificioComponent } from './components/tabla-edificio/tabla-edificio.component';
+import { CambioContrasenaComponent } from './components/cambio-contrasena/cambio-contrasena.component';
 
 
 /*
@@ -49,6 +50,9 @@ const routes: Routes = [
   {path: ':comp', // Ruta con parametro dinamico
   component: CompComponent
   },
+  {path: ':cambio/contrasena', // Ruta con parametro dinamico
+  component: CambioContrasenaComponent
+  },
   {
     path: 'area-info/:idArea', // Ruta con parametro dinamico
     component: AreaInfoComponent
@@ -65,14 +69,15 @@ const routes: Routes = [
     canActivate: [authGuard]
   },
   {
-    path: 'edificio/:idEdificio', // Ruta con parametro dinamico
+    path: 'edificio-editar/:idEdificio', // Ruta con parametro dinamico
     component: EditarEdificioComponent,
   },
- { path: 'components/tabla', // Ruta con parametro dinamico
-  component: TablaEdificioComponent,
+  { 
+    path: 'edificio-tabla/tabla', // Ruta con parametro dinamico
+    component: TablaEdificioComponent,
   },
   {
-    path: 'edificio-CRUD/agregar', // Ruta para agregar un edificio
+    path: 'edificio-agregar/agregar', // Ruta para agregar un edificio
     component: AgregarEdificioComponent,
   }
 ];
