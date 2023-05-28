@@ -1,8 +1,17 @@
+<!-- Descripcion de header.component.html: programa que define la estructura del componente "header".
+Su proposito es mostrar una foto de fondo y una descripcion para los componentes mas relacionados a las areas.
+Porpiedad del equipo WellSoft.
+Ultima edicion por: Arturo Garza Campuzano
+Fecha de creacion: dd/mm/aaaa < 05/05/2023
+Fecha de modificacion: 18/05/2023 -->
+
 <header>
   <div class="card bg-dark text-white header-banner">
-    <img class="card-img" src="{{this.linkFoto}}">
+    <!-- Imagen de fondo del encabezado -->
+    <img class="card-img" src="{{ this.linkFoto }}" />
     <div class="card-img-overlay">
-      <h1> {{this.descripcion}}</h1>
+      <!-- Título del encabezado -->
+      <h1>{{ this.descripcion }}</h1>
     </div>
   </div>
 </header>

@@ -1,7 +1,16 @@
+/* Descripcion de area-card.component.css: programa que define el estilo del componente "area-card".
+Su proposito es proporcionar una mejor visualizacion a los elementos del componente "area-card".
+Porpiedad del equipo WellSoft.
+Ultima edicion por: Arturo Garza Campuzano
+Fecha de creacion: dd/mm/aaaa < 05/05/2023
+Fecha de modificacion: 18/05/2023 */
+
+/* Estilos para la etiqueta <section> */
 section {
   width: 100%;
 }
 
+/* Estilos para la clase .area-card */
 .area-card {
   margin: 1rem;
   width: 16rem;
@@ -14,50 +23,61 @@ section {
   justify-content: center;
 }
 
+/* Estilos para las imagenes dentro de la clase .area-card */
 .area-card img {
   opacity: 0.5;
   transition: 0.5s;
 }
 
+/* Estilos al hacer hover sobre la clase .area-card */
 .area-card:hover {
   transform: translateY(-10px);
   border: 3px #0286FF solid;
 }
+
+/* Estilos al hacer hover sobre las imagenes dentro de la clase .area-card */
 .area-card:hover img {
   opacity: 0.8;
 }
 
+/* Estilos para los enlaces de tarjetas */
 .card-link {
   text-decoration: none;
   color: #fff;
 }
 
+/* Estilos para la clase .area-contenido */
 .area-contenido {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
+/* Estilos para la clase .area-aviso */
 .area-aviso {
   align-self: flex-end;
   font-size: larger;
 }
+
+/* Estilos para la clase .area-nombre */
 .area-nombre {
   margin-top: auto;
   font-weight: 600;
   font-size: large;
 }
 
+/* Estilos para la etiqueta <progress> */
 progress{
   background-color: red;
 }
 
-/* Breakpoints */
+/* Breakpoints. Media queries*/
 
 @media (min-width: 1200px) { }
 
 @media (max-width: 992px) { }
 
+/* Estilos para pantallas con un ancho maximo de 768px */
 @media (max-width: 768px) { 
   .area-card {
     width: 40%;
@@ -66,6 +86,7 @@ progress{
   }
 }
 
+/* Estilos para pantallas con un ancho maximo de 480px */
 @media (max-width: 480px) { 
   .area-card {
     width: 100%;

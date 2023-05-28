@@ -1,26 +1,37 @@
+/* Descripcion de navbar.component.css: programa que define el estilo del componente "navbar".
+Su proposito es proporcionar una mejor visualizacion a los elementos del componente "navbar".
+Porpiedad del equipo WellSoft.
+Ultima edicion por: Arturo Garza Campuzano
+Fecha de creacion: dd/mm/aaaa < 05/05/2023
+Fecha de modificacion: 19/05/2023 */
+
+/* Estilos para la clase .navbar */
 .navbar {
-    font-family: 'Gotham' !important;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color:#FFFFFF; 
-    background-color:#0085FF;
+  font-family: 'Gotham' !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color:#FFFFFF; 
+  background-color:#0085FF;
 }
 
+/* Estilos para el elemento img dentro de .navbar */
 .navbar img {
-    height: 50px;
+  height: 50px;
 }
 
+/* Estilos para la clase .dropdown-item */
 .dropdown-item {
-    font-size: 0.8rem;
-    font-weight: 300;
-    padding: 0px 5px;
-    margin: 0;
-    border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: 300;
+  padding: 0px 5px;
+  margin: 0;
+  border-radius: 5px;
 }
 
+/* Estilos para el elemento ul dentro de .navbar */
 .navbar ul {
-    padding: 0;
+  padding: 0;
 }
 
 /* Breakpoints */
@@ -31,8 +42,9 @@
 
 @media (max-width: 768px) { }
 
+/* Estilos para dispositivos con ancho de pantalla menor o igual a 480px */
 @media (max-width: 480px) { 
-    .navbar img {
-        display: none;
-    }
+  .navbar img {
+    display: none;
+  }
 }

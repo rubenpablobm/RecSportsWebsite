@@ -1,14 +1,27 @@
+<!-- Descripcion de area-info.component.html: programa que define la estructura del componente "area-info".
+Su proposito es mostrar la informacion detallada de la area seleccionada.
+Porpiedad del equipo WellSoft.
+Ultima edicion por: Arturo Garza Campuzano
+Fecha de creacion: dd/mm/aaaa < 05/05/2023
+Fecha de modificacion: 18/05/2023 -->
+
+<!-- Seccion de navegacion -->
 <app-navbar></app-navbar>
+<!-- Seccion app-header con las propiedades enlazadas "linkFoto" y "descripcion" -->
 <app-header
   [linkFoto]="area.Foto"
   [descripcion]="'Conoce más detalles del area'"
 ></app-header>
+<!-- Contenedor principal -->
 <div class="flex-col area-info-container p-3">
+  <!-- Boton de regresar -->
   <button class="btn btn-secondary my-2" routerLink="/{{ area.IdEdificio }}">
     Regresar
   </button>
+  <!-- Titulo del área -->
   <h1 class="fw-bold">{{ area.Nombre }}</h1>
-  <!-- Edificio >  Agregar nombres de edificios y áreas -->
+  <!-- Edificio >  Agregar nombres de edificios y areas -->
+  <!-- Alerta de area -->
   <div
     class="area-alert alert alert-warning py-3 px-2 mb-2"
     role="alert"
@@ -17,23 +30,20 @@
     <h3 class="fw-bold">Aviso</h3>
     {{ area.Avisos }}
   </div>
+  <!-- Horarios -->
   <h3 class="fw-bold mt-2 mb-0">Horarios</h3>
   <div [innerHTML]="horarios">
-    <!-- Lu - Vi 6:00 - 18:00 <br>
-    Sa - Do 9:00 - 17:00 <br>
-    Limpieza: Cerrado diario de 15:00 - 15:30 -->
+    <!-- Horarios se muestran aqui -->
   </div>
+  <!-- Descripción -->
   <h3 class="fw-bold mt-2 mb-0">Descripción</h3>
   <div [innerHTML]="descripcion">
-    <!-- {{ area.Descripcion }} -->
-    <!-- Contamos con los siguientes equipos <br>
-    - Box <br>
-    - Pesas <br>
-    - Caminadoras <br>
-    - Máquinas <br> -->
+    <!-- Descripcion del area se muestra aqui -->
   </div>
+  <!-- Croquis -->
   <h3 class="fw-bold mt-2 mb-0">Croquis</h3>
   <img class="croquis" src="{{ area.Croquis }}" alt="Croquis del lugar" />
+  <!-- Enlace de calendario -->
   <div
     *ngIf="area.LinkCalendar != null"
     class="flex-container"
@@ -42,6 +52,7 @@
     <h3 class="fw-bold mt-2 mb-0">Aparta tu lugar</h3>
     <iframe class="embedido" [src]="secureLinkCalendar"></iframe>
   </div>
+  <!-- Boton de registro manual -->
   <ng-container *ngIf="area.Tipo === 'Aforo'">
     <button
       class="btn btn-secondary my-2"
@@ -51,6 +62,7 @@
     </button>
   </ng-container>
 
+  <!-- Otras secciones de embedding -->
   <!-- Embed Calendly -->
   <!-- Embed Google Calendar -->
   <!-- Embed Gragica Aforo -->

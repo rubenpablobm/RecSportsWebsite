@@ -1,3 +1,5 @@
+//Preguntar si se puede quitar el modelo
+
 export class AreaAPI {
   idArea=0;
   nombre!:string;
