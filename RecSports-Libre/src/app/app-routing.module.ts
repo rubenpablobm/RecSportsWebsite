@@ -65,14 +65,15 @@ const routes: Routes = [
     canActivate: [authGuard]
   },
   {
-    path: 'edificio/:idEdificio', // Ruta con parametro dinamico
+    path: 'edificio-editar/:idEdificio', // Ruta con parametro dinamico
     component: EditarEdificioComponent,
   },
- { path: 'components/tabla', // Ruta con parametro dinamico
-  component: TablaEdificioComponent,
+  { 
+    path: 'edificio-tabla/tabla', // Ruta con parametro dinamico
+    component: TablaEdificioComponent,
   },
   {
-    path: 'edificio-CRUD/agregar', // Ruta para agregar un edificio
+    path: 'edificio-agregar/agregar', // Ruta para agregar un edificio
     component: AgregarEdificioComponent,
   }
 ];

@@ -22,7 +22,8 @@ import { Route, Router } from '@angular/router';
 export class AgregarEdificioComponent {
   // Variables
   mensaje?:string;
-  listaEdificios : any = [];
+  listaEdificios:any = [];
+  edificioAgregado:boolean = false;
   // Grupo de formulario para recolectar datos del formulario
   formularioDeEdificios: FormGroup;
 
@@ -128,6 +129,7 @@ export class AgregarEdificioComponent {
       }
 
       if(!isDuplicate && isValidImage && isGoogleMapsLink){
+        this.edificioAgregado = true;
         // Proceed with form submission
         console.log('Form submitted successfully');
         // Llamar al servicio para agregar el edificio
