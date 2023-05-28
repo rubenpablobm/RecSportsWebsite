@@ -20,6 +20,7 @@ import { CompComponent } from './comp/comp.component';
 // inject, router
 import { authGuard } from './service/auth.guard';
 import { TablaEdificioComponent } from './components/tabla-edificio/tabla-edificio.component';
+import { CambioContrasenaComponent } from './components/cambio-contrasena/cambio-contrasena.component';
 
 
 /*
@@ -48,6 +49,9 @@ const routes: Routes = [
   },
   {path: ':comp', // Ruta con parametro dinamico
   component: CompComponent
+  },
+  {path: ':cambio/contrasena', // Ruta con parametro dinamico
+  component: CambioContrasenaComponent
   },
   {
     path: 'area-info/:idArea', // Ruta con parametro dinamico
