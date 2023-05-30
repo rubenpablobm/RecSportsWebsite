@@ -27,7 +27,7 @@ app.post('/registro', async (req, res) => {
         
         const query = 'INSERT INTO Admin (Email, Contrasena) VALUES (@Email, @tContrasena)';
         await pool.request()
-            .input('Email', sql.VarChar, Email)
+            .input('Email', sql.VarChar, Email.toLowerCase())
             .input('tContrasena', sql.VarChar, tContrasena)
             .query(query);
         res.send({error:'Admin registro exitoso'});
@@ -49,7 +49,7 @@ app.post('/iniciosesion', async (req, res) => {
         //const query = 'SELECT COUNT(*) FROM Admin WHERE Email=@Email AND Contrasena=@tContrasena';
         const query = 'SELECT * FROM Admin WHERE Email=@Email';
         const result = await pool.request()
-            .input('Email', sql.VarChar, Email)
+            .input('Email', sql.VarChar, Email.toLowerCase())
             //.input('tContrasena', sql.VarChar, tContrasena)
             .query(query);
         //const count = result.recordset[0].count;
@@ -84,7 +84,7 @@ app.put('/cambiocontra', async (req, res) => {
 
         const query = 'UPDATE Admin SET Contrasena=@tContrasena WHERE Email=@Email';
         await pool.request()
-                .input('Email', sql.VarChar, tEmail)
+                .input('Email', sql.VarChar, Email.toLowerCase())
                 .input('tContrasena', sql.VarChar, tContrasena)
                 .query(query);
             res.send('Contraseña cambiada exitosamente');

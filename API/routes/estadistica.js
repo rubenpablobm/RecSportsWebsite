@@ -21,7 +21,10 @@ app.get('/crearhora/', async (req, res) => {
       res.sendStatus(500);
     }
 });
+
+//crearDia ya existe gracias al SP MasAforo
   
+/*
 //sacar fecha completa y numero de hora para que pueda graficar correctamente
 // https://learn.microsoft.com/en-us/sql/t-sql/functions/datepart-transact-sql?redirectedfrom=MSDN&view=sql-server-ver16
 app.get('/hora', async (req, res) => {
@@ -39,6 +42,8 @@ app.get('/hora', async (req, res) => {
     res.sendStatus(500);
   }
 });
+
+*/
 
 app.get('/hora/:id', async (req, res) => {
   try {

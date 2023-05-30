@@ -25,7 +25,10 @@ export class CrudService {
   
   mensajeAPI:string="";
 
+  //datos del admin
   logeado:Boolean=false;
+  emailString? : string;
+
   //API: string="angular-test.eastus.cloudapp.azure.com/libros/";
   constructor(private clientehttp:HttpClient) { 
     
@@ -98,14 +101,23 @@ export class CrudService {
 
   /* ADMIN */
   AdminLogin(datosAdmin:Admin):Observable<any>{
-    this.logeado=true;
+    this.logeado=false;
+    this.emailString = datosAdmin.correo;
     return this.clientehttp.post(this.API+"admin/iniciosesion", datosAdmin);
   }
+  AdminLoginAuth(){
+    this.logeado=true;
+  }
   EstaLogeado(){
-    return this.logeado
+    return this.logeado;
+  }
+  EstaLogeadoEmail(){
+    //ya tiene la proteccion de la misma pagina que incluye esta funcion
+    return this.emailString;
   }
   AdminLogout(){
     this.logeado = false;
+    this.emailString = undefined;
     return this.logeado
   }
   /* Cambio Contraseña*/
