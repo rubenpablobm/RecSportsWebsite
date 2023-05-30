@@ -13,6 +13,7 @@ import { Area } from '../models/area';
 import { Edificio } from '../models/edificio';
 import { Admin } from '../models/admin';
 
+
 //Injector del servicio
 @Injectable({
   providedIn: 'root'
@@ -106,6 +107,11 @@ export class CrudService {
   AdminLogout(){
     this.logeado = false;
     return this.logeado
+  }
+  /* Cambio Contraseña*/
+  CambioContraseña(NuevaContrasena:Admin){
+   // this.logeado=true;
+    return this.clientehttp.post(this.API+"admin/cambiocontra", NuevaContrasena);
   }
 
 }
