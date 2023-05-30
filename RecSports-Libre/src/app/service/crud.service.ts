@@ -83,6 +83,10 @@ export class CrudService {
     return this.clientehttp.post(this.API+"area",datosArea);
   }
 
+  AreaDelete(id: number){
+    return this.clientehttp.delete(this.API+"area/"+id)
+  };
+
   /* REGISTRO */
 
   // Incrementar el aforo de un area
