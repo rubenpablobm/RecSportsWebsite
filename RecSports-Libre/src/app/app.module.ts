@@ -23,6 +23,9 @@ import { AgregarEdificioComponent } from './components/agregar-edificio/agregar-
 import { CompComponent } from './comp/comp.component';
 import { TablaEdificioComponent } from './components/tabla-edificio/tabla-edificio.component';
 import { CambioContrasenaComponent } from './components/cambio-contrasena/cambio-contrasena.component';
+import { DescargarHistoricoComponent } from './components/descargar-historico/descargar-historico.component';
+import { SubirAlumnosComponent } from './components/subir-alumnos/subir-alumnos.component';
+import { DatePickerComponent } from './components/date-picker/date-picker.component';
 
 @NgModule({
   //Declaracion de componentes
@@ -41,6 +44,9 @@ import { CambioContrasenaComponent } from './components/cambio-contrasena/cambio
     CompComponent,
     TablaEdificioComponent,
     CambioContrasenaComponent,
+    //DescargarHistoricoComponent,
+    SubirAlumnosComponent,
+    //DatePickerComponent,
 
   ],
   //Modulos importados
