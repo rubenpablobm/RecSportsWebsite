@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CrudService } from '../service/crud.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { authGuard } from '../service/auth.guard';
 
 // Decorador del componente
 @Component({
@@ -27,8 +28,12 @@ export class AreaInfoComponent {
   descripcion!: string;
   horarios!: string;
   secureLinkCalendar: any = null;
+  auth! : boolean
 
-  constructor(private route: ActivatedRoute, private htttp: HttpClient, public crudService:CrudService, private sanitizer: DomSanitizer) { }
+  constructor(private route: ActivatedRoute, private htttp: HttpClient, public crudService:CrudService, private sanitizer: DomSanitizer) {
+    this.auth = authGuard();
+  }
+
 
   ngOnInit() {
     // Obtener el id del area de la ruta
@@ -60,4 +65,13 @@ export class AreaInfoComponent {
     return text.replace(/\\n/g, '<br>');
   }
 
+  borrarRegistro(idArea: any, nombreArea: any){
+    console.log(idArea);
+    if(window.confirm("Realmente deseas eliminar el registro titulo="+nombreArea)){
+      this.crudService.AreaDelete(idArea).subscribe(respuesta =>{
+        console.log(this.area);
+      })
+      
+    }
+  }
 }

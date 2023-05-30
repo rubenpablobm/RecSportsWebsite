@@ -84,8 +84,8 @@ export class CrudService {
   }
 
   AreaDelete(id: number){
-    return this.clientehttp.delete(this.API+"area/"+id)
-  };
+    return this.clientehttp.delete(this.API+"area/"+id);
+  }
 
   /* REGISTRO */
 

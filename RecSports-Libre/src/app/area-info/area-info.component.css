@@ -25,3 +25,8 @@ Fecha de modificacion: 18/05/2023 */
   border: solid 2px #333;
   border-radius: 10px;
 }
+
+.botones {
+  display: flex;
+  gap: 10px; /* Ajusta la separación entre los botones según tus necesidades */
+}

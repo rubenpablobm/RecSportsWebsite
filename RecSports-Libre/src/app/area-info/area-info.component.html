@@ -15,9 +15,15 @@ Fecha de modificacion: 18/05/2023 -->
 <!-- Contenedor principal -->
 <div class="flex-col area-info-container p-3">
   <!-- Boton de regresar -->
-  <button class="btn btn-secondary my-2" routerLink="/{{ area.IdEdificio }}">
-    Regresar
-  </button>
+  <div class="botones">
+    <button class="btn btn-secondary my-2" routerLink="/{{ area.IdEdificio }}">
+      Regresar
+    </button>
+    <button *ngIf="auth" class="btn btn-danger my-2" (click)="borrarRegistro(area.IdArea, area.Nombre)" routerLink="/{{ area.IdEdificio }}">
+      Eliminar área
+    </button>
+  </div>
+  
   <!-- Titulo del área -->
   <h1 class="fw-bold">{{ area.Nombre }}</h1>
   <!-- Edificio >  Agregar nombres de edificios y areas -->
