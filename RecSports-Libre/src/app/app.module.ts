@@ -59,6 +59,8 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
     FormsModule, //nuevos añadidos
     ReactiveFormsModule,
     HttpClientModule,
+    DatePickerComponent,
+    DescargarHistoricoComponent,
     // MatDialogModule
   ],
   // Proveedores de servicios

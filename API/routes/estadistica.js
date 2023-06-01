@@ -50,13 +50,14 @@ app.get('/hora/:id', async (req, res) => {
     const pool = await poolPromise;
     const id = req.params.id;
     const { horaInicio, horaFin } = req.body;
-    const query = 'SELECT * FROM Hora WHERE Hora > @horaInicio AND Hora < @horaFin AND idArea=@id;';
+    const query = 'SELECT * FROM Hora WHERE Hora >= @horaInicio AND Hora <= @horaFin AND idArea=@id;';
+    console.log(dateHoraFin + dateHoraInicio)
     const result = await pool.request()
       .input('horaInicio', sql.DateTime, horaInicio)
       .input('horaFin', sql.DateTime, horaFin)
-      .input('id', sql.DateTime, id)
+      .input('id', sql.Int, id)
       .query(query);
-    res.send(result.recordset[0]);
+    res.send(result.recordset);
   } catch (error) {
     console.error(error);
     res.sendStatus(500);
