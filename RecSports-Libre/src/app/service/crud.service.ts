@@ -121,9 +121,13 @@ export class CrudService {
     return this.logeado
   }
   /* Cambio Contraseña*/
-  CambioContraseña(NuevaContrasena:Admin){
+  CambioContraseña(datosAdmin:Admin):Observable<any>{
    // this.logeado=true;
-    return this.clientehttp.post(this.API+"admin/cambiocontra", NuevaContrasena);
+   this.logeado=false;
+  //  this.emailString = datosAdmin.correo;
+   console.log(this.emailString);
+   console.log(datosAdmin.correo);
+   return this.clientehttp.put(this.API+"admin/cambiocontra", datosAdmin);
   }
 
 }

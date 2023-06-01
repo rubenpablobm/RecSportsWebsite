@@ -80,7 +80,8 @@ app.put('/cambiocontra', async (req, res) => {
         else if(Contrasena.match(patternContraInvalida)){ //si es invalida
             throw {message:"La contraseña debe tener minimo 8 caracteres. Al menos una mayuscula, minuscula, caracter especial y numero de cada uno"};
         }
-        const tContrasena = await bcrypt.hash(Contrasena+"Recsports",8);
+        const salt = await bcrypt.genSalt()
+        const tContrasena = await bcrypt.hash(Contrasena,salt);
 
         const query = 'UPDATE Admin SET Contrasena=@tContrasena WHERE Email=@Email';
         await pool.request()
