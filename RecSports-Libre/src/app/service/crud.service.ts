@@ -119,5 +119,18 @@ export class CrudService {
     this.emailString = undefined;
     return this.logeado
   }
-
+  /*
+  // ESTADISTICA 
+  HoraGetMultiple():Observable<any>{
+    return this.clientehttp.get(this.API+"estadistica/hora");
+  }
+  HoraGet(id: number):Observable<any>{
+    if (id === 0) {
+      return this.AreaGetMultiple();
+    }
+    else {
+      return this.clientehttp.get<Area>(this.API + "estadistica/hora/" + id);
+    }
+  }
+  */
 }

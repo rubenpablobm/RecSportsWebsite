@@ -1,5 +1,18 @@
 <p>descargar-historico works!</p>
 
+
+<mat-form-field>
+<mat-label>Select an option</mat-label>
+<mat-select [(value)]="selected">
+    <mat-option>None</mat-option>
+    <ng-container *ngFor="let area of listaAreas">
+        <mat-option value="area.IdArea">{{area.IdEdificio}} > {{area.Nombre}}</mat-option>
+    </ng-container>
+    
+    <mat-option value="">TODOS</mat-option>
+</mat-select>
+</mat-form-field>
+
 <mat-form-field>
     <mat-label>Enter a date range</mat-label>
     <mat-date-range-input [rangePicker]="picker">
@@ -10,3 +23,12 @@
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-date-range-picker #picker></mat-date-range-picker>
   </mat-form-field>
+
+
+<button class="btn btn-secondary m-2 font" type="submit">
+    Descargar CSV por hora
+</button>
+
+<button class="btn btn-secondary m-2 font" type="submit2">
+    Descargar CSV acumulado diario
+</button>

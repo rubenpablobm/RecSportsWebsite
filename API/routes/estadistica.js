@@ -23,15 +23,14 @@ app.get('/crearhora/', async (req, res) => {
 });
 
 //crearDia ya existe gracias al SP MasAforo
-  
-/*
+
 //sacar fecha completa y numero de hora para que pueda graficar correctamente
 // https://learn.microsoft.com/en-us/sql/t-sql/functions/datepart-transact-sql?redirectedfrom=MSDN&view=sql-server-ver16
 app.get('/hora', async (req, res) => {
   try {
     const pool = await poolPromise;
     const { horaInicio, horaFin } = req.body;
-    const query = 'SELECT * FROM Hora WHERE Hora > @horaInicio AND Hora < @horaFin;';
+    const query = 'SELECT * FROM Hora WHERE Hora >= @horaInicio AND Hora <= @horaFin;';
     const result = await pool.request()
       .input('horaInicio', sql.DateTime, horaInicio)
       .input('horaFin', sql.DateTime, horaFin)
@@ -43,7 +42,6 @@ app.get('/hora', async (req, res) => {
   }
 });
 
-*/
 
 app.get('/hora/:id', async (req, res) => {
   try {

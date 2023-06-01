@@ -25,7 +25,8 @@ import { TablaEdificioComponent } from './components/tabla-edificio/tabla-edific
 import { CambioContrasenaComponent } from './components/cambio-contrasena/cambio-contrasena.component';
 import { DescargarHistoricoComponent } from './components/descargar-historico/descargar-historico.component';
 import { SubirAlumnosComponent } from './components/subir-alumnos/subir-alumnos.component';
-import { DatePickerComponent } from './components/date-picker/date-picker.component';
+//import { DatePickerComponent } from './components/date-picker/date-picker.component';
+
 
 @NgModule({
   //Declaracion de componentes
@@ -59,7 +60,6 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
     FormsModule, //nuevos añadidos
     ReactiveFormsModule,
     HttpClientModule,
-    DatePickerComponent,
     DescargarHistoricoComponent,
     // MatDialogModule
   ],
