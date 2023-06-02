@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1517aebf-8a40-46b1-b5d1-fa0c5117c624" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/EdificioCrud.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/EdificioCrudTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/MainPageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/MainPageTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/.vscode/extensions.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/.vscode/launch.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/.vscode/tasks.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/angular.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/tsconfig.app.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/tsconfig.spec.json" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2PpgLDAVQD7eYKtAnnBdrtHALwE" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "connecting-puebas",
+    "last_opened_file_path": "/Users/arturogarzacampuzano/Documents/GitHub/RecSportsWebsite/Pruebas",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="TestNG.EdificioCrudTest">
+    <configuration name="EdificioCrudTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Pruebas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.pruebas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.pruebas" />
+      <option name="MAIN_CLASS_NAME" value="com.example.pruebas.EdificioCrudTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainPageTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Pruebas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.pruebas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.pruebas" />
+      <option name="MAIN_CLASS_NAME" value="com.example.pruebas.MainPageTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainPageTest.muestraAforo" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Pruebas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.pruebas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.pruebas" />
+      <option name="MAIN_CLASS_NAME" value="com.example.pruebas.MainPageTest" />
+      <option name="METHOD_NAME" value="muestraAforo" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="&lt;default&gt; (1)" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Pruebas" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="PACKAGE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="&lt;default&gt; (2)" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Pruebas" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="PACKAGE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.EdificioCrudTest" />
+        <item itemvalue="TestNG.MainPageTest" />
+        <item itemvalue="TestNG.MainPageTest.muestraAforo" />
+        <item itemvalue="TestNG.&lt;default&gt; (2)" />
+        <item itemvalue="TestNG.&lt;default&gt; (1)" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SeleniumInternalSettingsState">
+    <option name="lastUrl" value="http://localhost:4200/edificio-agregar/agregar" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1517aebf-8a40-46b1-b5d1-fa0c5117c624" name="Changes" comment="" />
+      <created>1684159388667</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1684159388667</updated>
+      <workItem from="1684159389321" duration="1027000" />
+      <workItem from="1684767154870" duration="23000" />
+      <workItem from="1684767313317" duration="19000" />
+      <workItem from="1684767564645" duration="16000" />
+      <workItem from="1684767635920" duration="17000" />
+      <workItem from="1684768326614" duration="3990000" />
+      <workItem from="1685381266668" duration="16909000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

@@ -24,6 +24,12 @@ export class AgregarEdificioComponent {
   mensaje?:string;
   listaEdificios:any = [];
   edificioAgregado:boolean = false;
+  nombreError: boolean = false;
+  nombreVacio: boolean = false;
+  fotoError: boolean = false;
+  fotoVacia: boolean = false;
+  linkMapsError: boolean = false;
+  linkMapsVacio: boolean = false;
   // Grupo de formulario para recolectar datos del formulario
   formularioDeEdificios: FormGroup;
 
@@ -31,9 +37,9 @@ export class AgregarEdificioComponent {
   constructor(private route: ActivatedRoute, private http: HttpClient, private ruteador: Router, public crudService:CrudService, public formulario: FormBuilder) { 
     // Crear el grupo de formulario
     this.formularioDeEdificios=this.formulario.group({
-      Nombre: ['', Validators.required],
-      Foto: ['', Validators.required],
-      LinkMaps: ['', Validators.required]
+      Nombre: [''],
+      Foto: [''],
+      LinkMaps: ['']
     });
   }
 
@@ -103,32 +109,49 @@ export class AgregarEdificioComponent {
     // Validacion de Nombre
     const isDuplicate = this.isDuplicateNombre(nombre);
     if (isDuplicate) {
-      this.nombreControl?.setErrors({ duplicateNombre: true });
-      console.log(this.nombreControl?.errors?.['required']);
-      console.log(this.nombreControl?.errors?.['duplicateNombre']);
+      this.nombreVacio = false;
+      this.nombreError = true;
     } else {
-      this.nombreControl?.setErrors({ duplicateNombre: false });
+      if (!nombre) {
+        this.nombreError = false;
+        this.nombreVacio = true;
+      } else {
+        this.nombreError = false;
+        this.nombreVacio = false
+      }
     }
   
     // Validacion de Foto
     this.validarImagenLink(fotoUrl).then((isValidImage: boolean) => {
       if (!isValidImage) {
-        this.fotoControl?.setErrors({ invalidImage: true });
-        console.log(this.nombreControl?.errors?.['required']);
-        console.log(this.nombreControl?.errors?.['invalidImage']);
+        if(!fotoUrl){
+          this.fotoError = false;
+          this.fotoVacia = true;
+        } else {
+          this.fotoVacia = false;
+          this.fotoError = true;
+        }
       } else {
-        this.fotoControl?.setErrors({ invalidImage: false });
+        this.fotoError = false;
+        this.fotoVacia = false;
       }
   
       // Validacion de Link Maps
       const isGoogleMapsLink = this.isGoogleMapsLink(linkMapsUrl);
       if (!isGoogleMapsLink) {
-        this.linkMapsControl?.setErrors({ invalidGoogleMapsLink: true });
+        if(!linkMapsUrl){
+          this.linkMapsError = false;
+          this.linkMapsVacio = true;
+        } else {
+          this.linkMapsError = true;
+          this.linkMapsVacio = false;
+        }
       } else {
-        this.linkMapsControl?.setErrors({ invalidGoogleMapsLink: false });
+        this.linkMapsError = false;
+        this.linkMapsVacio = false;
       }
 
-      if(!isDuplicate && isValidImage && isGoogleMapsLink){
+      if(!this.nombreError && !this.nombreVacio && !this.fotoError && !this.fotoVacia && !this.linkMapsError && !this.linkMapsVacio){
         this.edificioAgregado = true;
         // Proceed with form submission
         console.log('Form submitted successfully');
@@ -145,6 +168,9 @@ export class AgregarEdificioComponent {
           }
         );
         return;
+      } else{
+        // Mark all fields as touched to show validation errors
+        this.formularioDeEdificios.markAllAsTouched();
       }
     });
   }
@@ -201,3 +227,16 @@ export class AgregarEdificioComponent {
   //   }
   // }
 
+  // console.log("Hola");
+      // this.nombreControl?.setErrors({ duplicateNombre: true });
+      // console.log(this.nombreControl?.hasError('duplicateNombre'));
+      // this.nombreControl?.setErrors({ required: false });
+
+      // const hasDuplicateNombreError = this.nombreControl?.hasError('duplicateNombre');
+      // const hasRequiredError = this.nombreControl?.hasError('required');
+      // console.log(this.nombreControl?.hasError('duplicateNombre'));
+      // console.log('Has required error:', hasRequiredError);
+// this.nombreControl?.setErrors({ duplicateNombre: false, required: true });
+// this.nombreControl?.setErrors(null); Clear the errors
+// this.nombreControl?.markAsTouched(); Mark the control as touched
+      // this.nombreControl?.updateValueAndValidity(); Update the errors object
