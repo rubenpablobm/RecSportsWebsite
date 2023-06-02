@@ -71,7 +71,7 @@ public class MainPageTest {
     public void muestraAdmin() {
 
         mainPage.botonAdmin.click();
-        assertEquals(driver.getCurrentUrl(),"http://localhost:4200/admin");
+        assertEquals(driver.getCurrentUrl(),"http://localhost:4200/admin/login");
     }
 
     //HURF-2 Como alumno quiero visualizar en área tipo aforo la cantidad de personas que lo están usando en tiempo real para saber si puedo utilizar las instalaciones en ese momento.

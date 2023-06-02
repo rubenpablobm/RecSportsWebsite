@@ -5,14 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1517aebf-8a40-46b1-b5d1-fa0c5117c624" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/EdificioCrud.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/EdificioCrudTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/MainPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/MainPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/MainPageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/MainPageTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/.vscode/extensions.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/.vscode/launch.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/.vscode/tasks.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/angular.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/tsconfig.app.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/tsconfig.spec.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -30,22 +53,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;tests-2&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "connecting-puebas",
+    "last_opened_file_path": "/Users/arturogarzacampuzano/Documents/GitHub/RecSportsWebsite/Pruebas",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="TestNG.MainPageTest.muestraAforo">
-    <configuration name="MainPageTest.actualizaAforo" type="TestNG" temporary="true" nameIsGenerated="true">
+}]]></component>
+  <component name="RunManager" selected="TestNG.EdificioCrudTest">
+    <configuration name="EdificioCrudTest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="Pruebas" />
       <extension name="coverage">
         <pattern>
@@ -54,16 +78,15 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.example.pruebas" />
-      <option name="MAIN_CLASS_NAME" value="com.example.pruebas.MainPageTest" />
-      <option name="METHOD_NAME" value="actualizaAforo" />
-      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="MAIN_CLASS_NAME" value="com.example.pruebas.EdificioCrudTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
       <properties />
       <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainPageTest.muestrReservas" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="MainPageTest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="Pruebas" />
       <extension name="coverage">
         <pattern>
@@ -73,8 +96,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.example.pruebas" />
       <option name="MAIN_CLASS_NAME" value="com.example.pruebas.MainPageTest" />
-      <option name="METHOD_NAME" value="muestrReservas" />
-      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="TEST_OBJECT" value="CLASS" />
       <properties />
       <listeners />
       <method v="2">
@@ -121,16 +143,16 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.EdificioCrudTest" />
+        <item itemvalue="TestNG.MainPageTest" />
         <item itemvalue="TestNG.MainPageTest.muestraAforo" />
         <item itemvalue="TestNG.&lt;default&gt; (2)" />
         <item itemvalue="TestNG.&lt;default&gt; (1)" />
-        <item itemvalue="TestNG.MainPageTest.actualizaAforo" />
-        <item itemvalue="TestNG.MainPageTest.muestrReservas" />
       </list>
     </recent_temporary>
   </component>
   <component name="SeleniumInternalSettingsState">
-    <option name="lastUrl" value="http://localhost:4200/area-info/9/acceso" />
+    <option name="lastUrl" value="http://localhost:4200/edificio-agregar/agregar" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -146,6 +168,7 @@
       <workItem from="1684767564645" duration="16000" />
       <workItem from="1684767635920" duration="17000" />
       <workItem from="1684768326614" duration="3990000" />
+      <workItem from="1685381266668" duration="16909000" />
     </task>
     <servers />
   </component>
