@@ -27,6 +27,10 @@ import { DescargarHistoricoComponent } from './components/descargar-historico/de
 import { SubirAlumnosComponent } from './components/subir-alumnos/subir-alumnos.component';
 //import { DatePickerComponent } from './components/date-picker/date-picker.component';
 
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   //Declaracion de componentes
@@ -45,9 +49,9 @@ import { SubirAlumnosComponent } from './components/subir-alumnos/subir-alumnos.
     CompComponent,
     TablaEdificioComponent,
     CambioContrasenaComponent,
-    //DescargarHistoricoComponent,
+    DescargarHistoricoComponent,
     SubirAlumnosComponent,
-    //DatePickerComponent,
+    //DatePickerComponent
 
   ],
   //Modulos importados
@@ -60,7 +64,7 @@ import { SubirAlumnosComponent } from './components/subir-alumnos/subir-alumnos.
     FormsModule, //nuevos añadidos
     ReactiveFormsModule,
     HttpClientModule,
-    DescargarHistoricoComponent,
+    MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule
     // MatDialogModule
   ],
   // Proveedores de servicios
