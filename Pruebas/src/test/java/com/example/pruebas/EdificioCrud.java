@@ -39,52 +39,19 @@ public class EdificioCrud {
     public WebElement tableEdificios;
 
     @FindBy(css = "input[formcontrolname='Nombre']")
-    public WebElement inputNombreAgregar;
+    public WebElement inputNombre;
 
     @FindBy(css = "input[formcontrolname='Foto']")
-    public WebElement inputFotoAgregar;
+    public WebElement inputFoto;
 
     @FindBy(css = "input[formcontrolname='LinkMaps']")
-    public WebElement inputLinkMapsAgregar;
+    public WebElement inputLinkMaps;
 
     @FindBy(css = "button[class*='btn-success']")
     public WebElement buttonAgregarEdificio;
 
     @FindBy(css = "button[class*='btn-danger']")
     public WebElement buttonCancelarAgregarEdificio;
-
-    @FindBy(css = "html > body > app-root > app-agregar-edificio > div > form > div:nth-of-type(1) > div > div")
-    public WebElement divCampoObligatorioNombreAgregar;
-
-    @FindBy(css = "html > body > app-root > app-agregar-edificio > div > form > div:nth-of-type(2) > div > div")
-    public WebElement divCampoObligatorioFotoAgregar;
-
-    @FindBy(css = "html > body > app-root > app-agregar-edificio > div > form > div:nth-of-type(3) > div > div")
-    public WebElement divCampoObligatorioLinkMapsAgregar;
-
-    @FindBy(css = "html > body > app-root > app-agregar-edificio > div > form > div:nth-of-type(1) > div > div")
-    public WebElement divNombreExisteAgregar;
-
-    @FindBy(css = "html > body > app-root > app-agregar-edificio > div > form > div:nth-of-type(2) > div > div")
-    public WebElement divFotoInvalidaAgregar;
-
-    @FindBy(css = "html > body > app-root > app-agregar-edificio > div > form > div:nth-of-type(3) > div > div")
-    public WebElement divLinkMapsInvalidaAgregar;
-
-    @FindBy(css = "div[class^='confirmation-message']")
-    public WebElement divEdificioAgregado;
-
-    @FindBy(css = "a[ng-reflect-router-link='/edificio-editar/,42']")
-    public WebElement buttonEditarTabla;
-
-    @FindBy(css = "input[class$='ng-dirty']")
-    public WebElement inputNombreEditar;
-
-    @FindBy(css = "input[formcontrolname='Foto']")
-    public WebElement inputFotoEditar;
-
-    @FindBy(css = "input[formcontrolname='LinkMaps']")
-    public WebElement inputLinkMapsEditar;
 
     @FindBy(css = "button[class*='btn-primary']")
     public WebElement buttonGuardarEdificio;
