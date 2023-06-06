@@ -22,6 +22,7 @@ import { AgregarEdificioComponent } from './components/agregar-edificio/agregar-
 // import { MatDialogModule } from '@angular/material/dialog'
 import { CompComponent } from './comp/comp.component';
 import { TablaEdificioComponent } from './components/tabla-edificio/tabla-edificio.component';
+import { AreaFormComponent } from './components/area-form/area-form.component';
 
 @NgModule({
   //Declaracion de componentes
@@ -39,6 +40,7 @@ import { TablaEdificioComponent } from './components/tabla-edificio/tabla-edific
     AgregarEdificioComponent,
     CompComponent,
     TablaEdificioComponent,
+    AreaFormComponent,
 
   ],
   //Modulos importados

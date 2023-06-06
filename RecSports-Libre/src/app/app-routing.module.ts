@@ -14,6 +14,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AccesoComponent } from './components/acceso/acceso.component';
 import { EditarEdificioComponent } from './components/editar-edificio/editar-edificio.component';
 import { AgregarEdificioComponent } from './components/agregar-edificio/agregar-edificio.component';
+import { AreaFormComponent } from './components/area-form/area-form.component';
 import { CompComponent } from './comp/comp.component';
 
 //import { CrudService } from './service/crud.service';
@@ -63,6 +64,10 @@ const routes: Routes = [
     path: 'area-info/:idArea/acceso', // Ruta con parametro dinamico
     component: AccesoComponent,
     canActivate: [authGuard]
+  },
+  {
+    path: 'area/form',  // Ruta para el formulario de agregar área
+    component: AreaFormComponent
   },
   {
     path: 'edificio/:idEdificio', // Ruta con parametro dinamico
