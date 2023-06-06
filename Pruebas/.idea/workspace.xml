@@ -6,12 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1517aebf-8a40-46b1-b5d1-fa0c5117c624" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/EdificioCrud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/EdificioCrud.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/EdificioCrudTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/EdificioCrudTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RecSports-Libre/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../RecSports-Libre/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RecSports-Libre/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../RecSports-Libre/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RecSports-Libre/src/app/components/tabla-edificio/tabla-edificio.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../RecSports-Libre/src/app/components/tabla-edificio/tabla-edificio.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RecSports-Libre/src/app/components/tabla-edificio/tabla-edificio.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../RecSports-Libre/src/app/components/tabla-edificio/tabla-edificio.component.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,15 +143,15 @@
     <recent_temporary>
       <list>
         <item itemvalue="TestNG.EdificioCrudTest" />
-        <item itemvalue="TestNG.EdificioCrudTest.testBorrarEdificio" />
         <item itemvalue="TestNG.EdificioCrudTest.testEditarEdificio" />
+        <item itemvalue="TestNG.EdificioCrudTest.testBorrarEdificio" />
         <item itemvalue="TestNG.MainPageTest" />
         <item itemvalue="TestNG.MainPageTest.muestraAforo" />
       </list>
     </recent_temporary>
   </component>
   <component name="SeleniumInternalSettingsState">
-    <option name="lastUrl" value="http://localhost:4200/edificio-tabla/tabla" />
+    <option name="lastUrl" value="http://localhost:4200/edificio-editar/6" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -174,7 +169,7 @@
       <workItem from="1684768326614" duration="3990000" />
       <workItem from="1685381266668" duration="16909000" />
       <workItem from="1685817307878" duration="24875000" />
-      <workItem from="1685950735671" duration="2805000" />
+      <workItem from="1685950735671" duration="20008000" />
     </task>
     <servers />
   </component>
