@@ -146,6 +146,7 @@ export class EditarEdificioComponent {
       this.nombreError = true;
     } else {
       if (!nombre) {
+        console.log(nombre.length);
         this.nombreError = false;
         this.nombreVacio = true;
       } else {
