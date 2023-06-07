@@ -65,16 +65,14 @@ app.post('/hora/:id', async (req, res) => {
 app.post('/dia', async (req, res) => {
   try {
     const pool = await poolPromise;
-    const id = req.params.id;
     const { diaInicio, diaFin } = req.body;
     const query = 'SELECT * FROM Dia WHERE Dia >= @diaInicio AND Dia <= @diaFin;';
     const result = await pool.request()
       .input('diaInicio', sql.DateTime, diaInicio)
       .input('diaFin', sql.DateTime, diaFin)
-      .input('id', sql.DateTime, id)
       .query(query);
     res.send(result.recordset);
-  } catch (error) {``
+  } catch (error) {
     console.error(error);
     res.sendStatus(500);
   }
@@ -89,10 +87,10 @@ app.post('/dia/:id', async (req, res) => {
     const result = await pool.request()
       .input('diaInicio', sql.DateTime, diaInicio)
       .input('diaFin', sql.DateTime, diaFin)
-      .input('id', sql.DateTime, id)
+      .input('id', sql.Int, id)
       .query(query);
     res.send(result.recordset);
-  } catch (error) {``
+  } catch (error) {
     console.error(error);
     res.sendStatus(500);
   }

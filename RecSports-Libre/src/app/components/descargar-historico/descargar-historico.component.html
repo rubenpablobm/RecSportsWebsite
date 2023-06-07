@@ -1,6 +1,10 @@
-<p>descargar-historico works!</p>
+<app-navbar></app-navbar>
 
-<mat-form-field>
+<div class="container m-4">
+    <!-- Titulo -->
+    <h1 class="fw-bold fs-1">Descargar histórico (Estadísticas)</h1>
+
+<mat-form-field class="mx-2">
 <mat-label>Select an option</mat-label>
 <mat-select [(value)]="selected">
     <mat-option>None</mat-option>
@@ -14,7 +18,7 @@
 </mat-select>
 </mat-form-field>
 
-<mat-form-field>
+<mat-form-field class="mx-2">
     <mat-label>Enter a date range</mat-label>
     <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
       <input matStartDate formControlName="start" placeholder="Start date">
@@ -37,3 +41,4 @@
     Descargar CSV acumulado diario
 </button>
 
+</div>

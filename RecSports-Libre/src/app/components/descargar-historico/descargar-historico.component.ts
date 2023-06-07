@@ -59,10 +59,8 @@ export class DescargarHistoricoComponent {
       return this.crudService.HoraGet(this.selected, this.fechaRange).subscribe((data:{}) => {
         this.listaHoraDia = data;
         console.log(this.listaHoraDia);
-        
-        //saveAs(resp, `filename.csv`)
-        let newHeaders = ["IdHora", "Aforo", "Capacidad", "IdArea", "IdHora"];
-        this.jsonCsvSerice.CsvDownload(newHeaders,data);
+        let newHeaders = ["IdHora", "Aforo", "Capacidad", "IdArea", "Hora"];
+        this.jsonCsvSerice.downloadFile(data,'jsontocsv',newHeaders);
       });
       
     }else{
@@ -78,43 +76,13 @@ export class DescargarHistoricoComponent {
       //llamamos service
       return this.crudService.DiaGet(this.selected, this.fechaRange).subscribe((data:{}) => {
         this.listaHoraDia = data;
-        console.log(data);
-        
-        //poner aqui la conversion json a csv
+        console.log(this.listaHoraDia);
+        let newHeaders = ["IdDia", "TotalPersonas", "IdArea", "Dia"];
+        this.jsonCsvSerice.downloadFile(data,'jsontocsv', newHeaders);  
       });
       
     }else{
       return 0;
     }
   }
-
-
-    //
-
-  
-  /*
-  objArray = 
-
-
-  //Conversión JSON a CSV
-  ConvertToCSV(objArray, headerList) {
-    let array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
-    let str = '';
-    let row = 'S.No, ';
-    for (let index in headerList) {
-        row += headerList[index] + ', ';
-    }
-    row = row.slice(0, -1);
-    str += row + '\r\n';
-    for (let i = 0; i & lt; array.length; i++) {
-        let line = (i + 1) + & #039;&# 039;;
-        for (let index in headerList) {
-            let head = headerList[index];
-            line += & #039;, &# 039; + array[i][head];
-        }
-        str += line + & #039;\r\n&# 039;;
-    }
-    return str;
-}
-*/
 }
