@@ -21,6 +21,7 @@ import { CompComponent } from './comp/comp.component';
 import { authGuard } from './service/auth.guard';
 import { TablaEdificioComponent } from './components/tabla-edificio/tabla-edificio.component';
 import { CambioContrasenaComponent } from './components/cambio-contrasena/cambio-contrasena.component';
+import { EditarAreaComponent } from './components/editar-area/editar-area.component';
 
 
 /*
@@ -56,6 +57,10 @@ const routes: Routes = [
   {
     path: 'area-info/:idArea', // Ruta con parametro dinamico
     component: AreaInfoComponent
+  },
+  {
+    path: 'editar-area/editar', // Ruta con parametro dinamico
+    component: EditarAreaComponent
   },
   {
     path: 'admin/login', // Ruta para el componente de administracion de inicio de sesion

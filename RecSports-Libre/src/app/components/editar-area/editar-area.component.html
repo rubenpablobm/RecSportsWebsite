@@ -1,0 +1,171 @@
+<app-navbar></app-navbar>
+<!-- Contenedor principal -->
+<div class="container m-4">
+  <!-- Titulo -->
+  <h1 class="fw-bold fs-1">Editar Area</h1>
+  <!-- Formulario -->
+  <form  (ngSubmit)="enviarDatos() "[formGroup]="formularioDeArea">
+    <div class="form-group my-4 w-75">
+      <!-- Campo de Nombre -->
+      <label class="fw-bold fs-5" for="nombre">Nombre</label>
+      <input
+        formControlName="Nombre"
+        type="text"
+        class="form-control fs-5"
+        placeholder="Ej. Wellness"
+      />
+      <!-- Mensaje de Error para el campo Nombre -->
+      <div class="text-danger fs-6">
+        <div *ngIf="nombreVacio">
+          *Campo obligatorio. Por favor ingrese nombre de edificio.
+        </div>
+        <div *ngIf="nombreError" >*Nombre ya existe. Intente de nuevo.</div>
+      </div>
+    </div>
+    <!-- Campo de Aviso -->
+    <div class="form-group my-4 w-75">
+      <label class="fw-bold fs-5" for="nombre">Aviso</label>
+      <textarea
+        formControlName="Aviso"
+        type="text"
+        class="form-control fs-5"
+        placeholder="Ej. Cerrado por mantenimiento de 6:00 - 22:00hrs."
+      ></textarea>
+    </div>
+    <!-- Campo foto -->
+    <div class="form-group my-4 w-75">
+      <label class="fw-bold fs-5" for="nombre">Foto</label>
+      <textarea
+        formControlName="Foto"
+        type="text"
+        class="form-control fs-5"
+        placeholder="Ej. Cerrado por mantenimiento de 6:00 - 22:00hrs."
+      ></textarea>
+    </div>
+    <!-- Campo de Foto -->
+    <div class="form-group my-4 w-75">
+      <label class="fw-bold fs-5" for="foto">Horarios</label>
+      <textarea
+        formControlName="Foto"
+        type="text"
+        class="form-control fs-5"
+        placeholder="Ej. Lunes a Viernes 6:00 - 22:00hrs."
+      ></textarea>
+      <!-- Error message for Foto -->
+      <div class="text-danger fs-6">
+        <div *ngIf="fotoVacia">
+          *Campo obligatorio. Por favor ingrese el horario.
+        </div>
+        <div *ngIf="fotoError">*Entrada no es un texto. Intente de nuevo.</div>
+      </div>
+    </div>
+    <!-- Campo de Link de Google Maps -->
+    <div class="form-group my-4 w-75">
+      <label class="fw-bold fs-5" for="linkMaps">Descripcion</label>
+      <textarea
+        formControlName="LinkMaps"
+        type="text"
+        class="form-control fs-5"
+        placeholder="Ej. Requisitos"
+      ></textarea>
+      <!-- Error message for Link Maps -->
+      <div class="text-danger fs-6">
+        <div *ngIf="linkMapsVacio">
+          *Campo obligatorio. Por favor ingrese Una descripción.
+        </div>
+        <div *ngIf="linkMapsError">
+          *Entrada no es un texto. Intente de nuevo.
+        </div>
+      </div>
+    </div>
+    <!--Scroll-->
+    <div class="dropstart" style="display: flex; align-items: center">
+      <ul class="navbar-nav fs-6">
+        <li class="nav-item dropdown">
+          <!-- Dropdown de Edificios -->
+          <a
+            class="nav-link dropdown-toggle "
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Edificios
+          </a>
+          <ul
+            class="dropdown-menu dropdown-menu-left"
+            aria-labelledby="navbarDarkDropdownMenuLink"
+          >
+            <!-- Lista de Edificios -->
+            <li *ngFor="let edificio of listaEdificios">
+              <a
+                class="dropdown-item"
+                [routerLink]="['/', edificio.IdEdificio]"
+                >{{ edificio.Nombre }}</a
+              >
+            </li>
+            <li><hr class="dropdown-divider m-0" /></li>
+            <li>
+              <a
+                class="dropdown-item"
+                [routerLink]="['/0']"
+                >Todos</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  <!---Campo de Capacidad-->
+        <div class="form-group my-4 w-75">
+      <label class="fw-bold fs-5" for="nombre">Capacidad(Aforo maximo)</label>
+      <textarea
+        formControlName="Foto"
+        type="text"
+        class="form-control fs-5"
+        placeholder="Ej. 300"
+      ></textarea>
+    </div>
+    <!--Link Zcal-->
+      <div class="form-group my-4 w-75">
+      <label class="fw-bold fs-5" for="nombre">Link Zcal</label>
+      <textarea
+        formControlName="Foto"
+        type="text"
+        class="form-control fs-5"
+        placeholder="Ej. https://zcal.co/"
+      ></textarea>
+    </div>
+    <!--Croquis-->
+     <div class="form-group my-4 w-75">
+      <label class="fw-bold fs-5" for="nombre">Croquis</label>
+      <textarea
+        formControlName="Foto"
+        type="text"
+        class="form-control fs-5"
+        placeholder="Ej. Lu-Vi de 8:00 a 16:00"
+      ></textarea>
+    </div>
+    <!-- Grupo de botones -->
+    <div class="btn-group"  role="group" aria-label="Button group name">
+      <!-- Boton de Guardar -->
+      <button type="submit" class="btn btn-primary custom-btn">Guardar</button>
+      <!-- Boton de Cancelar -->
+      <button
+        type="button"
+        class="btn btn-danger custom-btn ms-3"
+        routerLink="/edificio-tabla/tabla"
+      >
+        Cancelar
+      </button>
+    </div>
+    <div
+      *ngIf="edificioAgregado"
+      class="confirmation-message fs-6 my-2"
+      style="color: darkgreen"
+    >
+      Edificio guardado exitosamente.
+    </div>
+  </form>
+</div>
+
