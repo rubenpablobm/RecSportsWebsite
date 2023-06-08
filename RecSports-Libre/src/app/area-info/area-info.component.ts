@@ -28,7 +28,8 @@ export class AreaInfoComponent {
   descripcion!: string;
   horarios!: string;
   secureLinkCalendar: any = null;
-  auth! : boolean
+  auth! : boolean;
+  mostrarOverlay:boolean = false;
 
   constructor(private route: ActivatedRoute, private htttp: HttpClient, public crudService:CrudService, private sanitizer: DomSanitizer) {
     this.auth = authGuard();
@@ -65,13 +66,26 @@ export class AreaInfoComponent {
     return text.replace(/\\n/g, '<br>');
   }
 
-  borrarRegistro(idArea: any, nombreArea: any){
+  borrarRegistro(idArea: any, nombreArea: any) {
     console.log(idArea);
-    if(window.confirm("Realmente deseas eliminar el registro titulo="+nombreArea)){
-      this.crudService.AreaDelete(idArea).subscribe(respuesta =>{
-        console.log(this.area);
-      })
-      
-    }
+  
+    this.mostrarOverlay = true;
+  
+    setTimeout(() => {
+      if (window.confirm("¿Realmente deseas eliminar el registro título = " + nombreArea)) {
+        this.crudService.AreaDelete(idArea).subscribe(respuesta => {
+          console.log(this.area);
+        });
+      }
+    
+      this.mostrarOverlay = false;
+      window.history.back();
+
+    }, 100);
+    
   }
+  
+  
+
+  
 }

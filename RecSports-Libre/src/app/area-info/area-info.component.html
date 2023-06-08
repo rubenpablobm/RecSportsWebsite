@@ -6,6 +6,7 @@ Fecha de creacion: dd/mm/aaaa < 05/05/2023
 Fecha de modificacion: 18/05/2023 -->
 
 <!-- Seccion de navegacion -->
+<div *ngIf="mostrarOverlay" class="overlay" ></div>
 <app-navbar></app-navbar>
 <!-- Seccion app-header con las propiedades enlazadas "linkFoto" y "descripcion" -->
 <app-header
@@ -19,7 +20,7 @@ Fecha de modificacion: 18/05/2023 -->
     <button class="btn btn-secondary my-2" routerLink="/{{ area.IdEdificio }}">
       Regresar
     </button>
-    <button *ngIf="auth" class="btn btn-danger my-2" (click)="borrarRegistro(area.IdArea, area.Nombre)" routerLink="/{{ area.IdEdificio }}">
+    <button *ngIf="auth" class="btn btn-danger my-2" (click)="borrarRegistro(area.IdArea, area.Nombre)">
       Eliminar área
     </button>
   </div>
