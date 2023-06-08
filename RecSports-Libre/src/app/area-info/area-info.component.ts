@@ -76,10 +76,13 @@ export class AreaInfoComponent {
         this.crudService.AreaDelete(idArea).subscribe(respuesta => {
           console.log(this.area);
         });
+        this.mostrarOverlay = false;
+        window.history.back();
+      }else{
+        this.mostrarOverlay = false;
       }
     
-      this.mostrarOverlay = false;
-      window.history.back();
+      
 
     }, 100);
     
