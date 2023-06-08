@@ -1,6 +1,6 @@
 
 // Declaracion de importaciones
-import { Component, Output, EventEmitter, HostListener} from '@angular/core';
+import { Component, Input, Output, EventEmitter, HostListener} from '@angular/core';
 import { Route, Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
