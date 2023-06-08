@@ -8,6 +8,7 @@ Fecha de modificacion: 19/05/2023 */
 import { Component } from '@angular/core';
 import { Area } from './models/area';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

@@ -23,6 +23,13 @@ import { AgregarEdificioComponent } from './components/agregar-edificio/agregar-
 import { CompComponent } from './comp/comp.component';
 import { TablaEdificioComponent } from './components/tabla-edificio/tabla-edificio.component';
 import { CambioContrasenaComponent } from './components/cambio-contrasena/cambio-contrasena.component';
+import { DescargarHistoricoComponent } from './components/descargar-historico/descargar-historico.component';
+import { SubirAlumnosComponent } from './components/subir-alumnos/subir-alumnos.component';
+//import { DatePickerComponent } from './components/date-picker/date-picker.component';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
 import { EditarAreaComponent } from './components/editar-area/editar-area.component';
 
 @NgModule({
@@ -42,8 +49,11 @@ import { EditarAreaComponent } from './components/editar-area/editar-area.compon
     CompComponent,
     TablaEdificioComponent,
     CambioContrasenaComponent,
+    DatosHistoricos-29-Sebas
+    DescargarHistoricoComponent,
+    SubirAlumnosComponent,
+    //DatePickerComponent
     EditarAreaComponent,
-
   ],
   //Modulos importados
   imports: [
@@ -55,6 +65,7 @@ import { EditarAreaComponent } from './components/editar-area/editar-area.compon
     FormsModule, //nuevos añadidos
     ReactiveFormsModule,
     HttpClientModule,
+    MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule
     // MatDialogModule
   ],
   // Proveedores de servicios

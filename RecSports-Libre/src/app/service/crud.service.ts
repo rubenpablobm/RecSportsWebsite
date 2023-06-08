@@ -13,6 +13,10 @@ import { Area } from '../models/area';
 import { Edificio } from '../models/edificio';
 import { Admin } from '../models/admin';
 
+import { Fecha } from '../models/fecha';
+import { Dia } from '../models/dia';
+import { Hora } from '../models/hora';
+
 //Injector del servicio
 @Injectable({
   providedIn: 'root'
@@ -128,5 +132,22 @@ export class CrudService {
     this.emailString = undefined;
     return this.logeado
   }
-
+  // ESTADISTICA 
+  HoraGet(id: number, fechaRange: Fecha):Observable<any>{
+    if(id!=0){
+      return this.clientehttp.post(this.API + "estadistica/hora/" + id, fechaRange);
+    }else{
+      return this.clientehttp.post(this.API+"estadistica/hora", fechaRange);
+      //'text' as 'json'
+      //'blob'
+    }
+  }
+  DiaGet(id: number, fechaRange: Fecha):Observable<any>{
+    if(id!=0){
+      return this.clientehttp.post(this.API + "estadistica/dia/" + id, fechaRange);
+    }else{
+      return this.clientehttp.post(this.API+"estadistica/dia", fechaRange);
+    }
+    
+  }
 }

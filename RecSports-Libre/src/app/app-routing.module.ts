@@ -14,7 +14,10 @@ import { AdminComponent } from './admin/admin.component';
 import { AccesoComponent } from './components/acceso/acceso.component';
 import { EditarEdificioComponent } from './components/editar-edificio/editar-edificio.component';
 import { AgregarEdificioComponent } from './components/agregar-edificio/agregar-edificio.component';
+
 import { CompComponent } from './comp/comp.component';
+import { DescargarHistoricoComponent } from './components/descargar-historico/descargar-historico.component';
+import { SubirAlumnosComponent } from './components/subir-alumnos/subir-alumnos.component';
 
 //import { CrudService } from './service/crud.service';
 // inject, router
@@ -84,6 +87,18 @@ const routes: Routes = [
   {
     path: 'edificio-agregar/agregar', // Ruta para agregar un edificio
     component: AgregarEdificioComponent,
+  },
+  {
+    path: 'historico/descargar',
+    component: DescargarHistoricoComponent,
+    pathMatch:'full',
+    canActivate: [authGuard]
+  },
+  {
+    path: 'alumnos/subir-archivo',
+    component: SubirAlumnosComponent,
+    pathMatch:'full',
+    canActivate: [authGuard]
   }
 ];
 
