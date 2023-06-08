@@ -24,7 +24,7 @@ Fecha de modificacion: 18/05/2023 -->
       type="button"
       class="btn btn-warning leftalign "
       *ngIf="auth"
-      [routerLink]="['/editar-area/editar']"
+      [routerLink]="['/editar-area/editar/', area.IdArea]"
     >
       <i class="bi bi-pencil-fill"></i>
     </button>

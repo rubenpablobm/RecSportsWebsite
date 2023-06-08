@@ -59,7 +59,7 @@ const routes: Routes = [
     component: AreaInfoComponent
   },
   {
-    path: 'editar-area/editar', // Ruta con parametro dinamico
+    path: 'editar-area/editar/:idArea', // Ruta con parametro dinamico
     component: EditarAreaComponent
   },
   {

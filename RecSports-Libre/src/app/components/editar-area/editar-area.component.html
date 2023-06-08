@@ -22,64 +22,28 @@
         <div *ngIf="nombreError" >*Nombre ya existe. Intente de nuevo.</div>
       </div>
     </div>
-    <!-- Campo de Aviso -->
-    <div class="form-group my-4 w-75">
-      <label class="fw-bold fs-5" for="nombre">Aviso</label>
-      <textarea
-        formControlName="Aviso"
-        type="text"
-        class="form-control fs-5"
-        placeholder="Ej. Cerrado por mantenimiento de 6:00 - 22:00hrs."
-      ></textarea>
-    </div>
-    <!-- Campo foto -->
-    <div class="form-group my-4 w-75">
-      <label class="fw-bold fs-5" for="nombre">Foto</label>
-      <textarea
-        formControlName="Foto"
-        type="text"
-        class="form-control fs-5"
-        placeholder="Ej. Cerrado por mantenimiento de 6:00 - 22:00hrs."
-      ></textarea>
-    </div>
-    <!-- Campo de Foto -->
-    <div class="form-group my-4 w-75">
-      <label class="fw-bold fs-5" for="foto">Horarios</label>
-      <textarea
-        formControlName="Foto"
-        type="text"
-        class="form-control fs-5"
-        placeholder="Ej. Lunes a Viernes 6:00 - 22:00hrs."
-      ></textarea>
-      <!-- Error message for Foto -->
-      <div class="text-danger fs-6">
-        <div *ngIf="fotoVacia">
-          *Campo obligatorio. Por favor ingrese el horario.
-        </div>
-        <div *ngIf="fotoError">*Entrada no es un texto. Intente de nuevo.</div>
+      <!-- Campo foto -->
+      <div class="form-group my-4 w-75">
+        <label class="fw-bold fs-5" for="nombre">Foto</label>
+        <input
+          formControlName="Foto"
+          type="text"
+          class="form-control fs-5"
+          placeholder="Ej. Cerrado por mantenimiento de 6:00 - 22:00hrs."
+        >
       </div>
-    </div>
-    <!-- Campo de Link de Google Maps -->
-    <div class="form-group my-4 w-75">
-      <label class="fw-bold fs-5" for="linkMaps">Descripcion</label>
-      <textarea
-        formControlName="LinkMaps"
+          <!--Croquis-->
+     <div class="form-group my-4 w-75">
+      <label class="fw-bold fs-5" for="nombre">Croquis</label>
+      <input
+        formControlName="Croquis"
         type="text"
         class="form-control fs-5"
-        placeholder="Ej. Requisitos"
-      ></textarea>
-      <!-- Error message for Link Maps -->
-      <div class="text-danger fs-6">
-        <div *ngIf="linkMapsVacio">
-          *Campo obligatorio. Por favor ingrese Una descripción.
-        </div>
-        <div *ngIf="linkMapsError">
-          *Entrada no es un texto. Intente de nuevo.
-        </div>
-      </div>
+        placeholder="Ej. Lu-Vi de 8:00 a 16:00"
+      >
     </div>
-    <!--Scroll-->
-    <div class="dropstart" style="display: flex; align-items: center">
+     <!--Campo de Tipo Areas-->
+     <div class="dropstart" style="display: flex; align-items: center">
       <ul class="navbar-nav fs-6">
         <li class="nav-item dropdown">
           <!-- Dropdown de Edificios -->
@@ -116,35 +80,72 @@
         </li>
       </ul>
     </div>
-  <!---Campo de Capacidad-->
-        <div class="form-group my-4 w-75">
-      <label class="fw-bold fs-5" for="nombre">Capacidad(Aforo maximo)</label>
-      <textarea
-        formControlName="Foto"
-        type="text"
-        class="form-control fs-5"
-        placeholder="Ej. 300"
-      ></textarea>
-    </div>
-    <!--Link Zcal-->
-      <div class="form-group my-4 w-75">
+     <!--Link Zcal-->
+     <div class="form-group my-4 w-75">
       <label class="fw-bold fs-5" for="nombre">Link Zcal</label>
-      <textarea
-        formControlName="Foto"
+      <input
+        formControlName="LinkCalendar"
         type="text"
         class="form-control fs-5"
         placeholder="Ej. https://zcal.co/"
-      ></textarea>
+      >
     </div>
-    <!--Croquis-->
-     <div class="form-group my-4 w-75">
-      <label class="fw-bold fs-5" for="nombre">Croquis</label>
+     <!--Descripcion-->
+    <div class="form-group my-4 w-75">
+      <label class="fw-bold fs-5" for="linkMaps">Descripcion</label>
       <textarea
-        formControlName="Foto"
+        formControlName="Descripcion"
         type="text"
         class="form-control fs-5"
-        placeholder="Ej. Lu-Vi de 8:00 a 16:00"
+        placeholder="Ej. Requisitos"
       ></textarea>
+      <!-- Error message for Link Maps -->
+      <div class="text-danger fs-6">
+        <div *ngIf="descripcionVacio">
+          *Campo obligatorio. Por favor ingrese Una descripción.
+        </div>
+        <div *ngIf="descripcionError">
+          *Entrada no es un texto. Intente de nuevo.
+        </div>
+      </div>
+    </div>
+
+    <!-- Campo de horarios -->
+    <div class="form-group my-4 w-75">
+      <label class="fw-bold fs-5" for="foto">Horarios</label>
+      <textarea
+        formControlName="Horarios"
+        type="text"
+        class="form-control fs-5"
+        placeholder="Ej. Lunes a Viernes 6:00 - 22:00hrs."
+      ></textarea>
+      <!-- Error message for Foto -->
+      <div class="text-danger fs-6">
+        <div *ngIf="fotoVacia">
+          *Campo obligatorio. Por favor ingrese el horario.
+        </div>
+        <div *ngIf="fotoError">*Entrada no es un texto. Intente de nuevo.</div>
+      </div>
+    </div>
+    <!-- Campo de Aviso -->
+    <div class="form-group my-4 w-75">
+      <label class="fw-bold fs-5" for="aviso">Aviso</label>
+      <textarea
+        formControlName="Avisos"
+        type="text"
+        class="form-control fs-5"
+        placeholder="Ej. Cerrado por mantenimiento de 6:00 - 22:00hrs."
+      ></textarea>
+    </div>
+  <!---Campo de Capacidad-->
+        <div class="form-group my-4 w-75">
+      <label class="fw-bold fs-5" for="nombre">Capacidad(Aforo maximo)</label>
+      <input
+        formControlName="Capacidad"
+        type="text"
+        class="form-control fs-5"
+        placeholder="Ej. 300"
+      >
     </div>
     <!-- Grupo de botones -->
     <div class="btn-group"  role="group" aria-label="Button group name">
@@ -160,7 +161,7 @@
       </button>
     </div>
     <div
-      *ngIf="edificioAgregado"
+      *ngIf="areaAgregada"
       class="confirmation-message fs-6 my-2"
       style="color: darkgreen"
     >
