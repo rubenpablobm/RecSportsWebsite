@@ -65,6 +65,8 @@ public class EdificioCrud {
 
     @FindBy(css = "button[class*='btn-danger']")
     public WebElement buttonCancelarEditarEdificio;
+    
+    
 
     @FindBy(css = "html > body > app-root > app-editar-edificio > div > form > div:nth-of-type(1) > div > div")
     public WebElement divCampoObligatorioNombreEditar;
