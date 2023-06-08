@@ -23,6 +23,7 @@ import { AgregarEdificioComponent } from './components/agregar-edificio/agregar-
 import { CompComponent } from './comp/comp.component';
 import { TablaEdificioComponent } from './components/tabla-edificio/tabla-edificio.component';
 import { CambioContrasenaComponent } from './components/cambio-contrasena/cambio-contrasena.component';
+import { EditarAreaComponent } from './components/editar-area/editar-area.component';
 
 @NgModule({
   //Declaracion de componentes
@@ -41,6 +42,7 @@ import { CambioContrasenaComponent } from './components/cambio-contrasena/cambio
     CompComponent,
     TablaEdificioComponent,
     CambioContrasenaComponent,
+    EditarAreaComponent,
 
   ],
   //Modulos importados

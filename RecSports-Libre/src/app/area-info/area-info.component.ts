@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CrudService } from '../service/crud.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { authGuard } from '../service/auth.guard';
 
 // Decorador del componente
 @Component({
@@ -21,6 +22,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class AreaInfoComponent {
 
   // Propiedades y variables
+  auth!: boolean;
   aID : any = null;
   area : any = [];
   linkCalendar!: string; 
@@ -28,7 +30,9 @@ export class AreaInfoComponent {
   horarios!: string;
   secureLinkCalendar: any = null;
 
-  constructor(private route: ActivatedRoute, private htttp: HttpClient, public crudService:CrudService, private sanitizer: DomSanitizer) { }
+  constructor(private route: ActivatedRoute, private htttp: HttpClient, public crudService:CrudService, private sanitizer: DomSanitizer) { 
+    this.auth=authGuard();
+  }
 
   ngOnInit() {
     // Obtener el id del area de la ruta
@@ -52,6 +56,12 @@ export class AreaInfoComponent {
     })
   }
   
+ /* edit(text: string): string{
+    if (text) {
+      return '';
+    }
+    return text.replace(/\\n/g, '<br>');
+  }*/
   // Convertir saltos de linea en etiquetas <br>
   convertLineBreaks(text: string): string {
     if (!text) {
