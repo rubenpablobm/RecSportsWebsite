@@ -23,19 +23,15 @@ Fecha de modificacion: 17/05/2023 -->
         placeholder="Ej. Wellness"
       />
       <!-- Mensaje de Error para el campo Nombre -->
-      <div
-        *ngIf="
+      <!-- *ngIf="
           nombreControl?.invalid &&
           (nombreControl?.dirty || nombreControl?.touched)
-        "
-        class="text-danger fs-6"
-      >
-        <div *ngIf="nombreControl?.errors?.['required']">
+        " -->
+      <div class="text-danger fs-6">
+        <div *ngIf="nombreVacio">
           *Campo obligatorio. Por favor ingrese nombre de edificio.
         </div>
-        <div *ngIf="nombreControl?.errors?.['duplicateNombre']">
-          *Nombre ya existe. Intente de nuevo.
-        </div>
+        <div *ngIf="nombreError">*Nombre ya existe. Intente de nuevo.</div>
       </div>
     </div>
     <!-- Campo de Foto -->
@@ -48,18 +44,11 @@ Fecha de modificacion: 17/05/2023 -->
         placeholder="Ej. https://imagenWellnes.png"
       />
       <!-- Error message for Foto -->
-      <div
-        *ngIf="
-          fotoControl?.invalid && (fotoControl?.dirty || fotoControl?.touched)
-        "
-        class="text-danger fs-6"
-      >
-        <div *ngIf="fotoControl?.errors?.['required']">
+      <div class="text-danger fs-6">
+        <div *ngIf="fotoVacia">
           *Campo obligatorio. Por favor ingrese URL de foto.
         </div>
-        <div *ngIf="fotoControl?.errors?.['invalidImage']">
-          *Entrada no es una foto. Intente de nuevo.
-        </div>
+        <div *ngIf="fotoError">*Entrada no es una foto. Intente de nuevo.</div>
       </div>
     </div>
     <!-- Campo de Link de Google Maps -->
@@ -72,17 +61,11 @@ Fecha de modificacion: 17/05/2023 -->
         placeholder="Ej. https://goo.gl/maps/jfejfb"
       />
       <!-- Error message for Link Maps -->
-      <div
-        class="text-danger fs-6"
-        *ngIf="
-          linkMapsControl?.invalid &&
-          (linkMapsControl?.dirty || linkMapsControl?.touched)
-        "
-      >
-        <div *ngIf="linkMapsControl?.errors?.['required']">
+      <div class="text-danger fs-6">
+        <div *ngIf="linkMapsVacio">
           *Campo obligatorio. Por favor ingrese URL de google maps.
         </div>
-        <div *ngIf="linkMapsControl?.errors?.['invalidGoogleMapsLink']">
+        <div *ngIf="linkMapsError">
           *Entrada no es un link de google maps. Intente de nuevo.
         </div>
       </div>

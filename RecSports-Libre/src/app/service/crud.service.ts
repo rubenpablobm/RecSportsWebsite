@@ -64,6 +64,15 @@ export class CrudService {
   };
 
   /* AREA */
+  
+ 
+  AreaGet(id: number):Observable<any>{
+    return this.clientehttp.get<Area>(this.API+"area/"+id);
+  }
+  // Actualizar area
+  AreaUpdate(id: number, datosArea:Area):Observable<any>{
+    return this.clientehttp.put<Area>(this.API+"area/"+ id, datosArea);
+  }
 
   // Obtener multiples areas
   AreaGetMultiple():Observable<any>{

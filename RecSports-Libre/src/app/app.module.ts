@@ -26,11 +26,11 @@ import { CambioContrasenaComponent } from './components/cambio-contrasena/cambio
 import { DescargarHistoricoComponent } from './components/descargar-historico/descargar-historico.component';
 import { SubirAlumnosComponent } from './components/subir-alumnos/subir-alumnos.component';
 //import { DatePickerComponent } from './components/date-picker/date-picker.component';
-
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
+import { EditarAreaComponent } from './components/editar-area/editar-area.component';
 
 @NgModule({
   //Declaracion de componentes
@@ -49,10 +49,11 @@ import {MatSelectModule} from '@angular/material/select';
     CompComponent,
     TablaEdificioComponent,
     CambioContrasenaComponent,
+    DatosHistoricos-29-Sebas
     DescargarHistoricoComponent,
     SubirAlumnosComponent,
     //DatePickerComponent
-
+    EditarAreaComponent,
   ],
   //Modulos importados
   imports: [
