@@ -9,6 +9,21 @@ Fecha de modificacion: 17/05/2023 -->
 <!-- fs-5 para campos -->
 <!-- fs-6 para mensjes -->
 
+<!-- Nombre -->
+<!-- Aviso -->
+<!-- Horarios -->
+<!-- Descripción -->
+<!-- Croquis -->
+
+<!-- AFORO -->
+<!-- capacidad -->
+
+<!-- ISTRUCTIVAS -->
+<!-- zcal -->
+
+<!-- DISPONIBILIDAD -->
+<!-- zcal -->
+
 <!-- Componente de navegacion -->
 <app-navbar></app-navbar>
 <!-- Contenedor principal -->
@@ -18,6 +33,15 @@ Fecha de modificacion: 17/05/2023 -->
   <!-- Formulario -->
   <form (ngSubmit)="enviarDatos()" [formGroup]="formularioDeEdificios">
     <div class="form-group my-4 w-75">
+
+      <!-- Campo del Edificio al que pertenece -->
+    <div class="form-group my-4 w-75">
+      <label class="fw-bold" for="Tipo">Edificio al que pertenece</label>
+      <br>
+      <select name="tipo" id="tipo" [(ngModel)]="tipoArea" (change)="onTipoSelect($event)">
+        <option *ngFor="let edificio in listaEdificios" value="{{edificio.IdEdificio}}">{{edificio.Nombre}}</option>
+      </select>
+    </div>
       
       <!-- Campo de Nombre -->
       <label class="fw-bold" for="nombre">Nombre</label>
@@ -25,7 +49,7 @@ Fecha de modificacion: 17/05/2023 -->
         formControlName="Nombre"
         type="text"
         class="form-control"
-        placeholder="Ej. Wellness"
+        placeholder="Ej. Basketball"
       />
       <!-- Mensaje de Error para el campo Nombre -->
       <div
@@ -42,6 +66,17 @@ Fecha de modificacion: 17/05/2023 -->
           Name already exists. Try again.
         </div>
       </div>
+    </div>
+
+    <!-- Campo de aviso -->
+    <div class="form-group my-4 w-75">
+      <label class="fw-bold" for="foto">Aviso</label>
+      <input
+        formControlName="Aviso"
+        type="text"
+        class="form-control"
+        placeholder="Ej. Cerrado por mantenimiento de 13:00-14:00"
+      />
     </div>
 
     <!-- Campo de Foto -->
@@ -78,21 +113,46 @@ Fecha de modificacion: 17/05/2023 -->
         class="form-control"
         placeholder="Ej. Lu-Vi de 8:00  a 16:00"
       />
-      <!-- Error message for Foto -->
-      <div
-        *ngIf="
-          fotoControl?.invalid && (fotoControl?.dirty || fotoControl?.touched)
-        "
-        class="text-danger"
-      >
-        <div *ngIf="fotoControl?.errors?.['required']">
-          Este campo es obligatorio.
-        </div>
-      </div>
     </div>
 
-    <!-- Campo de Link de ZCal -->
+    <!-- Campo de descripción -->
     <div class="form-group my-4 w-75">
+      <label class="fw-bold" for="horarios">Descripción</label>
+      <input
+        formControlName="Descripción"
+        type="text"
+        class="form-control"
+        placeholder="Prohibida entrada sin"
+      />
+    </div>
+
+    <!-- Campo de tipo de área -->
+    <div class="form-group my-4 w-75">
+      <label class="fw-bold" for="Tipo">Tipo de área</label>
+      <br>
+      <select name="tipo" id="tipo" [(ngModel)]="tipoArea" (change)="onTipoSelect($event)">
+        <option value="aforo">Aforo</option>
+        <option value="instructiva">Instructiva</option>
+        <option value="reservas">Reservas</option>
+      </select>
+    </div>
+
+    <!-- Campo de Capacidad -->
+    <div>
+      <div class="form-group my-4 w-75" data-aforo *ngIf="tipoArea === 'aforo'">
+        <label class="fw-bold" for="foto">Capacidad (aforo máximo)</label>
+        <input
+          formControlName="Capacidad"
+          type="number"
+          class="form-control"
+          placeholder="300"
+        />
+      </div>
+    </div>
+    <!-- BLOQUEAR NÚMEROS NEGATIVOS -->
+
+    <!-- Campo de Link de ZCal -->
+    <div class="form-group my-4 w-75" data-reserva *ngIf="tipoArea !== 'aforo'">
       <label class="fw-bold" for="linkMaps">Link ZCal</label>
       <input
         formControlName="LinkCal"
@@ -117,6 +177,30 @@ Fecha de modificacion: 17/05/2023 -->
       </div>
     </div>
 
+    <!-- Campo de Croquis -->
+    <div class="form-group my-4 w-75">
+      <label class="fw-bold" for="Croquis">Croquis</label>
+      <input
+        formControlName="Croquis"
+        type="text"
+        class="form-control"
+        placeholder="Ej. Lu-Vi de 8:00  a 16:00"
+      />
+      <!-- Error message for Foto -->
+      <div
+        *ngIf="
+          fotoControl?.invalid && (fotoControl?.dirty || fotoControl?.touched)
+        "
+        class="text-danger"
+      >
+        <div *ngIf="fotoControl?.errors?.['required']">
+          Obligatory field. Please provide a Foto URL.
+        </div>
+        <div *ngIf="fotoControl?.errors?.['invalidImage']">
+          Given URL is not a foto. Try again.
+        </div>
+      </div>
+    </div>
 
     <!-- Grupo de botones -->
     <div class="btn-group" role="group" aria-label="Button group name">

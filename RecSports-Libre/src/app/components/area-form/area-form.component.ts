@@ -1,11 +1,11 @@
 
 // Declaracion de importaciones
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Output, EventEmitter, HostListener} from '@angular/core';
+import { Route, Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { CrudService } from '../../service/crud.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Route, Router } from '@angular/router';
+import { CrudService } from '../../service/crud.service';
+import { ChangeDetectorRef } from '@angular/core';
 
 
 @Component({
@@ -15,13 +15,14 @@ import { Route, Router } from '@angular/router';
 })
 export class AreaFormComponent {
   // Variables
-  mensaje?:string;
   listaEdificios : any = [];
+  tipoArea:string = '';
+  mensaje?:string;
   // Grupo de formulario para recolectar datos del formulario
   formularioDeEdificios: FormGroup;
 
   // Constructor con dependencias inyectadas
-  constructor(private route: ActivatedRoute, private http: HttpClient, private ruteador: Router, public crudService:CrudService, public formulario: FormBuilder) { 
+  constructor(private route: ActivatedRoute, private http: HttpClient, private ruteador: Router, public crudService:CrudService, private cdr: ChangeDetectorRef, public formulario: FormBuilder) { 
     // Crear el grupo de formulario
     this.formularioDeEdificios=this.formulario.group({
       Nombre: ['', Validators.required],
@@ -32,15 +33,18 @@ export class AreaFormComponent {
 
   // Obtener edificios desde la API
   ngOnInit() {
-    this.getEdificios();
+    // this.getEdificios();
+    console.log('haciendo request de edificios en select');
+    console.log(this.listaEdificios);
   }
 
   // Metodo para obtener los edificios
   getEdificios() {
     console.log('Cargando edificios existentes...')
-    return this.crudService.EdificioGetMultiple().subscribe((data:{}) => {
-      console.log(data);
-      this.listaEdificios = data;
+    return this.crudService.EdificioGetMultiple().subscribe((eData:{}) => {
+      console.log('data recuperada de edificios')
+      console.log(eData);
+      this.listaEdificios = eData;
     })
   }
 
@@ -66,6 +70,16 @@ export class AreaFormComponent {
   
       img.src = url;
     });
+  }
+
+  onTipoSelect(event: Event) {
+    const target = event.target as HTMLSelectElement;
+    const option = target.value;
+    
+    if (option !== null) {
+      this.tipoArea = option;
+    }
+    this.cdr.detectChanges();
   }
 
   // Metodo que valida si el link correponde a un link de google maps
