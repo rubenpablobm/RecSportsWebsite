@@ -232,8 +232,6 @@ public class EdificioCrudTest {
             alert.dismiss();
         }
 
-        alert.accept();
-
         // Reload the page
         driver.navigate().refresh();
     }
