@@ -15,8 +15,10 @@ export class TablaEdificioComponent {
     foto? :string = "https://www.arquired.com.mx/wp-content/uploads/2017/05/campustecmtywh.jpg";
     eID : number = 0;
     listaEdificios : any = [];
+    mostrarOverlay: boolean = false;
   
-    constructor(public crudService:CrudService){ }
+    constructor(public crudService:CrudService){
+    }
   
     // Metodo que obtiene los edificios al inicializar el componente
     ngOnInit() {
@@ -45,14 +47,25 @@ export class TablaEdificioComponent {
 
     borrarRegistro(idEdificio: any, nombreEdificio: any){
       console.log(idEdificio);
-      if(window.confirm("Realmente deseas eliminar el registro titulo="+nombreEdificio)){
-        this.crudService.EdificioDelete(idEdificio).subscribe(respuesta =>{
-          // Para actualizar la lista de libros en el template
-          // this.listaEdificios = this.listaEdificios.filter((edificio: any) => edificio.IdEdificio !== idEdificio);
-          console.log(this.listaEdificios);
-        })
-      }
-      window.location.reload();
+
+      this.mostrarOverlay = true;
+
+      setTimeout(() => {
+        if (window.confirm("Realmente deseas eliminar el registro titulo=" + nombreEdificio)) {
+          this.crudService.EdificioDelete(idEdificio).subscribe(respuesta => {
+            // Para actualizar la lista de libros en el template
+            // this.listaEdificios = this.listaEdificios.filter((edificio: any) => edificio.IdEdificio !== idEdificio);
+            console.log(this.listaEdificios);
+          });
+          this.mostrarOverlay = false;
+          window.location.reload();
+        }
+        else{
+          this.mostrarOverlay = false;
+        }
+      }, 100);
+      
+      
     }
    
 }
