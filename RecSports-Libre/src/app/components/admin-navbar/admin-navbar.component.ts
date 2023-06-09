@@ -11,6 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CrudService } from 'src/app/service/crud.service';
 
+import { faBuilding, faChartSimple, faKey } from '@fortawesome/free-solid-svg-icons';
+
 // Decorador del componente
 @Component({
   selector: 'app-admin-navbar',
@@ -19,7 +21,9 @@ import { CrudService } from 'src/app/service/crud.service';
 })
 
 export class AdminNavbarComponent {
-
+  faBuilding = faBuilding;
+  faChartSimple = faChartSimple;
+  faKey = faKey;
   //Variables
   AreaList:any=[];  
   // eID : any = null;

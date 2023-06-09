@@ -7,7 +7,7 @@ Fecha de modificacion: 19/05/2023 */
 
 import { Component } from '@angular/core';
 import { Area } from './models/area';
-
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +15,7 @@ import { Area } from './models/area';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  faCoffee = faCoffee;
   title = 'RecSports-Libre';
 }
 
