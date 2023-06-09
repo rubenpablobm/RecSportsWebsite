@@ -59,7 +59,7 @@ export class DescargarHistoricoComponent {
       return this.crudService.HoraGet(this.selected, this.fechaRange).subscribe((data:{}) => {
         this.listaHoraDia = data;
         console.log(this.listaHoraDia);
-        let newHeaders = ["IdHora", "Aforo", "Capacidad", "IdArea", "Hora"];
+        let newHeaders = ["IdHora", "Aforo", "Capacidad", "IdArea", "Hora", "Nombre"];
         this.jsonCsvSerice.downloadFile(data,'jsontocsv',newHeaders);
       });
       
@@ -77,7 +77,7 @@ export class DescargarHistoricoComponent {
       return this.crudService.DiaGet(this.selected, this.fechaRange).subscribe((data:{}) => {
         this.listaHoraDia = data;
         console.log(this.listaHoraDia);
-        let newHeaders = ["IdDia", "TotalPersonas", "IdArea", "Dia"];
+        let newHeaders = ["IdDia", "TotalPersonas", "IdArea", "Dia", "Nombre"];
         this.jsonCsvSerice.downloadFile(data,'jsontocsv', newHeaders);  
       });
       

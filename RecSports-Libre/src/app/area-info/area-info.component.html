@@ -72,7 +72,7 @@ Fecha de modificacion: 18/05/2023 -->
     <iframe class="embedido" [src]="secureLinkCalendar"></iframe>
   </div>
   <!-- Boton de registro manual -->
-  <ng-container *ngIf="area.Tipo === 'Aforo'">
+  <ng-container *ngIf="area.Tipo === 'Aforo' && auth">
     <button
       class="btn btn-secondary my-2"
       [routerLink]="['/area-info', area.IdArea, 'acceso']"
