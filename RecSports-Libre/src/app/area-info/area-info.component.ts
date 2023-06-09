@@ -7,7 +7,7 @@ Fecha de modificacion: 9/06/2023 */
 
 // Declaracion de importaciones
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CrudService } from '../service/crud.service';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -23,6 +23,7 @@ import { authGuard } from '../service/auth.guard';
 export class AreaInfoComponent {
 
   // Propiedades y variables
+  mostrarOverlay: boolean = false;
   aID : any = null;
   area : any = [];
   linkCalendar!: string; 
@@ -32,7 +33,7 @@ export class AreaInfoComponent {
 
   auth!: boolean; //validador admin
 
-  constructor(private route: ActivatedRoute, private htttp: HttpClient, public crudService:CrudService, private sanitizer: DomSanitizer) { 
+  constructor(private route: ActivatedRoute, private htttp: HttpClient, public crudService:CrudService, private sanitizer: DomSanitizer, private router:Router) { 
     this.auth=authGuard(); //validador admin
    }
 
@@ -68,7 +69,22 @@ export class AreaInfoComponent {
   }
 
   limpiarAforo(){
-
+    this.mostrarOverlay = true;
+    setTimeout(() => {
+      if (window.confirm("Realmente deseas vaciar el area tipo aforo")) {
+        this.crudService.LimpiarAforo(this.aID).subscribe({
+          next:(res:any)=>{
+            console.log("Aforo limpiado del area " + this.aID);
+          },
+          error: (e) => console.log(e)
+        });
+        this.mostrarOverlay = false;
+        this.router.navigateByUrl('');
+      }
+      else{
+        this.mostrarOverlay = false;
+      }
+    }, 100);
   }
 
 }

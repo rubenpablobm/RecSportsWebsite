@@ -20,6 +20,7 @@ export class NavbarComponent {
   
   // Variables
   listaEdificios : any = [];
+  adminEmail? : String;
   // Emisor de evento para la foto del enlace
   @Output() linkFoto = new EventEmitter<string>();
   //@Output() reloadSignal = new EventEmitter<void>();
@@ -29,6 +30,7 @@ export class NavbarComponent {
   // Metodo para llmara el metodo getEdificios por cada iteracion
   ngOnInit() {
     this.getEdificios();
+    this.adminEmail = this.crudService.EstaLogeadoEmail();
   }
   
   // Metodo para obtener los edificios

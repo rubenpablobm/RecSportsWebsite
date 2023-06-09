@@ -40,9 +40,8 @@ app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 
     //https://node-schedule-calculator.firebaseapp.com/
-    var PorHora = schedule.scheduleJob('40 7-22 * * *', function(){ //xx:40 entre 7:00 a 22:00 horas
-        console.log("Creacion de reporte por hora");
-        axios.get('http://localhost:5040/estadistica/crearhora')
+    var PorHora = schedule.scheduleJob('40 6-22 * * *', function(){ //xx:40 entre 7:00 a 22:00 horas
+        axios.post('http://localhost:5040/estadistica/crearhora/')
             .then(response => {
             console.log(response.data);
             })

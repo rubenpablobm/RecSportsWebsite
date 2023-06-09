@@ -27,20 +27,4 @@ export class AdminNavbarComponent {
 
   // Constructor con dependencias inyectadas
   constructor(private route: ActivatedRoute, private htttp: HttpClient,public crudService:CrudService){ }
-
-  // ngOnInit(){
-  //   const idEdificio = this.route.snapshot.paramMap.get('idEdificio');
-  //   this.eID = idEdificio;
-  //   return this.crudService.EdificioGet(this.eID).subscribe((data:{}) => {
-  //     this.edificio = data;
-  //     console.log(this.edificio);
-  //   })
-  // }
-  // getArea(){
-  //   console.log("voy a llamar a la API :)");
-  //   return this.crudService.AreaGetMultiple().subscribe((data:{})=>{
-  //     console.log(data);
-  //     this.AreaList=data;
-  //   })
-  // }
 }

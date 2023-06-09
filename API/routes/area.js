@@ -223,15 +223,13 @@ app.put('/aviso/:id', async (req, res) => {
 });
 
 //Limpiar Aforo
-app.put('/aforo/limpiar/:id', async (req, res) => {
+app.get('/limpiaraforo/:id', async (req, res) => {
   try{
     const pool = await poolPromise;
     const id = req.params.id;
-    const {Avisos} = req.body;
     const query = 'UPDATE Aforo SET Aforo = 0 WHERE IdArea = @current_IdArea;';
     await pool.request()
       .input('current_IdArea', sql.Int, id)
-      .input('Avisos', sql.VarChar, Avisos)
       .query(query);
     res.sendStatus(200);
   } catch (error) {
