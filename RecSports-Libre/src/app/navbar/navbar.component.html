@@ -59,6 +59,7 @@ Fecha de modificacion: 19/05/2023 -->
 
     <!-- Boton Admin -->
     <button
+      *ngIf="!auth"
       routerLink="/admin/login"
       target="sideBar"
       rel="bookmark"
@@ -67,5 +68,15 @@ Fecha de modificacion: 19/05/2023 -->
     >
       Admin
     </button>
+      <button
+        *ngIf="auth"
+        (click)="cerrarSesion()"
+        target="sideBar"
+        rel="bookmark"
+        routerLinkActive="active"
+        mat-button
+      >
+        Cerrar sesion
+      </button>
   </div>
 </mat-toolbar>
