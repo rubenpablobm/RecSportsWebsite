@@ -1,4 +1,4 @@
-/* Descripcion MainPageTest.java: programa que define la logica del componente "navbar".
+/* Descripcion MainPageTest.java: programa que prueba la funcionalidad de la pantalla .
 Su proposito es llamar al servicio API por medio de funciones.
 Porpiedad del equipo WellSoft.
 Ultima edicion por: Arturo Garza Campuzano
