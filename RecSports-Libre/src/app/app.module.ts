@@ -49,7 +49,6 @@ import { EditarAreaComponent } from './components/editar-area/editar-area.compon
     CompComponent,
     TablaEdificioComponent,
     CambioContrasenaComponent,
-    DatosHistoricos-29-Sebas
     DescargarHistoricoComponent,
     SubirAlumnosComponent,
     //DatePickerComponent
