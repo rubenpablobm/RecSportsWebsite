@@ -9,17 +9,18 @@ Fecha de modificacion: 17/05/2023 -->
 <!-- fs-5 para campos -->
 <!-- fs-6 para mensjes -->
 
-<!-- Nombre -->
+<!-- Nombre * -->
 <!-- Aviso -->
 <!-- Horarios -->
 <!-- Descripción -->
 <!-- Croquis -->
+<!-- Tipo de área * -->
 
 <!-- AFORO -->
-<!-- capacidad -->
+<!-- capacidad * -->
 
 <!-- ISTRUCTIVAS -->
-<!-- zcal -->
+<!-- zcal * -->
 
 <!-- DISPONIBILIDAD -->
 <!-- zcal -->
@@ -31,189 +32,178 @@ Fecha de modificacion: 17/05/2023 -->
   <!-- Titulo -->
   <h1 class="fw-bold">Agregar Edificio</h1>
   <!-- Formulario -->
-  <form (ngSubmit)="enviarDatos()" [formGroup]="formularioDeEdificios">
+  <form (ngSubmit)="enviarDatos()" [formGroup]="formularioDeAreas">
     <div class="form-group my-4 w-75">
 
       <!-- Campo del Edificio al que pertenece -->
-    <div class="form-group my-4 w-75">
-      <label class="fw-bold" for="Tipo">Edificio al que pertenece</label>
-      <br>
-      <select name="tipo" id="tipo" [(ngModel)]="tipoArea" (change)="onTipoSelect($event)">
-        <option *ngFor="let edificio in listaEdificios" value="{{edificio.IdEdificio}}">{{edificio.Nombre}}</option>
-      </select>
-    </div>
+      <div class="form-group my-4 w-75">
+        <label class="fw-bold" for="idEdificio">Edificio al que pertenece</label>
+        <br>
+        <select name="idEdificio" id="idEdificio" [(ngModel)]="idEdificio" (change)="onEdificioSelect($event)">
+          <option *ngFor="let edificio of listaEdificios" value="{{edificio.IdEdificio}}">{{edificio.Nombre}}</option>
+        </select>
+      </div>
       
-      <!-- Campo de Nombre -->
-      <label class="fw-bold" for="nombre">Nombre</label>
-      <input
-        formControlName="Nombre"
-        type="text"
-        class="form-control"
-        placeholder="Ej. Basketball"
-      />
-      <!-- Mensaje de Error para el campo Nombre -->
-      <div
-        *ngIf="
-          nombreControl?.invalid &&
-          (nombreControl?.dirty || nombreControl?.touched)
-        "
-        class="text-danger"
-      >
-        <div *ngIf="nombreControl?.errors?.['required']">
-          Obligatory field. Please provide a Name.
-        </div>
-        <div *ngIf="nombreControl?.errors?.['duplicateNombre']">
-          Name already exists. Try again.
-        </div>
-      </div>
-    </div>
-
-    <!-- Campo de aviso -->
-    <div class="form-group my-4 w-75">
-      <label class="fw-bold" for="foto">Aviso</label>
-      <input
-        formControlName="Aviso"
-        type="text"
-        class="form-control"
-        placeholder="Ej. Cerrado por mantenimiento de 13:00-14:00"
-      />
-    </div>
-
-    <!-- Campo de Foto -->
-    <div class="form-group my-4 w-75">
-      <label class="fw-bold" for="foto">Foto</label>
-      <input
-        formControlName="Foto"
-        type="text"
-        class="form-control"
-        placeholder="Ej. https://imagenWellnes.png"
-      />
-      <!-- Error message for Foto -->
-      <div
-        *ngIf="
-          fotoControl?.invalid && (fotoControl?.dirty || fotoControl?.touched)
-        "
-        class="text-danger"
-      >
-        <div *ngIf="fotoControl?.errors?.['required']">
-          Obligatory field. Please provide a Foto URL.
-        </div>
-        <div *ngIf="fotoControl?.errors?.['invalidImage']">
-          Given URL is not a foto. Try again.
-        </div>
-      </div>
-    </div>
-
-    <!-- Campo de Horarios -->
-    <div class="form-group my-4 w-75">
-      <label class="fw-bold" for="horarios">Horarios</label>
-      <input
-        formControlName="Foto"
-        type="text"
-        class="form-control"
-        placeholder="Ej. Lu-Vi de 8:00  a 16:00"
-      />
-    </div>
-
-    <!-- Campo de descripción -->
-    <div class="form-group my-4 w-75">
-      <label class="fw-bold" for="horarios">Descripción</label>
-      <input
-        formControlName="Descripción"
-        type="text"
-        class="form-control"
-        placeholder="Prohibida entrada sin"
-      />
-    </div>
-
-    <!-- Campo de tipo de área -->
-    <div class="form-group my-4 w-75">
-      <label class="fw-bold" for="Tipo">Tipo de área</label>
-      <br>
-      <select name="tipo" id="tipo" [(ngModel)]="tipoArea" (change)="onTipoSelect($event)">
-        <option value="aforo">Aforo</option>
-        <option value="instructiva">Instructiva</option>
-        <option value="reservas">Reservas</option>
-      </select>
-    </div>
-
-    <!-- Campo de Capacidad -->
-    <div>
-      <div class="form-group my-4 w-75" data-aforo *ngIf="tipoArea === 'aforo'">
-        <label class="fw-bold" for="foto">Capacidad (aforo máximo)</label>
+      <!-- CAMPOS, SE DESPLIEGAN HASTA QUE SE SELECCIONE UN EDIFICIO-->
+      <div *ngIf="idEdificio != -1">
+        <!-- Campo de Nombre -->
+        <label class="fw-bold" for="Nombre">Nombre</label>
         <input
-          formControlName="Capacidad"
-          type="number"
+          formControlName="Nombre"
+          type="text"
           class="form-control"
-          placeholder="300"
+          placeholder="Ej. Basketball"
         />
+        <!-- Mensaje de Error para el campo Nombre -->
+        <div
+          *ngIf="
+            nombreControl?.invalid &&
+            (nombreControl?.dirty || nombreControl?.touched)
+          "
+          class="text-danger"
+        >
+          <div *ngIf="nombreControl?.errors?.['required']">
+            Campo obligatorio. Por favor ingrese un nombre.
+          </div>
+          <div *ngIf="nombreControl?.errors?.['duplicateNombre']">
+            Ya existe una área con este nombre. Intente de nuevo.
+          </div>
+        </div>
+  
+        <!-- Campo de aviso -->
+        <div class="form-group my-4 w-75">
+          <label class="fw-bold" for="Aviso">Aviso</label>
+          <input
+            formControlName="Aviso"
+            type="text"
+            class="form-control"
+            placeholder="Ej. Cerrado por mantenimiento de 13:00-14:00"
+          />
+        </div>
+  
+        <!-- Campo de Foto -->
+        <div class="form-group my-4 w-75">
+          <label class="fw-bold" for="Foto">Foto</label>
+          <input
+            formControlName="Foto"
+            type="text"
+            class="form-control"
+            placeholder="Ej. https://imagenWellnes.png"
+          />
+          <!-- Error message for Foto -->
+          <div
+            *ngIf="
+              fotoControl?.invalid && (fotoControl?.dirty || fotoControl?.touched)
+            "
+            class="text-danger"
+          >
+            <div *ngIf="fotoControl?.errors?.['required']">
+              Campo obligatorio. Por favor ingrese la liga de una imagen.
+            </div>
+            <div *ngIf="fotoControl?.errors?.['invalidImage']">
+              La liga no corresponde a una imagen. Intente de nuevo.
+            </div>
+          </div>
+        </div>
+  
+        <!-- Campo de Horarios -->
+        <div class="form-group my-4 w-75">
+          <label class="fw-bold" for="Horarios">Horarios</label>
+          <input
+            formControlName="Horarios"
+            type="text"
+            class="form-control"
+            placeholder="Ej. Lu-Vi de 8:00  a 16:00"
+          />
+        </div>
+  
+        <!-- Campo de descripción -->
+        <div class="form-group my-4 w-75">
+          <label class="fw-bold" for="Descripcion">Descripción</label>
+          <input
+            formControlName="Descripcion"
+            type="text"
+            class="form-control"
+            placeholder="Ej. Prohibida entrada sin toalla"
+          />
+        </div>
+  
+        <!-- Campo de tipo de área -->
+        <div class="form-group my-4 w-75">
+          <label class="fw-bold" for="Tipo">Tipo de área</label>
+          <br>
+          <select name="Tipo" id="Tipo" [(ngModel)]="tipoArea" (change)="onTipoSelect($event)">
+            <option value="aforo">Aforo</option>
+            <option value="instructiva">Instructiva</option>
+            <option value="reservas">Reservas</option>
+          </select>
+        </div>
+  
+        <!-- Campo de Capacidad -->
+        <div>
+          <div class="form-group my-4 w-75" data-aforo *ngIf="tipoArea === 'aforo'">
+            <label class="fw-bold" for="Capacidad">Capacidad (aforo máximo)</label>
+            <input
+              formControlName="Capacidad"
+              type="number"
+              class="form-control"
+              placeholder="300"
+            />
+          </div>
+        </div>
+  
+        <!-- Campo de Link de ZCal -->
+        <div class="form-group my-4 w-75" data-reserva *ngIf="tipoArea !== 'aforo'">
+          <label class="fw-bold" for="LinkCal">Link ZCal</label>
+          <input
+            formControlName="LinkCal"
+            type="text"
+            class="form-control"
+            placeholder="Ej. https://zcal.co/"
+          />
+          <!-- Error message for Link Maps -->
+          <div
+            *ngIf="
+              linkCalControl?.invalid &&
+              (linkCalControl?.dirty || linkCalControl?.touched)
+            "
+            class="text-danger"
+          >
+            <div *ngIf="linkCalControl?.errors?.['required']">
+              Este campo es obligatorio.
+            </div>
+            <div *ngIf="linkCalControl?.errors?.['invalidGoogleMapsLink']">
+              La liga ingresada es inválida.
+            </div>
+          </div>
+        </div>
+  
+        <!-- Campo de Croquis -->
+        <div class="form-group my-4 w-75">
+          <label class="fw-bold" for="Croquis">Croquis</label>
+          <input
+            formControlName="Croquis"
+            type="text"
+            class="form-control"
+            placeholder="Ej. https://imagenWellnes.png"
+          />
+        </div>
+  
+        <!-- Grupo de botones -->
+        <div class="btn-group" role="group" aria-label="Button group name">
+          <!-- Boton de Agregar -->
+          <button type="submit" class="btn btn-success custom-btn">Agregar</button>
+          <!-- Boton de Cancelar -->
+          <button
+            type="button"
+            class="btn btn-danger custom-btn ms-3"
+            routerLink="/0"
+          >
+            Cancelar
+          </button>
+        </div>
       </div>
-    </div>
-    <!-- BLOQUEAR NÚMEROS NEGATIVOS -->
 
-    <!-- Campo de Link de ZCal -->
-    <div class="form-group my-4 w-75" data-reserva *ngIf="tipoArea !== 'aforo'">
-      <label class="fw-bold" for="linkMaps">Link ZCal</label>
-      <input
-        formControlName="LinkCal"
-        type="text"
-        class="form-control"
-        placeholder="Ej. https://zcal.co/"
-      />
-      <!-- Error message for Link Maps -->
-      <div
-        *ngIf="
-          linkMapsControl?.invalid &&
-          (linkMapsControl?.dirty || linkMapsControl?.touched)
-        "
-        class="text-danger"
-      >
-        <div *ngIf="linkMapsControl?.errors?.['required']">
-          Este campo es obligatorio.
-        </div>
-        <div *ngIf="linkMapsControl?.errors?.['invalidGoogleMapsLink']">
-          La liga ingresada es inválida.
-        </div>
-      </div>
-    </div>
-
-    <!-- Campo de Croquis -->
-    <div class="form-group my-4 w-75">
-      <label class="fw-bold" for="Croquis">Croquis</label>
-      <input
-        formControlName="Croquis"
-        type="text"
-        class="form-control"
-        placeholder="Ej. Lu-Vi de 8:00  a 16:00"
-      />
-      <!-- Error message for Foto -->
-      <div
-        *ngIf="
-          fotoControl?.invalid && (fotoControl?.dirty || fotoControl?.touched)
-        "
-        class="text-danger"
-      >
-        <div *ngIf="fotoControl?.errors?.['required']">
-          Obligatory field. Please provide a Foto URL.
-        </div>
-        <div *ngIf="fotoControl?.errors?.['invalidImage']">
-          Given URL is not a foto. Try again.
-        </div>
-      </div>
-    </div>
-
-    <!-- Grupo de botones -->
-    <div class="btn-group" role="group" aria-label="Button group name">
-      <!-- Boton de Agregar -->
-      <button type="submit" class="btn btn-success custom-btn">Agregar</button>
-      <!-- Boton de Cancelar -->
-      <button
-        type="button"
-        class="btn btn-danger custom-btn ms-3"
-        routerLink="/0"
-      >
-        Cancelar
-      </button>
     </div>
   </form>
 </div>

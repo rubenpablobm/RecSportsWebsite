@@ -16,41 +16,62 @@ import { ChangeDetectorRef } from '@angular/core';
 export class AreaFormComponent {
   // Variables
   listaEdificios : any = [];
+  idEdificio:number = -1;
+  listaAreas : any = [];
   tipoArea:string = '';
   mensaje?:string;
   // Grupo de formulario para recolectar datos del formulario
-  formularioDeEdificios: FormGroup;
+  formularioDeAreas: FormGroup;
 
   // Constructor con dependencias inyectadas
   constructor(private route: ActivatedRoute, private http: HttpClient, private ruteador: Router, public crudService:CrudService, private cdr: ChangeDetectorRef, public formulario: FormBuilder) { 
     // Crear el grupo de formulario
-    this.formularioDeEdificios=this.formulario.group({
-      Nombre: ['', Validators.required],
-      Foto: ['', Validators.required],
-      LinkMaps: ['', Validators.required]
+    this.formularioDeAreas=this.formulario.group({
+      IdEdificio : [''],
+      Nombre: [''],
+      Aviso : [''],
+      Foto: [''],
+      Horarios : [''],
+      Descripcion : [''],
+      TipoArea : [''],
+      Capacidad : [''],
+      LinkCal: [''],
+      Croquis: ['']
     });
   }
 
   // Obtener edificios desde la API
   ngOnInit() {
-    // this.getEdificios();
-    console.log('haciendo request de edificios en select');
-    console.log(this.listaEdificios);
+    this.getEdificios();
   }
 
   // Metodo para obtener los edificios
   getEdificios() {
-    console.log('Cargando edificios existentes...')
-    return this.crudService.EdificioGetMultiple().subscribe((eData:{}) => {
-      console.log('data recuperada de edificios')
-      console.log(eData);
-      this.listaEdificios = eData;
+    return this.crudService.EdificioGetMultiple().subscribe((data:{}) => {
+      this.listaEdificios = data;
     })
+  }
+
+  getAreas(id:number) {
+    return this.crudService.AreaGetXId(id).subscribe((data:{}) => {
+      this.listaAreas = data;
+    })
+  }
+
+  onEdificioSelect(event: Event) {
+    const target = event.target as HTMLSelectElement;
+    const option = target.value;
+    
+    if (option !== null) {
+      this.idEdificio = Number(option);
+    }
+    this.cdr.detectChanges();
+    this.getAreas(this.idEdificio);
   }
 
   // Metodo que valida si el nombre del edificio ya existe
   isDuplicateNombre(nombre: string): boolean {
-    return this.listaEdificios.some((edificio: any) => edificio.Nombre === nombre);
+    return this.listaAreas.some((area: any) => area.Nombre === nombre);
   }
   
   // Metodo que valida si el link correponde a una imagen
@@ -83,29 +104,40 @@ export class AreaFormComponent {
   }
 
   // Metodo que valida si el link correponde a un link de google maps
-  isGoogleMapsLink(link: string): boolean {
-    const googleMapsPattern = /^https:\/\/goo\.gl\/maps\/[A-Za-z0-9]+$/;
-    return googleMapsPattern.test(link);
+  isCalendarLink(link: string): boolean {
+    const calendarPattern = /^https:\/\/[A-Za-z0-9]+$/;
+    return calendarPattern.test(link);
   }
 
   // Metodos para checar si los campos estan vacios
   get nombreControl() {
-    return this.formularioDeEdificios.get('Nombre');
+    return this.formularioDeAreas.get('Nombre');
   }
 
   get fotoControl() {
-    return this.formularioDeEdificios.get('Foto');
+    return this.formularioDeAreas.get('Foto');
   }
 
-  get linkMapsControl() {
-    return this.formularioDeEdificios.get('LinkMaps');
+  get tipoControl() {
+    return this.formularioDeAreas.get('Tipo')
+  }
+
+  get linkCalControl() {
+    return this.formularioDeAreas.get('LinkCal');
   }
   
   // Metodo para manejar el envio del formulario
   enviarDatos() {
-    const nombre = this.formularioDeEdificios.get('Nombre')?.value;
-    const fotoUrl = this.formularioDeEdificios.get('Foto')?.value;
-    const linkMapsUrl = this.formularioDeEdificios.get('LinkMaps')?.value;
+    const idEdificio = this.formularioDeAreas.get('idEdificio')?.value;
+    const nombre = this.formularioDeAreas.get('Nombre')?.value;
+    const aviso = this.formularioDeAreas.get('Aviso')?.value;
+    const fotoUrl = this.formularioDeAreas.get('Foto')?.value;
+    const horarios = this.formularioDeAreas.get('Horarios')?.value;
+    const descripcion = this.formularioDeAreas.get('Descripcion')?.value;
+    const tipo = this.formularioDeAreas.get('Tipo')?.value;
+    const capacidad = this.formularioDeAreas.get('Capacidad')?.value;
+    const linkCalUrl = this.formularioDeAreas.get('LinkCal')?.value;
+    const croquis = this.formularioDeAreas.get('Croquis')?.value;
   
     // Validacion de Nombre
     const isDuplicate = this.isDuplicateNombre(nombre);
@@ -126,31 +158,54 @@ export class AreaFormComponent {
       } else {
         this.fotoControl?.setErrors({ invalidImage: false });
       }
-  
-      // Validacion de Link Maps
-      const isGoogleMapsLink = this.isGoogleMapsLink(linkMapsUrl);
-      if (!isGoogleMapsLink) {
-        this.linkMapsControl?.setErrors({ invalidGoogleMapsLink: true });
-      } else {
-        this.linkMapsControl?.setErrors({ invalidGoogleMapsLink: false });
+      
+      // VALIDACIÓN PARA ÁREAS DE TIPO AFORO
+      if (this.tipoArea == 'aforo') {
+        if(!isDuplicate && isValidImage){
+          // Proceed with form submission
+          console.log('Form submitted successfully');
+          // Llamar al servicio para agregar el edificio
+          this.crudService.EdificioPost(this.formularioDeAreas.value).subscribe(
+            (respuesta) => {
+              this.ngOnInit();
+              console.log('Success');
+            },
+            (error) => {
+              this.ngOnInit();
+              console.log(error);
+              this.mensaje = "Error: " + error.message;
+            }
+          );
+          return;
+        }
       }
-
-      if(!isDuplicate && isValidImage && isGoogleMapsLink){
-        // Proceed with form submission
-        console.log('Form submitted successfully');
-        // Llamar al servicio para agregar el edificio
-        this.crudService.EdificioPost(this.formularioDeEdificios.value).subscribe(
-          (respuesta) => {
-            this.ngOnInit();
-            console.log('Success');
-          },
-          (error) => {
-            this.ngOnInit();
-            console.log(error);
-            this.mensaje = "Error: " + error.message;
-          }
-        );
-        return;
+      // VALIDACIÓN PARA ÁREAS DE TIPO INSTRUCTIVA O RESERVA
+      else {
+        // Validacion de Link Calendario (Reservaciones de clases y espacios)
+        const isCalendarLink = this.isCalendarLink(linkCalUrl);
+        if (!isCalendarLink) {
+          this.linkCalControl?.setErrors({ invalidCalendarLink: true });
+        } else {
+          this.linkCalControl?.setErrors({ invalidCalendarLink: false });
+        }
+  
+        if(!isDuplicate && isValidImage && isCalendarLink){
+          // Proceed with form submission
+          console.log('Form submitted successfully');
+          // Llamar al servicio para agregar el edificio
+          this.crudService.EdificioPost(this.formularioDeAreas.value).subscribe(
+            (respuesta) => {
+              this.ngOnInit();
+              console.log('Success');
+            },
+            (error) => {
+              this.ngOnInit();
+              console.log(error);
+              this.mensaje = "Error: " + error.message;
+            }
+          );
+          return;
+        }
       }
     });
   }
