@@ -3,6 +3,10 @@
 <div class="container m-4">
     <!-- Titulo -->
     <h1 class="fw-bold fs-1">Descargar histórico (Estadísticas)</h1>
+    <div>
+        <button class="btn btn-secondary m-2" routerLink="/">Regresar</button>
+    </div>
+    
 
 <mat-form-field class="mx-2">
 <mat-label>Select an option</mat-label>
@@ -32,13 +36,13 @@
     <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
 </mat-form-field>
 
-
-<button (click)="getEstadisticaHora()" class="btn btn-secondary m-2 font" type="submit">
-    Descargar CSV por hora
-</button>
-
-<button (click)="getEstadisticaDia()" class="btn btn-secondary m-2 font" type="submit2">
-    Descargar CSV acumulado diario
-</button>
+<div>
+    <button (click)="getEstadisticaHora()" class="btn btn-secondary m-2 font" type="submit">
+        Descargar CSV por hora
+    </button>
+    <button (click)="getEstadisticaDia()" class="btn btn-secondary m-2 font" type="submit2">
+        Descargar CSV acumulado diario
+    </button>
+</div>
 
 </div>

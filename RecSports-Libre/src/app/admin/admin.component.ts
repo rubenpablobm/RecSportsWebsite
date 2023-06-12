@@ -41,7 +41,7 @@ export class AdminComponent {
         //si fue positiva la respuesta, activa el verificador admin
         this.crudService.AdminLoginAuth();
         //redirige a pagina principal
-        this.ruteador.navigateByUrl('0');
+        this.ruteador.navigateByUrl('');
       },(error) => {
         console.log(error);
         this.mensaje=String(error.error);

@@ -111,6 +111,10 @@ export class CrudService {
     return this.clientehttp.get(this.API+"area/menosaforo/"+id);
   }
 
+  // Resetea a 0 el aforo
+  LimpiarAforo(id: number):Observable<any>{
+    return this.clientehttp.get(this.API+"area/limpiaraforo/"+id);
+  }
   /* ADMIN */
   AdminLogin(datosAdmin:Admin):Observable<any>{
     this.logeado=false;

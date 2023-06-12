@@ -30,6 +30,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EditarAreaComponent } from './components/editar-area/editar-area.component';
 
 @NgModule({
@@ -64,7 +65,7 @@ import { EditarAreaComponent } from './components/editar-area/editar-area.compon
     FormsModule, //nuevos añadidos
     ReactiveFormsModule,
     HttpClientModule,
-    MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule
+    MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule, FontAwesomeModule
     // MatDialogModule
   ],
   // Proveedores de servicios

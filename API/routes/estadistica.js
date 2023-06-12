@@ -30,7 +30,8 @@ app.post('/hora', async (req, res) => {
   try {
     const pool = await poolPromise;
     const { diaInicio, diaFin } = req.body;
-    const query = 'SELECT * FROM Hora WHERE Hora >= @diaInicio AND Hora <= @diaFin;';
+    // debe ser LEFT JOIN la consulta, debido a que habra historicos de areas eliminadas, estas no tendran nombre
+    const query = 'SELECT h.*, a.Nombre FROM Hora h LEFT JOIN Area a ON h.IdArea = a.IdArea WHERE h.Hora >= @diaInicio AND h.Hora <= @diaFin;';
     const result = await pool.request()
       .input('diaInicio', sql.DateTime, diaInicio)
       .input('diaFin', sql.DateTime, diaFin)
@@ -48,7 +49,7 @@ app.post('/hora/:id', async (req, res) => {
     const pool = await poolPromise;
     const id = req.params.id;
     const { diaInicio, diaFin } = req.body;
-    const query = 'SELECT * FROM Hora WHERE Hora >= @diaInicio AND Hora <= @diaFin AND idArea=@id;';
+    const query = 'SELECT h.*, a.Nombre FROM Hora h LEFT JOIN Area a ON h.IdArea = a.IdArea WHERE h.Hora >= @diaInicio AND h.Hora <= @diaFin AND h.idArea=@id;';
     const result = await pool.request()
       .input('diaInicio', sql.DateTime, diaInicio)
       .input('diaFin', sql.DateTime, diaFin)
@@ -66,7 +67,7 @@ app.post('/dia', async (req, res) => {
   try {
     const pool = await poolPromise;
     const { diaInicio, diaFin } = req.body;
-    const query = 'SELECT * FROM Dia WHERE Dia >= @diaInicio AND Dia <= @diaFin;';
+    const query = 'SELECT d.*, a.Nombre FROM Dia d LEFT JOIN Area a ON d.IdArea = a.IdArea WHERE d.Dia >= @diaInicio AND d.Dia <= @diaFin;';
     const result = await pool.request()
       .input('diaInicio', sql.DateTime, diaInicio)
       .input('diaFin', sql.DateTime, diaFin)
@@ -83,7 +84,7 @@ app.post('/dia/:id', async (req, res) => {
     const pool = await poolPromise;
     const id = req.params.id;
     const { diaInicio, diaFin } = req.body;
-    const query = 'SELECT * FROM Dia WHERE Dia >= @diaInicio AND Dia <= @diaFin AND idArea=@id;';
+    const query = 'SELECT d.*, a.Nombre FROM Dia d LEFT JOIN Area a ON d.IdArea = a.IdArea WHERE d.Dia >= @diaInicio AND d.Dia <= @diaFin AND d.idArea=@id;';
     const result = await pool.request()
       .input('diaInicio', sql.DateTime, diaInicio)
       .input('diaFin', sql.DateTime, diaFin)

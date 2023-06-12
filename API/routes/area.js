@@ -210,9 +210,26 @@ app.put('/aviso/:id', async (req, res) => {
     const pool = await poolPromise;
     const id = req.params.id;
     const {Avisos} = req.body;
-    const query = 'UPDATE Area SET Avisos = @Avisos WHERE IdArea = @id;';
+    const query = 'UPDATE Area SET Avisos = @avisos WHERE IdArea = @current_IdArea;';
     await pool.request()
-      .input('Avisos', sql.VarChar, Avisos)
+      .input('current_IdArea', sql.Int, id)
+      .input('avisos', sql.VarChar, Avisos)
+      .query(query);
+    res.sendStatus(200);
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
+});
+
+//Limpiar Aforo
+app.get('/limpiaraforo/:id', async (req, res) => {
+  try{
+    const pool = await poolPromise;
+    const id = req.params.id;
+    const query = 'UPDATE Aforo SET Aforo = 0 WHERE IdArea = @current_IdArea;';
+    await pool.request()
+      .input('current_IdArea', sql.Int, id)
       .query(query);
     res.sendStatus(200);
   } catch (error) {
