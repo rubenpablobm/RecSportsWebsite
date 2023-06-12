@@ -1,16 +1,16 @@
 <app-navbar></app-navbar>
-
 <h1 class="mov">Restablecer contraseña</h1>
-
-<form   class="m-3">
+<button class="btn btn-secondary my-2" routerLink="/admin/login">Regresar</button>
+<form (ngSubmit)="enviarDatos()" [formGroup]="formLogin" class="m-3">
 <div class="mb-3  mov1">
-  <label for="exampleInputPassword1" class="form-label">Contraseña Actual</label>
+  
+  <label for="exampleInputEmail1" class="form-label">Email</label>
   <input
-    type="password"
-    style="width: 192px;"
-    class="form-control "
-    id="exampleInputPassword1"
-    formControlName="Contrasena"
+  type="email"
+  class="form-control"
+  id="exampleInputEmail1"
+  aria-describedby="emailHelp"
+  formControlName="Email"
   />
 </div>
 
@@ -32,7 +32,8 @@
     style="width: 192px;"
     class="form-control "
     id="exampleInputPassword1"
-    formControlName="Contrasena"
+    formControlName="RepContrasena"
   />
 </div>
+<button type="submit" class="btn btn-primary iz">Submit</button>
 </form>

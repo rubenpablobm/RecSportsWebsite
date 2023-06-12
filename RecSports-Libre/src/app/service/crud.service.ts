@@ -136,6 +136,16 @@ export class CrudService {
     this.emailString = undefined;
     return this.logeado
   }
+  /* Cambio Contraseña*/
+  CambioContraseña(datosAdmin:Admin):Observable<any>{
+   // this.logeado=true;
+   this.logeado=false;
+  //  this.emailString = datosAdmin.correo;
+   console.log(this.emailString);
+   console.log(datosAdmin.correo);
+   return this.clientehttp.put(this.API+"admin/cambiocontra", datosAdmin);
+  }
+
   // ESTADISTICA 
   HoraGet(id: number, fechaRange: Fecha):Observable<any>{
     if(id!=0){
