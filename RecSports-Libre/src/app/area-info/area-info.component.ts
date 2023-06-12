@@ -11,6 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CrudService } from '../service/crud.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { authGuard } from '../service/auth.guard';
 
 import { authGuard } from '../service/auth.guard';
 
@@ -60,6 +61,12 @@ export class AreaInfoComponent {
     })
   }
   
+ /* edit(text: string): string{
+    if (text) {
+      return '';
+    }
+    return text.replace(/\\n/g, '<br>');
+  }*/
   // Convertir saltos de linea en etiquetas <br>
   convertLineBreaks(text: string): string {
     if (!text) {

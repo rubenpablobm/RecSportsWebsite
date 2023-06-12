@@ -19,9 +19,28 @@ Fecha de modificacion: 18/05/2023 -->
 <!-- Contenedor principal -->
 <div class="flex-col area-info-container p-3">
   <!-- Boton de regresar -->
-  <button class="btn btn-secondary my-2" routerLink="/{{ area.IdEdificio }}">
-    Regresar
-  </button>
+  <div class="cleda " id="celda">
+    <button class="btn btn-secondary my-2"  routerLink="/{{ area.IdEdificio }}">
+      Regresar
+    </button>
+    <button
+      id="editar"
+      type="button"
+      class="btn btn-warning leftalign "
+      *ngIf="auth"
+      [routerLink]="['/editar-area/editar/', area.IdArea]"
+    >
+      <i class="bi bi-pencil-fill"></i>
+    </button>
+    <button
+      id="borrar"
+      type="button"
+      *ngIf="auth"
+      class="btn btn-danger text-black m-2"
+    >
+      <i class="bi bi-trash-fill"></i>
+    </button>
+  </div>
   <!-- Titulo del área -->
   <h1 class="fw-bold">{{ area.Nombre }}</h1>
   <!-- Edificio >  Agregar nombres de edificios y areas -->

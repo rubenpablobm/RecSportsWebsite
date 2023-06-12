@@ -10,6 +10,10 @@ Fecha de modificacion: 18/05/2023 */
   width: 100%;
   border: 0.5px solid;
 }
+.leftalign{
+   display:absolute;
+   margin-left:1070px;
+}
 
 /* Estilos para la clase .croquis */
 .croquis {
@@ -34,4 +38,62 @@ Fecha de modificacion: 18/05/2023 */
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con opacidad */
   z-index: 9999; /* Asegura que el overlay esté en la parte superior */
+@import '~bootstrap-icons/font/bootstrap-icons.css';
+
+/* Estilos para la clase .mov */
+.mov {
+  font-size: 300%;
+}
+  
+/* Estilos para la clase .mod */
+.mod {
+  margin: auto;
+  width: 90%;
+  height: 40%;
+}
+  
+/* Estilos para los elementos table, tr y td */
+table, tr, td {
+  border:1px solid black;
+}
+  
+.table_image{
+  width:300px;
+  height: 300px;
+  min-width: 150px;
+  min-height: 150px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.box{
+  display: flex;
+  flex-direction: column;
+}
+
+.acciones{
+  overflow: visible;
+}
+
+.celda{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: space-around;
+}
+
+.acciones-btns {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: 50px;
+}
+
+/* .acciones-btns svg {
+  width: auto
+} */
+
+.accion-icon{
+  width: 100%;
+  height: 100%;
 }
