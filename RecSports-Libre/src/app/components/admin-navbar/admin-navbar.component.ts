@@ -11,6 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CrudService } from 'src/app/service/crud.service';
 
+import { faBuilding, faChartSimple, faKey } from '@fortawesome/free-solid-svg-icons';
+
 // Decorador del componente
 @Component({
   selector: 'app-admin-navbar',
@@ -19,7 +21,9 @@ import { CrudService } from 'src/app/service/crud.service';
 })
 
 export class AdminNavbarComponent {
-
+  faBuilding = faBuilding;
+  faChartSimple = faChartSimple;
+  faKey = faKey;
   //Variables
   AreaList:any=[];  
   // eID : any = null;
@@ -27,20 +31,4 @@ export class AdminNavbarComponent {
 
   // Constructor con dependencias inyectadas
   constructor(private route: ActivatedRoute, private htttp: HttpClient,public crudService:CrudService){ }
-
-  // ngOnInit(){
-  //   const idEdificio = this.route.snapshot.paramMap.get('idEdificio');
-  //   this.eID = idEdificio;
-  //   return this.crudService.EdificioGet(this.eID).subscribe((data:{}) => {
-  //     this.edificio = data;
-  //     console.log(this.edificio);
-  //   })
-  // }
-  // getArea(){
-  //   console.log("voy a llamar a la API :)");
-  //   return this.crudService.AreaGetMultiple().subscribe((data:{})=>{
-  //     console.log(data);
-  //     this.AreaList=data;
-  //   })
-  // }
 }

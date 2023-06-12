@@ -7,6 +7,10 @@ Fecha de modificacion: 18/05/2023 -->
 
 <!-- Seccion de navegacion -->
 <app-navbar></app-navbar>
+
+<!-- Overlay de confirmacion -->
+<div *ngIf="mostrarOverlay" class="overlay" ></div>
+
 <!-- Seccion app-header con las propiedades enlazadas "linkFoto" y "descripcion" -->
 <app-header
   [linkFoto]="area.Foto"
@@ -15,9 +19,28 @@ Fecha de modificacion: 18/05/2023 -->
 <!-- Contenedor principal -->
 <div class="flex-col area-info-container p-3">
   <!-- Boton de regresar -->
-  <button class="btn btn-secondary my-2" routerLink="/{{ area.IdEdificio }}">
-    Regresar
-  </button>
+  <div class="cleda " id="celda">
+    <button class="btn btn-secondary my-2"  routerLink="/{{ area.IdEdificio }}">
+      Regresar
+    </button>
+    <button
+      id="editar"
+      type="button"
+      class="btn btn-warning leftalign "
+      *ngIf="auth"
+      [routerLink]="['/editar-area/editar/', area.IdArea]"
+    >
+      <i class="bi bi-pencil-fill"></i>
+    </button>
+    <button
+      id="borrar"
+      type="button"
+      *ngIf="auth"
+      class="btn btn-danger text-black m-2"
+    >
+      <i class="bi bi-trash-fill"></i>
+    </button>
+  </div>
   <!-- Titulo del área -->
   <h1 class="fw-bold">{{ area.Nombre }}</h1>
   <!-- Edificio >  Agregar nombres de edificios y areas -->
@@ -53,12 +76,18 @@ Fecha de modificacion: 18/05/2023 -->
     <iframe class="embedido" [src]="secureLinkCalendar"></iframe>
   </div>
   <!-- Boton de registro manual -->
-  <ng-container *ngIf="area.Tipo === 'Aforo'">
+  <ng-container *ngIf="area.Tipo === 'Aforo' && auth">
     <button
-      class="btn btn-secondary my-2"
+      class="btn btn-secondary m-2"
       [routerLink]="['/area-info', area.IdArea, 'acceso']"
     >
       Registro manual
+    </button>
+    <button
+      class="btn btn-warning m-2"
+      (click)="limpiarAforo()"
+    >
+      Limpiar Aforo
     </button>
   </ng-container>
 

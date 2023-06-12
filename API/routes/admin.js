@@ -88,7 +88,7 @@ app.put('/cambiocontra', async (req, res) => {
                 .input('Email', sql.VarChar, Email.toLowerCase())
                 .input('tContrasena', sql.VarChar, tContrasena)
                 .query(query);
-            res.send('Contraseña cambiada exitosamente');
+            res.send({message:"Contraseña cambiada exitosamente"});
     }catch(error) {
         console.error(error);
         res.status(500).json(error.message);

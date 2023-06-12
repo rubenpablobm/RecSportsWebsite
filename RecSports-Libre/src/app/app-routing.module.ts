@@ -14,13 +14,17 @@ import { AdminComponent } from './admin/admin.component';
 import { AccesoComponent } from './components/acceso/acceso.component';
 import { EditarEdificioComponent } from './components/editar-edificio/editar-edificio.component';
 import { AgregarEdificioComponent } from './components/agregar-edificio/agregar-edificio.component';
+
 import { CompComponent } from './comp/comp.component';
+import { DescargarHistoricoComponent } from './components/descargar-historico/descargar-historico.component';
+import { SubirAlumnosComponent } from './components/subir-alumnos/subir-alumnos.component';
 
 //import { CrudService } from './service/crud.service';
 // inject, router
 import { authGuard } from './service/auth.guard';
 import { TablaEdificioComponent } from './components/tabla-edificio/tabla-edificio.component';
 import { CambioContrasenaComponent } from './components/cambio-contrasena/cambio-contrasena.component';
+import { EditarAreaComponent } from './components/editar-area/editar-area.component';
 
 
 /*
@@ -58,6 +62,10 @@ const routes: Routes = [
     component: AreaInfoComponent
   },
   {
+    path: 'editar-area/editar/:idArea', // Ruta con parametro dinamico
+    component: EditarAreaComponent
+  },
+  {
     path: 'admin/login', // Ruta para el componente de administracion de inicio de sesion
     component: AdminComponent,
     pathMatch:'full'
@@ -79,6 +87,18 @@ const routes: Routes = [
   {
     path: 'edificio-agregar/agregar', // Ruta para agregar un edificio
     component: AgregarEdificioComponent,
+  },
+  {
+    path: 'historico/descargar',
+    component: DescargarHistoricoComponent,
+    pathMatch:'full',
+    canActivate: [authGuard]
+  },
+  {
+    path: 'alumnos/subir-archivo',
+    component: SubirAlumnosComponent,
+    pathMatch:'full',
+    canActivate: [authGuard]
   }
 ];
 

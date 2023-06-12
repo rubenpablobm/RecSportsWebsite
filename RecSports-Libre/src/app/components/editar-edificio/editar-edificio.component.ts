@@ -31,6 +31,13 @@ export class EditarEdificioComponent {
   foto?:string;
   linkMaps?:string;
   edificioAgregado:boolean = false;
+  nombreError: boolean = false;
+  nombreVacio: boolean = false;
+  fotoError: boolean = false;
+  fotoVacia: boolean = false;
+  linkMapsError: boolean = false;
+  linkMapsVacio: boolean = false;
+
 	// Grupo de formulario para recolectar datos del formulario
 	formularioDeEdificios: FormGroup;
   
@@ -130,36 +137,55 @@ export class EditarEdificioComponent {
     const nombre = this.formularioDeEdificios.get('Nombre')?.value;
     const fotoUrl = this.formularioDeEdificios.get('Foto')?.value;
     const linkMapsUrl = this.formularioDeEdificios.get('LinkMaps')?.value;
+    this.edificioAgregado = false;
   
     // Validacion de Nombre
     const isDuplicate = this.isDuplicateNombre(nombre);
     if (isDuplicate && !(nombre == this.nombre)) {
-      this.nombreControl?.setErrors({ duplicateNombre: true });
-      console.log(this.nombreControl?.errors?.['required']);
-      console.log(this.nombreControl?.errors?.['duplicateNombre']);
+      this.nombreVacio = false;
+      this.nombreError = true;
     } else {
-      this.nombreControl?.setErrors({ duplicateNombre: false });
+      if (!nombre) {
+        console.log(nombre.length);
+        this.nombreError = false;
+        this.nombreVacio = true;
+      } else {
+        this.nombreError = false;
+        this.nombreVacio = false
+      }
     }
   
     // Validacion de Foto
     this.validarImagenLink(fotoUrl).then((isValidImage: boolean) => {
       if (!isValidImage) {
-        this.fotoControl?.setErrors({ invalidImage: true });
-        console.log(this.nombreControl?.errors?.['required']);
-        console.log(this.nombreControl?.errors?.['invalidImage']);
+        if(!fotoUrl){
+          this.fotoError = false;
+          this.fotoVacia = true;
+        } else {
+          this.fotoVacia = false;
+          this.fotoError = true;
+        }
       } else {
-        this.fotoControl?.setErrors({ invalidImage: false });
+        this.fotoError = false;
+        this.fotoVacia = false;
       }
   
       // Validacion de Link Maps
       const isGoogleMapsLink = this.isGoogleMapsLink(linkMapsUrl);
       if (!isGoogleMapsLink) {
-        this.linkMapsControl?.setErrors({ invalidGoogleMapsLink: true });
+        if(!linkMapsUrl){
+          this.linkMapsError = false;
+          this.linkMapsVacio = true;
+        } else {
+          this.linkMapsError = true;
+          this.linkMapsVacio = false;
+        }
       } else {
-        this.linkMapsControl?.setErrors({ invalidGoogleMapsLink: false });
+        this.linkMapsError = false;
+        this.linkMapsVacio = false;
       }
 
-      if(!isDuplicate && isValidImage && isGoogleMapsLink){
+      if(!this.nombreError && !this.nombreVacio && !this.fotoError && !this.fotoVacia && !this.linkMapsError && !this.linkMapsVacio){
         this.edificioAgregado = true;
         console.log("Presionaste el boton enviar datos")
         console.log(this.formularioDeEdificios.value);
