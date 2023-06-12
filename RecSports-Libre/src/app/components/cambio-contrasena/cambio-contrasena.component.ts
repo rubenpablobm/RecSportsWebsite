@@ -14,7 +14,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class CambioContrasenaComponent {
-  
+  mostrarOverlay: boolean = false;
   mensaje:string="";
   formLogin:FormGroup;
 
@@ -29,58 +29,18 @@ export class CambioContrasenaComponent {
       });
     }
 
-  /*  mensaje:string="";
-    formLogin:FormGroup;
-  
-    constructor(public formulario:FormBuilder,
-      private crudService:CrudService,
-      private ruteador:Router){
-        this.formLogin=this.formulario.group({
-          //Email:[''],
-          ContraseñaActual:[''],
-          NuevaContraseña:[''],
-          Repetircontraseña:['']
-        });
-      }
-  
-      enviarDatos(){
-        //console.log(this.formLogin.value);
-        this.crudService.CambioContraseña(this.formLogin.value).subscribe( respuesta =>{
-          console.log(respuesta);
-          this.ruteador.navigateByUrl('0');
-        },(error) => {
-          console.log(error);
-          this.mensaje=String(error.error);
-        })
-      }*/
-
-
- 
-
   enviarDatos(){
-    // console.log();
-    // console.log(this.formLogin.get( 'RepContrasena'));
-  
-    //if (!Contrasena || !RepContrasena) {
-     // this.mensaje = 'Proceso incorrecto , intente de nuevo';
-      //return;
-    //}
-    //console.log(this.formLogin.value);
-    console.log("Hola");
-    console.log(this.formLogin.value.correo);
     this.crudService.CambioContraseña(this.formLogin.value).subscribe( respuesta =>{
-      console.log("-----------")
-      console.log(this.formLogin.value);
       console.log(respuesta);
-      console.log("-----------")
-      //si fue positiva la respuesta, activa el verificador admin
-      this.crudService.AdminLoginAuth();
-      //redirige a pagina principal
-      this.ruteador.navigateByUrl('0');
+      setTimeout(() => {
+        window.alert("Contraseña cambiada exitosamente");
+        //redirige a inicio sesion, sin logear como admin
+        this.ruteador.navigateByUrl('/admin/login');
+        }, 100);
     },(error) => {
       console.log(error);
       this.mensaje=String(error.error);
-    })
+    });
   }
 }
 
