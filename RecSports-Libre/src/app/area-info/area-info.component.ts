@@ -11,7 +11,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CrudService } from '../service/crud.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import { authGuard } from '../service/auth.guard';
 
 import { authGuard } from '../service/auth.guard';
 
