@@ -13,6 +13,10 @@ import { Area } from '../models/area';
 import { Edificio } from '../models/edificio';
 import { Admin } from '../models/admin';
 
+import { Fecha } from '../models/fecha';
+import { Dia } from '../models/dia';
+import { Hora } from '../models/hora';
+
 //Injector del servicio
 @Injectable({
   providedIn: 'root'
@@ -24,7 +28,10 @@ export class CrudService {
   
   mensajeAPI:string="";
 
+  //datos del admin
   logeado:Boolean=false;
+  emailString? : string;
+
   //API: string="angular-test.eastus.cloudapp.azure.com/libros/";
   constructor(private clientehttp:HttpClient) { 
     
@@ -52,7 +59,20 @@ export class CrudService {
     return this.clientehttp.put<Edificio>(this.API+"edificio/"+ id, datosEdificio);
   }
 
+  EdificioDelete(id: number){
+    return this.clientehttp.delete(this.API+"edificio/"+id)
+  };
+
   /* AREA */
+  
+ 
+  AreaGet(id: number):Observable<any>{
+    return this.clientehttp.get<Area>(this.API+"area/"+id);
+  }
+  // Actualizar area
+  AreaUpdate(id: number, datosArea:Area):Observable<any>{
+    return this.clientehttp.put<Area>(this.API+"area/"+ id, datosArea);
+  }
 
   // Obtener multiples areas
   AreaGetMultiple():Observable<any>{
@@ -91,17 +111,57 @@ export class CrudService {
     return this.clientehttp.get(this.API+"area/menosaforo/"+id);
   }
 
+  // Resetea a 0 el aforo
+  LimpiarAforo(id: number):Observable<any>{
+    return this.clientehttp.get(this.API+"area/limpiaraforo/"+id);
+  }
   /* ADMIN */
   AdminLogin(datosAdmin:Admin):Observable<any>{
-    this.logeado=true;
+    this.logeado=false;
+    this.emailString = datosAdmin.correo;
     return this.clientehttp.post(this.API+"admin/iniciosesion", datosAdmin);
   }
+  AdminLoginAuth(){
+    this.logeado=true;
+  }
   EstaLogeado(){
-    return this.logeado
+    return this.logeado;
+  }
+  EstaLogeadoEmail(){
+    //ya tiene la proteccion de la misma pagina que incluye esta funcion
+    return this.emailString;
   }
   AdminLogout(){
     this.logeado = false;
+    this.emailString = undefined;
     return this.logeado
   }
+  /* Cambio Contraseña*/
+  CambioContraseña(datosAdmin:Admin):Observable<any>{
+   // this.logeado=true;
+   this.logeado=false;
+  //  this.emailString = datosAdmin.correo;
+   console.log(this.emailString);
+   console.log(datosAdmin.correo);
+   return this.clientehttp.put(this.API+"admin/cambiocontra", datosAdmin);
+  }
 
+  // ESTADISTICA 
+  HoraGet(id: number, fechaRange: Fecha):Observable<any>{
+    if(id!=0){
+      return this.clientehttp.post(this.API + "estadistica/hora/" + id, fechaRange);
+    }else{
+      return this.clientehttp.post(this.API+"estadistica/hora", fechaRange);
+      //'text' as 'json'
+      //'blob'
+    }
+  }
+  DiaGet(id: number, fechaRange: Fecha):Observable<any>{
+    if(id!=0){
+      return this.clientehttp.post(this.API + "estadistica/dia/" + id, fechaRange);
+    }else{
+      return this.clientehttp.post(this.API+"estadistica/dia", fechaRange);
+    }
+    
+  }
 }

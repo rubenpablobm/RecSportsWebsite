@@ -10,95 +10,87 @@ Fecha de modificacion: 17/05/2023 -->
 <!-- Contenedor principal -->
 <div class="container m-4">
   <!-- Titulo -->
-  <h1 class="fw-bold">Agregar Edificio</h1>
+  <h1 class="fw-bold fs-1">Agregar Edificio</h1>
   <!-- Formulario -->
   <form (ngSubmit)="enviarDatos()" [formGroup]="formularioDeEdificios">
     <div class="form-group my-4 w-75">
       <!-- Campo de Nombre -->
-      <label class="fw-bold" for="nombre">Nombre</label>
+      <label class="fw-bold fs-5" for="nombre">Nombre</label>
       <input
         formControlName="Nombre"
         type="text"
-        class="form-control"
+        class="form-control fs-5"
         placeholder="Ej. Wellness"
       />
       <!-- Mensaje de Error para el campo Nombre -->
-      <div
-        *ngIf="
+      <!-- *ngIf="
           nombreControl?.invalid &&
           (nombreControl?.dirty || nombreControl?.touched)
-        "
-        class="text-danger"
-      >
-        <div *ngIf="nombreControl?.errors?.['required']">
-          Obligatory field. Please provide a Name.
+        " -->
+      <div class="text-danger fs-6">
+        <div *ngIf="nombreVacio">
+          *Campo obligatorio. Por favor ingrese nombre de edificio.
         </div>
-        <div *ngIf="nombreControl?.errors?.['duplicateNombre']">
-          Name already exists. Try again.
-        </div>
+        <div *ngIf="nombreError">*Nombre ya existe. Intente de nuevo.</div>
       </div>
     </div>
     <!-- Campo de Foto -->
-    <div class="form-group my-4 w-75">
+    <div class="form-group my-4 w-75 fs-5">
       <label class="fw-bold" for="foto">Foto</label>
       <input
         formControlName="Foto"
         type="text"
-        class="form-control"
+        class="form-control fs-5"
         placeholder="Ej. https://imagenWellnes.png"
       />
       <!-- Error message for Foto -->
-      <div
-        *ngIf="
-          fotoControl?.invalid && (fotoControl?.dirty || fotoControl?.touched)
-        "
-        class="text-danger"
-      >
-        <div *ngIf="fotoControl?.errors?.['required']">
-          Obligatory field. Please provide a Foto URL.
+      <div class="text-danger fs-6">
+        <div *ngIf="fotoVacia">
+          *Campo obligatorio. Por favor ingrese URL de foto.
         </div>
-        <div *ngIf="fotoControl?.errors?.['invalidImage']">
-          Given URL is not a foto. Try again.
-        </div>
+        <div *ngIf="fotoError">*Entrada no es una foto. Intente de nuevo.</div>
       </div>
     </div>
     <!-- Campo de Link de Google Maps -->
-    <div class="form-group my-4 w-75">
+    <div class="form-group my-4 w-75 fs-5">
       <label class="fw-bold" for="linkMaps">Link Google Maps</label>
       <input
         formControlName="LinkMaps"
         type="text"
-        class="form-control"
+        class="form-control fs-5"
         placeholder="Ej. https://goo.gl/maps/jfejfb"
       />
       <!-- Error message for Link Maps -->
-      <div
-        *ngIf="
-          linkMapsControl?.invalid &&
-          (linkMapsControl?.dirty || linkMapsControl?.touched)
-        "
-        class="text-danger"
-      >
-        <div *ngIf="linkMapsControl?.errors?.['required']">
-          Obligatory field. Please provide a Link Maps URL.
+      <div class="text-danger fs-6">
+        <div *ngIf="linkMapsVacio">
+          *Campo obligatorio. Por favor ingrese URL de google maps.
         </div>
-        <div *ngIf="linkMapsControl?.errors?.['invalidGoogleMapsLink']">
-          Given URL is not a Google Maps link. Try again.
+        <div *ngIf="linkMapsError">
+          *Entrada no es un link de google maps. Intente de nuevo.
         </div>
       </div>
     </div>
     <!-- Grupo de botones -->
     <div class="btn-group" role="group" aria-label="Button group name">
       <!-- Boton de Agregar -->
-      <button type="submit" class="btn btn-success custom-btn">Agregar</button>
+      <button type="submit" class="btn btn-success custom-btn fs-5">
+        Agregar
+      </button>
       <!-- Boton de Cancelar -->
       <button
         type="button"
-        class="btn btn-danger custom-btn ms-3"
-        routerLink="/0"
+        class="btn btn-danger custom-btn fs-5 ms-3"
+        routerLink="/edificio-tabla/tabla"
       >
         Cancelar
       </button>
+    </div>
+    <div
+      *ngIf="edificioAgregado"
+      class="confirmation-message fs-6 my-2"
+      style="color: darkgreen"
+    >
+      Edificio agregado exitosamente.
     </div>
   </form>
 </div>

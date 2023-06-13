@@ -16,11 +16,15 @@ import { EditarEdificioComponent } from './components/editar-edificio/editar-edi
 import { AgregarEdificioComponent } from './components/agregar-edificio/agregar-edificio.component';
 import { AreaFormComponent } from './components/area-form/area-form.component';
 import { CompComponent } from './comp/comp.component';
+import { DescargarHistoricoComponent } from './components/descargar-historico/descargar-historico.component';
+import { SubirAlumnosComponent } from './components/subir-alumnos/subir-alumnos.component';
 
 //import { CrudService } from './service/crud.service';
 // inject, router
 import { authGuard } from './service/auth.guard';
 import { TablaEdificioComponent } from './components/tabla-edificio/tabla-edificio.component';
+import { CambioContrasenaComponent } from './components/cambio-contrasena/cambio-contrasena.component';
+import { EditarAreaComponent } from './components/editar-area/editar-area.component';
 
 
 /*
@@ -50,9 +54,16 @@ const routes: Routes = [
   {path: ':comp', // Ruta con parametro dinamico
   component: CompComponent
   },
+  {path: ':cambio/contrasena', // Ruta con parametro dinamico
+  component: CambioContrasenaComponent
+  },
   {
     path: 'area-info/:idArea', // Ruta con parametro dinamico
     component: AreaInfoComponent
+  },
+  {
+    path: 'editar-area/editar/:idArea', // Ruta con parametro dinamico
+    component: EditarAreaComponent
   },
   {
     path: 'admin/login', // Ruta para el componente de administracion de inicio de sesion
@@ -70,15 +81,28 @@ const routes: Routes = [
     component: AreaFormComponent
   },
   {
-    path: 'edificio/:idEdificio', // Ruta con parametro dinamico
+    path: 'edificio-editar/:idEdificio', // Ruta con parametro dinamico
     component: EditarEdificioComponent,
   },
- { path: 'components/tabla', // Ruta con parametro dinamico
-  component: TablaEdificioComponent,
+  { 
+    path: 'edificio-tabla/tabla', // Ruta con parametro dinamico
+    component: TablaEdificioComponent,
   },
   {
-    path: 'edificio-CRUD/agregar', // Ruta para agregar un edificio
+    path: 'edificio-agregar/agregar', // Ruta para agregar un edificio
     component: AgregarEdificioComponent,
+  },
+  {
+    path: 'historico/descargar',
+    component: DescargarHistoricoComponent,
+    pathMatch:'full',
+    canActivate: [authGuard]
+  },
+  {
+    path: 'alumnos/subir-archivo',
+    component: SubirAlumnosComponent,
+    pathMatch:'full',
+    canActivate: [authGuard]
   }
 ];
 

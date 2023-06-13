@@ -23,6 +23,17 @@ import { AgregarEdificioComponent } from './components/agregar-edificio/agregar-
 import { CompComponent } from './comp/comp.component';
 import { TablaEdificioComponent } from './components/tabla-edificio/tabla-edificio.component';
 import { AreaFormComponent } from './components/area-form/area-form.component';
+import { CambioContrasenaComponent } from './components/cambio-contrasena/cambio-contrasena.component';
+import { DescargarHistoricoComponent } from './components/descargar-historico/descargar-historico.component';
+import { SubirAlumnosComponent } from './components/subir-alumnos/subir-alumnos.component';
+//import { DatePickerComponent } from './components/date-picker/date-picker.component';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { EditarAreaComponent } from './components/editar-area/editar-area.component';
+
 
 @NgModule({
   //Declaracion de componentes
@@ -41,7 +52,11 @@ import { AreaFormComponent } from './components/area-form/area-form.component';
     CompComponent,
     TablaEdificioComponent,
     AreaFormComponent,
-
+    CambioContrasenaComponent,
+    DescargarHistoricoComponent,
+    SubirAlumnosComponent,
+    //DatePickerComponent
+    EditarAreaComponent,
   ],
   //Modulos importados
   imports: [
@@ -53,6 +68,7 @@ import { AreaFormComponent } from './components/area-form/area-form.component';
     FormsModule, //nuevos añadidos
     ReactiveFormsModule,
     HttpClientModule,
+    MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule, FontAwesomeModule
     // MatDialogModule
   ],
   // Proveedores de servicios

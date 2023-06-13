@@ -39,7 +39,7 @@ Fecha de modificacion: 17/05/2023 -->
       <div class="form-group my-4 w-75">
         <label class="fw-bold" for="idEdificio">Edificio al que pertenece</label>
         <br>
-        <select name="idEdificio" id="idEdificio" [(ngModel)]="idEdificio" (change)="onEdificioSelect($event)">
+        <select formControlName="IdEdificio" [(ngModel)]="idEdificio" (change)="onEdificioSelect($event)">
           <option *ngFor="let edificio of listaEdificios" value="{{edificio.IdEdificio}}">{{edificio.Nombre}}</option>
         </select>
       </div>
@@ -56,16 +56,12 @@ Fecha de modificacion: 17/05/2023 -->
         />
         <!-- Mensaje de Error para el campo Nombre -->
         <div
-          *ngIf="
-            nombreControl?.invalid &&
-            (nombreControl?.dirty || nombreControl?.touched)
-          "
           class="text-danger"
         >
-          <div *ngIf="nombreControl?.errors?.['required']">
+          <div *ngIf="nombreVacio">
             Campo obligatorio. Por favor ingrese un nombre.
           </div>
-          <div *ngIf="nombreControl?.errors?.['duplicateNombre']">
+          <div *ngIf="nombreError">
             Ya existe una área con este nombre. Intente de nuevo.
           </div>
         </div>
@@ -92,15 +88,12 @@ Fecha de modificacion: 17/05/2023 -->
           />
           <!-- Error message for Foto -->
           <div
-            *ngIf="
-              fotoControl?.invalid && (fotoControl?.dirty || fotoControl?.touched)
-            "
             class="text-danger"
           >
-            <div *ngIf="fotoControl?.errors?.['required']">
+            <div *ngIf="fotoVacia">
               Campo obligatorio. Por favor ingrese la liga de una imagen.
             </div>
-            <div *ngIf="fotoControl?.errors?.['invalidImage']">
+            <div *ngIf="fotoError">
               La liga no corresponde a una imagen. Intente de nuevo.
             </div>
           </div>
@@ -132,28 +125,49 @@ Fecha de modificacion: 17/05/2023 -->
         <div class="form-group my-4 w-75">
           <label class="fw-bold" for="Tipo">Tipo de área</label>
           <br>
-          <select name="Tipo" id="Tipo" [(ngModel)]="tipoArea" (change)="onTipoSelect($event)">
-            <option value="aforo">Aforo</option>
-            <option value="instructiva">Instructiva</option>
-            <option value="reservas">Reservas</option>
+          <select formControlName="Tipo" (change)="onTipoSelect($event)">
+            <option value="Aforo">Aforo</option>
+            <option value="Instructiva">Instructiva</option>
+            <option value="Reservas">Reservas</option>
           </select>
+          <!-- Error message for Tipo -->
+          <div
+            class="text-danger"
+          >
+            <div *ngIf="tipoAreaVacio">
+              Este campo es obligatorio.
+            </div>
+          </div>
         </div>
   
         <!-- Campo de Capacidad -->
         <div>
-          <div class="form-group my-4 w-75" data-aforo *ngIf="tipoArea === 'aforo'">
+          <div class="form-group my-4 w-75" *ngIf="tipoArea === 'Aforo'">
             <label class="fw-bold" for="Capacidad">Capacidad (aforo máximo)</label>
             <input
               formControlName="Capacidad"
               type="number"
               class="form-control"
               placeholder="300"
+              min="1"
+              required
             />
+          </div>
+          <!-- Error message for Capacidad -->
+          <div
+            class="text-danger"
+          >
+            <div *ngIf="capacidadVacio">
+              Este campo es obligatorio.
+            </div>
+            <div *ngIf="capacidadError">
+              Esa capacidad es inválida.
+            </div>
           </div>
         </div>
   
         <!-- Campo de Link de ZCal -->
-        <div class="form-group my-4 w-75" data-reserva *ngIf="tipoArea !== 'aforo'">
+        <div class="form-group my-4 w-75" *ngIf="tipoArea !== 'Aforo'">
           <label class="fw-bold" for="LinkCal">Link ZCal</label>
           <input
             formControlName="LinkCal"
@@ -163,16 +177,12 @@ Fecha de modificacion: 17/05/2023 -->
           />
           <!-- Error message for Link Maps -->
           <div
-            *ngIf="
-              linkCalControl?.invalid &&
-              (linkCalControl?.dirty || linkCalControl?.touched)
-            "
             class="text-danger"
           >
-            <div *ngIf="linkCalControl?.errors?.['required']">
+            <div *ngIf="linkCalVacio">
               Este campo es obligatorio.
             </div>
-            <div *ngIf="linkCalControl?.errors?.['invalidGoogleMapsLink']">
+            <div *ngIf="linkCalError">
               La liga ingresada es inválida.
             </div>
           </div>
@@ -187,6 +197,17 @@ Fecha de modificacion: 17/05/2023 -->
             class="form-control"
             placeholder="Ej. https://imagenWellnes.png"
           />
+          <!-- Error message for Croquis -->
+          <div
+            class="text-danger"
+          >
+            <div *ngIf="croquisVacio">
+              Este campo es obligatorio.
+            </div>
+            <div *ngIf="croquisError">
+              La liga ingresada es inválida.
+            </div>
+          </div>
         </div>
   
         <!-- Grupo de botones -->

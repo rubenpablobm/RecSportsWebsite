@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CrudService } from '../../service/crud.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 
 // Decorador del componente
@@ -26,23 +26,41 @@ export class EditarEdificioComponent {
 	edificio : any = [];
 	mensaje?:string;
 	theIdEdificio:any;
+  listaEdificios:any;
+  nombre?:string;
+  foto?:string;
+  linkMaps?:string;
+  edificioAgregado:boolean = false;
+  nombreError: boolean = false;
+  nombreVacio: boolean = false;
+  fotoError: boolean = false;
+  fotoVacia: boolean = false;
+  linkMapsError: boolean = false;
+  linkMapsVacio: boolean = false;
+
 	// Grupo de formulario para recolectar datos del formulario
 	formularioDeEdificios: FormGroup;
   
 	// Constructor con dependencias inyectadas
 	constructor(private route: ActivatedRoute, private htttp: HttpClient, private ruteador: Router, public crudService:CrudService, public formulario: FormBuilder) { 
     // Obtener el parametro 'IdEdificio' de la ruta
-    this.theIdEdificio=this.route.snapshot.paramMap.get('IdEdificio');
+    this.theIdEdificio = this.route.snapshot.paramMap.get('idEdificio');
+    console.log("Este es el id de edificio");
     console.log(this.theIdEdificio);
     // Recuperar los datos del edificio si 'theIdEdificio' tiene un valor
     if (this.theIdEdificio) {
       this.crudService.EdificioGet(this.theIdEdificio).subscribe(respuesta =>{
-        console.log(respuesta);
+        console.log(respuesta['Nombre']);
+
+        this.nombre = respuesta['Nombre'];
+        this.foto = respuesta['Foto'];
+        this.linkMaps = respuesta['LinkMaps'];
+
         // Establecer los valores del formulario con los datos recuperados
         this.formularioDeEdificios.setValue({
-          Nombre: respuesta[0]['Nombre'],
-          Foto: respuesta[0]['Foto'],
-          LinkMaps: respuesta[0]['LinkMaps'],
+          Nombre: respuesta['Nombre'],
+          Foto: respuesta['Foto'],
+          LinkMaps: respuesta['LinkMaps'],
         });
       },
       (error) => {
@@ -51,31 +69,135 @@ export class EditarEdificioComponent {
     }
     // Crear el grupo de formulario
     this.formularioDeEdificios=this.formulario.group({
-        Nombre: [''],
-        Foto: [''],
-        LinkMaps: ['']
+        Nombre: ['', Validators.required],
+        Foto: ['', Validators.required],
+        LinkMaps: ['', Validators.required]
     });
 	}
 
-  // ngOnInit(){
-  //   const idEdificio = this.route.snapshot.paramMap.get('idEdificio');
-  //   this.eID = idEdificio;
-  //   return this.crudService.EdificioGet(this.eID).subscribe((data:{}) => {
-  //     this.edificio = data;
-  //     console.log(this.edificio);
-  //   })
-  // }
+  // Obtener edificios desde la API
+  ngOnInit() {
+    this.getEdificios();
+  }
+
+  // Metodo para obtener los edificios
+  getEdificios() {
+    console.log('Cargando edificios existentes...')
+    return this.crudService.EdificioGetMultiple().subscribe((data:{}) => {
+      console.log(data);
+      this.listaEdificios = data;
+    })
+  }
+
+  // Metodo que valida si el nombre del edificio ya existe
+  isDuplicateNombre(nombre: string): boolean {
+    return this.listaEdificios.some((edificio: any) => edificio.Nombre === nombre);
+  }
+  
+  // Metodo que valida si el link correponde a una imagen
+  async validarImagenLink(url: string): Promise<boolean> {
+    return new Promise<boolean>((resolve) => {
+      const img = new Image();
+  
+      img.onload = () => {
+        resolve(true); // Image loaded successfully
+        console.log("Se cargo la imagen");
+      };
+  
+      img.onerror = () => {
+        resolve(false); // Image failed to load
+        console.log("La imagen no se cargo");
+      };
+  
+      img.src = url;
+    });
+  }
+
+  // Metodo que valida si el link correponde a un link de google maps
+  isGoogleMapsLink(link: string): boolean {
+    const googleMapsPattern = /^https:\/\/goo\.gl\/maps\/[A-Za-z0-9]+$/;
+    return googleMapsPattern.test(link);
+  }
+
+  // Metodos para checar si los campos estan vacios
+  get nombreControl() {
+    return this.formularioDeEdificios.get('Nombre');
+  }
+
+  get fotoControl() {
+    return this.formularioDeEdificios.get('Foto');
+  }
+
+  get linkMapsControl() {
+    return this.formularioDeEdificios.get('LinkMaps');
+  }
 
 	// Metodo para manejar el envio del formulario
   enviarDatos(){
-    console.log("Presionaste el boton enviar datos")
-    console.log(this.formularioDeEdificios.value);
-		// Llamar al servicio para actualizar el edificio
-    this.crudService.EdificioUpdate(this.theIdEdificio, this.formularioDeEdificios.value).subscribe(respuesta => {
-      console.log("Super")
-    },
-    (error) => {
-      this.mensaje=String(error.error);
-    })
+    const nombre = this.formularioDeEdificios.get('Nombre')?.value;
+    const fotoUrl = this.formularioDeEdificios.get('Foto')?.value;
+    const linkMapsUrl = this.formularioDeEdificios.get('LinkMaps')?.value;
+    this.edificioAgregado = false;
+  
+    // Validacion de Nombre
+    const isDuplicate = this.isDuplicateNombre(nombre);
+    if (isDuplicate && !(nombre == this.nombre)) {
+      this.nombreVacio = false;
+      this.nombreError = true;
+    } else {
+      if (!nombre) {
+        console.log(nombre.length);
+        this.nombreError = false;
+        this.nombreVacio = true;
+      } else {
+        this.nombreError = false;
+        this.nombreVacio = false
+      }
+    }
+  
+    // Validacion de Foto
+    this.validarImagenLink(fotoUrl).then((isValidImage: boolean) => {
+      if (!isValidImage) {
+        if(!fotoUrl){
+          this.fotoError = false;
+          this.fotoVacia = true;
+        } else {
+          this.fotoVacia = false;
+          this.fotoError = true;
+        }
+      } else {
+        this.fotoError = false;
+        this.fotoVacia = false;
+      }
+  
+      // Validacion de Link Maps
+      const isGoogleMapsLink = this.isGoogleMapsLink(linkMapsUrl);
+      if (!isGoogleMapsLink) {
+        if(!linkMapsUrl){
+          this.linkMapsError = false;
+          this.linkMapsVacio = true;
+        } else {
+          this.linkMapsError = true;
+          this.linkMapsVacio = false;
+        }
+      } else {
+        this.linkMapsError = false;
+        this.linkMapsVacio = false;
+      }
+
+      if(!this.nombreError && !this.nombreVacio && !this.fotoError && !this.fotoVacia && !this.linkMapsError && !this.linkMapsVacio){
+        this.edificioAgregado = true;
+        console.log("Presionaste el boton enviar datos")
+        console.log(this.formularioDeEdificios.value);
+		    // Llamar al servicio para actualizar el edificio
+        this.crudService.EdificioUpdate(this.theIdEdificio, this.formularioDeEdificios.value).subscribe(respuesta => {
+          console.log("Super")
+        },
+        (error) => {
+          this.mensaje=String(error.error);
+        });
+        return;
+      }
+    });
   }
 }

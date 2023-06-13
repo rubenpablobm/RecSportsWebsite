@@ -3,7 +3,7 @@
 import { Component, Input, Output, EventEmitter, HostListener} from '@angular/core';
 import { Route, Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CrudService } from '../../service/crud.service';
 import { ChangeDetectorRef } from '@angular/core';
 
@@ -11,8 +11,9 @@ import { ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'app-area-form',
   templateUrl: './area-form.component.html',
-  styleUrls: ['./area-form.component.css']
+  styleUrls: ['./area-form.component.css'],
 })
+
 export class AreaFormComponent {
   // Variables
   listaEdificios : any = [];
@@ -20,6 +21,18 @@ export class AreaFormComponent {
   listaAreas : any = [];
   tipoArea:string = '';
   mensaje?:string;
+  areaAgregada:boolean = false;
+  nombreError: boolean = false;
+  nombreVacio: boolean = false;
+  fotoError: boolean = false;
+  fotoVacia: boolean = false;
+  tipoAreaVacio: boolean = false;
+  capacidadError: boolean = false;
+  capacidadVacio: boolean = false;
+  linkCalError: boolean = false;
+  linkCalVacio: boolean = false;
+  croquisError: boolean = false;
+  croquisVacio: boolean = false;
   // Grupo de formulario para recolectar datos del formulario
   formularioDeAreas: FormGroup;
 
@@ -33,9 +46,9 @@ export class AreaFormComponent {
       Foto: [''],
       Horarios : [''],
       Descripcion : [''],
-      TipoArea : [''],
+      Tipo : [''],
       Capacidad : [''],
-      LinkCal: [''],
+      LinkCalendar: [''],
       Croquis: ['']
     });
   }
@@ -49,27 +62,34 @@ export class AreaFormComponent {
   getEdificios() {
     return this.crudService.EdificioGetMultiple().subscribe((data:{}) => {
       this.listaEdificios = data;
+      console.log('se obtuvieron edificios');
+      console.log(this.listaEdificios);
     })
   }
 
   getAreas(id:number) {
-    return this.crudService.AreaGetXId(id).subscribe((data:{}) => {
+    return this.crudService.AreaGetXedificio(id).subscribe((data:{}) => {
       this.listaAreas = data;
+      console.log('se obtuvieron áreas:');
+      console.log(this.listaAreas);
     })
   }
 
   onEdificioSelect(event: Event) {
     const target = event.target as HTMLSelectElement;
     const option = target.value;
-    
+
     if (option !== null) {
       this.idEdificio = Number(option);
     }
-    this.cdr.detectChanges();
+
+    console.log('Se seleccionó un edificio: ' + this.idEdificio);
     this.getAreas(this.idEdificio);
+    console.log(this.listaAreas)
+    this.cdr.detectChanges();
   }
 
-  // Metodo que valida si el nombre del edificio ya existe
+  // Metodo que valida si el nombre de la área ya existe en el edificio seleccionado
   isDuplicateNombre(nombre: string): boolean {
     return this.listaAreas.some((area: any) => area.Nombre === nombre);
   }
@@ -103,9 +123,28 @@ export class AreaFormComponent {
     this.cdr.detectChanges();
   }
 
+  resetFields(){
+    this.areaAgregada = false;
+    this.nombreError = false;
+    this.nombreVacio = false;
+    this.fotoError = false;
+    this.fotoVacia = false;
+    this.tipoAreaVacio = false;
+    this.capacidadError = false;
+    this.capacidadVacio = false;
+    this.linkCalError = false;
+    this.linkCalVacio = false;
+    this.croquisError = false;
+    this.croquisVacio = false;
+  }
+
+  resetForm() {
+    this.formularioDeAreas.reset();
+  }
+
   // Metodo que valida si el link correponde a un link de google maps
   isCalendarLink(link: string): boolean {
-    const calendarPattern = /^https:\/\/[A-Za-z0-9]+$/;
+    const calendarPattern = /^https:\/\/zcal.co\/[A-Za-z0-9]\/[A-Za-z0-9]+$/;
     return calendarPattern.test(link);
   }
 
@@ -118,94 +157,136 @@ export class AreaFormComponent {
     return this.formularioDeAreas.get('Foto');
   }
 
-  get tipoControl() {
-    return this.formularioDeAreas.get('Tipo')
-  }
-
   get linkCalControl() {
     return this.formularioDeAreas.get('LinkCal');
   }
   
   // Metodo para manejar el envio del formulario
   enviarDatos() {
-    const idEdificio = this.formularioDeAreas.get('idEdificio')?.value;
     const nombre = this.formularioDeAreas.get('Nombre')?.value;
-    const aviso = this.formularioDeAreas.get('Aviso')?.value;
     const fotoUrl = this.formularioDeAreas.get('Foto')?.value;
-    const horarios = this.formularioDeAreas.get('Horarios')?.value;
-    const descripcion = this.formularioDeAreas.get('Descripcion')?.value;
-    const tipo = this.formularioDeAreas.get('Tipo')?.value;
+    const tipo = this.tipoArea;
+    const tipoArea = this.formularioDeAreas.get('Tipo')?.valueChanges.subscribe(value => {
+      console.log('Selected Tipo:', value);
+    });
+    console.log('tipo = ' + tipo);
+    console.log('tipoArea = ' + tipoArea);
     const capacidad = this.formularioDeAreas.get('Capacidad')?.value;
     const linkCalUrl = this.formularioDeAreas.get('LinkCal')?.value;
     const croquis = this.formularioDeAreas.get('Croquis')?.value;
+
+    this.resetFields();
   
     // Validacion de Nombre
     const isDuplicate = this.isDuplicateNombre(nombre);
     if (isDuplicate) {
-      this.nombreControl?.setErrors({ duplicateNombre: true });
-      console.log(this.nombreControl?.errors?.['required']);
-      console.log(this.nombreControl?.errors?.['duplicateNombre']);
+      this.nombreVacio = false;
+      this.nombreError = true;
     } else {
-      this.nombreControl?.setErrors({ duplicateNombre: false });
+      if (!nombre) {
+        this.nombreError = false;
+        this.nombreVacio = true;
+      } else {
+        this.nombreError = false;
+        this.nombreVacio = false
+      }
     }
+
+    this.validarImagenLink(croquis).then((isValidImage: boolean) => {
+      if (!isValidImage) {
+        if(!croquis){
+          this.croquisError = false;
+          this.croquisVacio = true;
+        } else {
+          this.croquisVacio = false;
+          this.croquisError = true;
+        }
+      } else {
+        this.croquisError = false;
+        this.croquisVacio = false;
+      }
+    });
   
     // Validacion de Foto
     this.validarImagenLink(fotoUrl).then((isValidImage: boolean) => {
       if (!isValidImage) {
-        this.fotoControl?.setErrors({ invalidImage: true });
-        console.log(this.nombreControl?.errors?.['required']);
-        console.log(this.nombreControl?.errors?.['invalidImage']);
-      } else {
-        this.fotoControl?.setErrors({ invalidImage: false });
-      }
-      
-      // VALIDACIÓN PARA ÁREAS DE TIPO AFORO
-      if (this.tipoArea == 'aforo') {
-        if(!isDuplicate && isValidImage){
-          // Proceed with form submission
-          console.log('Form submitted successfully');
-          // Llamar al servicio para agregar el edificio
-          this.crudService.EdificioPost(this.formularioDeAreas.value).subscribe(
-            (respuesta) => {
-              this.ngOnInit();
-              console.log('Success');
-            },
-            (error) => {
-              this.ngOnInit();
-              console.log(error);
-              this.mensaje = "Error: " + error.message;
-            }
-          );
-          return;
-        }
-      }
-      // VALIDACIÓN PARA ÁREAS DE TIPO INSTRUCTIVA O RESERVA
-      else {
-        // Validacion de Link Calendario (Reservaciones de clases y espacios)
-        const isCalendarLink = this.isCalendarLink(linkCalUrl);
-        if (!isCalendarLink) {
-          this.linkCalControl?.setErrors({ invalidCalendarLink: true });
+        if(!fotoUrl){
+          this.fotoError = false;
+          this.fotoVacia = true;
         } else {
-          this.linkCalControl?.setErrors({ invalidCalendarLink: false });
+          this.fotoVacia = false;
+          this.fotoError = true;
         }
-  
-        if(!isDuplicate && isValidImage && isCalendarLink){
-          // Proceed with form submission
-          console.log('Form submitted successfully');
-          // Llamar al servicio para agregar el edificio
-          this.crudService.EdificioPost(this.formularioDeAreas.value).subscribe(
-            (respuesta) => {
-              this.ngOnInit();
-              console.log('Success');
-            },
-            (error) => {
-              this.ngOnInit();
-              console.log(error);
-              this.mensaje = "Error: " + error.message;
-            }
-          );
-          return;
+      } else {
+        this.fotoError = false;
+        this.fotoVacia = false;
+      }
+
+      if (!tipo) {      // ************************************************************************************
+        this.tipoAreaVacio = true;
+      }
+      else {
+        this.tipoAreaVacio = false;
+      }
+
+      if (this.tipoArea == 'Aforo') {
+        if(!capacidad) {
+          this.capacidadError = false;
+          this.capacidadVacio = true;
         }
+        else if (capacidad < 1){
+          this.capacidadError = true;
+          this.capacidadVacio = false;
+        }
+        else {
+          this.capacidadError = false;
+          this.capacidadVacio = false;
+        }
+        this.linkCalError = false;
+        this.linkCalVacio = false;
+        this.formularioDeAreas.get('LinkCal')?.patchValue(null);
+      }
+      else {
+        // Validacion de Link Cal
+        const isCalLink = this.isCalendarLink(linkCalUrl);
+        if (!isCalLink) {
+          if(!linkCalUrl){
+            this.linkCalError = false;
+            this.linkCalVacio = true;
+          } else {
+            this.linkCalError = true;
+            this.linkCalVacio = false;
+          }
+        } else {
+          this.linkCalError = false;
+          this.linkCalVacio = false;
+        }
+        this.capacidadError = false;
+        this.capacidadVacio = false;
+        this.formularioDeAreas.get('Capacidad')?.patchValue(null);
+      }
+
+      if(!this.nombreError && !this.nombreVacio && !this.fotoError && !this.fotoVacia && !this.tipoAreaVacio && !this.capacidadError && !this.capacidadVacio && !this.linkCalError && !this.linkCalVacio && !this.croquisError && !this.croquisVacio){
+        this.areaAgregada = true;
+        // Proceed with form submission
+        console.log('Form submitted successfully');
+        console.log(this.formularioDeAreas.value);
+        // Llamar al servicio para agregar el edificio
+        this.crudService.AreaPost(this.formularioDeAreas.value).subscribe(
+          (respuesta) => {
+            this.ngOnInit();
+            console.log('Success');
+          },
+          (error) => {
+            this.ngOnInit();
+            console.log(error);
+            this.mensaje = "Error: " + error.message;
+          }
+        );
+        return;
+      } else{
+        // Mark all fields as touched to show validation errors
+        this.formularioDeAreas.markAllAsTouched();
       }
     });
   }
