@@ -35,7 +35,7 @@ export class CambioContrasenaComponent {
       setTimeout(() => {
         window.alert("Contraseña cambiada exitosamente");
         //redirige a inicio sesion, sin logear como admin
-        this.ruteador.navigateByUrl('/admin/login');
+        this.ruteador.navigateByUrl('');
         }, 100);
     },(error) => {
       console.log(error);
