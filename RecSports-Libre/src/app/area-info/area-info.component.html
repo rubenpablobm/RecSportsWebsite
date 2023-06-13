@@ -68,7 +68,7 @@ Fecha de modificacion: 18/05/2023 -->
   <img class="croquis" src="{{ area.Croquis }}" alt="Croquis del lugar" />
   <!-- Enlace de calendario -->
   <div
-    *ngIf="area.LinkCalendar != null"
+    *ngIf="(area.LinkCalendar !== null) ||  (area.LinkCalendar !== '')"
     class="flex-container"
     style="flex-direction: column"
   >

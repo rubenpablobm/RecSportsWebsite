@@ -244,7 +244,7 @@ export class AreaFormComponent {
         }
         this.linkCalError = false;
         this.linkCalVacio = false;
-        this.formularioDeAreas.get('LinkCal')?.patchValue(null);
+        this.formularioDeAreas.get('LinkCal')?.patchValue(undefined);
       }
       else {
         // Validacion de Link Cal
@@ -263,7 +263,7 @@ export class AreaFormComponent {
         }
         this.capacidadError = false;
         this.capacidadVacio = false;
-        this.formularioDeAreas.get('Capacidad')?.patchValue(null);
+        this.formularioDeAreas.get('Capacidad')?.patchValue(undefined);
       }
 
       if(!this.nombreError && !this.nombreVacio && !this.fotoError && !this.fotoVacia && !this.tipoAreaVacio && !this.capacidadError && !this.capacidadVacio && !this.linkCalError && !this.linkCalVacio && !this.croquisError && !this.croquisVacio){
