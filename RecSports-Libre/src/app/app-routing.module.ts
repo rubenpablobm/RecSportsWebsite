@@ -18,7 +18,6 @@ import { AreaFormComponent } from './components/area-form/area-form.component';
 import { CompComponent } from './comp/comp.component';
 import { DescargarHistoricoComponent } from './components/descargar-historico/descargar-historico.component';
 import { SubirAlumnosComponent } from './components/subir-alumnos/subir-alumnos.component';
-
 import { authGuard } from './service/auth.guard';
 import { TablaEdificioComponent } from './components/tabla-edificio/tabla-edificio.component';
 import { CambioContrasenaComponent } from './components/cambio-contrasena/cambio-contrasena.component';
@@ -91,7 +90,7 @@ const routes: Routes = [
     component: SubirAlumnosComponent,
     pathMatch:'full',
     canActivate: [authGuard]
-  }
+  },
 ];
 
 @NgModule({
