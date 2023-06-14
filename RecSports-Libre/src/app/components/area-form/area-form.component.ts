@@ -36,13 +36,15 @@ export class AreaFormComponent {
   // Grupo de formulario para recolectar datos del formulario
   formularioDeAreas: FormGroup;
 
+  flagAforo:boolean = false;
+
   // Constructor con dependencias inyectadas
   constructor(private route: ActivatedRoute, private http: HttpClient, private ruteador: Router, public crudService:CrudService, private cdr: ChangeDetectorRef, public formulario: FormBuilder) { 
     // Crear el grupo de formulario
     this.formularioDeAreas=this.formulario.group({
       IdEdificio : [''],
       Nombre: [''],
-      Aviso : [''],
+      Avisos : [''],
       Foto: [''],
       Horarios : [''],
       Descripcion : [''],
@@ -158,12 +160,13 @@ export class AreaFormComponent {
   }
 
   get linkCalControl() {
-    return this.formularioDeAreas.get('LinkCal');
+    return this.formularioDeAreas.get('LinkCalendar');
   }
   
   // Metodo para manejar el envio del formulario
   enviarDatos() {
     const nombre = this.formularioDeAreas.get('Nombre')?.value;
+    const aviso = this.formularioDeAreas.get('Avisos')?.value;
     const fotoUrl = this.formularioDeAreas.get('Foto')?.value;
     const tipo = this.tipoArea;
     const tipoArea = this.formularioDeAreas.get('Tipo')?.valueChanges.subscribe(value => {
@@ -172,7 +175,8 @@ export class AreaFormComponent {
     console.log('tipo = ' + tipo);
     console.log('tipoArea = ' + tipoArea);
     const capacidad = this.formularioDeAreas.get('Capacidad')?.value;
-    const linkCalUrl = this.formularioDeAreas.get('LinkCal')?.value;
+    const linkCalUrl = this.formularioDeAreas.get('LinkCalendar')?.value;
+    console.log('Obteniendo LinkCalendar: ' + linkCalUrl);
     const croquis = this.formularioDeAreas.get('Croquis')?.value;
 
     this.resetFields();
@@ -190,6 +194,12 @@ export class AreaFormComponent {
         this.nombreError = false;
         this.nombreVacio = false
       }
+    }
+
+    if ((!aviso) || (aviso===''))  {
+      console.log('Aviso existe');
+      this.formularioDeAreas.get('Avisos')?.patchValue(null);
+      console.log(aviso);
     }
 
     this.validarImagenLink(croquis).then((isValidImage: boolean) => {
@@ -222,7 +232,7 @@ export class AreaFormComponent {
         this.fotoVacia = false;
       }
 
-      if (!tipo) {      // ************************************************************************************
+      if (!tipo) {
         this.tipoAreaVacio = true;
       }
       else {
@@ -242,28 +252,48 @@ export class AreaFormComponent {
           this.capacidadError = false;
           this.capacidadVacio = false;
         }
+        this.flagAforo = true;
         this.linkCalError = false;
         this.linkCalVacio = false;
-        this.formularioDeAreas.get('LinkCal')?.patchValue(undefined);
+        // this.formularioDeAreas.get('LinkCal')?.patchValue(null);
       }
       else {
         // Validacion de Link Cal
         const isCalLink = this.isCalendarLink(linkCalUrl);
         if (!isCalLink) {
           if(!linkCalUrl){
+            console.log('condicion: vacía');
+            console.log(linkCalUrl);
             this.linkCalError = false;
             this.linkCalVacio = true;
           } else {
+            console.log('condicion: error');
+            console.log(linkCalUrl);
             this.linkCalError = true;
             this.linkCalVacio = false;
           }
         } else {
+          console.log('condicion: correcto');
+          console.log(linkCalUrl);
           this.linkCalError = false;
           this.linkCalVacio = false;
         }
+        this.flagAforo = false;
         this.capacidadError = false;
         this.capacidadVacio = false;
-        this.formularioDeAreas.get('Capacidad')?.patchValue(undefined);
+        // this.formularioDeAreas.get('Capacidad')?.patchValue(null);
+      }
+
+      if ((!linkCalUrl) || (linkCalUrl === "")) {
+        console.log('LinkCal existe');
+        this.formularioDeAreas.get('LinkCalendar')?.patchValue(null);
+        console.log(linkCalUrl);
+      }
+
+      if ((!capacidad) || (capacidad === "")) {
+        console.log('Capacidad existe');
+        this.formularioDeAreas.get('Capacidad')?.patchValue(null);
+        console.log(capacidad);
       }
 
       if(!this.nombreError && !this.nombreVacio && !this.fotoError && !this.fotoVacia && !this.tipoAreaVacio && !this.capacidadError && !this.capacidadVacio && !this.linkCalError && !this.linkCalVacio && !this.croquisError && !this.croquisVacio){
@@ -283,6 +313,7 @@ export class AreaFormComponent {
             this.mensaje = "Error: " + error.message;
           }
         );
+        this.resetForm();
         return;
       } else{
         // Mark all fields as touched to show validation errors
