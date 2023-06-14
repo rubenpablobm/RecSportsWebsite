@@ -64,11 +64,13 @@ Fecha de modificacion: 18/05/2023 -->
     <!-- Descripcion del area se muestra aqui -->
   </div>
   <!-- Croquis -->
-  <h3 class="fw-bold mt-2 mb-0">Croquis</h3>
-  <img class="croquis" src="{{ area.Croquis }}" alt="Croquis del lugar" />
+  <div *ngIf="area.Croquis !== null">
+    <h3 class="fw-bold mt-2 mb-0">Croquis</h3>
+    <img class="croquis" src="{{ area.Croquis }}" alt="Croquis del lugar" />
+  </div>
   <!-- Enlace de calendario -->
   <div
-    *ngIf="(area.LinkCalendar !== null) ||  (area.LinkCalendar !== '')"
+    *ngIf='(area.LinkCalendar !== null) ||  (area.LinkCalendar !== "")'
     class="flex-container"
     style="flex-direction: column"
   >
