@@ -22,10 +22,6 @@ public class MainPage {
     public WebElement divClasesInstructivas;
     @FindBy(css = "html > body > app-root > app-home > div:nth-of-type(3)")
     public WebElement divAreasAccesoLibre;
-    @FindBy(css = "app-area-card[ng-reflect-tipo-area='Instructiva']")
-    public WebElement contenedorInstructivas;
-    @FindBy(css = "app-area-card[ng-reflect-tipo-area='Reservacion']")
-    public WebElement contenedorAccesoLibre;
     @FindBy(css = "ul[data-bs-popper='static']")
     public WebElement dropdownEdificios;
     public MainPage(WebDriver driver) {
