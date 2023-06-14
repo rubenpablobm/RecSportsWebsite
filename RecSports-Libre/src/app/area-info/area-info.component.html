@@ -19,10 +19,11 @@ Fecha de modificacion: 18/05/2023 -->
     Regresar
   </button>
   <!-- Titulo del área -->
-  <h1 class="fw-bold">{{ area.Nombre }}</h1>
+  <h1 class="fw-bold" id="nombreArea">{{ area.Nombre }}</h1>
   <!-- Edificio >  Agregar nombres de edificios y areas -->
   <!-- Alerta de area -->
   <div
+    id="avisosArea"
     class="area-alert alert alert-warning py-3 px-2 mb-2"
     role="alert"
     *ngIf="area.Avisos != null"
@@ -32,12 +33,12 @@ Fecha de modificacion: 18/05/2023 -->
   </div>
   <!-- Horarios -->
   <h3 class="fw-bold mt-2 mb-0">Horarios</h3>
-  <div [innerHTML]="horarios">
+  <div [innerHTML]="horarios" id="horariosArea">
     <!-- Horarios se muestran aqui -->
   </div>
   <!-- Descripción -->
   <h3 class="fw-bold mt-2 mb-0">Descripción</h3>
-  <div [innerHTML]="descripcion">
+  <div [innerHTML]="descripcion" id="descripcionArea">
     <!-- Descripcion del area se muestra aqui -->
   </div>
   <!-- Croquis -->
@@ -49,7 +50,7 @@ Fecha de modificacion: 18/05/2023 -->
     class="flex-container"
     style="flex-direction: column"
   >
-    <h3 class="fw-bold mt-2 mb-0">Aparta tu lugar</h3>
+    <h3 class="fw-bold mt-2 mb-0" id="reservacionArea">Aparta tu lugar</h3>
     <iframe class="embedido" [src]="secureLinkCalendar"></iframe>
   </div>
   <!-- Boton de registro manual -->

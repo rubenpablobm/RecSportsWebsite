@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1517aebf-8a40-46b1-b5d1-fa0c5117c624" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AgregarEdificioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AgregarEdificioTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AreaInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AreaInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AreaInfoAforoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AreaInfoAforoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AreaInfoDisponibilidadTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AreaInfoDisponibilidadTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AreaInfoInstructivaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AreaInfoInstructivaTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/BorrarEdificioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/BorrarEdificioTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/EdificioCrud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/EdificioCrud.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/EdificioCrudTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/EdificioCrudTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/EditarEdificioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/EditarEdificioTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/MainPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/MainPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/MainPageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/MainPageTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +68,58 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="TestNG.MainPageTest">
+  <component name="RunManager" selected="TestNG.AreaInfoInstructivaTest">
+    <configuration name="AreaInfoAforoTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Pruebas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.pruebas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.pruebas" />
+      <option name="MAIN_CLASS_NAME" value="com.example.pruebas.AreaInfoAforoTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AreaInfoDisponibilidadTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Pruebas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.pruebas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.pruebas" />
+      <option name="MAIN_CLASS_NAME" value="com.example.pruebas.AreaInfoDisponibilidadTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AreaInfoInstructivaTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Pruebas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.pruebas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.pruebas" />
+      <option name="MAIN_CLASS_NAME" value="com.example.pruebas.AreaInfoInstructivaTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="EdificioCrudTest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="Pruebas" />
       <extension name="coverage">
@@ -71,42 +131,6 @@
       <option name="PACKAGE_NAME" value="com.example.pruebas" />
       <option name="MAIN_CLASS_NAME" value="com.example.pruebas.EdificioCrudTest" />
       <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EdificioCrudTest.testBorrarEdificio" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="Pruebas" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.pruebas.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.pruebas" />
-      <option name="MAIN_CLASS_NAME" value="com.example.pruebas.EdificioCrudTest" />
-      <option name="METHOD_NAME" value="testBorrarEdificio" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EdificioCrudTest.testEditarEdificio" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="Pruebas" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.pruebas.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.pruebas" />
-      <option name="MAIN_CLASS_NAME" value="com.example.pruebas.EdificioCrudTest" />
-      <option name="METHOD_NAME" value="testEditarEdificio" />
-      <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
       <method v="2">
@@ -130,36 +154,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainPageTest.muestraAforo" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="Pruebas" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.pruebas.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.pruebas" />
-      <option name="MAIN_CLASS_NAME" value="com.example.pruebas.MainPageTest" />
-      <option name="METHOD_NAME" value="muestraAforo" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.AreaInfoInstructivaTest" />
+        <item itemvalue="TestNG.AreaInfoDisponibilidadTest" />
+        <item itemvalue="TestNG.AreaInfoAforoTest" />
         <item itemvalue="TestNG.MainPageTest" />
         <item itemvalue="TestNG.EdificioCrudTest" />
-        <item itemvalue="TestNG.EdificioCrudTest.testEditarEdificio" />
-        <item itemvalue="TestNG.EdificioCrudTest.testBorrarEdificio" />
-        <item itemvalue="TestNG.MainPageTest.muestraAforo" />
       </list>
     </recent_temporary>
   </component>
   <component name="SeleniumInternalSettingsState">
-    <option name="lastUrl" value="http://localhost:4200/0" />
+    <option name="lastUrl" value="http://localhost:4200/area-info/1" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
