@@ -52,7 +52,7 @@ export class EditarAreaComponent {
 	formularioDeArea: FormGroup;
   
 	// Constructor con dependencias inyectadas
-	constructor(private route: ActivatedRoute, private htttp: HttpClient, private ruteador: Router, public crudService:CrudService, public formulario: FormBuilder, private cdr: ChangeDetectorRef) { 
+	constructor(private route: ActivatedRoute, private htttp: HttpClient, private router: Router, public crudService:CrudService, public formulario: FormBuilder, private cdr: ChangeDetectorRef) { 
     // Obtener el parametro 'IdArea' de la ruta
     this.theIdArea = this.route.snapshot.paramMap.get('idArea');
     console.log("Este es el id de area");
@@ -109,6 +109,10 @@ export class EditarAreaComponent {
   ngOnInit() {
     this.getAreas(this.idEdificio);
     console.log(this.listaAreas)
+  }
+
+  endForm() {
+    this.router.navigate(['/']);
   }
 
   // Metodo para obtener las areas
@@ -337,6 +341,7 @@ export class EditarAreaComponent {
         (error) => {
           this.mensaje=String(error.error);
         });
+        this.endForm();
         return;
        }
        console.log('NO SE APROBÓ CONDICIÓN')

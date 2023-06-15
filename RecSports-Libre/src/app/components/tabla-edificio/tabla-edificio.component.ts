@@ -43,7 +43,7 @@ export class TablaEdificioComponent {
     enviarFoto(foto : string) {
       this.linkFoto.emit(foto);
     }
-
+    
     borrarRegistro(idEdificio: any, nombreEdificio: any){
       console.log(idEdificio);
       if(window.confirm("Realmente deseas eliminar el edificio "+nombreEdificio)){
@@ -53,7 +53,7 @@ export class TablaEdificioComponent {
           console.log(this.listaEdificios);
         })
       }
-      this.router.navigateByUrl('');
+      this.router.navigate(['/']);
     }
    
 }
