@@ -34,7 +34,7 @@ export class AgregarEdificioComponent {
   formularioDeEdificios: FormGroup;
 
   // Constructor con dependencias inyectadas
-  constructor(private route: ActivatedRoute, private http: HttpClient, private ruteador: Router, public crudService:CrudService, public formulario: FormBuilder) { 
+  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router, public crudService:CrudService, public formulario: FormBuilder) { 
     // Crear el grupo de formulario
     this.formularioDeEdificios=this.formulario.group({
       Nombre: [''],
@@ -60,6 +60,10 @@ export class AgregarEdificioComponent {
   // Metodo que valida si el nombre del edificio ya existe
   isDuplicateNombre(nombre: string): boolean {
     return this.listaEdificios.some((edificio: any) => edificio.Nombre === nombre);
+  }
+
+  endForm() {
+    this.router.navigate(['/edificio-tabla/tabla']);
   }
   
   // Metodo que valida si el link correponde a una imagen
@@ -191,6 +195,7 @@ export class AgregarEdificioComponent {
             this.mensaje = "Error: " + error.message;
           }
         );
+        this.endForm();
         return;
       } else{
         // Mark all fields as touched to show validation errors

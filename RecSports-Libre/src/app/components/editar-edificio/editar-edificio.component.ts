@@ -42,7 +42,7 @@ export class EditarEdificioComponent {
 	formularioDeEdificios: FormGroup;
   
 	// Constructor con dependencias inyectadas
-	constructor(private route: ActivatedRoute, private htttp: HttpClient, private ruteador: Router, public crudService:CrudService, public formulario: FormBuilder) { 
+	constructor(private route: ActivatedRoute, private htttp: HttpClient, private router: Router, public crudService:CrudService, public formulario: FormBuilder) { 
     // Obtener el parametro 'IdEdificio' de la ruta
     this.theIdEdificio = this.route.snapshot.paramMap.get('idEdificio');
     console.log("Este es el id de edificio");
@@ -92,6 +92,10 @@ export class EditarEdificioComponent {
   // Metodo que valida si el nombre del edificio ya existe
   isDuplicateNombre(nombre: string): boolean {
     return this.listaEdificios.some((edificio: any) => edificio.Nombre === nombre);
+  }
+
+  endForm() {
+    this.router.navigate(['/edificio-tabla/tabla']);
   }
   
   // Metodo que valida si el link correponde a una imagen
@@ -220,6 +224,7 @@ export class EditarEdificioComponent {
         (error) => {
           this.mensaje=String(error.error);
         });
+        this.endForm();
         return;
       }
     });
