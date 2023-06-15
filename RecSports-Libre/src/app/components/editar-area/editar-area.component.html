@@ -1,0 +1,192 @@
+<!-- Componente de navegacion -->
+<app-navbar></app-navbar>
+<!-- Contenedor principal -->
+<div class="container m-4">
+  <!-- Titulo -->
+  <h1 class="fw-bold fs-1">Editar Área</h1>
+  <!-- Formulario -->
+  <form (ngSubmit)="enviarDatos()" [formGroup]="formularioDeArea">
+    <div class="form-group my-4 w-75">
+      <!-- Campo del Edificio al que pertenece -->
+      <div class="form-group my-4 w-75">
+        <label class="fw-bold" for="idEdificio"
+          >Edificio al que pertenece</label
+        >
+        <br />
+        <select
+          formControlName="IdEdificio"
+          [(ngModel)]="idEdificio"
+          (change)="onEdificioSelect($event)"
+        >
+          <option value="-1"></option>
+          <option
+            *ngFor="let edificio of listaEdificios"
+            value="{{ edificio.IdEdificio }}"
+          >
+            {{ edificio.Nombre }}
+          </option>
+        </select>
+      </div>
+
+      <!-- CAMPOS, SE DESPLIEGAN HASTA QUE SE SELECCIONE UN EDIFICIO-->
+      <div *ngIf="idEdificio != -1">
+        <!-- Campo de Nombre -->
+        <label class="fw-bold" for="Nombre">Nombre</label>
+        <input
+          formControlName="Nombre"
+          type="text"
+          class="form-control"
+          placeholder="Ej. Basketball"
+        />
+        <!-- Mensaje de Error para el campo Nombre -->
+        <div class="text-danger">
+          <div *ngIf="nombreVacio">
+            Campo obligatorio. Por favor ingrese un nombre.
+          </div>
+          <div *ngIf="nombreError">
+            Ya existe una área con este nombre. Intente de nuevo.
+          </div>
+        </div>
+
+        <!-- Campo de aviso -->
+        <div class="form-group my-4 w-75">
+          <label class="fw-bold" for="Avisos">Aviso</label>
+          <input
+            formControlName="Avisos"
+            type="text"
+            class="form-control"
+            placeholder="Ej. Cerrado por mantenimiento de 13:00-14:00"
+          />
+        </div>
+
+        <!-- Campo de Foto -->
+        <div class="form-group my-4 w-75">
+          <label class="fw-bold" for="Foto">Foto</label>
+          <input
+            formControlName="Foto"
+            type="text"
+            class="form-control"
+            placeholder="Ej. https://imagenWellnes.png"
+          />
+          <!-- Error message for Foto -->
+          <div class="text-danger">
+            <div *ngIf="fotoVacia">
+              Campo obligatorio. Por favor ingrese la liga de una imagen.
+            </div>
+            <div *ngIf="fotoError">
+              La liga no corresponde a una imagen. Intente de nuevo.
+            </div>
+          </div>
+        </div>
+
+        <!-- Campo de Horarios -->
+        <div class="form-group my-4 w-75">
+          <label class="fw-bold" for="Horarios">Horarios</label>
+          <input
+            formControlName="Horarios"
+            type="text"
+            class="form-control"
+            placeholder="Ej. Lu-Vi de 8:00  a 16:00"
+          />
+        </div>
+
+        <!-- Campo de descripción -->
+        <div class="form-group my-4 w-75">
+          <label class="fw-bold" for="Descripcion">Descripción</label>
+          <input
+            formControlName="Descripcion"
+            type="text"
+            class="form-control"
+            placeholder="Ej. Prohibida entrada sin toalla"
+          />
+        </div>
+
+        <!-- Campo de tipo de área -->
+        <div class="form-group my-4 w-75">
+          <label class="fw-bold" for="Tipo">Tipo de área</label>
+          <br />
+          <select formControlName="Tipo" (change)="onTipoSelect($event)">
+            <option value=""></option>
+            <option value="Aforo">Aforo</option>
+            <option value="Instructiva">Instructiva</option>
+            <option value="Reservas">Reservas</option>
+          </select>
+          <!-- Error message for Tipo -->
+          <div class="text-danger">
+            <div *ngIf="tipoDeAreaVacio">Este campo es obligatorio.</div>
+          </div>
+        </div>
+
+        <!-- Campo de Capacidad -->
+        <div>
+          <div class="form-group my-4 w-75" *ngIf="tipoDeArea === 'Aforo'">
+            <label class="fw-bold" for="Capacidad"
+              >Capacidad (aforo máximo)</label
+            >
+            <input
+              formControlName="Capacidad"
+              type="number"
+              class="form-control"
+              placeholder="300"
+              min="1"
+              required
+            />
+          </div>
+          <!-- Error message for Capacidad -->
+          <div class="text-danger">
+            <div *ngIf="capacidadVacio">Este campo es obligatorio.</div>
+            <div *ngIf="capacidadError">Esa capacidad es inválida.</div>
+          </div>
+        </div>
+
+        <!-- Campo de Link de ZCal -->
+        <div class="form-group my-4 w-75" *ngIf="tipoDeArea !== 'Aforo'">
+          <label class="fw-bold" for="LinkCalendar">Link ZCal</label>
+          <input
+            formControlName="LinkCalendar"
+            type="text"
+            class="form-control"
+            placeholder="Ej. https://zcal.co/"
+          />
+          <!-- Error message for Link Maps -->
+          <div class="text-danger">
+            <div *ngIf="linkZcalVacio">Este campo es obligatorio.</div>
+            <div *ngIf="linkZcalError">La liga ingresada es inválida.</div>
+          </div>
+        </div>
+
+        <!-- Campo de Croquis -->
+        <div class="form-group my-4 w-75">
+          <label class="fw-bold" for="Croquis">Croquis</label>
+          <input
+            formControlName="Croquis"
+            type="text"
+            class="form-control"
+            placeholder="Ej. https://imagenWellnes.png"
+          />
+          <!-- Error message for Croquis -->
+          <div class="text-danger">
+            <div *ngIf="croquisVacio">Este campo es obligatorio.</div>
+            <div *ngIf="croquisError">La liga ingresada es inválida.</div>
+          </div>
+        </div>
+
+        <!-- Grupo de botones -->
+        <div class="btn-group" role="group" aria-label="Button group name">
+          <!-- Boton de Agregar -->
+          <button type="submit" class="btn btn-warning custom-btn">
+            Editar
+          </button>
+          <!-- Boton de Cancelar -->
+          <button
+            type="button"
+            class="btn btn-danger custom-btn ms-3"
+            routerLink="/0"
+          >
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

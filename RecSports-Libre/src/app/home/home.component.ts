@@ -35,24 +35,24 @@ export class HomeComponent {
   getAreas() {
     // Obtiene el id del edificio de la ruta
     const idEdificio = this.route.snapshot.paramMap.get('idEdificio');
-    
+    // Se identifica el parametro
     if (idEdificio === null) {
-      this.eID = null;
+      this.eID = 0;
     }else{
-      this.eID = Number(idEdificio);
+      this.eID = Number(idEdificio);  
     }
-    
     // Llama al servicio crudService para obtener las áreas del edificio
     return this.crudService.AreaGetXedificio(this.eID).subscribe((data : {}) => {
-      console.log("Getting areas from ID edificio:" + this.eID);
+      console.log("Obteniendo areas del edificio:" + this.eID);
       this.areas=data;
-      //console.log(this.areas)
     });
+    
+    
   }
 
   // Metodo para obtener edificios en cada iteracion
   ngOnInit() {
-    if(this.areas===undefined){ //Si entra en la pagina, sin haber clickeado el dropdown, tendra la lista de areas
+    if(this.areas===undefined){ //Si entra en la pagina, sin haber clickeado el dropdown, tendra la lista de areas aun asi
       this.getAreas();
     }
     this.router.events.subscribe(event => {
