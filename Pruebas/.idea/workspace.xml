@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1517aebf-8a40-46b1-b5d1-fa0c5117c624" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AdminSignin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AdminSignin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AdminSigninTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AdminSigninTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AgregarEdificioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AgregarEdificioTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AreaInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AreaInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AreaInfoAforoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AreaInfoAforoTest.java" afterDir="false" />
@@ -184,6 +186,11 @@
       <workItem from="1685381266668" duration="16909000" />
       <workItem from="1685817307878" duration="24875000" />
       <workItem from="1685950735671" duration="38959000" />
+      <workItem from="1686328798732" duration="1069000" />
+      <workItem from="1686435482730" duration="4272000" />
+      <workItem from="1686582307803" duration="1873000" />
+      <workItem from="1686628407049" duration="1014000" />
+      <workItem from="1686797796760" duration="471000" />
     </task>
     <servers />
   </component>
