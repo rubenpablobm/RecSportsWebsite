@@ -1,14 +1,16 @@
 /* Descripcion de area-card.component.ts: programa que define la logica del componente "area-card". 
 Su proposito es llamar al servicio API por medio de funciones. 
 Porpiedad del equipo WellSoft. 
-Ultima edicion por: Arturo Garza Campuzano
-Fecha de creacion: dd/mm/aaaa < 05/05/2023
-Fecha de modificacion: 18/05/2023 */
+Ultima edicion por: Ruben Barraza
+Fecha de creacion: dd/mm/aaaa < 03/04/2023
+Fecha de modificacion: 28/05/2023 */
 
 // Declaracion de importaciones
 import { Component, Input } from '@angular/core';
 import { Area } from '../models/area'; //No se usa
 import { CrudService } from 'src/app/service/crud.service';
+import { authGuard } from '../service/auth.guard';
+
 
 // Decorador del componente
 @Component({
@@ -23,6 +25,8 @@ export class AreaCardComponent {
   @Input() idEdificio!: any;
   @Input() tipoArea!: string;
   @Input() listaAreas : any = [];
+
+  auth!: boolean;
 
   // Datos de titulos de areas
   titulos : any = [
@@ -43,7 +47,9 @@ export class AreaCardComponent {
     }
   ]
 
-  constructor(public crudService:CrudService){ }
+  constructor(public crudService:CrudService){ 
+    this.auth=authGuard();
+  }
   
   // Obtener areas desde la API
   ngOnInit() {

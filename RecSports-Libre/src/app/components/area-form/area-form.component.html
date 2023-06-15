@@ -1,11 +1,38 @@
+<!-- Descripcion de agregar-edificio.component.html: programa que define la estructura del componente
+"agregar-edificio". Su proposito es permitir al administrador agregar un edificio. 
+Porpiedad del equipo WellSoft. 
+Ultima edicion por: Arturo Garza Campuzano.
+Fecha de creacion: 16/05/2023
+Fecha de modificacion: 17/05/2023 -->
+
+<!-- fs-4 para títulos -->
+<!-- fs-5 para campos -->
+<!-- fs-6 para mensjes -->
+
+<!-- Nombre * -->
+<!-- Aviso -->
+<!-- Horarios -->
+<!-- Descripción -->
+<!-- Croquis -->
+<!-- Tipo de área * -->
+
+<!-- AFORO -->
+<!-- capacidad * -->
+
+<!-- ISTRUCTIVAS -->
+<!-- zcal * -->
+
+<!-- DISPONIBILIDAD -->
+<!-- zcal -->
+
 <!-- Componente de navegacion -->
 <app-navbar></app-navbar>
 <!-- Contenedor principal -->
 <div class="container m-4">
   <!-- Titulo -->
-  <h1 class="fw-bold fs-1">Editar Área</h1>
+  <h1 class="fw-bold fs-1">Agregar Área</h1>
   <!-- Formulario -->
-  <form (ngSubmit)="enviarDatos()" [formGroup]="formularioDeArea">
+  <form (ngSubmit)="enviarDatos()" [formGroup]="formularioDeAreas">
     <div class="form-group my-4 w-75">
       <!-- Campo del Edificio al que pertenece -->
       <div class="form-group my-4 w-75">
@@ -113,13 +140,13 @@
           </select>
           <!-- Error message for Tipo -->
           <div class="text-danger">
-            <div *ngIf="tipoDeAreaVacio">Este campo es obligatorio.</div>
+            <div *ngIf="tipoAreaVacio">Este campo es obligatorio.</div>
           </div>
         </div>
 
         <!-- Campo de Capacidad -->
         <div>
-          <div class="form-group my-4 w-75" *ngIf="tipoDeArea === 'Aforo'">
+          <div class="form-group my-4 w-75" *ngIf="tipoArea === 'Aforo'">
             <label class="fw-bold" for="Capacidad"
               >Capacidad (aforo máximo)</label
             >
@@ -140,7 +167,7 @@
         </div>
 
         <!-- Campo de Link de ZCal -->
-        <div class="form-group my-4 w-75" *ngIf="tipoDeArea !== 'Aforo'">
+        <div class="form-group my-4 w-75" *ngIf="tipoArea !== 'Aforo'">
           <label class="fw-bold" for="LinkCalendar">Link ZCal</label>
           <input
             formControlName="LinkCalendar"
@@ -150,8 +177,8 @@
           />
           <!-- Error message for Link Maps -->
           <div class="text-danger">
-            <div *ngIf="linkZcalVacio">Este campo es obligatorio.</div>
-            <div *ngIf="linkZcalError">La liga ingresada es inválida.</div>
+            <div *ngIf="linkCalVacio">Este campo es obligatorio.</div>
+            <div *ngIf="linkCalError">La liga ingresada es inválida.</div>
           </div>
         </div>
 
@@ -174,8 +201,8 @@
         <!-- Grupo de botones -->
         <div class="btn-group" role="group" aria-label="Button group name">
           <!-- Boton de Agregar -->
-          <button type="submit" class="btn btn-warning custom-btn">
-            Editar
+          <button type="submit" class="btn btn-success custom-btn">
+            Agregar
           </button>
           <!-- Boton de Cancelar -->
           <button

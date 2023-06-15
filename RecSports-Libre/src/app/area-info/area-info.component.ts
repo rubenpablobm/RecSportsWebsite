@@ -46,17 +46,13 @@ export class AreaInfoComponent {
       this.area = data;
       // Seleccionar la columna LinkCalendar
       this.linkCalendar = this.area.LinkCalendar;
-      if(this.linkCalendar===null){
-        this.linkCalendar='SinLink';
-      }
+      // if((this.linkCalendar===null) || (this.linkCalendar === '')){
+      //   this.linkCalendar=SinLink;
+      // }
       // Purificar el enlace
       this.secureLinkCalendar = this.sanitizer.bypassSecurityTrustResourceUrl(this.linkCalendar);
       this.horarios = this.convertLineBreaks(this.area.Horarios);
       this.descripcion = this.convertLineBreaks(this.area.Descripcion);
-      // console.log(this.descripcion);
-      console.log(this.area);
-      console.log(this.area.Avisos);
-      //console.log("sencillamente "+this.area.LinkCalendar);
     })
   }
   
@@ -91,6 +87,28 @@ export class AreaInfoComponent {
         this.mostrarOverlay = false;
       }
     }, 100);
+  }
+
+  borrarRegistro(idArea: any, nombreArea: any) {
+    console.log(idArea);
+  
+    this.mostrarOverlay = true;
+  
+    setTimeout(() => {
+      if (window.confirm("¿Realmente deseas eliminar el registro título = " + nombreArea)) {
+        this.crudService.AreaDelete(idArea).subscribe(respuesta => {
+          console.log(this.area);
+        });
+        this.mostrarOverlay = false;
+        window.history.back();
+      }else{
+        this.mostrarOverlay = false;
+      }
+    
+      
+
+    }, 100);
+    
   }
 
 }

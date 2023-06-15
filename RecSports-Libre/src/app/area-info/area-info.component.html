@@ -9,7 +9,7 @@ Fecha de modificacion: 18/05/2023 -->
 <app-navbar></app-navbar>
 
 <!-- Overlay de confirmacion -->
-<div *ngIf="mostrarOverlay" class="overlay" ></div>
+<div *ngIf="mostrarOverlay" class="overlay"></div>
 
 <!-- Seccion app-header con las propiedades enlazadas "linkFoto" y "descripcion" -->
 <app-header
@@ -18,28 +18,42 @@ Fecha de modificacion: 18/05/2023 -->
 ></app-header>
 <!-- Contenedor principal -->
 <div class="flex-col area-info-container p-3">
-  <!-- Boton de regresar -->
-  <div class="cleda " id="celda">
-    <button class="btn btn-secondary my-2"  routerLink="/{{ area.IdEdificio }}">
-      Regresar
-    </button>
-    <button
-      id="editar"
-      type="button"
-      class="btn btn-warning leftalign "
-      *ngIf="auth"
-      [routerLink]="['/editar-area/editar/', area.IdArea]"
-    >
-      <i class="bi bi-pencil-fill"></i>
-    </button>
-    <button
-      id="borrar"
-      type="button"
-      *ngIf="auth"
-      class="btn btn-danger text-black m-2"
-    >
-      <i class="bi bi-trash-fill"></i>
-    </button>
+  <div class="row" style="width: 100%;">
+    <div class="flex-container" style="width: 100%; justify-content: space-between;">
+      <div class="col-auto">
+        <!-- Boton de regresar -->
+        <button
+          class="btn btn-secondary my-2"
+          routerLink="/{{ area.IdEdificio }}"
+        >
+          Regresar
+        </button>
+      </div>
+      <div class="col-auto">
+        <div class="d-flex justify-content-end w-100">
+          <!-- Editar área button -->
+          <button
+            id="editar"
+            type="button"
+            class="btn btn-warning m-2"
+            *ngIf="auth"
+            [routerLink]="['/editar-area/editar/', area.IdArea]"
+          >
+            <i class="bi bi-pencil-fill"></i>
+          </button>
+          <!-- Eliminar área button -->
+          <button
+            id="borrar"
+            type="button"
+            *ngIf="auth"
+            class="btn btn-danger text-black m-2"
+            (click)="borrarRegistro(area.IdArea, area.Nombre)"
+          >
+            <i class="bi bi-trash-fill"></i>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
   <!-- Titulo del área -->
   <h1 class="fw-bold" id="nombreArea">{{ area.Nombre }}</h1>
@@ -65,11 +79,13 @@ Fecha de modificacion: 18/05/2023 -->
     <!-- Descripcion del area se muestra aqui -->
   </div>
   <!-- Croquis -->
-  <h3 class="fw-bold mt-2 mb-0">Croquis</h3>
-  <img class="croquis" src="{{ area.Croquis }}" alt="Croquis del lugar" />
+  <div *ngIf="area.Croquis !== null">
+    <h3 class="fw-bold mt-2 mb-0">Croquis</h3>
+    <img class="croquis" src="{{ area.Croquis }}" alt="Croquis del lugar" />
+  </div>
   <!-- Enlace de calendario -->
   <div
-    *ngIf="area.LinkCalendar != null"
+    *ngIf="area.Tipo !== 'Aforo'"
     class="flex-container"
     style="flex-direction: column"
   >
@@ -84,10 +100,7 @@ Fecha de modificacion: 18/05/2023 -->
     >
       Registro manual
     </button>
-    <button
-      class="btn btn-warning m-2"
-      (click)="limpiarAforo()"
-    >
+    <button class="btn btn-warning m-2" (click)="limpiarAforo()">
       Limpiar Aforo
     </button>
   </ng-container>
