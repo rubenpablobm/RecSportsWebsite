@@ -47,15 +47,16 @@ export class AreaInfoComponent {
       // Seleccionar la columna LinkCalendar
       this.linkCalendar = this.area.LinkCalendar;
       // if((this.linkCalendar===null) || (this.linkCalendar === '')){
-      //   this.linkCalendar=undefined;
+      //   this.linkCalendar=SinLink;
       // }
       // Purificar el enlace
-      // this.secureLinkCalendar = this.sanitizer.bypassSecurityTrustResourceUrl(this.linkCalendar);
+      this.secureLinkCalendar = this.sanitizer.bypassSecurityTrustResourceUrl(this.linkCalendar);
       this.horarios = this.convertLineBreaks(this.area.Horarios);
       this.descripcion = this.convertLineBreaks(this.area.Descripcion);
       // console.log(this.descripcion);
       console.log(this.area);
       console.log(this.area.Avisos);
+      console.log('link:' + this.linkCalendar)
       //console.log("sencillamente "+this.area.LinkCalendar);
     })
   }
