@@ -18,8 +18,11 @@ Fecha de modificacion: 18/05/2023 -->
 ></app-header>
 <!-- Contenedor principal -->
 <div class="flex-col area-info-container p-3">
-  <div class="row" style="width: 100%;">
-    <div class="flex-container" style="width: 100%; justify-content: space-between;">
+  <div class="row" style="width: 100%">
+    <div
+      class="flex-container"
+      style="width: 100%; justify-content: space-between"
+    >
       <div class="col-auto">
         <!-- Boton de regresar -->
         <button
@@ -32,7 +35,7 @@ Fecha de modificacion: 18/05/2023 -->
       <div class="col-auto">
         <div class="d-flex justify-content-end w-100">
           <!-- Editar área button -->
-          <button
+          <!--<button
             id="editar"
             type="button"
             class="btn btn-warning m-2"
@@ -40,7 +43,7 @@ Fecha de modificacion: 18/05/2023 -->
             [routerLink]="['/editar-area/editar/', area.IdArea]"
           >
             <i class="bi bi-pencil-fill"></i>
-          </button>
+          </button>-->
           <!-- Eliminar área button -->
           <button
             id="borrar"

@@ -83,7 +83,7 @@ app.put('/cambiocontra', async (req, res) => {
         const salt = await bcrypt.genSalt()
         const tContrasena = await bcrypt.hash(Contrasena,salt);
 
-        const query = 'UPDATE Admin SET Contrasena=@tContrasena WHERE Email=@Email; IF @@ROWCOUNT = 0 BEGIN RAISERROR ("Usuario no existente", 16, 1); END;'
+        const query = `UPDATE Admin SET Contrasena=@tContrasena WHERE Email=@Email; IF @@ROWCOUNT = 0 BEGIN RAISERROR ('Usuario no existente', 16, 1); END;`
         await pool.request()
             .input('Email', sql.VarChar, Email.toLowerCase())
             .input('tContrasena', sql.VarChar, tContrasena)
