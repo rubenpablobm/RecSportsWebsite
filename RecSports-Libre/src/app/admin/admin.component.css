@@ -60,13 +60,6 @@ input[type=text]{
   box-sizing: border-box;
 }
 
-/*.custom-container {
-  margin: 0;
-  padding: 0;
-  width: auto;
-  min-width: 1218px
-}*/
-
 /* Media queries */
 @media (max-width: 880px) { 
   /* Estilos para la clase .custom-container en pantallas con un ancho maximo de 880px */
