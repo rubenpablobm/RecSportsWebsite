@@ -1,38 +1,47 @@
 <app-navbar></app-navbar>
 
-<h1 class="mov">Restablecer contraseña</h1>
 
-<form   class="m-3">
-<div class="mb-3  mov1">
-  <label for="exampleInputPassword1" class="form-label">Contraseña Actual</label>
-  <input
-    type="password"
-    style="width: 192px;"
-    class="form-control "
-    id="exampleInputPassword1"
-    formControlName="Contrasena"
-  />
-</div>
+<div class="m-3">
+  <h1 class="">Restablecer contraseña</h1>
+  <button class="btn btn-secondary m-3" routerLink="">Regresar</button>
 
-<div class="mb-3  mov1">
-  <label for="exampleInputPassword1" class="form-label">Nueva Contraseña</label>
-  <input
-    type="password"
-    style="width: 192px;"
-    class="form-control "
-    id="exampleInputPassword1"
-    formControlName="Contrasena"
-  />
+  <form (ngSubmit)="enviarDatos()" [formGroup]="formLogin" >
+    <div class="m-3  mov1">
+      
+      <label for="exampleInputEmail1" class="form-label">Email</label>
+      <input
+      type="email"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      formControlName="Email"
+      />
+    </div>
+    
+    <div class="m-3  mov1">
+      <label for="exampleInputPassword1" class="form-label">Nueva Contraseña</label>
+      <input
+        type="password"
+        style="width: 192px;"
+        class="form-control "
+        id="exampleInputPassword1"
+        formControlName="Contrasena"
+      />
+    </div>
+    
+    <div class="m-3  mov1">
+      <label for="exampleInputPassword1" class="form-label">Repetir contraseña</label>
+      <input
+        type="password"
+        style="width: 192px;"
+        class="form-control "
+        id="exampleInputPassword1"
+        formControlName="RepContrasena"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary m-3">Submit</button>
+    </form>
+    <div id="mensaje-aviso" *ngIf="mensaje != '[object Object]'">
+      {{ mensaje }}
+    </div>
 </div>
-
-<div class="mb-3  mov1">
-  <label for="exampleInputPassword1" class="form-label">Repetir contraseña</label>
-  <input
-    type="password"
-    style="width: 192px;"
-    class="form-control "
-    id="exampleInputPassword1"
-    formControlName="Contrasena"
-  />
-</div>
-</form>

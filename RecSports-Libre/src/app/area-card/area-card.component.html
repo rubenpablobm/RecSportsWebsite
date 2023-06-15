@@ -12,6 +12,7 @@ Fecha de modificacion: 18/05/2023 -->
     <ng-container *ngFor="let area of listaAreas">
       <!-- Tarjeta de area -->
       <div
+        id="areaCard"
         class="area-card card bg-dark text-white shadow"
         *ngIf="area.Tipo === tipoArea"
       >
@@ -30,12 +31,12 @@ Fecha de modificacion: 18/05/2023 -->
               <span class="badge bg-warning">AVISO</span>
             </div>
             <!-- Seccion de nombre -->
-            <div class="area-nombre card-title">
+            <div id="titleCard" class="area-nombre card-title">
               {{ area.Nombre }}
             </div>
             <!-- Seccion de aforo -->
             <div *ngIf="area.Aforo != undefined">
-              <label for="barraAforo"
+              <label id="lableBarraAforo" for="barraAforo"
                 >{{ area.Aforo }} / {{ area.Capacidad }} personas
               </label>
               <progress

@@ -29,7 +29,6 @@ Fecha de modificacion: 18/05/2023 */
   border: solid 2px #333;
   border-radius: 10px;
 }
-@import '~bootstrap-icons/font/bootstrap-icons.css';
 
 /* Estilos para la clase .mov */
 .mov {

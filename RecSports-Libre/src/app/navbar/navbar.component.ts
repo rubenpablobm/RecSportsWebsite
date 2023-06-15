@@ -9,6 +9,9 @@ Fecha de modificacion: 19/05/2023 */
 import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { CrudService } from '../service/crud.service';
 
+import { NgIf } from '@angular/common';
+import { authGuard } from '../service/auth.guard';
+
 // Decorador del componente
 @Component({
   selector: 'app-navbar',
@@ -24,7 +27,11 @@ export class NavbarComponent {
   @Output() linkFoto = new EventEmitter<string>();
   //@Output() reloadSignal = new EventEmitter<void>();
 
-  constructor(public crudService:CrudService){ }
+  auth!: boolean; //validador admin
+
+  constructor(public crudService:CrudService){
+    this.auth=authGuard(); //validador admin
+  }
 
   // Metodo para llmara el metodo getEdificios por cada iteracion
   ngOnInit() {
@@ -43,6 +50,9 @@ export class NavbarComponent {
   // Metodo para emitir foto
   enviarFoto(foto : string) {
     this.linkFoto.emit(foto);
+  }
+  cerrarSesion(){
+    window.location.reload();
   }
   /*
   reloadHome() {

@@ -35,7 +35,6 @@ public class EdificioCrudTest {
         edificioCrud.inputExampleEmail.sendKeys("alma10@gmail.com");
         edificioCrud.inputExamplePassword.sendKeys("Alberto1#");
         edificioCrud.buttonSubmit.click();
-        //edificioCrud.buttonCollapse.click();
         edificioCrud.buttonEdificios.click();
 
     }
@@ -47,7 +46,8 @@ public class EdificioCrudTest {
 
     }
 
-    //HURF-22: Como admin quiero agregar un edificio y sus caracteristicas para ponerlo disponibles a los alumnos.
+    // Test Scenario ID: HURF-22
+    // Test Case ID: TC-HURF-22
     @Test(priority = 1)
     public void testAgregarEdificio() {
 
@@ -119,7 +119,8 @@ public class EdificioCrudTest {
 
     }
 
-    //HURF-23: Como admin quiero editar un edificio y sus caracteristicas para tener informacion actualizada.
+    // Test Scenario ID: HURF-23
+    // Test Case ID: TC-HURF-23
     @Test (priority = 2)
     public void testEditarEdificio() {
 
@@ -196,7 +197,8 @@ public class EdificioCrudTest {
 
     }
 
-    //HURF-24: Como admin quiero eliminar un edificio y sus características.
+    // Test Scenario ID: HURF-24
+    // Test Case ID: TC-HURF-24
     @Test (priority = 3)
     public void testBorrarEdificio() {
 
@@ -231,8 +233,6 @@ public class EdificioCrudTest {
             // Dismiss the alert
             alert.dismiss();
         }
-
-        alert.accept();
 
         // Reload the page
         driver.navigate().refresh();

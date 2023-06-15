@@ -7,12 +7,12 @@ Fecha de modificacion: 19/05/2023 -->
 
 <mat-toolbar class="navbar navbar-expand">
   <!-- Logo -->
-  <a routerLink="/0">
+  <a routerLink="/">
     <img src="../../assets/images/logo-borrego.svg" alt="Logo Borregos" />
   </a>
   <div>
     <!-- Titulo -->
-    <a routerLink="/0" class="no-style-link"> ATHLETICS OPEN </a>
+    <a routerLink="/" class="no-style-link"> ATHLETICS OPEN </a>
   </div>
   <div class="dropstart" style="display: flex; align-items: center">
     <ul class="navbar-nav fs-6">
@@ -42,10 +42,10 @@ Fecha de modificacion: 19/05/2023 -->
             >
           </li>
           <li><hr class="dropdown-divider m-0" /></li>
-          <li>
+          <li id="opcionTodos">
             <a
               class="dropdown-item"
-              [routerLink]="['/0']"
+              [routerLink]="['/']"
               (click)="
                 enviarFoto(
                   'https://www.arquired.com.mx/wp-content/uploads/2017/05/campustecmtywh.jpg'
@@ -60,6 +60,7 @@ Fecha de modificacion: 19/05/2023 -->
 
     <!-- Boton Admin -->
     <button
+      *ngIf="!auth"
       routerLink="/admin/login"
       target="sideBar"
       rel="bookmark"
@@ -68,5 +69,15 @@ Fecha de modificacion: 19/05/2023 -->
     >
       Admin
     </button>
+      <button
+        *ngIf="auth"
+        (click)="cerrarSesion()"
+        target="sideBar"
+        rel="bookmark"
+        routerLinkActive="active"
+        mat-button
+      >
+        Cerrar sesion
+      </button>
   </div>
 </mat-toolbar>

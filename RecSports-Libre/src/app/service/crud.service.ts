@@ -13,6 +13,10 @@ import { Area } from '../models/area';
 import { Edificio } from '../models/edificio';
 import { Admin } from '../models/admin';
 
+import { Fecha } from '../models/fecha';
+import { Dia } from '../models/dia';
+import { Hora } from '../models/hora';
+
 //Injector del servicio
 @Injectable({
   providedIn: 'root'
@@ -107,6 +111,10 @@ export class CrudService {
     return this.clientehttp.get(this.API+"area/menosaforo/"+id);
   }
 
+  // Resetea a 0 el aforo
+  LimpiarAforo(id: number):Observable<any>{
+    return this.clientehttp.get(this.API+"area/limpiaraforo/"+id);
+  }
   /* ADMIN */
   AdminLogin(datosAdmin:Admin):Observable<any>{
     this.logeado=false;
@@ -128,5 +136,32 @@ export class CrudService {
     this.emailString = undefined;
     return this.logeado
   }
+  /* Cambio Contraseña*/
+  CambioContraseña(datosAdmin:Admin):Observable<any>{
+   // this.logeado=true;
+   this.logeado=false;
+  //  this.emailString = datosAdmin.correo;
+   console.log(this.emailString);
+   console.log(datosAdmin.correo);
+   return this.clientehttp.put(this.API+"admin/cambiocontra", datosAdmin);
+  }
 
+  // ESTADISTICA 
+  HoraGet(id: number, fechaRange: Fecha):Observable<any>{
+    if(id!=0){
+      return this.clientehttp.post(this.API + "estadistica/hora/" + id, fechaRange);
+    }else{
+      return this.clientehttp.post(this.API+"estadistica/hora", fechaRange);
+      //'text' as 'json'
+      //'blob'
+    }
+  }
+  DiaGet(id: number, fechaRange: Fecha):Observable<any>{
+    if(id!=0){
+      return this.clientehttp.post(this.API + "estadistica/dia/" + id, fechaRange);
+    }else{
+      return this.clientehttp.post(this.API+"estadistica/dia", fechaRange);
+    }
+    
+  }
 }

@@ -4,7 +4,6 @@ Porpiedad del equipo WellSoft.
 Ultima edicion por: Arturo Garza Campuzano.
 Fecha de creacion: N/A
 Fecha de modificacion: 17/05/2023 -->
-
 <!-- Barra de navegacion -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -23,30 +22,25 @@ Fecha de modificacion: 17/05/2023 -->
     <!-- Contenido colapsable de la barra de navegacion -->
     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
       <ul class="navbar-nav">
-        <!-- Boton para obtener una area -->
-        <button type="submit" class="btn btn-secondary m-2 font">
-          <!-- (click)="getArea()" -->
-          Dame una area
-        </button>
         <!-- Boton para ir a la pagina de agregar edificios -->
         <button
           type="button"
           class="btn btn-secondary m-2 font"
           routerLink="/edificio-tabla/tabla"
         >
-          Edificios
+        <fa-icon [icon]="faBuilding" size="lg"></fa-icon>  Edificios
         </button>
         <!-- Boton para ir a la pagina de estadisticas de un edificio -->
-        <button type="button" class="btn btn-secondary m-2 font">
-          Estadísticas
+        <button type="button" class="btn btn-secondary m-2 font" routerLink="/historico/descargar">
+          <fa-icon [icon]="faChartSimple" size="lg"></fa-icon>  Estadísticas
         </button>
         <!-- Boton para cambiar la contrasena -->
         <button
           type="button"
           class="btn btn-secondary m-2 font"
-          routerLink="/edificio-CRUD/agregar"
+          routerLink="/cambio/contrasena"
         >
-          Contraseña
+        <fa-icon [icon]="faKey" size="lg"></fa-icon>  Contraseña
         </button>
       </ul>
     </div>
