@@ -15,13 +15,14 @@ Fecha de modificacion: 18/05/2023 -->
     <div class="">
       <div>
         <!-- Encabezado de Inicio de Sesion -->
-        <h1>Iniciar Sesion</h1>
+        <h1>Administrador</h1>
       </div>
       <!-- Formulario del inicio de sesion de administrador" -->
       <form (ngSubmit)="enviarDatos()" [formGroup]="formLogin" class="m-3">
         <!-- Campo de entrada de correo electronico -->
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Email</label>
+          <br>
           <input
             type="email"
             class="form-control"
@@ -35,6 +36,7 @@ Fecha de modificacion: 18/05/2023 -->
           <label for="exampleInputPassword1" class="form-label"
             >Contraseña</label
           >
+          <br>
           <input
             type="password"
             class="form-control"
@@ -43,10 +45,10 @@ Fecha de modificacion: 18/05/2023 -->
           />
         </div>
         <!-- Boton de envio del formulario -->
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
       </form>
       <!-- Texto de alerta -->
-      <div class="text-danger fs-6 m-3" *ngIf="mensaje != ''">
+      <div class="btn text-danger mt-5" *ngIf="mensaje != ''">
         Ha ocurrido un error al iniciar sesión.
       </div>
     </div>
