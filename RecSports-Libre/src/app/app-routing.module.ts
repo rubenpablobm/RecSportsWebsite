@@ -1,9 +1,9 @@
 /* Descripcion de app-routing.module.ts: modulo que define la logica del enrutamiento. 
 Su proposito es definir las rutas manejadas en la aplicacion. 
 Porpiedad del equipo WellSoft. 
-Ultima edicion por: Arturo Garza Campuzano
+Ultima edicion por: Jesús Sebastián Jaime Oviedo
 Fecha de creacion: dd/mm/aaaa < 05/05/2023
-Fecha de modificacion: 19/05/2023 */
+Fecha de modificacion: 13/06/2023 */
 
 // Declaracion de importaciones
 import { NgModule } from '@angular/core';
@@ -14,29 +14,14 @@ import { AdminComponent } from './admin/admin.component';
 import { AccesoComponent } from './components/acceso/acceso.component';
 import { EditarEdificioComponent } from './components/editar-edificio/editar-edificio.component';
 import { AgregarEdificioComponent } from './components/agregar-edificio/agregar-edificio.component';
+import { AreaFormComponent } from './components/area-form/area-form.component';
 import { CompComponent } from './comp/comp.component';
-
-//import { CrudService } from './service/crud.service';
-// inject, router
+import { DescargarHistoricoComponent } from './components/descargar-historico/descargar-historico.component';
+import { SubirAlumnosComponent } from './components/subir-alumnos/subir-alumnos.component';
 import { authGuard } from './service/auth.guard';
 import { TablaEdificioComponent } from './components/tabla-edificio/tabla-edificio.component';
 import { CambioContrasenaComponent } from './components/cambio-contrasena/cambio-contrasena.component';
 import { EditarAreaComponent } from './components/editar-area/editar-area.component';
-
-
-/*
-const authGuard = () => {
-  const authService = inject(CrudService)
-  const router = inject(Router)
-
-  if (authService.EstaLogeado()) {
-      console.log("Checó tu LogIn exitoso para entrar");
-      return true
-  }
-
-  return router.navigate(['/login'])
-}
-*/
 
 //Definicion de cada ruta
 const routes: Routes = [
@@ -52,7 +37,8 @@ const routes: Routes = [
   component: CompComponent
   },
   {path: ':cambio/contrasena', // Ruta con parametro dinamico
-  component: CambioContrasenaComponent
+  component: CambioContrasenaComponent,
+  canActivate: [authGuard]
   },
   {
     path: 'area-info/:idArea', // Ruta con parametro dinamico
@@ -60,7 +46,8 @@ const routes: Routes = [
   },
   {
     path: 'editar-area/editar/:idArea', // Ruta con parametro dinamico
-    component: EditarAreaComponent
+    component: EditarAreaComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'admin/login', // Ruta para el componente de administracion de inicio de sesion
@@ -74,17 +61,36 @@ const routes: Routes = [
     canActivate: [authGuard]
   },
   {
+    path: 'area/form',  // Ruta para el formulario de agregar área
+    component: AreaFormComponent
+  },
+  {
     path: 'edificio-editar/:idEdificio', // Ruta con parametro dinamico
     component: EditarEdificioComponent,
+    canActivate: [authGuard]
   },
   { 
     path: 'edificio-tabla/tabla', // Ruta con parametro dinamico
     component: TablaEdificioComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'edificio-agregar/agregar', // Ruta para agregar un edificio
     component: AgregarEdificioComponent,
-  }
+    canActivate: [authGuard]
+  },
+  {
+    path: 'historico/descargar',
+    component: DescargarHistoricoComponent,
+    pathMatch:'full',
+    canActivate: [authGuard]
+  },
+  {
+    path: 'alumnos/subir-archivo',
+    component: SubirAlumnosComponent,
+    pathMatch:'full',
+    canActivate: [authGuard]
+  },
 ];
 
 @NgModule({

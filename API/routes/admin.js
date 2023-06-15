@@ -1,3 +1,9 @@
+/* Descripcion admin.js: definimos funciones de inicio de sesion
+Porpiedad del equipo WellSoft.
+Ultima edicion por: Jesús Sebastián Jaime Oviedo
+Fecha de creacion: Abril 2023
+Fecha de modificacion: 07/06/2023 */
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -45,14 +51,10 @@ app.post('/iniciosesion', async (req, res) => {
     try{
         const pool = await poolPromise;
         const { Email, Contrasena, RepContrasena} = req.body;
-        //let tContrasena = await bcrypt.hash(Contrasena+"Recsports",8);
-        //const query = 'SELECT COUNT(*) FROM Admin WHERE Email=@Email AND Contrasena=@tContrasena';
         const query = 'SELECT * FROM Admin WHERE Email=@Email';
         const result = await pool.request()
             .input('Email', sql.VarChar, Email.toLowerCase())
-            //.input('tContrasena', sql.VarChar, tContrasena)
             .query(query);
-        //const count = result.recordset[0].count;
         if (!result.recordset[0]) {
             res.status(400).send('Usuario no existente');
           } else {
@@ -60,8 +62,6 @@ app.post('/iniciosesion', async (req, res) => {
             const valid = await bcrypt.compare(Contrasena, resContrasena);
             valid ? res.send({message:"Login exitoso"}) : res.status(400).send('La contraseña es inválida');
           }
-        //count > 0 ? res.send('Admin login exitoso') : res.status(500).json('Usuario no existete');
-        //res.send(count > 0 );
     }catch(error) {
         console.error(error);
         res.status(500).send('Error en el servidor');
@@ -80,14 +80,15 @@ app.put('/cambiocontra', async (req, res) => {
         else if(Contrasena.match(patternContraInvalida)){ //si es invalida
             throw {message:"La contraseña debe tener minimo 8 caracteres. Al menos una mayuscula, minuscula, caracter especial y numero de cada uno"};
         }
-        const tContrasena = await bcrypt.hash(Contrasena+"Recsports",8);
+        const salt = await bcrypt.genSalt()
+        const tContrasena = await bcrypt.hash(Contrasena,salt);
 
-        const query = 'UPDATE Admin SET Contrasena=@tContrasena WHERE Email=@Email';
+        const query = 'UPDATE Admin SET Contrasena=@tContrasena WHERE Email=@Email; IF @@ROWCOUNT = 0 BEGIN RAISERROR ("Usuario no existente", 16, 1); END;'
         await pool.request()
-                .input('Email', sql.VarChar, Email.toLowerCase())
-                .input('tContrasena', sql.VarChar, tContrasena)
-                .query(query);
-            res.send('Contraseña cambiada exitosamente');
+            .input('Email', sql.VarChar, Email.toLowerCase())
+            .input('tContrasena', sql.VarChar, tContrasena)
+            .query(query);
+        res.send({message:"Contraseña cambiada exitosamente"});
     }catch(error) {
         console.error(error);
         res.status(500).json(error.message);

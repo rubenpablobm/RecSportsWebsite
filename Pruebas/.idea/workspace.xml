@@ -5,27 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1517aebf-8a40-46b1-b5d1-fa0c5117c624" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AdminSignin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AdminSigninTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AgregarAreaTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AgregarEdificioTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AreaCrud.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AreaInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AreaInfoAforoTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AreaInfoDisponibilidadTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AreaInfoInstructivaTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/BorrarAreaTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/BorrarEdificioTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/ChangePassword.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/ChangePasswordTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/EditarAreaTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/EditarEdificioTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/EdificioCrud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/EdificioCrud.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/EdificioCrudTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/EdificioCrudTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/MainPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/MainPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/MainPageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/MainPageTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AdminSignin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AdminSignin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AdminSigninTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AdminSigninTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AgregarEdificioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AgregarEdificioTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/BorrarEdificioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/BorrarEdificioTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/ChangePassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/ChangePassword.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/ChangePasswordTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/ChangePasswordTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/EditarEdificioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/EditarEdificioTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RecSports-Libre/src/app/admin/admin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../RecSports-Libre/src/app/admin/admin.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RecSports-Libre/src/app/components/cambio-contrasena/cambio-contrasena.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../RecSports-Libre/src/app/components/cambio-contrasena/cambio-contrasena.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RecSports-Libre/src/app/components/cambio-contrasena/cambio-contrasena.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../RecSports-Libre/src/app/components/cambio-contrasena/cambio-contrasena.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RecSports-Libre/src/app/components/tabla-edificio/tabla-edificio.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../RecSports-Libre/src/app/components/tabla-edificio/tabla-edificio.component.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,21 +55,21 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "connecting-puebas",
+    "git-widget-placeholder": "hotfixes-pruebas",
     "last_opened_file_path": "/Users/arturogarzacampuzano/Documents/GitHub/RecSportsWebsite/Pruebas",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="TestNG.MainPageTest">
-    <configuration name="EdificioCrudTest" type="TestNG" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="TestNG.AgregarEdificioTest">
+    <configuration name="AdminSigninTest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="Pruebas" />
       <extension name="coverage">
         <pattern>
@@ -87,7 +78,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.example.pruebas" />
-      <option name="MAIN_CLASS_NAME" value="com.example.pruebas.EdificioCrudTest" />
+      <option name="MAIN_CLASS_NAME" value="com.example.pruebas.AdminSigninTest" />
       <option name="TEST_OBJECT" value="CLASS" />
       <properties />
       <listeners />
@@ -95,7 +86,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EdificioCrudTest.testBorrarEdificio" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="AdminSigninTest.IncioSesion" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="Pruebas" />
       <extension name="coverage">
         <pattern>
@@ -104,8 +95,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.example.pruebas" />
-      <option name="MAIN_CLASS_NAME" value="com.example.pruebas.EdificioCrudTest" />
-      <option name="METHOD_NAME" value="testBorrarEdificio" />
+      <option name="MAIN_CLASS_NAME" value="com.example.pruebas.AdminSigninTest" />
+      <option name="METHOD_NAME" value="IncioSesion" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -113,7 +104,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EdificioCrudTest.testEditarEdificio" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="AgregarEdificioTest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="Pruebas" />
       <extension name="coverage">
         <pattern>
@@ -122,25 +113,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.example.pruebas" />
-      <option name="MAIN_CLASS_NAME" value="com.example.pruebas.EdificioCrudTest" />
-      <option name="METHOD_NAME" value="testEditarEdificio" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MainPageTest" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="Pruebas" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.pruebas.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.pruebas" />
-      <option name="MAIN_CLASS_NAME" value="com.example.pruebas.MainPageTest" />
+      <option name="MAIN_CLASS_NAME" value="com.example.pruebas.AgregarEdificioTest" />
       <option name="TEST_OBJECT" value="CLASS" />
       <properties />
       <listeners />
@@ -148,7 +121,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainPageTest.muestraAforo" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="AreaInfoDisponibilidadTest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="Pruebas" />
       <extension name="coverage">
         <pattern>
@@ -157,9 +130,25 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.example.pruebas" />
-      <option name="MAIN_CLASS_NAME" value="com.example.pruebas.MainPageTest" />
-      <option name="METHOD_NAME" value="muestraAforo" />
-      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="MAIN_CLASS_NAME" value="com.example.pruebas.AreaInfoDisponibilidadTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AreaInfoInstructivaTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Pruebas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.pruebas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.pruebas" />
+      <option name="MAIN_CLASS_NAME" value="com.example.pruebas.AreaInfoInstructivaTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
       <properties />
       <listeners />
       <method v="2">
@@ -168,16 +157,16 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.MainPageTest" />
-        <item itemvalue="TestNG.EdificioCrudTest" />
-        <item itemvalue="TestNG.EdificioCrudTest.testEditarEdificio" />
-        <item itemvalue="TestNG.EdificioCrudTest.testBorrarEdificio" />
-        <item itemvalue="TestNG.MainPageTest.muestraAforo" />
+        <item itemvalue="TestNG.AgregarEdificioTest" />
+        <item itemvalue="TestNG.AdminSigninTest" />
+        <item itemvalue="TestNG.AdminSigninTest.IncioSesion" />
+        <item itemvalue="TestNG.AreaInfoInstructivaTest" />
+        <item itemvalue="TestNG.AreaInfoDisponibilidadTest" />
       </list>
     </recent_temporary>
   </component>
   <component name="SeleniumInternalSettingsState">
-    <option name="lastUrl" value="http://localhost:4200/0" />
+    <option name="lastUrl" value="http://localhost:4200/area-info/1" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -196,6 +185,11 @@
       <workItem from="1685381266668" duration="16909000" />
       <workItem from="1685817307878" duration="24875000" />
       <workItem from="1685950735671" duration="38959000" />
+      <workItem from="1686328798732" duration="1069000" />
+      <workItem from="1686435482730" duration="4272000" />
+      <workItem from="1686582307803" duration="1873000" />
+      <workItem from="1686628407049" duration="1014000" />
+      <workItem from="1686797796760" duration="471000" />
     </task>
     <servers />
   </component>

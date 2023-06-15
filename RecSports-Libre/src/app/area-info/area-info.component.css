@@ -5,6 +5,8 @@ Ultima edicion por: Arturo Garza Campuzano
 Fecha de creacion: dd/mm/aaaa < 05/05/2023
 Fecha de modificacion: 18/05/2023 */
 
+@import '~bootstrap-icons/font/bootstrap-icons.css';
+
 /* Estilos para la clase .area-alert */
 .area-alert {
   width: 100%;
@@ -29,7 +31,6 @@ Fecha de modificacion: 18/05/2023 */
   border: solid 2px #333;
   border-radius: 10px;
 }
-@import '~bootstrap-icons/font/bootstrap-icons.css';
 
 /* Estilos para la clase .mov */
 .mov {

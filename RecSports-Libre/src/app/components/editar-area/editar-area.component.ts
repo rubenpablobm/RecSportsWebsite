@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { CrudService } from '../../service/crud.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-editar-area',
@@ -27,8 +28,9 @@ export class EditarAreaComponent {
   linkZcal?:string;
   croquis?:string;
   areaAgregada:boolean = false;
-  idEdificio?: number;
+  idEdificio:number = -1;
 //////////////////////////////////////
+  listaAreas : any = [];
   nombreError: boolean = false;
   nombreVacio: boolean = false;
   avisoError: boolean = false;
@@ -52,7 +54,7 @@ export class EditarAreaComponent {
 	formularioDeArea: FormGroup;
   
 	// Constructor con dependencias inyectadas
-	constructor(private route: ActivatedRoute, private htttp: HttpClient, private ruteador: Router, public crudService:CrudService, public formulario: FormBuilder) { 
+	constructor(private route: ActivatedRoute, private htttp: HttpClient, private ruteador: Router, public crudService:CrudService, public formulario: FormBuilder, private cdr: ChangeDetectorRef) { 
     // Obtener el parametro 'IdEdificio' de la ruta
     this.theIdArea = this.route.snapshot.paramMap.get('idArea');
     console.log("Este es el id de area");
@@ -105,16 +107,49 @@ export class EditarAreaComponent {
 
   // Obtener edificios desde la API
   ngOnInit() {
-    this.getArea();
+    this.getEdificios;
   }
 
-  // Metodo para obtener los area
-  getArea() {
-    console.log('Cargando area existentes...')
-    return this.crudService.AreaGetMultiple().subscribe((data:{}) => {
-      console.log(data);
+  // Metodo para obtener los edificios
+  getEdificios() {
+    return this.crudService.EdificioGetMultiple().subscribe((data:{}) => {
       this.listaEdificios = data;
+      console.log('se obtuvieron edificios');
+      console.log(this.listaEdificios);
     })
+  }
+
+  // Metodo para obtener las areas
+  getAreas(id:number) {
+    return this.crudService.AreaGetXedificio(id).subscribe((data:{}) => {
+      this.listaAreas = data;
+      console.log('se obtuvieron áreas:');
+      console.log(this.listaAreas);
+    })
+  }
+
+  onEdificioSelect(event: Event) {
+    const target = event.target as HTMLSelectElement;
+    const option = target.value;
+
+    if (option !== null) {
+      this.idEdificio = Number(option);
+    }
+
+    console.log('Se seleccionó un edificio: ' + this.idEdificio);
+    this.getAreas(this.idEdificio);
+    console.log(this.listaAreas)
+    this.cdr.detectChanges();
+  }
+
+  onTipoSelect(event: Event) {
+    const target = event.target as HTMLSelectElement;
+    const option = target.value;
+    
+    if (option !== null) {
+      this.tipoDeArea = option;
+    }
+    this.cdr.detectChanges();
   }
 
   // Metodo que valida si el nombre del area ya existe
@@ -139,38 +174,7 @@ export class EditarAreaComponent {
       img.src = url;
     });
   }
-  
-  get nombreControl() {
-    return this.formularioDeArea.get('Nombre');
-  }
-  get avisoControl() {
-    return this.formularioDeArea.get('Aviso');
-  }
-
-  get fotoControl() {
-    return this.formularioDeArea.get('Foto');
-  }
-   get horariosControl() {
-    return this.formularioDeArea.get('Horarios');
-  }
-
-  get descripcionControl() {
-    return this.formularioDeArea.get('Descripcion');
-  }
-  get tipoDeAreaControl() {
-    return this.formularioDeArea.get('Tipo');
-  }
-  get capacidadControl() {
-    return this.formularioDeArea.get('Capacidad');
-  }
-   get LinkZcalControl() {
-    return this.formularioDeArea.get('LinkCalendar');
-  }
-   get croquisControl() {
-    return this.formularioDeArea.get('Croquis');
-  }
  
-
 	// Metodo para manejar el envio del formulario
   enviarDatos(){
     const nombre = this.formularioDeArea.get('Nombre')?.value;
