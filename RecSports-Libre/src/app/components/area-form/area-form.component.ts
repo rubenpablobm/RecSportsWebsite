@@ -100,7 +100,13 @@ export class AreaFormComponent {
   async validarImagenLink(url: string): Promise<boolean> {
     return new Promise<boolean>((resolve) => {
       const img = new Image();
-      img.src = this.convertGoogleDriveLink(url);
+
+      console.log("Es un link valido: "+this.isGoogleDriveLink(url));
+      if(this.isGoogleDriveLink(url)){
+        console.log("Se convirtio: "+this.convertGoogleDriveLink(url));
+        url = this.convertGoogleDriveLink(url);
+        this.formularioDeAreas.get('Foto')?.setValue(url); // Set the new value for the "Foto" field
+      }
   
       img.onload = () => {
         resolve(true); // Image loaded successfully
@@ -111,9 +117,15 @@ export class AreaFormComponent {
         resolve(false); // Image failed to load
         console.log("La imagen no se cargo");
       };
-  
+      console.log("Mira: "+url);
       img.src = url;
     });
+  }
+
+  // Metodo para verificar si el enlace es de Google Drive
+  isGoogleDriveLink(url: string): boolean {
+    const googleDrivePattern = /https:\/\/drive\.google\.com\/file\/d\/([A-Za-z0-9_-]+)\/.*$/;
+    return googleDrivePattern.test(url);
   }
 
   // Metodo para convertir los enlaces de Google Drive en URL directas de imágenes
@@ -153,7 +165,7 @@ export class AreaFormComponent {
   }
 
   endForm() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/0']);
   }
 
   // Metodo que valida si el link correponde a un link de google maps
