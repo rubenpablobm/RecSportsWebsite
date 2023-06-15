@@ -294,7 +294,6 @@ public class MainPageTest {
         for (WebElement elemento : tarjetasCopy) {
 
             try {
-                System.out.println("Try");
                 if (aviso) {
                     WebElement badgeElement = elemento.findElement(By.cssSelector("span[class^='badge']"));
                     if (badgeElement.isDisplayed()) {
@@ -305,10 +304,8 @@ public class MainPageTest {
                 index++;
 
             } catch (StaleElementReferenceException e) {
-                System.out.println("Stale");
                 continue;
             } catch (NoSuchElementException e) {
-                System.out.println("NoSuch");
                 if (sinAviso) {
                     sinAviso = false;
                     tarjetaSinAviso = index;
@@ -320,9 +317,6 @@ public class MainPageTest {
                 break;
             }
         }
-
-        System.out.println(tarjetaAviso);
-        System.out.println(tarjetaSinAviso);
 
         tarjetas.get(tarjetaAviso).click();
         wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("div[class^='area-alert']")));
@@ -342,6 +336,17 @@ public class MainPageTest {
         List<WebElement> elementosDropdowntemp2 = mainPage.dropdownEdificios.findElements(By.tagName("li"));
         elementosDropdowntemp2.get(elementosDropdowntemp2.size()-1).click();
         wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector(".area-card")));
+
+        String result = "Launch Successfully";
+
+        // Get the current date and time
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy h:mm a");
+        String timestamp = now.format(formatter);
+
+        // Print the message with the result and timestamp
+        String message = String.format("[%s]: %s", timestamp, result);
+        System.out.println(message);
 
     }
 

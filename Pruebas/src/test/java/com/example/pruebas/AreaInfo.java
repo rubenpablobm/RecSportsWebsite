@@ -22,6 +22,18 @@ public class AreaInfo {
     public WebElement contenedorInstructivas;
     @FindBy(css = "app-area-card[ng-reflect-tipo-area='Reservacion']")
     public WebElement contenedorAccesoLibre;
+    @FindBy(id = "nombreArea")
+    public WebElement nombreArea;
+    @FindBy(id = "horariosArea")
+    public WebElement horariosArea;
+    @FindBy(id = "descripcionArea")
+    public WebElement descripcionArea;
+    @FindBy(css = "img[class='croquis']")
+    public WebElement imageCroquis;
+    @FindBy(css = "iframe[class='embedido']")
+    public WebElement embedido;
+    @FindBy(css = "img[class='card-img']")
+    public WebElement fotoArea;
     public AreaInfo(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
