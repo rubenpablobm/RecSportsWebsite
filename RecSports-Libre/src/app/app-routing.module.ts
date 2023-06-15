@@ -14,11 +14,10 @@ import { AdminComponent } from './admin/admin.component';
 import { AccesoComponent } from './components/acceso/acceso.component';
 import { EditarEdificioComponent } from './components/editar-edificio/editar-edificio.component';
 import { AgregarEdificioComponent } from './components/agregar-edificio/agregar-edificio.component';
-
+import { AreaFormComponent } from './components/area-form/area-form.component';
 import { CompComponent } from './comp/comp.component';
 import { DescargarHistoricoComponent } from './components/descargar-historico/descargar-historico.component';
 import { SubirAlumnosComponent } from './components/subir-alumnos/subir-alumnos.component';
-
 import { authGuard } from './service/auth.guard';
 import { TablaEdificioComponent } from './components/tabla-edificio/tabla-edificio.component';
 import { CambioContrasenaComponent } from './components/cambio-contrasena/cambio-contrasena.component';
@@ -62,6 +61,10 @@ const routes: Routes = [
     canActivate: [authGuard]
   },
   {
+    path: 'area/form',  // Ruta para el formulario de agregar área
+    component: AreaFormComponent
+  },
+  {
     path: 'edificio-editar/:idEdificio', // Ruta con parametro dinamico
     component: EditarEdificioComponent,
     canActivate: [authGuard]
@@ -87,7 +90,7 @@ const routes: Routes = [
     component: SubirAlumnosComponent,
     pathMatch:'full',
     canActivate: [authGuard]
-  }
+  },
 ];
 
 @NgModule({
