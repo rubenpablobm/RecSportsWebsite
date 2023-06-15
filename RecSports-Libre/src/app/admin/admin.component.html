@@ -7,23 +7,15 @@ Fecha de modificacion: 18/05/2023 -->
 
 <!-- Seccion de navegacion -->
 <app-navbar></app-navbar>
+<!-- Imagen de fondo -->
+<div class="bg-image"></div>
 <!-- Contenedor principal -->
 <div class="container custom-container">
   <div class="row">
-    <!-- Columna izquierda -->
-    <div class="col-md-8">
-      <img
-        class="img1"
-        src="./assets/images/Escalar.jpg"
-        class="img-fluid"
-        alt="Imagen no cargada"
-      />
-    </div>
-    <!-- Columna derecha -->
-    <div class="col-sm-4">
+    <div class="">
       <div>
         <!-- Encabezado de Inicio de Sesion -->
-        <h1 class="ini">Iniciar Sesion</h1>
+        <h1>Iniciar Sesion</h1>
       </div>
       <!-- Formulario del inicio de sesion de administrador" -->
       <form (ngSubmit)="enviarDatos()" [formGroup]="formLogin" class="m-3">
