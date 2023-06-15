@@ -141,7 +141,7 @@ export class AreaFormComponent {
   }
 
   endForm() {
-    // this.router.navigate(['/0']);
+    this.router.navigate(['/0']);
   }
 
   // Metodo que valida si el link correponde a un link de google maps
