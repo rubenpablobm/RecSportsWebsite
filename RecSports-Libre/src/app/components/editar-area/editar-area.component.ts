@@ -143,6 +143,23 @@ export class EditarAreaComponent {
     this.cdr.detectChanges();
   }
 
+  // Metodo para verificar si el enlace es de Google Drive
+  isGoogleDriveLink(url: string): boolean {
+    const googleDrivePattern = /https:\/\/drive\.google\.com\/file\/d\/([A-Za-z0-9_-]+)\/.*$/;
+    return googleDrivePattern.test(url);
+  }
+
+  // Metodo para convertir los enlaces de Google Drive en URL directas de imágenes
+  convertGoogleDriveLink(url: string): string {
+    const googleDrivePattern = /https:\/\/drive\.google\.com\/file\/d\/([A-Za-z0-9_-]+)\/.*$/;
+    const match = googleDrivePattern.exec(url);
+    if (match && match.length === 2) {
+      const fileId = match[1];
+      return `https://drive.google.com/uc?id=${fileId}`;
+    }
+    return url;
+  }
+
   // Metodo que valida si el nombre del area ya existe
   isDuplicateNombre(nombre: string): boolean {
     return this.listaAreas.some((area: any) => area.Nombre === nombre);
@@ -157,6 +174,13 @@ export class EditarAreaComponent {
   async validarImagenLink(url: string): Promise<boolean> {
     return new Promise<boolean>((resolve) => {
       const img = new Image();
+
+      console.log("Es un link valido: "+this.isGoogleDriveLink(url));
+      if(this.isGoogleDriveLink(url)){
+        console.log("Se convirtio: "+this.convertGoogleDriveLink(url));
+        url = this.convertGoogleDriveLink(url);
+        this.formularioDeArea.get('Foto')?.setValue(url); // Set the new value for the "Foto" field
+      }
   
       img.onload = () => {
         resolve(true); // Image loaded successfully
@@ -167,7 +191,7 @@ export class EditarAreaComponent {
         resolve(false); // Image failed to load
         console.log("La imagen no se cargo");
       };
-  
+      console.log("Mira: "+url);
       img.src = url;
     });
   }
@@ -179,7 +203,7 @@ export class EditarAreaComponent {
     // const idEdificio = this.formularioDeArea.get('IdEdificio')?.value;
     const nombre = this.formularioDeArea.get('Nombre')?.value;
     const horarios = this.formularioDeArea.get('Horarios')?.value;
-    const aviso = this.formularioDeArea.get('Aviso')?.value;
+    const aviso = this.formularioDeArea.get('Avisos')?.value;
     const foto = this.formularioDeArea.get('Foto')?.value;
     const descripcion = this.formularioDeArea.get('Descripcion')?.value;
     // const tipo =this.formularioDeArea.get('Tipo')?.value;
@@ -201,15 +225,6 @@ export class EditarAreaComponent {
         this.nombreError = false;
         this.nombreVacio = false
       }
-    }
-
-    // Validacion de Aviso
-    if(!aviso){
-      this.avisoError = false;
-    } else if(!aviso && aviso == this.avisos) {
-      this.avisoError = true;
-    } else {
-      this.avisoError = false;
     }
 
     if ((!aviso) || (aviso===''))  {
