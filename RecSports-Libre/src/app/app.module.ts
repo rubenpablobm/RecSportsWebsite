@@ -22,7 +22,6 @@ import { AgregarEdificioComponent } from './components/agregar-edificio/agregar-
 // import { MatDialogModule } from '@angular/material/dialog'
 import { CompComponent } from './comp/comp.component';
 import { TablaEdificioComponent } from './components/tabla-edificio/tabla-edificio.component';
-import { AreaFormComponent } from './components/area-form/area-form.component';
 import { CambioContrasenaComponent } from './components/cambio-contrasena/cambio-contrasena.component';
 import { DescargarHistoricoComponent } from './components/descargar-historico/descargar-historico.component';
 import { SubirAlumnosComponent } from './components/subir-alumnos/subir-alumnos.component';
@@ -33,6 +32,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EditarAreaComponent } from './components/editar-area/editar-area.component';
+import { AreaFormComponent } from './components/area-form/area-form.component';
 
 
 @NgModule({
@@ -68,7 +68,11 @@ import { EditarAreaComponent } from './components/editar-area/editar-area.compon
     FormsModule, //nuevos añadidos
     ReactiveFormsModule,
     HttpClientModule,
-    MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule, FontAwesomeModule
+    MatFormFieldModule, 
+    MatDatepickerModule, 
+    MatNativeDateModule, 
+    MatSelectModule, 
+    FontAwesomeModule
     // MatDialogModule
   ],
   // Proveedores de servicios
