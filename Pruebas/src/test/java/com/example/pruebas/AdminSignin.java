@@ -29,12 +29,6 @@ public class AdminSignin {
     public WebElement buttonSubmit;
     @FindBy(css = "html > body > app-root > app-admin > div > div > div:nth-of-type(2) > div:nth-of-type(2)")
     public WebElement divUsuarioExistente;
-
-    @FindBy(css = "div[class='container-fluid']")
-    public WebElement menuAdmin;
-
-
-    
     public AdminSignin(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }

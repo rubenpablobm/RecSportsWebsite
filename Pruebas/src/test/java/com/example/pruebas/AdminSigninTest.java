@@ -19,9 +19,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class AdminSigninTest {
     private WebDriver driver;
     private AdminSignin adminSignin;
-
-
-
     @BeforeMethod
     public void setUp() {
         ChromeOptions options = new ChromeOptions();
@@ -49,20 +46,14 @@ public class AdminSigninTest {
         adminSignin.buttonSubmit.click();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h1[class='ini']")));
-
-
-
         assertTrue(driver.findElement(By.cssSelector("h1[class='ini']")).isDisplayed());
 
-
         //Cuando ingresamos un correo incorrecto
-        adminSignin.inputEmail.sendKeys("alma11@gmail.com ");
+        adminSignin.inputEmail.sendKeys("alma11@gmail.com");
         adminSignin.inputPassword.sendKeys("Alberto1#");
         adminSignin.buttonSubmit.click();
 
-
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("html > body > app-root > app-admin > div > div > div:nth-of-type(2) > div:nth-of-type(2)")));
-
         assertTrue(driver.findElement(By.cssSelector("html > body > app-root > app-admin > div > div > div:nth-of-type(2) > div:nth-of-type(2)")).isDisplayed());
         assertEquals(driver.findElement(By.cssSelector("html > body > app-root > app-admin > div > div > div:nth-of-type(2) > div:nth-of-type(2)")).getText(), "Usuario no existente");
 
@@ -72,21 +63,25 @@ public class AdminSigninTest {
 
         //Cuando La contraseña es incorrecta
         adminSignin.inputEmail.sendKeys("alma10@gmail.com");
-        adminSignin.inputPassword.sendKeys("alberto1#");
+        adminSignin.inputPassword.sendKeys("Juanito1#");
         adminSignin.buttonSubmit.click();
 
+        // Wait for the elements to be displayed
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("html > body > app-root > app-admin > div > div > div:nth-of-type(2) > div:nth-of-type(2)")));
+        assertTrue(driver.findElement(By.cssSelector("html > body > app-root > app-admin > div > div > div:nth-of-type(2) > div:nth-of-type(2)")).isDisplayed());
+        assertEquals(driver.findElement(By.cssSelector("html > body > app-root > app-admin > div > div > div:nth-of-type(2) > div:nth-of-type(2)")).getText(), "La contraseña es inválida");
+
+        //Limpiar todos los campos
+        adminSignin.inputEmail.clear();
+        adminSignin.inputPassword.clear();
+
+        //Cuando La contraseña es incorrecta
+        adminSignin.inputEmail.sendKeys("alma10@gmail.com");
+        adminSignin.inputPassword.sendKeys("Alberto1#");
+        adminSignin.buttonSubmit.click();
 
         // Wait for the elements to be displayed
-        wait.until(ExpectedConditions.visibilityOfElementLocated((By) adminSignin.menuAdmin));
-
-        assertTrue(driver.findElement(By.cssSelector("html > body > app-root > app-admin > div > div > div:nth-of-type(2) > div:nth-of-type(2)")).isDisplayed());
-        assertEquals(driver.findElement(By.cssSelector("html > body > app-root > app-admin > div > div > div:nth-of-type(2) > div:nth-of-type(2)")).getText(), "La contraseña es invalida");
-
-        List<WebElement> emails = driver.findElements(By.id("nombreEdificio"));
-        WebElement lastNombre = emails.get(emails.size() - 1);
-
-        // Wait for the expected text to be present in the element
-        wait.until(ExpectedConditions.textToBePresentInElement(lastNombre, "Wellness Center 3"));
-        assertEquals(lastNombre.getText(), "Wellness Center 3");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='container-fluid']")));
+        assertTrue(driver.findElement(By.cssSelector("div[class='container-fluid']")).isDisplayed());
     }
 }
