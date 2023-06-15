@@ -70,20 +70,11 @@ input[type=text]{
 /* Media queries */
 @media (max-width: 880px) { 
   /* Estilos para la clase .custom-container en pantallas con un ancho maximo de 880px */
-  .custom-container {
-    margin: 0;
-    padding: 0;
-    max-width: 750px;
-  }
+
 }
   
 @media (min-width: 280px) { 
   /* Estilos para la clase .custom-container en pantallas con un ancho minimo de 280px */
-  .custom-container {
-    margin: 0;
-    padding: 0;
-    width: auto;
-    min-width: 470px;
-  }
+
 }
 
