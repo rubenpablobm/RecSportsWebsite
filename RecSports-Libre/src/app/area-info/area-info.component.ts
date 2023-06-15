@@ -53,11 +53,6 @@ export class AreaInfoComponent {
       this.secureLinkCalendar = this.sanitizer.bypassSecurityTrustResourceUrl(this.linkCalendar);
       this.horarios = this.convertLineBreaks(this.area.Horarios);
       this.descripcion = this.convertLineBreaks(this.area.Descripcion);
-      // console.log(this.descripcion);
-      console.log(this.area);
-      console.log(this.area.Avisos);
-      console.log('link:' + this.linkCalendar)
-      //console.log("sencillamente "+this.area.LinkCalendar);
     })
   }
   
