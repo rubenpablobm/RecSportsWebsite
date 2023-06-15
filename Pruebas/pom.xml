@@ -40,7 +40,7 @@
       <artifactId>allure-testng</artifactId>
       <version>${allure.version}</version>
       <scope>test</scope>
-    </dependency>                                                                            <dependency>
+    </dependency> <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
       <version>7.7.1</version>

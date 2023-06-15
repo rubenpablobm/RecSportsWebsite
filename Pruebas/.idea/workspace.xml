@@ -5,27 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1517aebf-8a40-46b1-b5d1-fa0c5117c624" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AdminSignin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AdminSigninTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AgregarAreaTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AgregarEdificioTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AreaCrud.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AreaInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AreaInfoAforoTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AreaInfoDisponibilidadTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AreaInfoInstructivaTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/BorrarAreaTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/BorrarEdificioTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/ChangePassword.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/ChangePasswordTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/EditarAreaTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/EditarEdificioTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/EdificioCrud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/EdificioCrud.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/EdificioCrudTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/EdificioCrudTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/MainPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/MainPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/MainPageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/MainPageTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AdminSignin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AdminSignin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AdminSigninTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AdminSigninTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RecSports-Libre/src/app/navbar/navbar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../RecSports-Libre/src/app/navbar/navbar.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,29 +40,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "true",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "connecting-puebas",
-    "last_opened_file_path": "/Users/arturogarzacampuzano/Documents/GitHub/RecSportsWebsite/Pruebas",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;prueba-admin&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/hecto/OneDrive/Documents/GitHub/RecSportsWebsite/Pruebas&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="TestNG.MainPageTest">
+}</component>
+  <component name="RunManager" selected="TestNG.AdminSigninTest">
+    <configuration name="AdminSigninTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Pruebas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.pruebas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.pruebas" />
+      <option name="MAIN_CLASS_NAME" value="com.example.pruebas.AdminSigninTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="EdificioCrudTest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="Pruebas" />
       <extension name="coverage">
@@ -148,31 +150,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainPageTest.muestraAforo" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="Pruebas" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.pruebas.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.pruebas" />
-      <option name="MAIN_CLASS_NAME" value="com.example.pruebas.MainPageTest" />
-      <option name="METHOD_NAME" value="muestraAforo" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.AdminSigninTest" />
         <item itemvalue="TestNG.MainPageTest" />
         <item itemvalue="TestNG.EdificioCrudTest" />
         <item itemvalue="TestNG.EdificioCrudTest.testEditarEdificio" />
         <item itemvalue="TestNG.EdificioCrudTest.testBorrarEdificio" />
-        <item itemvalue="TestNG.MainPageTest.muestraAforo" />
       </list>
     </recent_temporary>
   </component>
@@ -196,6 +180,11 @@
       <workItem from="1685381266668" duration="16909000" />
       <workItem from="1685817307878" duration="24875000" />
       <workItem from="1685950735671" duration="38959000" />
+      <workItem from="1686328798732" duration="1069000" />
+      <workItem from="1686435482730" duration="4272000" />
+      <workItem from="1686582307803" duration="1873000" />
+      <workItem from="1686628407049" duration="1014000" />
+      <workItem from="1686797796760" duration="471000" />
     </task>
     <servers />
   </component>
