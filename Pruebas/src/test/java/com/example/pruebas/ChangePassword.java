@@ -6,13 +6,20 @@ Fecha de creacion: 07/06/2023
 Fecha de modificacion: 07/06/2023 */
 
 package com.example.pruebas;
-package com.example.pruebas;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class ChangePassword {
+    @FindBy(css = "input[id='exampleInputEmail1']")
+    public WebElement inputExampleEmail;
+    @FindBy(css = "input[id='exampleInputPassword1']")
+    public WebElement inputExamplePassword;
+    @FindBy(css = "button[class$='btn-primary']")
+    public WebElement buttonSubmit;
+    @FindBy(css = "button[routerlink='/cambio/contrasena']")
+    public WebElement buttonContrase;
     @FindBy(css = "input[formcontrolname='Email']")
     public WebElement inputEmail;
     @FindBy(css = "input[formcontrolname='Contrasena']")
@@ -21,9 +28,7 @@ public class ChangePassword {
     public WebElement inputRepContrasena;
     @FindBy(css = "button[type='submit']")
     public WebElement botonCambiarContra;
-    
-    public WebElement contenedorAccesoLibre;
-    public AreaInfo(WebDriver driver) {
+    public ChangePassword(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 

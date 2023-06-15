@@ -17,6 +17,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class BorrarEdificioTest {
@@ -86,7 +88,15 @@ public class BorrarEdificioTest {
             alert.dismiss();
         }
 
-        // Reload the page
-        driver.navigate().refresh();
+        String result = "Launch Successfully";
+
+        // Get the current date and time
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy h:mm a");
+        String timestamp = now.format(formatter);
+
+        // Print the message with the result and timestamp
+        String message = String.format("[%s]: %s", timestamp, result);
+        System.out.println(message);
     }
 }
