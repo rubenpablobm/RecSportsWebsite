@@ -18,38 +18,40 @@ Fecha de modificacion: 18/05/2023 -->
 ></app-header>
 <!-- Contenedor principal -->
 <div class="flex-col area-info-container p-3">
-  <div class="row">
-    <div class="col-auto">
-      <!-- Boton de regresar -->
-      <button
-        class="btn btn-secondary my-2"
-        routerLink="/{{ area.IdEdificio }}"
-      >
-        Regresar
-      </button>
-    </div>
-    <div class="col-auto">
-      <div class="d-flex justify-content-end w-100">
-        <!-- Editar área button -->
+  <div class="row" style="width: 100%;">
+    <div class="flex-container" style="width: 100%; justify-content: space-between;">
+      <div class="col-auto">
+        <!-- Boton de regresar -->
         <button
-          id="editar"
-          type="button"
-          class="btn btn-warning m-2"
-          *ngIf="auth"
-          [routerLink]="['/editar-area/editar/', area.IdArea]"
+          class="btn btn-secondary my-2"
+          routerLink="/{{ area.IdEdificio }}"
         >
-          <i class="bi bi-pencil-fill"></i>
+          Regresar
         </button>
-        <!-- Eliminar área button -->
-        <button
-          id="borrar"
-          type="button"
-          *ngIf="auth"
-          class="btn btn-danger text-black m-2"
-          (click)="borrarRegistro(area.IdArea, area.Nombre)"
-        >
-          <i class="bi bi-trash-fill"></i>
-        </button>
+      </div>
+      <div class="col-auto">
+        <div class="d-flex justify-content-end w-100">
+          <!-- Editar área button -->
+          <button
+            id="editar"
+            type="button"
+            class="btn btn-warning m-2"
+            *ngIf="auth"
+            [routerLink]="['/editar-area/editar/', area.IdArea]"
+          >
+            <i class="bi bi-pencil-fill"></i>
+          </button>
+          <!-- Eliminar área button -->
+          <button
+            id="borrar"
+            type="button"
+            *ngIf="auth"
+            class="btn btn-danger text-black m-2"
+            (click)="borrarRegistro(area.IdArea, area.Nombre)"
+          >
+            <i class="bi bi-trash-fill"></i>
+          </button>
+        </div>
       </div>
     </div>
   </div>
