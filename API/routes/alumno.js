@@ -20,8 +20,12 @@ app.post('/subir', async (req, res) => {
             table.rows.add(r.Matricula);
             console.log(r.Matricula);
         }
-        await pool.request().bulk(table);
-        res.sendStatus(201);
+        //await pool.request().bulk(table);
+        //res.sendStatus(201);
+        //return new sql.Request().bulk(table);
+        
+        const request = pool.request(); // get the request object from the pool
+        await request.bulk(table);
     } catch (error) {
       console.error(error);
       res.sendStatus(500);

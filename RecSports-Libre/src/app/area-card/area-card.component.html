@@ -1,9 +1,9 @@
 <!-- Descripcion de area-card.component.html: programa que define la estructura del componente "area-card".
 Su proposito es la visualizacion de una clase o area desde la pagina princiapl.
 Porpiedad del equipo WellSoft.
-Ultima edicion por: Ruben Barraza
-Fecha de creacion: dd/mm/aaaa < 03/04/2023
-Fecha de modificacion: 28/05/2023 -->
+Ultima edicion por: Arturo Garza Campuzano
+Fecha de creacion: dd/mm/aaaa < 05/05/2023
+Fecha de modificacion: 18/05/2023 -->
 
 <section>
   <!-- Contenedor principal -->
@@ -12,7 +12,6 @@ Fecha de modificacion: 28/05/2023 -->
     <ng-container *ngFor="let area of listaAreas">
       <!-- Tarjeta de area -->
       <div
-        id="areaCard"
         class="area-card card bg-dark text-white shadow"
         *ngIf="area.Tipo === tipoArea"
       >
@@ -31,12 +30,12 @@ Fecha de modificacion: 28/05/2023 -->
               <span class="badge bg-warning">AVISO</span>
             </div>
             <!-- Seccion de nombre -->
-            <div id="titleCard" class="area-nombre card-title">
+            <div class="area-nombre card-title">
               {{ area.Nombre }}
             </div>
             <!-- Seccion de aforo -->
             <div *ngIf="area.Aforo != undefined">
-              <label id="lableBarraAforo" for="barraAforo"
+              <label for="barraAforo"
                 >{{ area.Aforo }} / {{ area.Capacidad }} personas
               </label>
               <progress
@@ -49,8 +48,5 @@ Fecha de modificacion: 28/05/2023 -->
         </a>
       </div>
     </ng-container>
-    <div class="add-card" [routerLink]="['/area/form']" *ngIf="auth">
-      +
-    </div>
   </div>
 </section>

@@ -7,21 +7,31 @@ Fecha de modificacion: 18/05/2023 -->
 
 <!-- Seccion de navegacion -->
 <app-navbar></app-navbar>
-<!-- Imagen de fondo -->
-<div class="bg-image"></div>
 <!-- Contenedor principal -->
 <div class="container custom-container">
   <div class="row">
-    <div class="">
+    <!-- Columna izquierda -->
+    <div class="col-md-8">
+      <img
+        class="img1"
+        src="./assets/images/Escalar.jpg"
+        class="img-fluid"
+        alt="Imagen no cargada"
+      />
+    </div>
+    <!-- Columna derecha -->
+    <div class="col-sm-4">
       <div>
         <!-- Encabezado de Inicio de Sesion -->
-        <h1>Iniciar Sesion</h1>
+        <h1 class="ini">Iniciar Sesion</h1>
       </div>
       <!-- Formulario del inicio de sesion de administrador" -->
       <form (ngSubmit)="enviarDatos()" [formGroup]="formLogin" class="m-3">
         <!-- Campo de entrada de correo electronico -->
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email</label>
+          <label for="exampleInputEmail1" class="form-label"
+            >Email address</label
+          >
           <input
             type="email"
             class="form-control"
@@ -32,9 +42,7 @@ Fecha de modificacion: 18/05/2023 -->
         </div>
         <!-- Campo de entrada de contrasena -->
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label"
-            >Contraseña</label
-          >
+          <label for="exampleInputPassword1" class="form-label">Password</label>
           <input
             type="password"
             class="form-control"
@@ -42,12 +50,22 @@ Fecha de modificacion: 18/05/2023 -->
             formControlName="Contrasena"
           />
         </div>
+        <!-- Casilla de verificacion -->
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+          <label class="form-check-label" for="exampleCheck1"
+            >Check me out</label
+          >
+        </div>
+        <div>
+          <a routerLink="/cambio/contrasena">Cambiar Contraseña</a>
+        </div>
         <!-- Boton de envio del formulario -->
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
       </form>
       <!-- Texto de alerta -->
-      <div class="text-danger fs-6 m-3" *ngIf="mensaje != ''">
-        Ha ocurrido un error al iniciar sesión.
+      <div *ngIf="mensaje != '[object Object]'">
+        {{ mensaje }}
       </div>
     </div>
   </div>

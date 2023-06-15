@@ -14,7 +14,7 @@ export class Area {
   LinkCalendar!:string; // Enlace al calendario del area
   Descripcion!:string; // Descripcion del area
   Horarios!:string; // Horarios del area
-  Avisos?:string; // Avisos relacionados al area
+  Avisos = ''; // Avisos relacionados al area
   IdEdificio!:number; // ID del edificio al que pertenece el area
   Aforo?:number; // Capacidad de aforo del area (opcional)
   Capacidad?:number; // Capacidad del area (opcional)

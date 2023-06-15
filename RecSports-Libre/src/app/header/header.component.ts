@@ -23,7 +23,7 @@ export class HeaderComponent {
 
   ngOnInit(){
     // Imprime el enlace de la foto en la consola
-    //console.log(this.linkFoto);
+    console.log(this.linkFoto);
     //this.linkFoto="./assets/images/wellness-center.jpeg";
     //this.descripcion="Conoce las areas y lleva el deporte al siguiente nivel";
   }

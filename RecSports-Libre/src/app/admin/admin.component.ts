@@ -38,10 +38,7 @@ export class AdminComponent {
       //console.log(this.formLogin.value);
       this.crudService.AdminLogin(this.formLogin.value).subscribe( respuesta =>{
         console.log(respuesta);
-        //si fue positiva la respuesta, activa el verificador admin
-        this.crudService.AdminLoginAuth();
-        //redirige a pagina principal
-        this.ruteador.navigateByUrl('');
+        this.ruteador.navigateByUrl('0');
       },(error) => {
         console.log(error);
         this.mensaje=String(error.error);
