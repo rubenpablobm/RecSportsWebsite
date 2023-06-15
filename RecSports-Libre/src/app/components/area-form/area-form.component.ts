@@ -100,6 +100,7 @@ export class AreaFormComponent {
   async validarImagenLink(url: string): Promise<boolean> {
     return new Promise<boolean>((resolve) => {
       const img = new Image();
+      img.src = this.convertGoogleDriveLink(url);
   
       img.onload = () => {
         resolve(true); // Image loaded successfully
@@ -113,6 +114,17 @@ export class AreaFormComponent {
   
       img.src = url;
     });
+  }
+
+  // Metodo para convertir los enlaces de Google Drive en URL directas de imágenes
+  convertGoogleDriveLink(url: string): string {
+    const googleDrivePattern = /https:\/\/drive\.google\.com\/file\/d\/([A-Za-z0-9_-]+)\/.*$/;
+    const match = googleDrivePattern.exec(url);
+    if (match && match.length === 2) {
+      const fileId = match[1];
+      return `https://drive.google.com/uc?id=${fileId}`;
+    }
+    return url;
   }
 
   onTipoSelect(event: Event) {

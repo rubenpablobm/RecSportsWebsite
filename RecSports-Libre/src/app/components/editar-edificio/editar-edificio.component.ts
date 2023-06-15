@@ -98,6 +98,13 @@ export class EditarEdificioComponent {
   async validarImagenLink(url: string): Promise<boolean> {
     return new Promise<boolean>((resolve) => {
       const img = new Image();
+
+      console.log("Es un link valido: "+this.isGoogleDriveLink(url));
+      if(this.isGoogleDriveLink(url)){
+        console.log("Se convirtio: "+this.convertGoogleDriveLink(url));
+        url = this.convertGoogleDriveLink(url);
+        this.formularioDeEdificios.get('Foto')?.setValue(url); // Set the new value for the "Foto" field
+      }
   
       img.onload = () => {
         resolve(true); // Image loaded successfully
@@ -108,9 +115,26 @@ export class EditarEdificioComponent {
         resolve(false); // Image failed to load
         console.log("La imagen no se cargo");
       };
-  
+      console.log("Mira: "+url);
       img.src = url;
     });
+  }
+
+  // Metodo para verificar si el enlace es de Google Drive
+  isGoogleDriveLink(url: string): boolean {
+    const googleDrivePattern = /https:\/\/drive\.google\.com\/file\/d\/([A-Za-z0-9_-]+)\/.*$/;
+    return googleDrivePattern.test(url);
+  }
+
+  // Metodo para convertir los enlaces de Google Drive en URL directas de imágenes
+  convertGoogleDriveLink(url: string): string {
+    const googleDrivePattern = /https:\/\/drive\.google\.com\/file\/d\/([A-Za-z0-9_-]+)\/.*$/;
+    const match = googleDrivePattern.exec(url);
+    if (match && match.length === 2) {
+      const fileId = match[1];
+      return `https://drive.google.com/uc?id=${fileId}`;
+    }
+    return url;
   }
 
   // Metodo que valida si el link correponde a un link de google maps
