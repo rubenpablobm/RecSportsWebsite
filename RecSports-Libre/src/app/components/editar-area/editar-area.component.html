@@ -7,29 +7,14 @@
   <!-- Formulario -->
   <form (ngSubmit)="enviarDatos()" [formGroup]="formularioDeArea">
     <div class="form-group my-4 w-75">
-      <!-- Campo del Edificio al que pertenece -->
-      <div class="form-group my-4 w-75">
-        <label class="fw-bold" for="idEdificio"
-          >Edificio al que pertenece</label
-        >
-        <br />
-        <select
-          formControlName="IdEdificio"
-          [(ngModel)]="idEdificio"
-          (change)="onEdificioSelect($event)"
-        >
-          <option value="-1"></option>
-          <option
-            *ngFor="let edificio of listaEdificios"
-            value="{{ edificio.IdEdificio }}"
-          >
-            {{ edificio.Nombre }}
-          </option>
-        </select>
-      </div>
 
-      <!-- CAMPOS, SE DESPLIEGAN HASTA QUE SE SELECCIONE UN EDIFICIO-->
-      <div *ngIf="idEdificio != -1">
+      <!-- CAMPOS -->
+      <div>
+        <!-- Campo del Edificio al que pertenece -->
+        <!-- es tipo hidden pues no debe ser posible editarlo -->
+        <input type="hidden" formControlName="IdEdificio">
+
+
         <!-- Campo de Nombre -->
         <label class="fw-bold" for="Nombre">Nombre</label>
         <input
@@ -101,21 +86,9 @@
           />
         </div>
 
-        <!-- Campo de tipo de área -->
-        <div class="form-group my-4 w-75">
-          <label class="fw-bold" for="Tipo">Tipo de área</label>
-          <br />
-          <select formControlName="Tipo" (change)="onTipoSelect($event)">
-            <option value=""></option>
-            <option value="Aforo">Aforo</option>
-            <option value="Instructiva">Instructiva</option>
-            <option value="Reservas">Reservas</option>
-          </select>
-          <!-- Error message for Tipo -->
-          <div class="text-danger">
-            <div *ngIf="tipoDeAreaVacio">Este campo es obligatorio.</div>
-          </div>
-        </div>
+        <!-- Campo de tipo de Área -->
+        <!-- es tipo hidden pues no debe ser posible editarlo -->
+        <input type="hidden" formControlName="Tipo">
 
         <!-- Campo de Capacidad -->
         <div>
