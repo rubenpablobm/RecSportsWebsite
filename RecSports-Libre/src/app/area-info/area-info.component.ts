@@ -93,4 +93,26 @@ export class AreaInfoComponent {
     }, 100);
   }
 
+  borrarRegistro(idArea: any, nombreArea: any) {
+    console.log(idArea);
+  
+    this.mostrarOverlay = true;
+  
+    setTimeout(() => {
+      if (window.confirm("¿Realmente deseas eliminar el registro título = " + nombreArea)) {
+        this.crudService.AreaDelete(idArea).subscribe(respuesta => {
+          console.log(this.area);
+        });
+        this.mostrarOverlay = false;
+        window.history.back();
+      }else{
+        this.mostrarOverlay = false;
+      }
+    
+      
+
+    }, 100);
+    
+  }
+
 }
