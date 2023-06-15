@@ -130,6 +130,7 @@ public class EditarEdificioTest {
         // Wait for the expected text to be present in the element
         wait.until(ExpectedConditions.textToBePresentInElement(lastNombre, "Wellness Center 4"));
         assertEquals(lastNombre.getText(), "Wellness Center 4");
+        
 
     }
 }
