@@ -30,21 +30,31 @@ Fecha de modificacion: 17/05/2023 -->
 <!-- Contenedor principal -->
 <div class="container m-4">
   <!-- Titulo -->
-  <h1 class="fw-bold">Agregar Edificio</h1>
+  <h1 class="fw-bold fs-1">Agregar Área</h1>
   <!-- Formulario -->
   <form (ngSubmit)="enviarDatos()" [formGroup]="formularioDeAreas">
     <div class="form-group my-4 w-75">
-
       <!-- Campo del Edificio al que pertenece -->
       <div class="form-group my-4 w-75">
-        <label class="fw-bold" for="idEdificio">Edificio al que pertenece</label>
-        <br>
-        <select formControlName="IdEdificio" [(ngModel)]="idEdificio" (change)="onEdificioSelect($event)">
+        <label class="fw-bold" for="idEdificio"
+          >Edificio al que pertenece</label
+        >
+        <br />
+        <select
+          formControlName="IdEdificio"
+          [(ngModel)]="idEdificio"
+          (change)="onEdificioSelect($event)"
+        >
           <option value="-1"></option>
-          <option *ngFor="let edificio of listaEdificios" value="{{edificio.IdEdificio}}">{{edificio.Nombre}}</option>
+          <option
+            *ngFor="let edificio of listaEdificios"
+            value="{{ edificio.IdEdificio }}"
+          >
+            {{ edificio.Nombre }}
+          </option>
         </select>
       </div>
-      
+
       <!-- CAMPOS, SE DESPLIEGAN HASTA QUE SE SELECCIONE UN EDIFICIO-->
       <div *ngIf="idEdificio != -1">
         <!-- Campo de Nombre -->
@@ -56,9 +66,7 @@ Fecha de modificacion: 17/05/2023 -->
           placeholder="Ej. Basketball"
         />
         <!-- Mensaje de Error para el campo Nombre -->
-        <div
-          class="text-danger"
-        >
+        <div class="text-danger">
           <div *ngIf="nombreVacio">
             Campo obligatorio. Por favor ingrese un nombre.
           </div>
@@ -66,7 +74,7 @@ Fecha de modificacion: 17/05/2023 -->
             Ya existe una área con este nombre. Intente de nuevo.
           </div>
         </div>
-  
+
         <!-- Campo de aviso -->
         <div class="form-group my-4 w-75">
           <label class="fw-bold" for="Avisos">Aviso</label>
@@ -77,7 +85,7 @@ Fecha de modificacion: 17/05/2023 -->
             placeholder="Ej. Cerrado por mantenimiento de 13:00-14:00"
           />
         </div>
-  
+
         <!-- Campo de Foto -->
         <div class="form-group my-4 w-75">
           <label class="fw-bold" for="Foto">Foto</label>
@@ -88,9 +96,7 @@ Fecha de modificacion: 17/05/2023 -->
             placeholder="Ej. https://imagenWellnes.png"
           />
           <!-- Error message for Foto -->
-          <div
-            class="text-danger"
-          >
+          <div class="text-danger">
             <div *ngIf="fotoVacia">
               Campo obligatorio. Por favor ingrese la liga de una imagen.
             </div>
@@ -99,7 +105,7 @@ Fecha de modificacion: 17/05/2023 -->
             </div>
           </div>
         </div>
-  
+
         <!-- Campo de Horarios -->
         <div class="form-group my-4 w-75">
           <label class="fw-bold" for="Horarios">Horarios</label>
@@ -110,7 +116,7 @@ Fecha de modificacion: 17/05/2023 -->
             placeholder="Ej. Lu-Vi de 8:00  a 16:00"
           />
         </div>
-  
+
         <!-- Campo de descripción -->
         <div class="form-group my-4 w-75">
           <label class="fw-bold" for="Descripcion">Descripción</label>
@@ -121,11 +127,11 @@ Fecha de modificacion: 17/05/2023 -->
             placeholder="Ej. Prohibida entrada sin toalla"
           />
         </div>
-  
+
         <!-- Campo de tipo de área -->
         <div class="form-group my-4 w-75">
           <label class="fw-bold" for="Tipo">Tipo de área</label>
-          <br>
+          <br />
           <select formControlName="Tipo" (change)="onTipoSelect($event)">
             <option value=""></option>
             <option value="Aforo">Aforo</option>
@@ -133,19 +139,17 @@ Fecha de modificacion: 17/05/2023 -->
             <option value="Reservas">Reservas</option>
           </select>
           <!-- Error message for Tipo -->
-          <div
-            class="text-danger"
-          >
-            <div *ngIf="tipoAreaVacio">
-              Este campo es obligatorio.
-            </div>
+          <div class="text-danger">
+            <div *ngIf="tipoAreaVacio">Este campo es obligatorio.</div>
           </div>
         </div>
-  
+
         <!-- Campo de Capacidad -->
         <div>
           <div class="form-group my-4 w-75" *ngIf="tipoArea === 'Aforo'">
-            <label class="fw-bold" for="Capacidad">Capacidad (aforo máximo)</label>
+            <label class="fw-bold" for="Capacidad"
+              >Capacidad (aforo máximo)</label
+            >
             <input
               formControlName="Capacidad"
               type="number"
@@ -156,18 +160,12 @@ Fecha de modificacion: 17/05/2023 -->
             />
           </div>
           <!-- Error message for Capacidad -->
-          <div
-            class="text-danger"
-          >
-            <div *ngIf="capacidadVacio">
-              Este campo es obligatorio.
-            </div>
-            <div *ngIf="capacidadError">
-              Esa capacidad es inválida.
-            </div>
+          <div class="text-danger">
+            <div *ngIf="capacidadVacio">Este campo es obligatorio.</div>
+            <div *ngIf="capacidadError">Esa capacidad es inválida.</div>
           </div>
         </div>
-  
+
         <!-- Campo de Link de ZCal -->
         <div class="form-group my-4 w-75" *ngIf="tipoArea !== 'Aforo'">
           <label class="fw-bold" for="LinkCalendar">Link ZCal</label>
@@ -178,18 +176,12 @@ Fecha de modificacion: 17/05/2023 -->
             placeholder="Ej. https://zcal.co/"
           />
           <!-- Error message for Link Maps -->
-          <div
-            class="text-danger"
-          >
-            <div *ngIf="linkCalVacio">
-              Este campo es obligatorio.
-            </div>
-            <div *ngIf="linkCalError">
-              La liga ingresada es inválida.
-            </div>
+          <div class="text-danger">
+            <div *ngIf="linkCalVacio">Este campo es obligatorio.</div>
+            <div *ngIf="linkCalError">La liga ingresada es inválida.</div>
           </div>
         </div>
-  
+
         <!-- Campo de Croquis -->
         <div class="form-group my-4 w-75">
           <label class="fw-bold" for="Croquis">Croquis</label>
@@ -200,22 +192,18 @@ Fecha de modificacion: 17/05/2023 -->
             placeholder="Ej. https://imagenWellnes.png"
           />
           <!-- Error message for Croquis -->
-          <div
-            class="text-danger"
-          >
-            <div *ngIf="croquisVacio">
-              Este campo es obligatorio.
-            </div>
-            <div *ngIf="croquisError">
-              La liga ingresada es inválida.
-            </div>
+          <div class="text-danger">
+            <div *ngIf="croquisVacio">Este campo es obligatorio.</div>
+            <div *ngIf="croquisError">La liga ingresada es inválida.</div>
           </div>
         </div>
-  
+
         <!-- Grupo de botones -->
         <div class="btn-group" role="group" aria-label="Button group name">
           <!-- Boton de Agregar -->
-          <button type="submit" class="btn btn-success custom-btn">Agregar</button>
+          <button type="submit" class="btn btn-success custom-btn">
+            Agregar
+          </button>
           <!-- Boton de Cancelar -->
           <button
             type="button"
@@ -226,7 +214,6 @@ Fecha de modificacion: 17/05/2023 -->
           </button>
         </div>
       </div>
-
     </div>
   </form>
 </div>
