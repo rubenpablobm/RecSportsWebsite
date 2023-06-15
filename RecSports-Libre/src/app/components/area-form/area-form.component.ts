@@ -39,7 +39,7 @@ export class AreaFormComponent {
   flagAforo:boolean = false;
 
   // Constructor con dependencias inyectadas
-  constructor(private route: ActivatedRoute, private http: HttpClient, private ruteador: Router, public crudService:CrudService, private cdr: ChangeDetectorRef, public formulario: FormBuilder) { 
+  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router, public crudService:CrudService, private cdr: ChangeDetectorRef, public formulario: FormBuilder) { 
     // Crear el grupo de formulario
     this.formularioDeAreas=this.formulario.group({
       IdEdificio : [''],
@@ -140,8 +140,8 @@ export class AreaFormComponent {
     this.croquisVacio = false;
   }
 
-  resetForm() {
-    this.formularioDeAreas.reset();
+  endForm() {
+    // this.router.navigate(['/0']);
   }
 
   // Metodo que valida si el link correponde a un link de google maps
@@ -313,7 +313,7 @@ export class AreaFormComponent {
             this.mensaje = "Error: " + error.message;
           }
         );
-        this.resetForm();
+        this.endForm();
         return;
       } else{
         // Mark all fields as touched to show validation errors

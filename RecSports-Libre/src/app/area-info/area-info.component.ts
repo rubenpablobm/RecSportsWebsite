@@ -46,11 +46,11 @@ export class AreaInfoComponent {
       this.area = data;
       // Seleccionar la columna LinkCalendar
       this.linkCalendar = this.area.LinkCalendar;
-      if(this.linkCalendar===null){
-        this.linkCalendar='SinLink';
-      }
+      // if((this.linkCalendar===null) || (this.linkCalendar === '')){
+      //   this.linkCalendar=undefined;
+      // }
       // Purificar el enlace
-      this.secureLinkCalendar = this.sanitizer.bypassSecurityTrustResourceUrl(this.linkCalendar);
+      // this.secureLinkCalendar = this.sanitizer.bypassSecurityTrustResourceUrl(this.linkCalendar);
       this.horarios = this.convertLineBreaks(this.area.Horarios);
       this.descripcion = this.convertLineBreaks(this.area.Descripcion);
       // console.log(this.descripcion);

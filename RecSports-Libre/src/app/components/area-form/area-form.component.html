@@ -40,6 +40,7 @@ Fecha de modificacion: 17/05/2023 -->
         <label class="fw-bold" for="idEdificio">Edificio al que pertenece</label>
         <br>
         <select formControlName="IdEdificio" [(ngModel)]="idEdificio" (change)="onEdificioSelect($event)">
+          <option value="-1"></option>
           <option *ngFor="let edificio of listaEdificios" value="{{edificio.IdEdificio}}">{{edificio.Nombre}}</option>
         </select>
       </div>
@@ -126,6 +127,7 @@ Fecha de modificacion: 17/05/2023 -->
           <label class="fw-bold" for="Tipo">Tipo de área</label>
           <br>
           <select formControlName="Tipo" (change)="onTipoSelect($event)">
+            <option value=""></option>
             <option value="Aforo">Aforo</option>
             <option value="Instructiva">Instructiva</option>
             <option value="Reservas">Reservas</option>
