@@ -1,47 +1,45 @@
 <app-navbar></app-navbar>
-
-
-<div class="m-3">
-  <h1 class="">Restablecer contraseña</h1>
-  <button class="btn btn-secondary m-3" routerLink="">Regresar</button>
-
-  <form (ngSubmit)="enviarDatos()" [formGroup]="formLogin" >
-    <div class="m-3  mov1">
-      
+<div class="m-4">
+  <h1 class="fw-bold fs-1">Restablecer Contraseña</h1>
+  <button class="btn btn-secondary my-3" routerLink="">Regresar</button>
+  <form (ngSubmit)="enviarDatos()" [formGroup]="formLogin">
+    <div class="my-2">
       <label for="exampleInputEmail1" class="form-label">Email</label>
       <input
-      type="email"
-      class="form-control"
-      id="exampleInputEmail1"
-      aria-describedby="emailHelp"
-      formControlName="Email"
+        type="text"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        formControlName="Email"
       />
     </div>
-    
-    <div class="m-3  mov1">
-      <label for="exampleInputPassword1" class="form-label">Nueva Contraseña</label>
+
+    <div class="my-2">
+      <label for="exampleInputPassword1" class="form-label"
+        >Nueva Contraseña</label
+      >
       <input
-        type="password"
-        style="width: 192px;"
-        class="form-control "
+        type="text"
+        class="form-control"
         id="exampleInputPassword1"
         formControlName="Contrasena"
       />
     </div>
-    
-    <div class="m-3  mov1">
-      <label for="exampleInputPassword1" class="form-label">Repetir contraseña</label>
+
+    <div class="my-2">
+      <label for="exampleInputPassword1" class="form-label"
+        >Repetir Contraseña</label
+      >
       <input
-        type="password"
-        style="width: 192px;"
-        class="form-control "
+        type="text"
+        class="form-control"
         id="exampleInputPassword1"
         formControlName="RepContrasena"
       />
     </div>
-    <button type="submit" class="btn btn-primary m-3">Submit</button>
-    </form>
-    <div id="mensaje-aviso" *ngIf="mensaje != '[object Object]'">
-      {{ mensaje }}
-    </div>
+    <button type="submit" class="btn btn-primary my-2">Enviar</button>
+  </form>
+  <div id="mensaje-aviso" *ngIf="mensaje != '[object Object]'">
+    {{ mensaje }}
+  </div>
 </div>

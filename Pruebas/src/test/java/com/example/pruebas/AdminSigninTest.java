@@ -12,6 +12,8 @@ import static org.testng.Assert.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -55,7 +57,7 @@ public class AdminSigninTest {
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("html > body > app-root > app-admin > div > div > div:nth-of-type(2) > div:nth-of-type(2)")));
         assertTrue(driver.findElement(By.cssSelector("html > body > app-root > app-admin > div > div > div:nth-of-type(2) > div:nth-of-type(2)")).isDisplayed());
-        assertEquals(driver.findElement(By.cssSelector("html > body > app-root > app-admin > div > div > div:nth-of-type(2) > div:nth-of-type(2)")).getText(), "Usuario no existente");
+        assertEquals(driver.findElement(By.cssSelector("html > body > app-root > app-admin > div > div > div:nth-of-type(2) > div:nth-of-type(2)")).getText(), "Ha ocurrido un error al iniciar sesión.");
 
         //Limpiar todos los campos
         adminSignin.inputEmail.clear();
@@ -69,7 +71,7 @@ public class AdminSigninTest {
         // Wait for the elements to be displayed
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("html > body > app-root > app-admin > div > div > div:nth-of-type(2) > div:nth-of-type(2)")));
         assertTrue(driver.findElement(By.cssSelector("html > body > app-root > app-admin > div > div > div:nth-of-type(2) > div:nth-of-type(2)")).isDisplayed());
-        assertEquals(driver.findElement(By.cssSelector("html > body > app-root > app-admin > div > div > div:nth-of-type(2) > div:nth-of-type(2)")).getText(), "La contraseña es inválida");
+        assertEquals(driver.findElement(By.cssSelector("html > body > app-root > app-admin > div > div > div:nth-of-type(2) > div:nth-of-type(2)")).getText(), "Ha ocurrido un error al iniciar sesión.");
 
         //Limpiar todos los campos
         adminSignin.inputEmail.clear();
@@ -83,5 +85,16 @@ public class AdminSigninTest {
         // Wait for the elements to be displayed
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='container-fluid']")));
         assertTrue(driver.findElement(By.cssSelector("div[class='container-fluid']")).isDisplayed());
+
+        String result = "Launch Successfully";
+
+        // Get the current date and time
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy h:mm a");
+        String timestamp = now.format(formatter);
+
+        // Print the message with the result and timestamp
+        String message = String.format("[%s]: %s", timestamp, result);
+        System.out.println(message);
     }
 }

@@ -20,6 +20,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
@@ -131,5 +133,15 @@ public class EditarEdificioTest {
         wait.until(ExpectedConditions.textToBePresentInElement(lastNombre, "Wellness Center 4"));
         assertEquals(lastNombre.getText(), "Wellness Center 4");
 
+        String result = "Launch Successfully";
+
+        // Get the current date and time
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy h:mm a");
+        String timestamp = now.format(formatter);
+
+        // Print the message with the result and timestamp
+        String message = String.format("[%s]: %s", timestamp, result);
+        System.out.println(message);
     }
 }

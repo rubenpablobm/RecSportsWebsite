@@ -6,7 +6,6 @@ Fecha de creacion: 07/06/2023
 Fecha de modificacion: 07/06/2023 */
 
 package com.example.pruebas;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,10 +16,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
-
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -125,5 +124,15 @@ public class AgregarEdificioTest {
         wait.until(ExpectedConditions.textToBePresentInElement(lastNombre, "Wellness Center 3"));
         assertEquals(lastNombre.getText(), "Wellness Center 3");
 
+        String result = "Launch Successfully";
+
+        // Get the current date and time
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy h:mm a");
+        String timestamp = now.format(formatter);
+
+        // Print the message with the result and timestamp
+        String message = String.format("[%s]: %s", timestamp, result);
+        System.out.println(message);
     }
 }
