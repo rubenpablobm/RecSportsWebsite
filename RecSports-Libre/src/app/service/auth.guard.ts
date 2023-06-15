@@ -7,7 +7,7 @@ export let authGuard = () => {
     const router = inject(Router)
   
     if (authService.EstaLogeado()) {
-        console.log("Guarda login exitoso");
+        console.log("Guarda login exitoso yei");
         return true
     }
 

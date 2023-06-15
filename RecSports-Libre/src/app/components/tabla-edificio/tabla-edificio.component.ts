@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { CrudService } from '../../service/crud.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tabla-edificio',
@@ -17,7 +16,7 @@ export class TablaEdificioComponent {
     eID : number = 0;
     listaEdificios : any = [];
   
-    constructor(public crudService:CrudService, private router: Router){ }
+    constructor(public crudService:CrudService){ }
   
     // Metodo que obtiene los edificios al inicializar el componente
     ngOnInit() {
@@ -46,14 +45,14 @@ export class TablaEdificioComponent {
 
     borrarRegistro(idEdificio: any, nombreEdificio: any){
       console.log(idEdificio);
-      if(window.confirm("Realmente deseas eliminar el edificio "+nombreEdificio)){
+      if(window.confirm("Realmente deseas eliminar el registro titulo="+nombreEdificio)){
         this.crudService.EdificioDelete(idEdificio).subscribe(respuesta =>{
           // Para actualizar la lista de libros en el template
           // this.listaEdificios = this.listaEdificios.filter((edificio: any) => edificio.IdEdificio !== idEdificio);
           console.log(this.listaEdificios);
         })
       }
-      this.router.navigateByUrl('');
+      window.location.reload();
     }
    
 }
