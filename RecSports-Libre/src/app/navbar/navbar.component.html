@@ -1,9 +1,9 @@
 <!-- Descripcion de navbar.component.html: programa que define la estructura del componente "navbar".
 Su proposito es desplegar la barra de navegacion.
 Porpiedad del equipo WellSoft.
-Ultima edicion por: Arturo Garza Campuzano
-Fecha de creacion: dd/mm/aaaa < 05/05/2023
-Fecha de modificacion: 19/05/2023 -->
+Ultima edicion por: Arturo Garza Campuzano.
+Fecha de creacion: 05/05/2023
+Fecha de modificacion: 15/06/2023 -->
 
 <mat-toolbar class="navbar navbar-expand">
   <!-- Logo -->
@@ -57,7 +57,6 @@ Fecha de modificacion: 19/05/2023 -->
         </ul>
       </li>
     </ul>
-
     <!-- Boton Admin -->
     <button
       *ngIf="!auth"
@@ -69,15 +68,15 @@ Fecha de modificacion: 19/05/2023 -->
     >
       Admin
     </button>
-      <button
-        *ngIf="auth"
-        (click)="cerrarSesion()"
-        target="sideBar"
-        rel="bookmark"
-        routerLinkActive="active"
-        mat-button
-      >
-        Cerrar sesion
-      </button>
+    <button
+      *ngIf="auth"
+      (click)="cerrarSesion()"
+      target="sideBar"
+      rel="bookmark"
+      routerLinkActive="active"
+      mat-button
+    >
+      Cerrar sesion
+    </button>
   </div>
 </mat-toolbar>

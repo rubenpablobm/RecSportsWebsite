@@ -2,8 +2,8 @@
 Su proposito es llamar al servicio API por medio de funciones. 
 Porpiedad del equipo WellSoft. 
 Ultima edicion por: Arturo Garza Campuzano
-Fecha de creacion: dd/mm/aaaa < 05/05/2023
-Fecha de modificacion: 19/05/2023 */
+Fecha de creacion: 05/05/2023
+Fecha de modificacion: 15/06/2023 */
 
 // Declaracion de importaciones
 import { Injectable } from '@angular/core';
@@ -12,10 +12,7 @@ import { Observable } from 'rxjs';
 import { Area } from '../models/area';
 import { Edificio } from '../models/edificio';
 import { Admin } from '../models/admin';
-
 import { Fecha } from '../models/fecha';
-import { Dia } from '../models/dia';
-import { Hora } from '../models/hora';
 
 //Injector del servicio
 @Injectable({
@@ -25,17 +22,11 @@ import { Hora } from '../models/hora';
 export class CrudService {
   IdEdificio=1;
   API:string="http://localhost:5040/";
-  
   mensajeAPI:string="";
-
-  //datos del admin
+  // Datos del admin
   logeado:Boolean=false;
   emailString? : string;
-
-  //API: string="angular-test.eastus.cloudapp.azure.com/libros/";
-  constructor(private clientehttp:HttpClient) { 
-    
-  }
+  constructor(private clientehttp:HttpClient) { }
   
   /* EDIFICIO */
 
@@ -64,11 +55,11 @@ export class CrudService {
   };
 
   /* AREA */
-  
  
   AreaGet(id: number):Observable<any>{
     return this.clientehttp.get<Area>(this.API+"area/"+id);
   }
+
   // Actualizar area
   AreaUpdate(id: number, datosArea:Area):Observable<any>{
     return this.clientehttp.put<Area>(this.API+"area/"+ id, datosArea);
@@ -120,46 +111,49 @@ export class CrudService {
     return this.clientehttp.get(this.API+"area/limpiaraforo/"+id);
   }
   /* ADMIN */
+
   AdminLogin(datosAdmin:Admin):Observable<any>{
     this.logeado=false;
     this.emailString = datosAdmin.correo;
     return this.clientehttp.post(this.API+"admin/iniciosesion", datosAdmin);
   }
+
   AdminLoginAuth(){
     this.logeado=true;
   }
+
   EstaLogeado(){
     return this.logeado;
   }
+
   EstaLogeadoEmail(){
-    //ya tiene la proteccion de la misma pagina que incluye esta funcion
+    //Ya tiene la proteccion de la misma pagina que incluye esta funcion
     return this.emailString;
   }
+
   AdminLogout(){
     this.logeado = false;
     this.emailString = undefined;
     return this.logeado
   }
-  /* Cambio Contraseña*/
+
+  /* CAMBIO CONTRASEÑA */
+
   CambioContraseña(datosAdmin:Admin):Observable<any>{
-   // this.logeado=true;
    this.logeado=false;
-  //  this.emailString = datosAdmin.correo;
-   console.log(this.emailString);
-   console.log(datosAdmin.correo);
    return this.clientehttp.put(this.API+"admin/cambiocontra", datosAdmin);
   }
 
-  // ESTADISTICA 
+  /* ESTADISTICA */
+
   HoraGet(id: number, fechaRange: Fecha):Observable<any>{
     if(id!=0){
       return this.clientehttp.post(this.API + "estadistica/hora/" + id, fechaRange);
     }else{
       return this.clientehttp.post(this.API+"estadistica/hora", fechaRange);
-      //'text' as 'json'
-      //'blob'
     }
   }
+
   DiaGet(id: number, fechaRange: Fecha):Observable<any>{
     if(id!=0){
       return this.clientehttp.post(this.API + "estadistica/dia/" + id, fechaRange);

@@ -1,3 +1,11 @@
+<!-- Descripcion de cambio-contrasena.component.html: programa que define la estructura del componente
+"cambio-contrasena". Su proposito es permitir al administrador cambiar su contrasena o la de otros
+administradores. 
+Porpiedad del equipo WellSoft. 
+Ultima edicion por: Arturo Garza Campuzano.
+Fecha de creacion: 01/06/2023
+Fecha de modificacion: 15/06/2023 -->
+
 <app-navbar></app-navbar>
 <div class="m-4">
   <h1 class="fw-bold fs-1">Restablecer Contraseña</h1>
@@ -6,7 +14,7 @@
     <div class="my-2">
       <label for="exampleInputEmail1" class="form-label">Email</label>
       <input
-        type="text"
+        type="email"
         class="form-control"
         id="exampleInputEmail1"
         aria-describedby="emailHelp"
@@ -19,7 +27,7 @@
         >Nueva Contraseña</label
       >
       <input
-        type="text"
+        type="password"
         class="form-control"
         id="exampleInputPassword1"
         formControlName="Contrasena"
@@ -31,7 +39,7 @@
         >Repetir Contraseña</label
       >
       <input
-        type="text"
+        type="password"
         class="form-control"
         id="exampleInputPassword1"
         formControlName="RepContrasena"

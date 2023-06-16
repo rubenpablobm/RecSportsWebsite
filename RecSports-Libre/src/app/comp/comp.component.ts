@@ -1,13 +1,12 @@
 /* Descripcion de comp.component.ts: programa que define la logica del componente "comp". 
 Su proposito es llamar al servicio API por medio de funciones. 
 Porpiedad del equipo WellSoft. 
-Ultima edicion por: Arturo Garza Campuzano
-Fecha de creacion: dd/mm/aaaa < 05/05/2023
-Fecha de modificacion: 19/05/2023 */
+Ultima edicion por: Arturo Garza Campuzano.
+Fecha de creacion: 05/05/2023
+Fecha de modificacion: 15/06/2023 */
 
 // Declaracion de importaciones
 import { Component, Input } from '@angular/core';
-import { Area } from '../models/area';
 import { CrudService } from 'src/app/service/crud.service';
 
 // Decorador del componente
@@ -25,6 +24,7 @@ export class CompComponent {
   @Input() idEdificio!: any;
   @Input() tipoArea!: string;
   @Input() listaAreas : any = [];
+
   // Informacion de los titulos
   titulos : any = [
     {
@@ -45,25 +45,4 @@ export class CompComponent {
   ]
 
   constructor(public crudService:CrudService){ }
-
-  // Metodo para ejecutar el metodo getArea()
-  ngOnInit() {
-    this.getArea();
-  }
-
-  getArea(){
-    /*
-    console.log("voy a llamar a la API :)");
-    return this.crudService.AreaGetMultiple().subscribe((data:{})=>{
-      console.log(data);
-      this.listaAreas=data;
-    })
-    
-    return this.crudService.AreaGetXedificio(this.idEdificio).subscribe((data : {}) => {
-      console.log("Getting areas from ID edificio:" + this.idEdificio);
-      this.listaAreas=data;
-      console.log(this.listaAreas)
-    });
-    */
-  }
 }

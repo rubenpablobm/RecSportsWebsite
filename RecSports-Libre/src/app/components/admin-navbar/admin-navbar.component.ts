@@ -1,7 +1,7 @@
 /* Descripcion de admin-navbar.component.ts: programa que define la logica del componente "admin-navbar".
 Su proposito es llamar al servicio API por medio de funciones. 
 Porpiedad del equipo WellSoft. 
-Ultima edicion por: Arturo Garza Campuzano
+Ultima edicion por: Arturo Garza Campuzano.
 Fecha de creacion: 16/05/2023
 Fecha de modificacion: 17/05/2023 */
 
@@ -21,12 +21,11 @@ import { faBuilding, faChartSimple, faKey } from '@fortawesome/free-solid-svg-ic
 })
 
 export class AdminNavbarComponent {
+  //Variables
   faBuilding = faBuilding;
   faChartSimple = faChartSimple;
   faKey = faKey;
-  //Variables
   AreaList:any=[];  
-  // eID : any = null;
   edificio : any = [];
 
   // Constructor con dependencias inyectadas

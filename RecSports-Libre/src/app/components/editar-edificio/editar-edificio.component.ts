@@ -3,7 +3,7 @@ Su proposito es llamar al servicio API por medio de funciones.
 Porpiedad del equipo WellSoft. 
 Ultima edicion por: Arturo Garza Campuzano
 Fecha de creacion: 15/05/2023
-Fecha de modificacion: 17/05/2023 */
+Fecha de modificacion: 15/06/2023 */
 
 // Declaracion de importaciones
 import { Component } from '@angular/core';
@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CrudService } from '../../service/crud.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 // Decorador del componente
 @Component({
@@ -45,17 +45,12 @@ export class EditarEdificioComponent {
 	constructor(private route: ActivatedRoute, private htttp: HttpClient, private router: Router, public crudService:CrudService, public formulario: FormBuilder) { 
     // Obtener el parametro 'IdEdificio' de la ruta
     this.theIdEdificio = this.route.snapshot.paramMap.get('idEdificio');
-    console.log("Este es el id de edificio");
-    console.log(this.theIdEdificio);
     // Recuperar los datos del edificio si 'theIdEdificio' tiene un valor
     if (this.theIdEdificio) {
       this.crudService.EdificioGet(this.theIdEdificio).subscribe(respuesta =>{
-        console.log(respuesta['Nombre']);
-
         this.nombre = respuesta['Nombre'];
         this.foto = respuesta['Foto'];
         this.linkMaps = respuesta['LinkMaps'];
-
         // Establecer los valores del formulario con los datos recuperados
         this.formularioDeEdificios.setValue({
           Nombre: respuesta['Nombre'],
@@ -82,9 +77,7 @@ export class EditarEdificioComponent {
 
   // Metodo para obtener los edificios
   getEdificios() {
-    console.log('Cargando edificios existentes...')
     return this.crudService.EdificioGetMultiple().subscribe((data:{}) => {
-      console.log(data);
       this.listaEdificios = data;
     })
   }
@@ -102,24 +95,19 @@ export class EditarEdificioComponent {
   async validarImagenLink(url: string): Promise<boolean> {
     return new Promise<boolean>((resolve) => {
       const img = new Image();
-
-      console.log("Es un link valido: "+this.isGoogleDriveLink(url));
       if(this.isGoogleDriveLink(url)){
-        console.log("Se convirtio: "+this.convertGoogleDriveLink(url));
         url = this.convertGoogleDriveLink(url);
-        this.formularioDeEdificios.get('Foto')?.setValue(url); // Set the new value for the "Foto" field
+        // Asignar nuevo valor al campo "Foto"
+        this.formularioDeEdificios.get('Foto')?.setValue(url);
       }
-  
+      // La imagen se cargo correctamente
       img.onload = () => {
-        resolve(true); // Image loaded successfully
-        console.log("Se cargo la imagen");
+        resolve(true);
       };
-  
+      // La imagen no se cargo
       img.onerror = () => {
-        resolve(false); // Image failed to load
-        console.log("La imagen no se cargo");
+        resolve(false);
       };
-      console.log("Mira: "+url);
       img.src = url;
     });
   }
@@ -145,19 +133,6 @@ export class EditarEdificioComponent {
   isGoogleMapsLink(link: string): boolean {
     const googleMapsPattern = /^https:\/\/goo\.gl\/maps\/[A-Za-z0-9]+$/;
     return googleMapsPattern.test(link);
-  }
-
-  // Metodos para checar si los campos estan vacios
-  get nombreControl() {
-    return this.formularioDeEdificios.get('Nombre');
-  }
-
-  get fotoControl() {
-    return this.formularioDeEdificios.get('Foto');
-  }
-
-  get linkMapsControl() {
-    return this.formularioDeEdificios.get('LinkMaps');
   }
 
 	// Metodo para manejar el envio del formulario
@@ -215,8 +190,6 @@ export class EditarEdificioComponent {
 
       if(!this.nombreError && !this.nombreVacio && !this.fotoError && !this.fotoVacia && !this.linkMapsError && !this.linkMapsVacio){
         this.edificioAgregado = true;
-        console.log("Presionaste el boton enviar datos")
-        console.log(this.formularioDeEdificios.value);
 		    // Llamar al servicio para actualizar el edificio
         this.crudService.EdificioUpdate(this.theIdEdificio, this.formularioDeEdificios.value).subscribe(respuesta => {
           console.log("Super")

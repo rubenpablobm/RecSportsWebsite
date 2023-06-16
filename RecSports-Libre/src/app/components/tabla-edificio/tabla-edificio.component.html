@@ -1,9 +1,9 @@
-<!-- Descripcion de vis.component.html: programa que define la estructura del componente "vis".
-Su proposito es mostrar la tabla de los edificios.
+<!-- Descripcion de tabla-edificio.component.html: programa que define la estructura del componente 
+"tabla-edificio". Su proposito es mostrar la tabla de los edificios.
 Porpiedad del equipo WellSoft.
 Ultima edicion por: Arturo Garza Campuzano
 Fecha de creacion: 25/05/2023
-Fecha de modificacion: 25/05/2023 -->
+Fecha de modificacion: 15/06/2023 -->
 
 <app-navbar (linkFoto)="recibirFoto($event)"></app-navbar>
 <div class="container my-4">
@@ -14,8 +14,6 @@ Fecha de modificacion: 25/05/2023 -->
       Agregar
     </button>
   </div>
-  <!-- <div class="card custom-card"> -->
-  <!-- <div class="card-header">Lista de Edificios en existencia</div> -->
   <div class="card-body">
     <div class="table table-responsive">
       <table class="table table-light text-center align-middle">
@@ -34,7 +32,11 @@ Fecha de modificacion: 25/05/2023 -->
               <img class="table_image" src="{{ edificio.Foto }}" />
             </td>
             <td>
-              <a href="{{ edificio.LinkMaps }}" target="_blank" style="margin: auto">
+              <a
+                href="{{ edificio.LinkMaps }}"
+                target="_blank"
+                style="margin: auto"
+              >
                 <img
                   src="../../../assets/images/maps-logo.png"
                   alt="Botón de google maps"
@@ -67,5 +69,4 @@ Fecha de modificacion: 25/05/2023 -->
       </table>
     </div>
   </div>
-  <!-- </div> -->
 </div>

@@ -1,9 +1,9 @@
 /* Descripcion de area-card.component.ts: programa que define la logica del componente "area-card". 
 Su proposito es llamar al servicio API por medio de funciones. 
 Porpiedad del equipo WellSoft. 
-Ultima edicion por: Ruben Barraza
-Fecha de creacion: dd/mm/aaaa < 03/04/2023
-Fecha de modificacion: 28/05/2023 */
+Ultima edicion por: Ruben Barraza.
+Fecha de creacion: 03/04/2023
+Fecha de modificacion: 15/06/2023 */
 
 // Declaracion de importaciones
 import { Component, Input } from '@angular/core';
@@ -50,100 +50,4 @@ export class AreaCardComponent {
   constructor(public crudService:CrudService){ 
     this.auth=authGuard();
   }
-  
-  // Obtener areas desde la API
-  ngOnInit() {
-    this.getArea();
-  }
-
-  getArea(){
-    /* Preguntar por comentarios: ¿los necesitamos? */
-    /*
-    console.log("voy a llamar a la API :)");
-    return this.crudService.AreaGetMultiple().subscribe((data:{})=>{
-      console.log(data);
-      this.listaAreas=data;
-    })
-    
-    return this.crudService.AreaGetXedificio(this.idEdificio).subscribe((data : {}) => {
-      console.log("Getting areas from ID edificio:" + this.idEdificio);
-      this.listaAreas=data;
-      console.log(this.listaAreas)
-    });
-    */
-  }
-
-  /* Preguntar por comentarios: ¿los necesitamos? */
-  // listaAreas : Area[] = [
-  //   {
-  //     IdArea:1,
-  //     Nombre:'Tennis',
-  //     Foto:'../assets/images/tenis.jpeg',
-  //     Croquis:'',
-  //     Tipo:'disponibilidad',
-  //     LinkCalendar:'',
-  //     Descripcion:'descripción...',
-  //     Horarios:'8:00am-8:00pm',
-  //     Avisos:'Cerrada el 10 de junio por mantenimiento', 
-  //     IdEdificio:1,
-  //     Aforo:undefined,
-  //     Capacidad:undefined
-  //   },
-  //   {
-  //     IdArea:2,
-  //     Nombre:'Basketball',
-  //     Foto:'../assets/images/basketball.jpeg',
-  //     Croquis:'',
-  //     Tipo:'disponibilidad',
-  //     LinkCalendar:'',
-  //     Descripcion:'descripción...',
-  //     Horarios:'8:00am-8:00pm',
-  //     Avisos:'', 
-  //     IdEdificio:1,
-  //     Aforo:undefined,
-  //     Capacidad:undefined
-  //   },
-  //   {
-  //     IdArea:3,
-  //     Nombre:'Yoga',
-  //     Foto:'https://www.semana.com/resizer/XpO1ppJ0tOduMIim3UjatC94Y2c=/arc-anglerfish-arc2-prod-semana/public/ZP7JALBIIVAC3INWFQRITO6JMQ.jpg',
-  //     Croquis:'',
-  //     Tipo:'instructiva',
-  //     LinkCalendar:'',
-  //     Descripcion:'descripción...',
-  //     Horarios:'L-V 8:00am-8:00pm',
-  //     Avisos:'', 
-  //     IdEdificio:1,
-  //     Aforo:undefined,
-  //     Capacidad:undefined
-  //   },
-  //   {
-  //     IdArea:4,
-  //     Nombre:'Paddel',
-  //     Foto:'https://assets.tennismajors.com/app/uploads/2022/07/14134236/PADEL_SWEDISH_CHAMPIONSHIP-1296x675.jpg',
-  //     Croquis:'',
-  //     Tipo:'disponibilidad',
-  //     LinkCalendar:'',
-  //     Descripcion:'descripción...',
-  //     Horarios:'8:00am-8:00pm',
-  //     Avisos:'', 
-  //     IdEdificio:1,
-  //     Aforo:undefined,
-  //     Capacidad:undefined
-  //   },
-  //   {
-  //     IdArea:5,
-  //     Nombre:'Alberca Borregos',
-  //     Foto:'https://img.gruporeforma.com/imagenes/960x640/6/52/5051851.jpg',
-  //     Croquis:'',
-  //     Tipo:'aforo',
-  //     LinkCalendar:'',
-  //     Descripcion:'descripción...',
-  //     Horarios:'L-V - 8:00am-8:00pm \nS - 9:00am - 5:00pm \nCerrado los domingos por limpieza.',
-  //     Avisos:'Cerrado miércoles 19 de 18:00-20:00 por competencia.', 
-  //     IdEdificio:1,
-  //     Aforo:5,
-  //     Capacidad:10
-  //   },
-  // ]
 }

@@ -1,3 +1,10 @@
+/* Descripcion de cambio-contrasena.component.ts: programa que define la logica del componente "cambio-contrasena".
+Su proposito es llamar al servicio API por medio de funciones. 
+Porpiedad del equipo WellSoft. 
+Ultima edicion por: Arturo Garza Campuzano.
+Fecha de creacion: 01/06/2023
+Fecha de modificacion: 15/06/2023 */
+
 import { Component } from '@angular/core';
 import { Router} from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -31,14 +38,12 @@ export class CambioContrasenaComponent {
 
   enviarDatos(){
     this.crudService.CambioContraseña(this.formLogin.value).subscribe( respuesta =>{
-      console.log(respuesta);
       setTimeout(() => {
         window.alert("Contraseña cambiada exitosamente");
-        //redirige a inicio sesion, sin logear como admin
+        //Redirige a inicio sesion, sin logear como admin
         this.ruteador.navigateByUrl('');
         }, 100);
     },(error) => {
-      console.log(error);
       this.mensaje=String(error.error);
     });
   }

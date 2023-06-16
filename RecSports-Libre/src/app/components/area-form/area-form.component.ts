@@ -1,12 +1,17 @@
+/* Descripcion de area-form.component.ts: programa que define la logica del componente "area-form".
+Su proposito es llamar al servicio API por medio de funciones. 
+Porpiedad del equipo WellSoft. 
+Ultima edicion por: Arturo Garza Campuzano.
+Fecha de creacion: 01/06/2023
+Fecha de modificacion: 15/06/2023 */
 
 // Declaracion de importaciones
-import { Component, Input, Output, EventEmitter, HostListener} from '@angular/core';
-import { Route, Router, ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { CrudService } from '../../service/crud.service';
 import { ChangeDetectorRef } from '@angular/core';
-
 
 @Component({
   selector: 'app-area-form',
@@ -36,8 +41,6 @@ export class AreaFormComponent {
   // Grupo de formulario para recolectar datos del formulario
   formularioDeAreas: FormGroup;
 
-  flagAforo:boolean = false;
-
   // Constructor con dependencias inyectadas
   constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router, public crudService:CrudService, private cdr: ChangeDetectorRef, public formulario: FormBuilder) { 
     // Crear el grupo de formulario
@@ -64,16 +67,12 @@ export class AreaFormComponent {
   getEdificios() {
     return this.crudService.EdificioGetMultiple().subscribe((data:{}) => {
       this.listaEdificios = data;
-      console.log('se obtuvieron edificios');
-      console.log(this.listaEdificios);
     })
   }
 
   getAreas(id:number) {
     return this.crudService.AreaGetXedificio(id).subscribe((data:{}) => {
       this.listaAreas = data;
-      console.log('se obtuvieron áreas:');
-      console.log(this.listaAreas);
     })
   }
 
@@ -85,9 +84,7 @@ export class AreaFormComponent {
       this.idEdificio = Number(option);
     }
 
-    console.log('Se seleccionó un edificio: ' + this.idEdificio);
     this.getAreas(this.idEdificio);
-    console.log(this.listaAreas)
     this.cdr.detectChanges();
   }
 
@@ -100,24 +97,19 @@ export class AreaFormComponent {
   async validarImagenLink(url: string): Promise<boolean> {
     return new Promise<boolean>((resolve) => {
       const img = new Image();
-
-      console.log("Es un link valido: "+this.isGoogleDriveLink(url));
       if(this.isGoogleDriveLink(url)){
-        console.log("Se convirtio: "+this.convertGoogleDriveLink(url));
         url = this.convertGoogleDriveLink(url);
-        this.formularioDeAreas.get('Foto')?.setValue(url); // Set the new value for the "Foto" field
+        // Asignar nuevo valor al campo "Foto"
+        this.formularioDeAreas.get('Foto')?.setValue(url);
       }
-  
+      // La imagen se cargo correctamente
       img.onload = () => {
-        resolve(true); // Image loaded successfully
-        console.log("Se cargo la imagen");
+        resolve(true);
       };
-  
+      // La imagen no se cargo
       img.onerror = () => {
-        resolve(false); // Image failed to load
-        console.log("La imagen no se cargo");
+        resolve(false);
       };
-      console.log("Mira: "+url);
       img.src = url;
     });
   }
@@ -172,19 +164,6 @@ export class AreaFormComponent {
   isCalendarLink(link: string): boolean {
     const calendarPattern = /^https:\/\/zcal.co\/[A-Za-z0-9]\/[A-Za-z0-9]+$/;
     return calendarPattern.test(link);
-  }
-
-  // Metodos para checar si los campos estan vacios
-  get nombreControl() {
-    return this.formularioDeAreas.get('Nombre');
-  }
-
-  get fotoControl() {
-    return this.formularioDeAreas.get('Foto');
-  }
-
-  get linkCalControl() {
-    return this.formularioDeAreas.get('LinkCalendar');
   }
   
   // Metodo para manejar el envio del formulario
@@ -276,7 +255,6 @@ export class AreaFormComponent {
           this.capacidadError = false;
           this.capacidadVacio = false;
         }
-        this.flagAforo = true;
         this.linkCalError = false;
         this.linkCalVacio = false;
         // this.formularioDeAreas.get('LinkCal')?.patchValue(null);
@@ -302,7 +280,6 @@ export class AreaFormComponent {
           this.linkCalError = false;
           this.linkCalVacio = false;
         }
-        this.flagAforo = false;
         this.capacidadError = false;
         this.capacidadVacio = false;
         // this.formularioDeAreas.get('Capacidad')?.patchValue(null);
@@ -322,25 +299,20 @@ export class AreaFormComponent {
 
       if(!this.nombreError && !this.nombreVacio && !this.fotoError && !this.fotoVacia && !this.tipoAreaVacio && !this.capacidadError && !this.capacidadVacio && !this.linkCalError && !this.linkCalVacio && !this.croquisError && !this.croquisVacio){
         this.areaAgregada = true;
-        // Proceed with form submission
-        console.log('Form submitted successfully');
-        console.log(this.formularioDeAreas.value);
         // Llamar al servicio para agregar el edificio
         this.crudService.AreaPost(this.formularioDeAreas.value).subscribe(
           (respuesta) => {
             this.ngOnInit();
-            console.log('Success');
           },
           (error) => {
             this.ngOnInit();
-            console.log(error);
             this.mensaje = "Error: " + error.message;
           }
         );
         this.endForm();
         return;
       } else{
-        // Mark all fields as touched to show validation errors
+        // Marcar todos los valores como "touched"
         this.formularioDeAreas.markAllAsTouched();
       }
     });

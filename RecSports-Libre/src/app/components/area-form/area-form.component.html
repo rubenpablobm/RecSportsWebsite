@@ -1,29 +1,9 @@
-<!-- Descripcion de agregar-edificio.component.html: programa que define la estructura del componente
-"agregar-edificio". Su proposito es permitir al administrador agregar un edificio. 
+<!-- Descripcion de area-form.component.html: programa que define la estructura del componente
+"area-form". Su proposito es permitir al administrador agregar un area. 
 Porpiedad del equipo WellSoft. 
 Ultima edicion por: Arturo Garza Campuzano.
-Fecha de creacion: 16/05/2023
-Fecha de modificacion: 17/05/2023 -->
-
-<!-- fs-4 para títulos -->
-<!-- fs-5 para campos -->
-<!-- fs-6 para mensjes -->
-
-<!-- Nombre * -->
-<!-- Aviso -->
-<!-- Horarios -->
-<!-- Descripción -->
-<!-- Croquis -->
-<!-- Tipo de área * -->
-
-<!-- AFORO -->
-<!-- capacidad * -->
-
-<!-- ISTRUCTIVAS -->
-<!-- zcal * -->
-
-<!-- DISPONIBILIDAD -->
-<!-- zcal -->
+Fecha de creacion: 01/06/2023
+Fecha de modificacion: 15/06/2023 -->
 
 <!-- Componente de navegacion -->
 <app-navbar></app-navbar>
@@ -74,15 +54,15 @@ Fecha de modificacion: 17/05/2023 -->
             Ya existe una área con este nombre. Intente de nuevo.
           </div>
         </div>
-
         <!-- Campo de aviso -->
         <div class="form-group my-4 w-75">
           <label class="fw-bold" for="Avisos">Aviso</label>
-          <br>
-          <textarea 
-            formControlName="Avisos" 
-            id="Descripcion" 
-            cols="25" rows="3" 
+          <br />
+          <textarea
+            formControlName="Avisos"
+            id="Descripcion"
+            cols="25"
+            rows="3"
             placeholder="Ej. Cerrado por mantenimiento de 13:00-14:00"
           ></textarea>
           <!-- <input
@@ -92,7 +72,6 @@ Fecha de modificacion: 17/05/2023 -->
             placeholder="Ej. Cerrado por mantenimiento de 13:00-14:00"
           /> -->
         </div>
-
         <!-- Campo de Foto -->
         <div class="form-group my-4 w-75">
           <label class="fw-bold" for="Foto">Foto</label>
@@ -112,15 +91,15 @@ Fecha de modificacion: 17/05/2023 -->
             </div>
           </div>
         </div>
-
         <!-- Campo de Horarios -->
         <div class="form-group my-4 w-75">
           <label class="fw-bold" for="Horarios">Horarios</label>
-          <br>
-          <textarea 
-            formControlName="Horarios" 
-            id="Descripcion" 
-            cols="25" rows="3" 
+          <br />
+          <textarea
+            formControlName="Horarios"
+            id="Descripcion"
+            cols="25"
+            rows="3"
             placeholder="Ej. Lu-Vi de 8:00  a 16:00"
           ></textarea>
           <!-- <input
@@ -130,15 +109,15 @@ Fecha de modificacion: 17/05/2023 -->
             placeholder="Ej. Lu-Vi de 8:00  a 16:00"
           /> -->
         </div>
-
         <!-- Campo de descripción -->
         <div class="form-group my-4 w-75">
           <label class="fw-bold" for="Descripcion">Descripción</label>
-          <br>
-          <textarea 
-            formControlName="Descripcion" 
-            id="Descripcion" 
-            cols="25" rows="3" 
+          <br />
+          <textarea
+            formControlName="Descripcion"
+            id="Descripcion"
+            cols="25"
+            rows="3"
             placeholder="Ej. Prohibida entrada sin toalla"
           ></textarea>
           <!-- <input
@@ -148,8 +127,6 @@ Fecha de modificacion: 17/05/2023 -->
             placeholder="Ej. Prohibida entrada sin toalla"
           /> -->
         </div>
-        
-
         <!-- Campo de tipo de área -->
         <div class="form-group my-4 w-75">
           <label class="fw-bold" for="Tipo">Tipo de área</label>
@@ -165,7 +142,6 @@ Fecha de modificacion: 17/05/2023 -->
             <div *ngIf="tipoAreaVacio">Este campo es obligatorio.</div>
           </div>
         </div>
-
         <!-- Campo de Capacidad -->
         <div>
           <div class="form-group my-4 w-75" *ngIf="tipoArea === 'Aforo'">
@@ -187,7 +163,6 @@ Fecha de modificacion: 17/05/2023 -->
             <div *ngIf="capacidadError">Esa capacidad es inválida.</div>
           </div>
         </div>
-
         <!-- Campo de Link de ZCal -->
         <div class="form-group my-4 w-75" *ngIf="tipoArea !== 'Aforo'">
           <label class="fw-bold" for="LinkCalendar">Link ZCal</label>
@@ -203,7 +178,6 @@ Fecha de modificacion: 17/05/2023 -->
             <div *ngIf="linkCalError">La liga ingresada es inválida.</div>
           </div>
         </div>
-
         <!-- Campo de Croquis -->
         <div class="form-group my-4 w-75">
           <label class="fw-bold" for="Croquis">Croquis</label>
@@ -219,7 +193,6 @@ Fecha de modificacion: 17/05/2023 -->
             <div *ngIf="croquisError">La liga ingresada es inválida.</div>
           </div>
         </div>
-
         <!-- Grupo de botones -->
         <div class="btn-group" role="group" aria-label="Button group name">
           <!-- Boton de Agregar -->

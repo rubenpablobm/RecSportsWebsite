@@ -1,6 +1,6 @@
 /* Descripcion de agregar-edificio.component.spec.ts: programa default del componente "agregar-edificio".
 Porpiedad del equipo WellSoft. 
-Ultima edicion por: Arturo Garza Campuzano
+Ultima edicion por: Arturo Garza Campuzano.
 Fecha de creacion: 16/05/2023
 Fecha de modificacion: 17/05/2023 */
 

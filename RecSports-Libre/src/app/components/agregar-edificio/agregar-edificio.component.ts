@@ -1,7 +1,7 @@
 /* Descripcion de agregar-edificio.component.ts: programa que define la logica del componente "agregar-edificio".
 Su proposito es llamar al servicio API por medio de funciones. 
 Porpiedad del equipo WellSoft. 
-Ultima edicion por: Arturo Garza Campuzano
+Ultima edicion por: Arturo Garza Campuzano.
 Fecha de creacion: 16/05/2023
 Fecha de modificacion: 17/05/2023 */
 
@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CrudService } from '../../service/crud.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder} from '@angular/forms';
 import { Route, Router } from '@angular/router';
 
 // Decorador del componente
@@ -50,9 +50,7 @@ export class AgregarEdificioComponent {
 
   // Metodo para obtener los edificios
   getEdificios() {
-    console.log('Cargando edificios existentes...')
     return this.crudService.EdificioGetMultiple().subscribe((data:{}) => {
-      console.log(data);
       this.listaEdificios = data;
     })
   }
@@ -70,24 +68,19 @@ export class AgregarEdificioComponent {
   async validarImagenLink(url: string): Promise<boolean> {
     return new Promise<boolean>((resolve) => {
       const img = new Image();
-
-      console.log("Es un link valido: "+this.isGoogleDriveLink(url));
       if(this.isGoogleDriveLink(url)){
-        console.log("Se convirtio: "+this.convertGoogleDriveLink(url));
         url = this.convertGoogleDriveLink(url);
-        this.formularioDeEdificios.get('Foto')?.setValue(url); // Set the new value for the "Foto" field
+        // Asignar nuevo valor al campo "Foto"
+        this.formularioDeEdificios.get('Foto')?.setValue(url);
       }
-  
+      // La imagen se cargo correctamente
       img.onload = () => {
-        resolve(true); // Image loaded successfully
-        console.log("Se cargo la imagen");
+        resolve(true);
       };
-  
+      // La imagen no se cargo
       img.onerror = () => {
-        resolve(false); // Image failed to load
-        console.log("La imagen no se cargo");
+        resolve(false);
       };
-      console.log("Mira: "+url);
       img.src = url;
     });
   }
@@ -113,19 +106,6 @@ export class AgregarEdificioComponent {
   isGoogleMapsLink(link: string): boolean {
     const googleMapsPattern = /^https:\/\/goo\.gl\/maps\/[A-Za-z0-9]+$/;
     return googleMapsPattern.test(link);
-  }
-
-  // Metodos para checar si los campos estan vacios
-  get nombreControl() {
-    return this.formularioDeEdificios.get('Nombre');
-  }
-
-  get fotoControl() {
-    return this.formularioDeEdificios.get('Foto');
-  }
-
-  get linkMapsControl() {
-    return this.formularioDeEdificios.get('LinkMaps');
   }
   
   // Metodo para manejar el envio del formulario
@@ -181,91 +161,22 @@ export class AgregarEdificioComponent {
 
       if(!this.nombreError && !this.nombreVacio && !this.fotoError && !this.fotoVacia && !this.linkMapsError && !this.linkMapsVacio){
         this.edificioAgregado = true;
-        // Proceed with form submission
-        console.log('Form submitted successfully');
         // Llamar al servicio para agregar el edificio
         this.crudService.EdificioPost(this.formularioDeEdificios.value).subscribe(
           (respuesta) => {
             this.ngOnInit();
-            console.log('Success');
           },
           (error) => {
             this.ngOnInit();
-            console.log(error);
             this.mensaje = "Error: " + error.message;
           }
         );
         this.endForm();
         return;
       } else{
-        // Mark all fields as touched to show validation errors
+        // Marcar todos los valores como "touched"
         this.formularioDeEdificios.markAllAsTouched();
       }
     });
   }
 }
-  
-  // enviarDatos(){
-  //   if (this.formularioDeEdificios.valid) {
-  //     const nombre = this.formularioDeEdificios.get('Nombre')?.value;
-  //     const fotoUrl = this.formularioDeEdificios.get('Foto')?.value;
-  //     const linkMapsUrl = this.formularioDeEdificios.get('LinkMaps')?.value;
-    
-  //     // Validacion de Nombre
-  //     const isDuplicate = this.isDuplicateNombre(nombre);
-  //     if (isDuplicate) {
-  //       // Manejo de validacion de error para Nombre (duplicado)
-  //       this.nombreControl?.setErrors({ duplicateNombre: true });
-  //       return;
-  //     }
-    
-  //     // Validacion de Foto
-  //     this.validarImagenLink(fotoUrl).then((isValidImage: boolean) => {
-  //       if (!isValidImage) {
-  //         // Manejo de validacion de error para Foto
-  //         this.fotoControl?.setErrors({ invalidImage: true });
-  //       } else {
-  //         // Proceed with form submission or other actions
-  //         console.log('Form submitted successfully');
-  //       }
-  //     });
-    
-  //     // Validacion de Link Maps
-  //     const isGoogleMapsLink = this.isGoogleMapsLink(linkMapsUrl);
-  //     if (!isGoogleMapsLink) {
-  //       // Manejo de validacion de error para Link Maps
-  //       this.linkMapsControl?.setErrors({ invalidGoogleMapsLink: true });
-  //       return;
-  //     }
-    
-  //     // Proceed with form submission or other actions
-  //     console.log('Form submitted successfully');
-  //     console.log("Presionaste el boton enviar datos")
-  //     console.log(this.formularioDeEdificios.value);
-  //     // Llamar al servicio para agregar el edificio
-  //     this.crudService.EdificioPost(this.formularioDeEdificios.value).subscribe(respuesta => {
-  //       console.log("Super")
-  //     },
-  //     (error) => {
-  //       this.mensaje=String(error.error);
-  //     })
-    
-  //   } else {
-  //     // Mark all fields as touched to show validation errors
-  //     this.formularioDeEdificios.markAllAsTouched();
-  //   }
-  // }
-
-  // console.log("Hola");
-      // this.nombreControl?.setErrors({ duplicateNombre: true });
-      // console.log(this.nombreControl?.hasError('duplicateNombre'));
-      // this.nombreControl?.setErrors({ required: false });
-
-      // const hasDuplicateNombreError = this.nombreControl?.hasError('duplicateNombre');
-      // const hasRequiredError = this.nombreControl?.hasError('required');
-      // console.log(this.nombreControl?.hasError('duplicateNombre'));
-      // console.log('Has required error:', hasRequiredError);
-// this.nombreControl?.setErrors({ duplicateNombre: false, required: true });
-// this.nombreControl?.setErrors(null); Clear the errors
-// this.nombreControl?.markAsTouched(); Mark the control as touched
-      // this.nombreControl?.updateValueAndValidity(); Update the errors object
