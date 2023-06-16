@@ -67,17 +67,21 @@ Fecha de modificacion: 15/06/2023 -->
     *ngIf="area.Avisos != null"
   >
     <h3 class="fw-bold">Aviso</h3>
-    {{ area.Avisos }}
+    <div style="white-space: pre-line">
+      {{ area.Avisos }}
+    </div>
   </div>
   <!-- Horarios -->
   <h3 class="fw-bold mt-2 mb-0">Horarios</h3>
-  <div [innerHTML]="horarios" id="horariosArea">
+  <div style="white-space: pre-line" id="horariosArea">
     <!-- Horarios se muestran aqui -->
+    {{ area.Horarios }}
   </div>
   <!-- Descripción -->
   <h3 class="fw-bold mt-2 mb-0">Descripción</h3>
-  <div [innerHTML]="descripcion" id="descripcionArea">
+  <div style="white-space: pre-line" id="descripcionArea">
     <!-- Descripcion del area se muestra aqui -->
+    {{ area.Descripcion }}
   </div>
   <!-- Croquis -->
   <div *ngIf="area.Croquis !== null">
