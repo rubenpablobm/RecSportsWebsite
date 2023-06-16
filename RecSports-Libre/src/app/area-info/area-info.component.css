@@ -29,7 +29,7 @@ Fecha de modificacion: 15/06/2023 */
   display: flex;
   height: 80vh;
   width: 80vw;
-  border: solid 2px #333;
+  border: solid 1px #777;
   border-radius: 10px;
 }
 
