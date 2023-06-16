@@ -102,7 +102,7 @@ app.put('/:id', async (req, res) => {
     try {
       const pool = await poolPromise;
       const id = req.params.id;
-      const query = 'DELETE FROM Hora WHERE IdArea = @id; DELETE FROM Dia WHERE IdArea = @id; DELETE FROM Area WHERE IdArea = @id;';
+      const query = 'DELETE Hora, Dia, Area FROM Hora JOIN Dia ON Dia.IdArea = Hora.IdArea JOIN Area ON Area.IdArea = Hora.IdArea WHERE Hora.IdArea = @id;';
       await pool.request()
         .input('id', sql.Int, id)
         .query(query);
