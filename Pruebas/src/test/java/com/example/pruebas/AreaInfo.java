@@ -22,6 +22,14 @@ public class AreaInfo {
     public WebElement contenedorInstructivas;
     @FindBy(css = "app-area-card[ng-reflect-tipo-area='Reservacion']")
     public WebElement contenedorAccesoLibre;
+    @FindBy(css = "input[id='exampleInputEmail1']")
+    public WebElement inputExampleEmail;
+
+    @FindBy(css = "input[id='exampleInputPassword1']")
+    public WebElement inputExamplePassword;
+
+    @FindBy(css = "button[class$='btn-primary']")
+    public WebElement buttonSubmit;
     public AreaInfo(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }

@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1517aebf-8a40-46b1-b5d1-fa0c5117c624" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/MainPageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/MainPageTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AreaInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/AreaInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/pruebas/BorrarAreaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/pruebas/BorrarAreaTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +46,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;connecting-puebas&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;prueba-eliminar-area&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/arturogarzacampuzano/Documents/GitHub/RecSportsWebsite/Pruebas&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -178,6 +178,7 @@
       <workItem from="1685381266668" duration="16909000" />
       <workItem from="1685817307878" duration="24875000" />
       <workItem from="1685950735671" duration="38959000" />
+      <workItem from="1686837963710" duration="2759000" />
     </task>
     <servers />
   </component>
