@@ -94,13 +94,13 @@ export class AreaFormComponent {
   }
   
   // Metodo que valida si el link correponde a una imagen
-  async validarImagenLink(url: string): Promise<boolean> {
+  async validarImagenLink(url: string, campo: string): Promise<boolean> {
     return new Promise<boolean>((resolve) => {
       const img = new Image();
       if(this.isGoogleDriveLink(url)){
         url = this.convertGoogleDriveLink(url);
         // Asignar nuevo valor al campo "Foto"
-        this.formularioDeAreas.get('Foto')?.setValue(url);
+        this.formularioDeAreas.get(campo)?.setValue(url);
       }
       // La imagen se cargo correctamente
       img.onload = () => {
@@ -162,7 +162,7 @@ export class AreaFormComponent {
 
   // Metodo que valida si el link correponde a un link de google maps
   isCalendarLink(link: string): boolean {
-    const calendarPattern = /^https:\/\/zcal.co\/[A-Za-z0-9]\/[A-Za-z0-9]+$/;
+    const calendarPattern = /^https:\/\/zcal\.co\/i\/[A-Za-z0-9-]+$/;
     return calendarPattern.test(link);
   }
   
@@ -205,7 +205,7 @@ export class AreaFormComponent {
       console.log(aviso);
     }
 
-    this.validarImagenLink(croquis).then((isValidImage: boolean) => {
+    this.validarImagenLink(croquis, 'Croquis').then((isValidImage: boolean) => {
       if (!isValidImage) {
         if(!croquis){
           this.croquisError = false;
@@ -221,7 +221,7 @@ export class AreaFormComponent {
     });
   
     // Validacion de Foto
-    this.validarImagenLink(fotoUrl).then((isValidImage: boolean) => {
+    this.validarImagenLink(fotoUrl, 'Foto').then((isValidImage: boolean) => {
       if (!isValidImage) {
         if(!fotoUrl){
           this.fotoError = false;

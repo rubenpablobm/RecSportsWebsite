@@ -159,17 +159,17 @@ export class EditarAreaComponent {
 
   // Metodo que valida si el link correponde a un link de google maps
   isCalendarLink(link: string): boolean {
-    const calendarPattern = /^https:\/\/zcal.co\/[A-Za-z0-9]\/[A-Za-z0-9]+$/;
+    const calendarPattern = /^https:\/\/zcal\.co\/i\/[A-Za-z0-9-]+$/;
     return calendarPattern.test(link);
   }
 
-  async validarImagenLink(url: string): Promise<boolean> {
+  async validarImagenLink(url: string, campo: string): Promise<boolean> {
     return new Promise<boolean>((resolve) => {
       const img = new Image();
       if(this.isGoogleDriveLink(url)){
         url = this.convertGoogleDriveLink(url);
         // Asignar nuevo valor al campo "Foto"
-        this.formularioDeArea.get('Foto')?.setValue(url);
+        this.formularioDeArea.get(campo)?.setValue(url);
       }
       // La imagen se cargo correctamente
       img.onload = () => {
@@ -217,9 +217,24 @@ export class EditarAreaComponent {
     if ((!aviso) || (aviso===''))  {
       this.formularioDeArea.get('Avisos')?.patchValue(null);
     }
+
+    this.validarImagenLink(croquis, 'Croquis').then((isValidImage: boolean) => {
+      if (!isValidImage) {
+        if(!croquis){
+          this.croquisError = false;
+          this.croquisVacio = true;
+        } else {
+          this.croquisVacio = false;
+          this.croquisError = true;
+        }
+      } else {
+        this.croquisError = false;
+        this.croquisVacio = false;
+      }
+    });
   
     // Validacion de Foto
-    this.validarImagenLink(foto).then((isValidImage: boolean) => {
+    this.validarImagenLink(foto, 'Foto').then((isValidImage: boolean) => {
       if (!isValidImage) {
         if(!foto){
           this.fotoError = false;
@@ -288,19 +303,6 @@ export class EditarAreaComponent {
         this.capacidadError = false;
         this.capacidadVacio = false;
         // this.formularioDeAreas.get('Capacidad')?.patchValue(null);
-      }
-
-      // Validacion de Link Maps
-      if(!croquis){
-        this.croquisError = false;
-        this.croquisVacio = true;
-      } else if(!croquis && croquis == this.croquis) {
-        this.croquisVacio = false;
-        this.croquisError = true;
-      }
-      else {
-        this.croquisError = false;
-        this.croquisVacio = false;
       }
 
       if(!this.nombreError && !this.nombreVacio && !this.avisoError && !this.fotoError && !this.fotoVacia && !this.horariosError && !this.descripcionError && !this.capacidadError && !this.capacidadVacio && !this.linkZcalError && !this.linkZcalVacio&& !this.croquisError && !this.croquisVacio)
