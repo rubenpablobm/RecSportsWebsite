@@ -15,18 +15,20 @@ Fecha de modificacion: 15/06/2023 -->
 <!-- Componente Navbar del administrador -->
 <app-admin-navbar *ngIf="auth"></app-admin-navbar>
 <!-- Titulo y ayuda de Areas de Aforo -->
-<div class="flex-container titulo-seccion my-2">
-  <h3 class="mx-3 mt-2 mb-0 fs-2 fw-bold">Áreas de Aforo</h3>
-  <div
-    class="help"
-    tooltip="Son áreas donde debes registrar tu entrada y salida."
-  >
-    ?
+<div class="flex-container titulo-seccion my-2" style="justify-content: space-between;">
+  <div class="flex-container titulo-seccion">
+    <h3 class="mx-3 mt-2 mb-0 fs-2 fw-bold">Áreas de Aforo</h3>
+    <div
+      class="help"
+      tooltip="Son áreas donde debes registrar tu entrada y salida."
+    >
+      ?
+    </div>
   </div>
   <!-- Help button with Bootstrap Icons -->
   <button
     type="button"
-    class="btn btn-primary text-white"
+    class="btn btn-primary text-white mx-5"
     (click)="downloadUserManual()"
   >
     <i class="bi bi-question-circle-fill"></i>
