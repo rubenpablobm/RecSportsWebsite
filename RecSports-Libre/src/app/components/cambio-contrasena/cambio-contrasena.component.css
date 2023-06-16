@@ -1,47 +1,41 @@
+/* Descripcion de cambio-contrasena.component.css: programa que define el estilo del componente "cambio-contrasena".
+Su proposito es proporcionar una mejor visualizacion a los elementos del componente "cambio-contrasena".
+Porpiedad del equipo WellSoft.
+Ultima edicion por: Arturo Garza Campuzano.
+Fecha de creacion: 01/06/2023
+Fecha de modificacion: 15/06/2023 */
+
 .mov {
-    Width:100%;
-    font-size: 200%;
-    margin-top:22px;
-    margin-left:55px;
-  }
+  Width:100%;
+  font-size: 200%;
+  margin-top:22px;
+  margin-left:55px;
+}
 
-  .mov1{
-    margin-left:50px;
-  }
+.mov1{
+  margin-left:50px;
+}
 
-  .box{
-    display:flex;
-    flex-flow: column wrap;
-  }
+.box{
+  display:flex;
+  flex-flow: column wrap;
+}
   
-  /* Estilos para la clase .ini */
-  .ini{
-    margin-top:60px;
-    margin-left:60px;
-  }
+/* Estilos para la clase .ini */
+.ini{
+  margin-top:60px;
+  margin-left:60px;
+}
   
-  /* Estilos para la clase .iz */
-  .iz{
-    margin-left:60px;
-  }
+/* Estilos para la clase .iz */
+.iz{
+  margin-left:60px;
+}
   
-  /* Estilos para los elementos <input> de tipo texto */
-  input[type=text]{
-    width: 40%;
-    /* padding: 15px 20px;
-    margin: 10px 5px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; */
-  }
-  
-  /*.custom-container {
-    margin: 0;
-    padding: 0;
-    width: auto;
-    min-width: 1218px
-  }*/
+/* Estilos para los elementos <input> */
+input{
+  width: 40%;
+}
   
   
   

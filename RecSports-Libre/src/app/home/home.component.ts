@@ -1,9 +1,9 @@
 /* Descripcion de home.component.ts: programa que define la logica del componente "home". 
 Su proposito es llamar al servicio API por medio de funciones. 
 Porpiedad del equipo WellSoft. 
-Ultima edicion por: Arturo Garza Campuzano
-Fecha de creacion: dd/mm/aaaa < 05/05/2023
-Fecha de modificacion: 19/05/2023 */
+Ultima edicion por: Arturo Garza Campuzano.
+Fecha de creacion: 05/05/2023
+Fecha de modificacion: 15/06/2023 */
 
 // Declaracion de importaciones
 import { Component } from '@angular/core';
@@ -11,7 +11,6 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Router, NavigationEnd } from '@angular/router';
 import { CrudService } from '../service/crud.service';
-
 import { authGuard } from '../service/auth.guard';
 
 // Decorador del componente
@@ -43,11 +42,8 @@ export class HomeComponent {
     }
     // Llama al servicio crudService para obtener las áreas del edificio
     return this.crudService.AreaGetXedificio(this.eID).subscribe((data : {}) => {
-      console.log("Obteniendo areas del edificio:" + this.eID);
       this.areas=data;
     });
-    
-    
   }
 
   // Metodo para obtener edificios en cada iteracion
@@ -60,26 +56,10 @@ export class HomeComponent {
         this.getAreas();
       }
     });
-    console.log(this.areas);
   }
 
   // Metodo para recibir una foto y asignarla a la variable foto
   recibirFoto($event : string){
     this.foto = $event;
   }
-
 }
-
-/*
-  realoadData() {
-    console.log('Actualizando home...')
-    this.areas=null;
-    console.log('Áreas:')
-    this.getAreas();
-    const idEdificio = this.route.snapshot.paramMap.get('idEdificio');
-    if (idEdificio === null || idEdificio === '0') {
-      this.foto = '../assets/images/wellness-center.jpeg'
-    }
-  }
-  (reloadSignal)="realoadData()"
-  */

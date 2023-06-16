@@ -1,3 +1,10 @@
+/* Descripcion de tabla-edificio.component.ts: programa que define la logica del componente "tabla-edificio".
+Su proposito es llamar al servicio API por medio de funciones. 
+Porpiedad del equipo WellSoft. 
+Ultima edicion por: Arturo Garza Campuzano.
+Fecha de creacion: 25/05/2023
+Fecha de modificacion: 15/06/2023 */
+
 import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { CrudService } from '../../service/crud.service';
 import { Router } from '@angular/router';
@@ -12,7 +19,6 @@ export class TablaEdificioComponent {
     // Variables
     @Input() descripcion! : string;
     @Output() linkFoto = new EventEmitter<string>();
-    //@Output() reloadSignal = new EventEmitter<void>();
     foto? :string = "https://www.arquired.com.mx/wp-content/uploads/2017/05/campustecmtywh.jpg";
     eID : number = 0;
     listaEdificios : any = [];
@@ -22,14 +28,11 @@ export class TablaEdificioComponent {
     // Metodo que obtiene los edificios al inicializar el componente
     ngOnInit() {
       this.getEdificios();
-      console.log(this.linkFoto);
     }
     
     // Metodo que obtiene los edificios desde el servicio
     getEdificios() {
-      console.log('Generando dropdown de navbar...')
       return this.crudService.EdificioGetMultiple().subscribe((data:{}) => {
-        console.log(data);
         this.listaEdificios = data;
       })
     }
@@ -45,11 +48,8 @@ export class TablaEdificioComponent {
     }
     
     borrarRegistro(idEdificio: any, nombreEdificio: any){
-      console.log(idEdificio);
       if(window.confirm("Realmente deseas eliminar el edificio "+nombreEdificio)){
         this.crudService.EdificioDelete(idEdificio).subscribe(respuesta =>{
-          // Para actualizar la lista de libros en el template
-          // this.listaEdificios = this.listaEdificios.filter((edificio: any) => edificio.IdEdificio !== idEdificio);
           console.log(this.listaEdificios);
         })
       }

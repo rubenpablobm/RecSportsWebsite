@@ -2,8 +2,8 @@
 Su proposito es llamar al servicio API por medio de funciones. 
 Porpiedad del equipo WellSoft. 
 Ultima edicion por: Arturo Garza Campuzano
-Fecha de creacion: dd/mm/aaaa < 05/05/2023
-Fecha de modificacion: 18/05/2023 */
+Fecha de creacion: 05/05/2023
+Fecha de modificacion: 15/06/2023 */
 
 // Declaracion de importaciones
 import { Component, Input } from '@angular/core';
@@ -20,11 +20,6 @@ export class HeaderComponent {
   @Input() linkFoto? : string;
   // Descripcion del encabezado
   @Input() descripcion! : string;
-
-  ngOnInit(){
-    // Imprime el enlace de la foto en la consola
-    //console.log(this.linkFoto);
-    //this.linkFoto="./assets/images/wellness-center.jpeg";
-    //this.descripcion="Conoce las areas y lleva el deporte al siguiente nivel";
-  }
+  
+  ngOnInit(){}
 }

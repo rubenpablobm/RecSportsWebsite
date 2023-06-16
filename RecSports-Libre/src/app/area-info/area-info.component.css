@@ -1,9 +1,9 @@
 /* Descripcion de area-info.component.css: programa que define el estilo del componente "area-info".
 Su proposito es proporcionar una mejor visualizacion a los elementos del componente "area-info".
 Porpiedad del equipo WellSoft.
-Ultima edicion por: Arturo Garza Campuzano
-Fecha de creacion: dd/mm/aaaa < 05/05/2023
-Fecha de modificacion: 18/05/2023 */
+Ultima edicion por: Arturo Garza Campuzano.
+Fecha de creacion: 05/05/2023
+Fecha de modificacion: 15/06/2023 */
 
 @import '~bootstrap-icons/font/bootstrap-icons.css';
 
@@ -12,6 +12,7 @@ Fecha de modificacion: 18/05/2023 */
   width: 100%;
   border: 0.5px solid;
 }
+
 .leftalign{
    display:absolute;
    margin-left:1070px;
@@ -80,10 +81,6 @@ table, tr, td {
   width: auto;
   height: 50px;
 }
-
-/* .acciones-btns svg {
-  width: auto
-} */
 
 .accion-icon{
   width: 100%;

@@ -1,3 +1,10 @@
+/* Descripcion de editar-area.component.css: programa que define el estilo del componente "editar-area".
+Su proposito es proporcionar una mejor visualizacion a los elementos del componente "editar-area".
+Porpiedad del equipo WellSoft.
+Ultima edicion por: Arturo Garza Campuzano.
+Fecha de creacion: 01/06/2023
+Fecha de modificacion: 15/06/2023 */
+
 input {
   width: 30rem;
 }
@@ -5,12 +12,9 @@ input {
 /* Breakpoints */
 @media (min-width: 1200px) { }
 
-
 @media (max-width: 992px) { }
 
-@media (max-width: 768px) { 
-  
-}
+@media (max-width: 768px) { }
 
 @media (max-width: 480px) { 
   input {

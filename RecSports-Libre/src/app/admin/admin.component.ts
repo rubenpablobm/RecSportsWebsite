@@ -1,9 +1,9 @@
 /* Descripcion de admin.component.ts: programa que define la logica del componente "admin". 
 Su proposito es llamar al servicio API por medio de funciones. 
 Porpiedad del equipo WellSoft. 
-Ultima edicion por: Arturo Garza Campuzano
-Fecha de creacion: dd/mm/aaaa
-Fecha de modificacion: 18/05/2023 */
+Ultima edicion por: Arturo Garza Campuzano.
+Fecha de creacion: 11/05/2023
+Fecha de modificacion: 15/06/2023 */
 
 // Declaracion de importaciones
 import { Component, HostBinding } from '@angular/core';
@@ -35,15 +35,12 @@ export class AdminComponent {
     }
 
     enviarDatos(){
-      //console.log(this.formLogin.value);
       this.crudService.AdminLogin(this.formLogin.value).subscribe( respuesta =>{
-        console.log(respuesta);
-        //si fue positiva la respuesta, activa el verificador admin
+        //Si fue positiva la respuesta, activa el verificador admin
         this.crudService.AdminLoginAuth();
-        //redirige a pagina principal
+        //Redirige a pagina principal
         this.ruteador.navigateByUrl('');
       },(error) => {
-        console.log(error);
         this.mensaje=String(error.error);
       })
     }

@@ -1,3 +1,10 @@
+<!-- Descripcion de editar-area.component.html: programa que define la estructura del componente
+"editar-area". Su proposito es permitir al administrador editar un area. 
+Porpiedad del equipo WellSoft. 
+Ultima edicion por: Arturo Garza Campuzano.
+Fecha de creacion: 01/06/2023
+Fecha de modificacion: 15/06/2023 -->
+
 <!-- Componente de navegacion -->
 <app-navbar></app-navbar>
 <!-- Contenedor principal -->
@@ -7,14 +14,11 @@
   <!-- Formulario -->
   <form (ngSubmit)="enviarDatos()" [formGroup]="formularioDeArea">
     <div class="form-group my-4 w-75">
-
       <!-- CAMPOS -->
       <div>
         <!-- Campo del Edificio al que pertenece -->
         <!-- es tipo hidden pues no debe ser posible editarlo -->
-        <input type="hidden" formControlName="IdEdificio">
-
-
+        <input type="hidden" formControlName="IdEdificio" />
         <!-- Campo de Nombre -->
         <label class="fw-bold" for="Nombre">Nombre</label>
         <input
@@ -32,15 +36,15 @@
             Ya existe una área con este nombre. Intente de nuevo.
           </div>
         </div>
-
         <!-- Campo de aviso -->
         <div class="form-group my-4 w-75">
           <label class="fw-bold" for="Avisos">Aviso</label>
-          <br>
-          <textarea 
-            formControlName="Avisos" 
-            id="Descripcion" 
-            cols="25" rows="3" 
+          <br />
+          <textarea
+            formControlName="Avisos"
+            id="Descripcion"
+            cols="25"
+            rows="3"
             placeholder="Ej. Cerrado por mantenimiento de 13:00-14:00"
           ></textarea>
           <!-- <input
@@ -50,7 +54,6 @@
             placeholder="Ej. Cerrado por mantenimiento de 13:00-14:00"
           /> -->
         </div>
-
         <!-- Campo de Foto -->
         <div class="form-group my-4 w-75">
           <label class="fw-bold" for="Foto">Foto</label>
@@ -70,15 +73,15 @@
             </div>
           </div>
         </div>
-
         <!-- Campo de Horarios -->
         <div class="form-group my-4 w-75">
           <label class="fw-bold" for="Horarios">Horarios</label>
-          <br>
-          <textarea 
-            formControlName="Horarios" 
-            id="Descripcion" 
-            cols="25" rows="3" 
+          <br />
+          <textarea
+            formControlName="Horarios"
+            id="Descripcion"
+            cols="25"
+            rows="3"
             placeholder="Ej. Lu-Vi de 8:00  a 16:00"
           ></textarea>
           <!-- <input
@@ -88,15 +91,15 @@
             placeholder="Ej. Lu-Vi de 8:00  a 16:00"
           /> -->
         </div>
-
         <!-- Campo de descripción -->
         <div class="form-group my-4 w-75">
           <label class="fw-bold" for="Descripcion">Descripción</label>
-          <br>
-          <textarea 
-            formControlName="Descripcion" 
-            id="Descripcion" 
-            cols="25" rows="3" 
+          <br />
+          <textarea
+            formControlName="Descripcion"
+            id="Descripcion"
+            cols="25"
+            rows="3"
             placeholder="Ej. Prohibida entrada sin toalla"
           ></textarea>
           <!-- <input
@@ -106,11 +109,9 @@
             placeholder="Ej. Prohibida entrada sin toalla"
           /> -->
         </div>
-
         <!-- Campo de tipo de Área -->
-        <!-- es tipo hidden pues no debe ser posible editarlo -->
-        <input type="hidden" formControlName="Tipo">
-
+        <!-- Es tipo hidden pues no debe ser posible editarlo -->
+        <input type="hidden" formControlName="Tipo" />
         <!-- Campo de Capacidad -->
         <div>
           <div class="form-group my-4 w-75" *ngIf="tipoDeArea === 'Aforo'">
@@ -132,7 +133,6 @@
             <div *ngIf="capacidadError">Esa capacidad es inválida.</div>
           </div>
         </div>
-
         <!-- Campo de Link de ZCal -->
         <div class="form-group my-4 w-75" *ngIf="tipoDeArea !== 'Aforo'">
           <label class="fw-bold" for="LinkCalendar">Link ZCal</label>
@@ -148,7 +148,6 @@
             <div *ngIf="linkZcalError">La liga ingresada es inválida.</div>
           </div>
         </div>
-
         <!-- Campo de Croquis -->
         <div class="form-group my-4 w-75">
           <label class="fw-bold" for="Croquis">Croquis</label>
@@ -164,7 +163,6 @@
             <div *ngIf="croquisError">La liga ingresada es inválida.</div>
           </div>
         </div>
-
         <!-- Grupo de botones -->
         <div class="btn-group" role="group" aria-label="Button group name">
           <!-- Boton de Agregar -->

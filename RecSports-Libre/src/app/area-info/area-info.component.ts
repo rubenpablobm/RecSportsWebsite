@@ -1,8 +1,8 @@
 /* Descripcion de area-info.component.ts: programa que define la logica del componente "area-info". 
 Su proposito es llamar al servicio API por medio de funciones. 
 Porpiedad del equipo WellSoft. 
-Ultima edicion por: Jesús Sebastián Jaime Oviedo
-Fecha de creacion: dd/mm/aaaa < 05/05/2023
+Ultima edicion por: Jesus Sebastian Jaime Oviedo.
+Fecha de creacion: 05/05/2023
 Fecha de modificacion: 9/06/2023 */
 
 // Declaracion de importaciones
@@ -10,8 +10,7 @@ import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CrudService } from '../service/crud.service';
-import { DomSanitizer } from '@angular/platform-browser';
-
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { authGuard } from '../service/auth.guard';
 
 // Decorador del componente
@@ -29,12 +28,13 @@ export class AreaInfoComponent {
   linkCalendar!: string; 
   descripcion!: string;
   horarios!: string;
-  secureLinkCalendar: any = null;
-
-  auth!: boolean; //validador admin
+  secureLinkCalendar: SafeResourceUrl | null = null;
+  // Validador admin
+  auth!: boolean;
 
   constructor(private route: ActivatedRoute, private htttp: HttpClient, public crudService:CrudService, private sanitizer: DomSanitizer, private router:Router) { 
-    this.auth=authGuard(); //validador admin
+    // Validador admin
+    this.auth=authGuard();
    }
 
   ngOnInit() {
@@ -46,9 +46,6 @@ export class AreaInfoComponent {
       this.area = data;
       // Seleccionar la columna LinkCalendar
       this.linkCalendar = this.area.LinkCalendar;
-      // if((this.linkCalendar===null) || (this.linkCalendar === '')){
-      //   this.linkCalendar=SinLink;
-      // }
       // Purificar el enlace
       this.secureLinkCalendar = this.sanitizer.bypassSecurityTrustResourceUrl(this.linkCalendar);
       this.horarios = this.convertLineBreaks(this.area.Horarios);
@@ -56,12 +53,6 @@ export class AreaInfoComponent {
     })
   }
   
- /* edit(text: string): string{
-    if (text) {
-      return '';
-    }
-    return text.replace(/\\n/g, '<br>');
-  }*/
   // Convertir saltos de linea en etiquetas <br>
   convertLineBreaks(text: string): string {
     if (!text) {
@@ -90,10 +81,7 @@ export class AreaInfoComponent {
   }
 
   borrarRegistro(idArea: any, nombreArea: any) {
-    console.log(idArea);
-  
     this.mostrarOverlay = true;
-  
     setTimeout(() => {
       if (window.confirm("¿Realmente deseas eliminar el registro título = " + nombreArea)) {
         this.crudService.AreaDelete(idArea).subscribe(respuesta => {
@@ -104,11 +92,6 @@ export class AreaInfoComponent {
       }else{
         this.mostrarOverlay = false;
       }
-    
-      
-
     }, 100);
-    
   }
-
 }

@@ -1,8 +1,8 @@
 /* Descripcion de home.component.spec.ts: programa default del componente "home".
 Porpiedad del equipo WellSoft. 
-Ultima edicion por: Arturo Garza Campuzano
-Fecha de creacion: dd/mm/aaaa < 05/05/2023
-Fecha de modificacion: 19/05/2023 */
+Ultima edicion por: Arturo Garza Campuzano.
+Fecha de creacion: 05/05/2023
+Fecha de modificacion: 15/06/2023 */
 
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HomeComponent } from './home.component';

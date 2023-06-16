@@ -1,9 +1,9 @@
 <!-- Descripcion de area-card.component.html: programa que define la estructura del componente "area-card".
 Su proposito es la visualizacion de una clase o area desde la pagina princiapl.
 Porpiedad del equipo WellSoft.
-Ultima edicion por: Ruben Barraza
-Fecha de creacion: dd/mm/aaaa < 03/04/2023
-Fecha de modificacion: 28/05/2023 -->
+Ultima edicion por: Ruben Barraza.
+Fecha de creacion: 03/04/2023
+Fecha de modificacion: 15/06/2023 -->
 
 <section>
   <!-- Contenedor principal -->
@@ -49,8 +49,7 @@ Fecha de modificacion: 28/05/2023 -->
         </a>
       </div>
     </ng-container>
-    <div class="add-card" [routerLink]="['/area/form']" *ngIf="auth">
-      +
-    </div>
+    <!-- Tarjeta de agregar -->
+    <div class="add-card" [routerLink]="['/area/form']" *ngIf="auth">+</div>
   </div>
 </section>

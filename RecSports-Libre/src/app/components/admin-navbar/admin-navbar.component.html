@@ -2,8 +2,9 @@
 "admin-navbar". Su proposito es desplegar un menu para facilitar la navegacion del administrador. 
 Porpiedad del equipo WellSoft. 
 Ultima edicion por: Arturo Garza Campuzano.
-Fecha de creacion: N/A
-Fecha de modificacion: 17/05/2023 -->
+Fecha de creacion: 01/05/2023
+Fecha de modificacion: 15/06/2023 -->
+
 <!-- Barra de navegacion -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -28,11 +29,15 @@ Fecha de modificacion: 17/05/2023 -->
           class="btn btn-secondary m-2 font"
           routerLink="/edificio-tabla/tabla"
         >
-        <fa-icon [icon]="faBuilding" size="lg"></fa-icon>  Edificios
+          <fa-icon [icon]="faBuilding" size="lg"></fa-icon> Edificios
         </button>
         <!-- Boton para ir a la pagina de estadisticas de un edificio -->
-        <button type="button" class="btn btn-secondary m-2 font" routerLink="/historico/descargar">
-          <fa-icon [icon]="faChartSimple" size="lg"></fa-icon>  Estadísticas
+        <button
+          type="button"
+          class="btn btn-secondary m-2 font"
+          routerLink="/historico/descargar"
+        >
+          <fa-icon [icon]="faChartSimple" size="lg"></fa-icon> Estadísticas
         </button>
         <!-- Boton para cambiar la contrasena -->
         <button
@@ -40,7 +45,7 @@ Fecha de modificacion: 17/05/2023 -->
           class="btn btn-secondary m-2 font"
           routerLink="/cambio/contrasena"
         >
-        <fa-icon [icon]="faKey" size="lg"></fa-icon>  Contraseña
+          <fa-icon [icon]="faKey" size="lg"></fa-icon> Contraseña
         </button>
       </ul>
     </div>

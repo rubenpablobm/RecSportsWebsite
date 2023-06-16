@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CrudService } from '../../service/crud.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder} from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
 
@@ -12,7 +12,7 @@ import { ChangeDetectorRef } from '@angular/core';
   styleUrls: ['./editar-area.component.css']
 })
 export class EditarAreaComponent {
-
+  // Variables para recibir informacion de area
   eID : any = null;
 	area : any = [];
 	mensaje?:string;
@@ -29,7 +29,7 @@ export class EditarAreaComponent {
   croquis?:string;
   areaAgregada:boolean = false;
   idEdificio!:number;
-//////////////////////////////////////
+// Variables para validaciones
   listaAreas : any = [];
   nombreError: boolean = false;
   nombreVacio: boolean = false;
@@ -45,9 +45,7 @@ export class EditarAreaComponent {
   linkZcalVacio: boolean = false;
   croquisError: boolean = false;
   croquisVacio: boolean = false;
-
   flagAforo:boolean = false;
-
 	// Grupo de formulario para recolectar datos del formulario
 	formularioDeArea: FormGroup;
   
@@ -55,8 +53,6 @@ export class EditarAreaComponent {
 	constructor(private route: ActivatedRoute, private htttp: HttpClient, private router: Router, public crudService:CrudService, public formulario: FormBuilder, private cdr: ChangeDetectorRef) { 
     // Obtener el parametro 'IdArea' de la ruta
     this.theIdArea = this.route.snapshot.paramMap.get('idArea');
-    console.log("Este es el id de area");
-    console.log(this.theIdArea);
     // Recuperar los datos del área si 'theIdArea' tiene un valor
     if (this.theIdArea) {
       this.crudService.AreaGet(this.theIdArea).subscribe(respuesta =>{
@@ -71,7 +67,6 @@ export class EditarAreaComponent {
         this.avisos = respuesta['Avisos'];
         this.idEdificio = respuesta['IdEdificio']
         this.capacidad = respuesta['Capacidad'];
-
         // Establecer los valores del formulario con los datos recuperados
         this.formularioDeArea.setValue({
           IdEdificio: respuesta['IdEdificio'],
@@ -92,16 +87,16 @@ export class EditarAreaComponent {
     }
     // Crear el grupo de formulario
     this.formularioDeArea=this.formulario.group({
-        IdEdificio: ['', Validators.required],
-        Nombre: ['', Validators.required],
-        Avisos: ['', Validators.required],
-        Foto: ['', Validators.required],
-        Horarios: ['', Validators.required],
-        Descripcion: ['', Validators.required],
-        Tipo: ['', Validators.required],
-        Capacidad: ['', Validators.required],
-        LinkCalendar: ['', Validators.required],
-        Croquis: ['', Validators.required]
+        IdEdificio: [''],
+        Nombre: [''],
+        Avisos: [''],
+        Foto: [''],
+        Horarios: [''],
+        Descripcion: [''],
+        Tipo: [''],
+        Capacidad: [''],
+        LinkCalendar: [''],
+        Croquis: ['']
     });
 	}
 
@@ -119,28 +114,21 @@ export class EditarAreaComponent {
   getAreas(id:number) {
     return this.crudService.AreaGetXedificio(id).subscribe((data:{}) => {
       this.listaAreas = data;
-      console.log('se obtuvieron áreas:');
-      console.log(this.listaAreas);
     })
   }
 
   onEdificioSelect(event: Event) {
     const target = event.target as HTMLSelectElement;
     const option = target.value;
-
     if (option !== null) {
       this.idEdificio = Number(option);
     }
-
-    console.log('Se seleccionó un edificio: ' + this.idEdificio);
-    
     this.cdr.detectChanges();
   }
 
   onTipoSelect(event: Event) {
     const target = event.target as HTMLSelectElement;
     const option = target.value;
-    
     if (option !== null) {
       this.tipoDeArea = option;
     }
@@ -178,24 +166,19 @@ export class EditarAreaComponent {
   async validarImagenLink(url: string): Promise<boolean> {
     return new Promise<boolean>((resolve) => {
       const img = new Image();
-
-      console.log("Es un link valido: "+this.isGoogleDriveLink(url));
       if(this.isGoogleDriveLink(url)){
-        console.log("Se convirtio: "+this.convertGoogleDriveLink(url));
         url = this.convertGoogleDriveLink(url);
-        this.formularioDeArea.get('Foto')?.setValue(url); // Set the new value for the "Foto" field
+        // Asignar nuevo valor al campo "Foto"
+        this.formularioDeArea.get('Foto')?.setValue(url);
       }
-  
+      // La imagen se cargo correctamente
       img.onload = () => {
-        resolve(true); // Image loaded successfully
-        console.log("Se cargo la imagen");
+        resolve(true);
       };
-  
+      // La imagen no se cargo
       img.onerror = () => {
-        resolve(false); // Image failed to load
-        console.log("La imagen no se cargo");
+        resolve(false);
       };
-      console.log("Mira: "+url);
       img.src = url;
     });
   }
@@ -232,9 +215,7 @@ export class EditarAreaComponent {
     }
 
     if ((!aviso) || (aviso===''))  {
-      console.log('Aviso existe');
       this.formularioDeArea.get('Avisos')?.patchValue(null);
-      console.log(aviso);
     }
   
     // Validacion de Foto
@@ -293,19 +274,13 @@ export class EditarAreaComponent {
         const isCalLink = this.isCalendarLink(linkZcal);
         if (!isCalLink) {
           if(!linkZcal){
-            console.log('condicion: vacía');
-            console.log(linkZcal);
             this.linkZcalError = false;
             this.linkZcalVacio = true;
           } else {
-            console.log('condicion: error');
-            console.log(linkZcal);
             this.linkZcalError = true;
             this.linkZcalVacio = false;
           }
         } else {
-          console.log('condicion: correcto');
-          console.log(linkZcal);
           this.linkZcalError = false;
           this.linkZcalVacio = false;
         }
@@ -330,10 +305,7 @@ export class EditarAreaComponent {
 
       if(!this.nombreError && !this.nombreVacio && !this.avisoError && !this.fotoError && !this.fotoVacia && !this.horariosError && !this.descripcionError && !this.capacidadError && !this.capacidadVacio && !this.linkZcalError && !this.linkZcalVacio&& !this.croquisError && !this.croquisVacio)
       {
-        console.log('SE APROBÓ LA CONDICIÓN')
         this.areaAgregada = true;
-        console.log("Presionaste el boton enviar datos")
-        console.log(this.formularioDeArea.value);
 		    // Llamar al servicio para actualizar el edificio
         this.crudService.AreaUpdate(this.theIdArea, this.formularioDeArea.value).subscribe(respuesta => {
           console.log("Se realizó el update correctamente")
@@ -344,20 +316,6 @@ export class EditarAreaComponent {
         this.endForm();
         return;
        }
-       console.log('NO SE APROBÓ CONDICIÓN')
-        console.log(this.nombreError);
-        console.log(this.nombreVacio);
-        console.log(this.avisoError);
-        console.log(this.fotoError);
-        console.log(this.fotoVacia);
-        console.log(this.horariosError);
-        console.log(this.descripcionError);
-        console.log(this.capacidadError);
-        console.log(this.capacidadVacio);
-        console.log(this.linkZcalError);
-        console.log(this.linkZcalVacio);
-        console.log(this.croquisError);
-        console.log(this.croquisVacio);
     });
   }
   

@@ -1,9 +1,9 @@
 /* Descripcion de area-card.component.css: programa que define el estilo del componente "area-card".
 Su proposito es proporcionar una mejor visualizacion a los elementos del componente "area-card".
 Porpiedad del equipo WellSoft.
-Ultima edicion por: Arturo Garza Campuzano
-Fecha de creacion: dd/mm/aaaa < 05/05/2023
-Fecha de modificacion: 18/05/2023 */
+Ultima edicion por: Arturo Garza Campuzano.
+Fecha de creacion: 03/04/2023
+Fecha de modificacion: 15/06/2023 */
 
 /* Estilos para la etiqueta <section> */
 section {
@@ -79,7 +79,6 @@ section {
 
 .add-card:hover {
   transform: translateY(-10px);
-  /* border: lightgray solid 3px; */
   font-size: 8rem;
   cursor: pointer;
 }
@@ -89,7 +88,7 @@ progress{
   background-color: red;
 }
 
-/* Breakpoints. Media queries*/
+/* Breakpoints. Media Queries*/
 
 @media (min-width: 1200px) { }
 
