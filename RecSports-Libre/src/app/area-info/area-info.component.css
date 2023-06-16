@@ -27,7 +27,7 @@ Fecha de modificacion: 15/06/2023 */
 .embedido {
   flex: 1 1 auto;
   display: flex;
-  height: 50vh;
+  height: 80vh;
   width: 80vw;
   border: solid 2px #333;
   border-radius: 10px;
