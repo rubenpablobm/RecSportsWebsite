@@ -5,6 +5,8 @@ Ultima edicion por: Arturo Garza Campuzano.
 Fecha de creacion: 05/05/2023
 Fecha de modificacion: 15/06/2023 */
 
+@import '~bootstrap-icons/font/bootstrap-icons.css';
+
 /* Estilos para la clase .titulo-seccion y .help */
 .titulo-seccion,
 .help {

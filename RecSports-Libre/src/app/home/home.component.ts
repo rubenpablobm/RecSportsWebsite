@@ -46,6 +46,16 @@ export class HomeComponent {
     });
   }
 
+  downloadUserManual() {
+    const manualUrl = 'assets/user_manual.pdf'; // Replace with the actual URL of the user manual file
+  
+    const link = document.createElement('a');
+    link.href = manualUrl;
+    link.download = 'user_manual.pdf'; // Specify the desired filename for the downloaded file
+    link.target = '_blank'; // Open the link in a new tab/window
+    link.click();
+  }
+
   // Metodo para obtener edificios en cada iteracion
   ngOnInit() {
     if(this.areas===undefined){ //Si entra en la pagina, sin haber clickeado el dropdown, tendra la lista de areas aun asi
